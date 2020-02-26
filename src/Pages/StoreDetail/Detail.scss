@@ -1,0 +1,433 @@
+.li_parent {
+  padding: 0 80px;
+  box-shadow: 2px 0 10px lightgray;
+  height: 64px;
+}
+
+.biggest_box_parent {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  .biggest_box {
+    margin-right: auto;
+    margin-left: auto;
+
+    .biggest_margin_box {
+      margin-top: 40px;
+      margin-bottom: 100px;
+      margin-left: 20px;
+      margin-right: 20px;
+      width: 1240px;
+    }
+    .detail_name_parent {
+      max-width: 45.625rem;
+      margin-bottom: 1.25rem;
+    }
+  }
+}
+.detail_name {
+  font-size: 24px;
+  line-height: 1.33;
+  display: inline;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: 700;
+}
+.box_for_detail_main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 720px;
+  width: 1240px;
+}
+// ********************************************
+.div_for_img {
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: rgb(232, 235, 237);
+  width: 718px;
+  position: relative;
+}
+.detail_main_img {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: block;
+  padding: 2px;
+}
+.user_can_buy_parent {
+  width: 41.6667%;
+  max-width: 29.375rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.user_can_buy {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: rgb(232, 235, 237);
+}
+// buying**********************
+.user_can_see_price {
+  position: relative;
+}
+.cheaper_price_name {
+  box-sizing: border-box;
+  color: rgb(114, 120, 127);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  margin: 0px;
+}
+.click_div_discount_info {
+  display: inline;
+}
+.discount_price_parent {
+  display: inline;
+}
+.discount_per {
+  font-size: 2rem;
+  line-height: 1.34;
+  font-weight: 700;
+  color: red;
+}
+.price {
+  font-size: 2rem;
+  line-height: 1.34;
+  font-weight: 700;
+  color: black;
+}
+.won {
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  letter-spacing: -0.025rem;
+  color: rgb(27, 29, 31);
+}
+.before_discount_price_parent {
+  display: inline;
+}
+.see_price_info {
+  transform: rotate(0deg);
+  transition: transform 0.25s ease-in-out 0s;
+  width: 8px;
+  z-index: 10;
+  margin: 0 0 2px;
+  // 화살표 돌리고 사이즈 맞추기
+}
+.rotate_price_info {
+  // display: inline;
+  transform: rotate(180deg);
+  transition: transform 0.25s ease-in-out 0s;
+  margin: 0 0 2px;
+  width: 8px;
+  z-index: 10;
+  // 화살표 돌리고 사이즈 맞추기
+}
+.before_discount_price {
+  font-size: 0.875rem;
+  letter-spacing: -0.025rem;
+  //   할인 전 가격 간격 붙여주기
+  color: rgb(114, 120, 127);
+  margin: 0px 8px;
+  text-decoration: line-through;
+  //   글씨에 밑줄 긋기
+}
+.see_more_priceinfo {
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  font-size: 14px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(201, 205, 210);
+  border-image: initial;
+  border-radius: 9999px;
+  outline: none;
+}
+
+.get_coupon {
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 2.25rem;
+  letter-spacing: -0.025rem;
+  color: black;
+  background-color: rgb(232, 235, 237);
+  border-radius: 9999px;
+  outline: none;
+  text-decoration: none;
+  border: 1px solid rgb(232, 235, 2370);
+  margin: 0;
+  font-size: 14px;
+  padding: 0 20px;
+  font-weight: 700;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.get_coupon:hover {
+  background-color: rgb(247, 248, 250);
+}
+.download_icon {
+  width: 13px;
+  margin-left: 3px;
+}
+
+.discount_hide_box {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 250ms ease-in-out 0s;
+  // 적용 전 가격, 적용 된 쿠폰 숨기기
+}
+
+.discount_appear_box {
+  opacity: 1;
+  max-height: 67px;
+  transition: max-height 250ms ease-in-out 0s;
+  overflow: hidden;
+  // overflow로 넘치는 글씨 사라지게 하기.
+}
+.hide_and_appear_parent {
+  padding: 8px 0 16px;
+  border-bottom: 1px solid rgb(232, 235, 237);
+}
+.hide_first_line,
+.hide_second_line {
+  display: flex;
+  flex-direction: row;
+}
+.before_discount_price_text,
+.applied_coupon {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(69, 76, 83);
+  margin: 0px;
+  width: 25%;
+}
+
+.percentage_of_price,
+.percentage_coupon {
+  color: rgb(255, 63, 101);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.00025rem;
+  margin: 0px;
+}
+.smaller_discount_price,
+.which_coupon {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(69, 76, 83);
+  margin: 0px;
+}
+.like_and_review {
+  margin: 20px 0 24px 0;
+}
+.like,
+.review {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(69, 76, 83);
+  margin: 0px 2px 0px 0px;
+}
+.how_many_like,
+.how_many_review {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(69, 76, 83);
+  margin: 0px 10px 0px 0px;
+}
+.user_own_point {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(69, 76, 83);
+  //   margin: 0px 2px 0px 0px;
+  //   padding: 0 4px;
+}
+.how_many_point {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(69, 76, 83);
+  //   margin: 0px 10px 0px 0px;
+  padding: 0 8px;
+}
+// 가격, 쿠폰, 좋아요, 후기 끝
+// 단추 시작
+.point_box {
+  margin-top: 0.375rem;
+}
+.delivery_free_or_not_parent {
+  margin: 2px 0;
+}
+.delivery_free_or_not {
+  color: rgb(69, 76, 83);
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  padding: 0 10px 0 0;
+  margin: 4px 0;
+}
+// 모델명 및 사이즈 시작
+.model_and_size {
+  margin: 32px 0 0;
+}
+.model_name {
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(27, 29, 31);
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  transition-property: color, border-color, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.25s;
+  font-weight: 700;
+  background: rgb(232, 235, 237);
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-color: rgb(232, 235, 237);
+  border-radius: 4px;
+  padding: 0.75rem 1.75rem 0.75rem 1.25rem;
+  outline: none;
+}
+.model_name_text {
+  text-indent: 0px;
+  text-shadow: none;
+}
+.model_size {
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(158, 164, 170);
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  transition-property: color, border-color, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.25s;
+  font-weight: 700;
+  background: rgb(255, 255, 255);
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-color: rgb(232, 235, 237);
+  border-radius: 4px;
+  padding: 0.75rem 1.75rem 0.75rem 1.25rem;
+  outline: none;
+  margin: 10px 0 0 0;
+}
+.model_size_text {
+  //   font-style: 400 11px;
+  font-weight: 400;
+  font-size: 11px;
+}
+// 구매 장바구니 담기
+.buy_button_parent {
+  margin: 24px 0 0 0;
+}
+.immediately_buy_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.immediately_buy_button {
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  height: 2.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.31;
+  letter-spacing: -0.025rem;
+  color: rgb(0, 193, 163);
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  display: flex;
+  border-radius: 9999px;
+  outline: none;
+  text-decoration: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(0, 208, 177);
+  border-image: initial;
+  padding: 0px 1.25rem;
+  height: 56px;
+}
+.immediately_buy_button:hover {
+  border-color: rgb(0, 208, 177);
+  background-color: rgb(0, 208, 177);
+  color: rgb(255, 255, 255);
+}
+.get_cart_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.get_cart_button {
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  justify-content: center;
+  height: 2.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.31;
+  // line-height란
+  letter-spacing: -0.025rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 208, 177);
+  width: 100%;
+  display: flex;
+  border-width: 0px;
+  // 이거 유무의 차이
+  border-radius: 9999px;
+  outline: none;
+  text-decoration: none;
+  padding: 0px 1.25rem;
+  margin-top: 10px;
+  height: 56px;
+}
+.get_cart_button:hover {
+  opacity: 0.9;
+}
