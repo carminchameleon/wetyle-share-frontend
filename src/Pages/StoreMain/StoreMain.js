@@ -1,16 +1,12 @@
 import React, { Component } from "react";
-
-import Banner from "./Banner/Banner";
-
+import StoreMainBanner from "./StoreMainBanner/StoreMainBanner";
 import "./StoreMain.scss";
 
 class StoreMain extends Component {
   render() {
     return (
-      <div>
-        <div className="store_main_wrapper">
-          <Banner />
-        </div>
+      <div className="StoreMain">
+        <StoreMainBanner />
       </div>
     );
   }

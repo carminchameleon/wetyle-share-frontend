@@ -24,6 +24,7 @@ function Routes() {
         <Route exact path="/detail" component={Detail} />
         <Route exact path="/feed/hot" component={Hot} />
         <Route exact path="/feed/dailylook" component={DailyLook} />
+
         <Redirect to="/error" />
       </Switch>
     </Router>
