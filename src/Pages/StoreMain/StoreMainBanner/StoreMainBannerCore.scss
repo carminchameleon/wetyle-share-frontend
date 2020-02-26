@@ -1,0 +1,153 @@
+.StoreMainBannerCore {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  // background-color: #ffff00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ban_pic_wrapper {
+  box-sizing: border-box;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  .ban_pic_a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  .ban_pic {
+    width: 100%;
+    height: 100%;
+  }
+  .ban_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    font-family: "object-fit: cover; object-poisition: center;", sans-serif;
+  }
+}
+.ban_content_container {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  // top: 32%;
+  bottom: unset;
+  width: 100%;
+  max-width: 80rem;
+  pointer-events: none;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  .ban_content_text {
+    border: 1px solid blue;
+    display: flex;
+    height: 80%;
+  }
+  .ban_left_empty {
+    width: 8.3%;
+    border: 1px solid brown;
+  }
+  .ban_right_box {
+    border: 1px solid yellow;
+    width: 91%;
+    padding-left: 0.3125rem;
+    padding-right: 0.3125rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .ban_text_box {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0%) translateZ(0px);
+    display: block;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-line-clamp: 2;
+  }
+  .ban_text {
+    height: 9.73rem;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.39;
+    letter-spacing: 0.3rem;
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(27, 29, 31, 0.3) 0px 2px 12px;
+  }
+  .ban_subtext_box {
+    position: relative;
+    opacity: 1;
+  }
+  .ban_subtext {
+    height: 3.105rem;
+    font-size: 1.125rem;
+    line-height: 1.38;
+    font-weight: 400;
+    letter-spacing: -0.025rem;
+    text-shadow: rgba(27, 29, 31, 0.24) 0px 2px 8px;
+    margin-top: 24px;
+    padding-left: 1px;
+    padding-right: 1px;
+    color: rgb(255, 255, 255);
+  }
+  .ban_content_line {
+    margin-top: 38px;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    margin-bottom: 0.25rem;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    .ban_line_front {
+      width: 8.33333%;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+
+    .ban_line_middle {
+      width: 33.3333%;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+      position: relative;
+
+      .ban_line_middle_inner {
+        box-sizing: border-box;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.2);
+        position: relative;
+        transition: background-color 0.25s ease-in-out 0s;
+      }
+
+      .ban_line_middle_bold {
+        height: 6px;
+        top: -2px;
+        box-sizing: border-box;
+        width: 3.125%;
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        border-radius: 3px;
+      }
+    }
+
+    .ban_line_back {
+      width: 58.3333%;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+  }
+}
