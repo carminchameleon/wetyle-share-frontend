@@ -181,7 +181,7 @@ class TrendCard extends React.Component {
 
   render() {
     return (
-      <div className="hot_wrapper">
+      <div className="trend_card_wrapper">
         <Modal
           isOpen={this.state.isModalOpen}
           close={this.closeModal}
