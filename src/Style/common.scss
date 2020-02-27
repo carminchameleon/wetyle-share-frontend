@@ -3,6 +3,7 @@
 
 html,
 body {
+  position: relative;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -21,16 +22,4 @@ body {
 #root {
   width: 100%;
   height: 100%;
-}
-
-#modal {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  justify-content: center;
-  align-content: center;
 }
