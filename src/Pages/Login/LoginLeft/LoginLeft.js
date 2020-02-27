@@ -40,6 +40,7 @@ class LoginLeft extends Component {
             <input
               id="pwd"
               name="pwd"
+              type="password"
               value={this.state.pwd}
               placeholder="비밀번호를 입력해주세요"
               onFocus={this.handleFocusCheck}

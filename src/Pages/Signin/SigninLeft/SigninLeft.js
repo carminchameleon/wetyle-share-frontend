@@ -5,6 +5,7 @@ class SigninLeft extends Component {
   state = {
     id: "",
     pwd: "",
+    pwdcheck: "",
     idFocus: false,
     pwdFocus: false
   };
@@ -35,6 +36,7 @@ class SigninLeft extends Component {
             <input
               id="pwd"
               name="pwd"
+              type="password"
               value={this.state.pwd}
               placeholder="비밀번호 (최소 6자)"
               onFocus={this.handleFocusCheck}
@@ -42,9 +44,10 @@ class SigninLeft extends Component {
               className="info_input1"
             ></input>
             <input
-              id="pwd"
-              name="pwd"
-              value={this.state.pwd}
+              id="pwdcheck"
+              name="pwdcheck"
+              type="password"
+              value={this.state.pwdcheck}
               placeholder="비밀번호 확인"
               onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
