@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+
 import StoreMainBannerCore from "./StoreMainBannerCore";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./StoreMainBanner.scss";
-import "./StoreMainBannerCore.scss";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -95,7 +93,6 @@ class StoreMainBanner extends Component {
               />
             );
           })}
-          {/* <StoreMainBannerCore data={this.state.data} /> */}
         </Slider>
 
         <button className="scroll_container">

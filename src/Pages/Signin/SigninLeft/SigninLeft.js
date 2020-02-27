@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import "./LoginLeft.scss";
+import "./SigninLeft.scss";
 
-class LoginLeft extends Component {
+class SigninLeft extends Component {
   state = {
     id: "",
     pwd: "",
+    pwdcheck: "",
     idFocus: false,
     pwdFocus: false
   };
@@ -17,7 +18,7 @@ class LoginLeft extends Component {
   render() {
     const kr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     return (
-      <div className="login_main_left">
+      <div className="signin_main_left">
         <form>
           <label htmlFor="id" className="input_wrapper">
             <input
@@ -25,38 +26,37 @@ class LoginLeft extends Component {
               id="id"
               name="id"
               value={this.state.id}
-              placeholder="ID/Email"
+              placeholder="ID"
               onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               className="info_input"
             />
           </label>
-          <div className="forgot_info_div">
-            <a className="forgot_info" href="/">
-              ID가 기억이 나지 않으세요?
-            </a>
-          </div>
           <label htmlFor="pwd" className="input_wrapper">
             <input
               id="pwd"
               name="pwd"
               type="password"
               value={this.state.pwd}
-              placeholder="비밀번호를 입력해주세요"
+              placeholder="비밀번호 (최소 6자)"
+              onFocus={this.handleFocusCheck}
+              onChange={this.handleLoginCheck}
+              className="info_input1"
+            ></input>
+            <input
+              id="pwdcheck"
+              name="pwdcheck"
+              type="password"
+              value={this.state.pwdcheck}
+              placeholder="비밀번호 확인"
               onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               className="info_input"
             ></input>
           </label>
-          <div className="forgot_info_div">
-            <a className="forgot_info" href="/">
-              비밀번호를 잊으셨나요?
-            </a>
-          </div>
-
-          <div className="login_btn_div">
-            <button type="submit" className="login_btn">
-              로그인
+          <div className="signin_btn_div">
+            <button type="submit" className="signin_btn">
+              가입
             </button>
           </div>
         </form>
@@ -65,4 +65,4 @@ class LoginLeft extends Component {
   }
 }
 
-export default LoginLeft;
+export default SigninLeft;
