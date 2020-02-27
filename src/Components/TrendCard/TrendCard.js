@@ -67,11 +67,16 @@ class TrendCard extends React.Component {
   };
   // 무한 스크롤 구현
   infiniteScroll = () => {
-    if (
-      document.documentElement.scrollTop +
-        document.documentElement.clientHeight ===
-      document.documentElement.scrollHeight
-    ) {
+    let scroolHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+    let clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight + 10 > scroolHeight) {
       this.setState({
         scrolling: !this.state.scrolling,
         preItems: this.state.items,

@@ -100,7 +100,9 @@ class Ootdcarousel extends Component {
     return (
       <>
         <Slider ref={ref => (this.slider = ref)} {...mainSettings}>
-          {this.mapOfMainImg(images.slice(0, 10))}
+          {window.innerHeight <= 800
+            ? this.mapOfMainImg(images.slice(0, 8))
+            : this.mapOfMainImg(images.slice(0, 10))}
         </Slider>
         <div
           className="main_left_button"
