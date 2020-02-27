@@ -91,7 +91,7 @@ class TrendCard extends React.Component {
       <div key={idx} onClick={this.openModal}>
         <div className="trend_item">
           <div className="trend_item_img_wrapper">
-            <div className="more_img"></div>
+            {ele.main_url ? <div className="more_img"></div> : ""}
             <img
               className="trend_item_img"
               src={ele.main_url}
