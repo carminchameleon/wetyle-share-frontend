@@ -10,6 +10,8 @@ import {
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Signin from "./Pages/Signin/Signin";
+// import SigninNext from "./Pages/SigninNext/SigninNext";
+
 import Top from "./Components/Top/Top";
 import TopStore from "./Components/TopStore/TopStore";
 
@@ -20,6 +22,7 @@ function Routes() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signin" component={Signin} />
+        {/* <Route exact path="/signinnext" component={SigninNext} /> */}
         <Route exact path="/top" component={Top} />
         <Route exact path="/topstore" component={TopStore} />
         <Redirect to="/error" />
