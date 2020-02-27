@@ -1,67 +1,8 @@
 .StoreMainBanner {
-  // box-sizing: border-box;
-  // overflow: hidden;
   position: relative;
   width: 100%;
   height: 100vh;
-  // background-color: transparent;
-  .arrow_container {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 40%;
-    left: 0px;
-    width: 100%;
-    // -webkit-box-pack: center;
-    // pointer-events: none;
-    // box-sizing: border-box;
 
-    .left_box {
-      background-color: transparent;
-      width: 80px;
-      height: 80px;
-      cursor: pointer;
-      pointer-events: auto;
-      opacity: 0.3;
-      margin-right: 24px;
-      display: inline-block;
-      display: flex;
-      &:hover {
-        opacity: 1;
-      }
-      .arrow_button {
-        margin: auto;
-        width: 100%;
-        height: 64%;
-      }
-    }
-
-    // .center_empty {
-    //   box-sizing: border-box;
-    //   width: 100%;
-    //   max-width: 1280px;
-    //   display: block;
-    // }
-    .right_box {
-      color: rgb(27, 29, 31);
-      width: 80px;
-      height: 80px;
-      cursor: pointer;
-      opacity: 0.3;
-      pointer-events: auto;
-      margin-left: 24px;
-      display: flex;
-      transition: color 0.25s ease-in-out 0s, opacity 0.25s ease-in-out 0s;
-      &:hover {
-        opacity: 1;
-      }
-      .arrow_button {
-        margin: auto;
-        width: 100%;
-        height: 64%;
-      }
-    }
-  }
   .scroll_container {
     cursor: pointer;
     position: absolute;
@@ -70,26 +11,24 @@
     background-color: transparent;
     user-select: none;
     border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
+
     padding: 0px;
     margin: 0px;
 
-    .ban_scroll_text {
+    .scroll_text {
       font-weight: 700;
       text-transform: uppercase;
       transition: color 0.25s ease-in-out 0s;
       box-sizing: border-box;
-      color: rgb(255, 255, 255);
+      color: #1b1d1f;
       font-size: 0.875rem;
-      font-weight: 400;
+      font-weight: 700;
       line-height: 1.43;
       letter-spacing: -0.025rem;
       margin: 0px;
     }
 
-    .ban_scroll_circle {
+    .scroll_circle {
       box-sizing: border-box;
       width: 64px;
       height: 64px;
@@ -101,14 +40,87 @@
       border-width: 1px;
       border-style: solid;
       border-image: initial;
-      border-color: rgb(255, 255, 255);
+      border-color: #1b1d1f;
       border-radius: 100%;
     }
 
-    .ban_scroll_button {
-      -webkit-filter: invert(1);
+    .scroll_button {
       height: 60%;
-      widows: 60%;
+      width: 60%;
+    }
+  }
+
+  .leftArrowContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    top: 40%;
+    width: 50%;
+    height: 80px;
+
+    .leftEmpty {
+      width: 100%;
+      height: 100%;
+      max-width: 640px;
+    }
+    .leftBox {
+      margin-right: 24px;
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      opacity: 0.3;
+      pointer-events: auto;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+
+      .leftButton {
+        width: 60%;
+        height: 69%;
+      }
+    }
+  }
+
+  .rightArrowContainer {
+    z-index: 10000;
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    top: 40%;
+    left: 50%;
+    width: 50%;
+    height: 80px;
+    .rightEmpty {
+      width: 100%;
+      height: 100%;
+      max-width: 640px;
+    }
+    .rightBox {
+      margin-left: 24px;
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      opacity: 0.3;
+      pointer-events: auto;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+
+      .rightButton {
+        width: 60%;
+        height: 69%;
+      }
     }
   }
 }

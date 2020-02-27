@@ -6,33 +6,47 @@ import "slick-carousel/slick/slick-theme.css";
 import "./StoreMainBanner.scss";
 import "./StoreMainBannerCore.scss";
 
-// function SampleNextArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "block", background: "transparent" }}
-//       onClick={onClick}
-//     />
-//   );
-// }
+function SampleNextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div className="leftArrowContainer">
+      <div className="leftBox">
+        <img
+          onClick={onClick}
+          className="leftButton"
+          src="https://image.flaticon.com/icons/svg/126/126492.svg"
+          alt=""
+        ></img>
+      </div>
+      <div className="leftEmpty"></div>
+    </div>
+  );
+}
 
-// function SamplePrevArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "block", background: "transparent" }}
-//       onClick={onClick}
-//     />
-//   );
-// }
+function SamplePrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div className="rightArrowContainer">
+      <div className="rightEmpty"></div>
+      <div className="rightBox">
+        <img
+          onClick={onClick}
+          className="rightButton"
+          src="https://image.flaticon.com/icons/svg/126/126490.svg"
+          alt=""
+        ></img>
+      </div>
+    </div>
+  );
+}
 
 class StoreMainBanner extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      dataLength: 0,
+      currentIndex: 0
     };
   }
 
@@ -41,7 +55,8 @@ class StoreMainBanner extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          data: res.data
+          data: res.data,
+          dataLength: res.data.length
         });
       });
   };
@@ -55,51 +70,39 @@ class StoreMainBanner extends Component {
       slidesToScroll: 1,
       speed: 1000,
       lazyLoad: true,
-      autoPlaySpeed: 1000
-      // nextArrow: <SampleNextArrow />,
-      // prevArrow: <SamplePrevArrow />
-      // cssEase: "linear"
+      autoPlaySpeed: 1000,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />
     };
 
     return (
       <div className="StoreMainBanner">
         <Slider {...settings}>
-          {this.state.data.map(el => {
+          {this.state.data.map((el, i) => {
             return (
               <StoreMainBannerCore
+                index={i}
                 key={el.id}
                 data={el}
                 webDestination={el.webDestination}
-                subText={el.subText}
-                text={el.text}
+                subText1={el.subText1}
+                subText2={el.subText2}
+                text1={el.text1}
+                text2={el.text2}
                 imageId={el.imageId}
+                dataLength={this.state.dataLength}
+                colorCode={el.colorCode}
               />
             );
           })}
           {/* <StoreMainBannerCore data={this.state.data} /> */}
         </Slider>
-        <div className="arrow_container">
-          <div className="left_box">
-            <img
-              className="arrow_button"
-              src="https://image.flaticon.com/icons/svg/126/126492.svg"
-              alt="left_button"
-            ></img>
-          </div>
-          {/* <div className="center_empty"></div> */}
-          <div className="right_box">
-            <img
-              className="arrow_button"
-              src="https://image.flaticon.com/icons/svg/126/126490.svg"
-              alt="right_button"
-            ></img>
-          </div>
-        </div>
+
         <button className="scroll_container">
-          <span className="ban_scroll_text">Scroll</span>
-          <div className="ban_scroll_circle">
+          <span className="scroll_text">Scroll</span>
+          <div className="scroll_circle">
             <img
-              className="ban_scroll_button"
+              className="scroll_button"
               src="https://image.flaticon.com/icons/svg/2223/2223613.svg"
               alt="scroll_button"
             ></img>
