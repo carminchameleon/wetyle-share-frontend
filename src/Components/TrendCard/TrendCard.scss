@@ -1,0 +1,178 @@
+.hot_wrapper {
+  header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+
+    transition-property: background, box-shadow;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    box-shadow: rgba(27, 29, 31, 0.12) 0px 2px 10px;
+    background: rgb(255, 255, 255);
+    padding: 0px 80px;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+
+    ol {
+      width: 350px;
+      margin-right: 20px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+
+      li {
+        list-style: none;
+        font-weight: 800;
+        font-size: 15px;
+        letter-spacing: -0.4px;
+      }
+    }
+  }
+
+  .trend_wrapper {
+    margin: 0 auto;
+    margin-top: 84px;
+    width: 1180px;
+    max-width: 1180px;
+
+    .trend_title {
+      padding-top: 3px;
+      padding-bottom: 3px;
+      color: #26282b;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .trend_body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .trend_item {
+        font-size: 12px;
+        border-radius: 6px;
+        border-color: #e8ebed;
+        border-style: solid;
+        border-width: 1px;
+        width: 220px;
+        background-color: white;
+        margin-bottom: 25px;
+
+        .trend_item_img {
+          width: 100%;
+        }
+
+        .user_icon {
+          height: 30px;
+        }
+
+        .trend_information {
+          padding: 10px;
+          display: flex;
+          flex-wrap: wrap;
+
+          .user_icon {
+            margin-right: 10px;
+          }
+
+          .other_user {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+
+            a {
+              font-weight: bold;
+              margin-right: 3px;
+            }
+          }
+
+          .comment_box {
+            width: 80%;
+            margin-bottom: 15px;
+
+            .comment_top {
+              display: flex;
+              position: relative;
+              align-items: center;
+              margin-bottom: 5px;
+
+              .comment_nick {
+                font-weight: bold;
+                color: #454c53;
+              }
+
+              .comment_date {
+                position: absolute;
+                right: 0;
+                font-size: 10px;
+                color: #9ea4aa;
+              }
+            }
+
+            .comment_main {
+              display: -webkit-box;
+              text-overflow: ellipsis;
+              word-break: keep-all;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+            }
+
+            .icon_box {
+              margin-top: 2px;
+              color: #9ea4aa;
+              font-size: 12px;
+              display: flex;
+
+              span {
+                margin-right: 4px;
+              }
+            }
+
+            .like_icon,
+            .ballon_icon,
+            .share_icon {
+              background-image: url(../../Img/OOTD_item_icon.png);
+              background-repeat: no-repeat;
+              width: 12px;
+              height: 10px;
+              display: inline-block;
+            }
+
+            .like_icon {
+              background-position-y: -2568px;
+            }
+
+            .ballon_icon {
+              background-position-y: -2557px;
+            }
+
+            .share_icon {
+              background-position-y: -2546px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .loading_more {
+    display: flex;
+    justify-content: center;
+    padding: 11px 0px;
+    margin: 0 auto;
+    margin-top: 25px;
+    background-color: #e8ebed;
+    border-radius: 6px;
+    width: 220px;
+
+    img {
+      width: 20px;
+    }
+  }
+}
