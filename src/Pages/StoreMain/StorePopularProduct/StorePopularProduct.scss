@@ -1,0 +1,129 @@
+.StorePopularProduct {
+  .main_container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 120px;
+    margin-top: 80px;
+
+    max-width: 80rem;
+    overflow: hidden;
+
+    .main_title_box {
+      padding-bottom: 0px;
+
+      .main_title {
+        font-size: 2.25rem;
+        line-height: 1.33;
+        letter-spacing: -0.025rem;
+
+        text-align: center;
+        font-weight: 700;
+        color: rgb(38, 40, 43);
+        margin: 0px;
+      }
+    }
+    .main_list_container {
+      margin-left: 0px;
+      margin-right: 0px;
+      text-align: center;
+      position: relative;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      list-style: none;
+      padding: 0px;
+
+      .title_list {
+        display: inline-block;
+        vertical-align: middle;
+
+        .title_list_button {
+          text-align: -webkit-match-parent;
+
+          font-size: 1.125rem;
+          line-height: 1.38;
+          border-bottom: 1px solid black;
+          letter-spacing: -0.025rem;
+          font-weight: 700;
+          color: rgb(38, 40, 43);
+          display: block;
+          cursor: pointer;
+          border-width: 0px;
+          border-style: initial;
+          border-color: initial;
+          border-image: initial;
+          background: transparent;
+          padding: 0.625rem 0.75rem;
+          outline: none;
+          transition: color 0.2s ease-in-out 0s;
+        }
+      }
+      .title_move_line {
+        width: 32px;
+        transform: translateX(344px) translateZ(0px);
+
+        position: absolute;
+        height: 0.125rem;
+        background-color: rgb(38, 40, 43);
+        border-radius: 1px;
+        transition: width 0.5s ease 0s, transform 0.5s ease 0s;
+        bottom: 0.25rem;
+      }
+    }
+
+    .main_card_container {
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      .card_wrapper {
+        margin: 0px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+
+        .card_box_set {
+          width: 25%;
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+
+          .casrd_box_photo_container {
+            .card_box_photo_link {
+              cursor: pointer;
+
+              .card_box_photo_set {
+                box-sizing: border-box;
+                background-color: rgb(232, 235, 237);
+                max-width: 312px;
+                max-height: 312px;
+                position: relative;
+                overflow: hidden;
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgba(232, 235, 237, 0.5);
+                border-image: initial;
+                border-radius: 8px;
+                .card_box_photo_img {
+                  position: absolute;
+                  top: 0px;
+                  right: 0px;
+                  bottom: 0px;
+                  left: 0px;
+                  display: block;
+                  width: 100%;
+                }
+              }
+            }
+          }
+
+          .card_box_contents {
+          }
+        }
+      }
+    }
+  }
+}

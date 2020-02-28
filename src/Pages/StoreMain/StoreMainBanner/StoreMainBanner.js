@@ -9,16 +9,16 @@ import "./StoreMainBanner.scss";
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <div className="leftArrowContainer">
-      <div className="leftBox">
+    <div className="left_arrow_container">
+      <div className="left_box">
         <img
           onClick={onClick}
-          className="leftButton"
+          className="left_button"
           src="https://image.flaticon.com/icons/svg/126/126492.svg"
           alt=""
         ></img>
       </div>
-      <div className="leftEmpty"></div>
+      <div className="left_empty"></div>
     </div>
   );
 }
@@ -26,12 +26,12 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <div className="rightArrowContainer">
-      <div className="rightEmpty"></div>
-      <div className="rightBox">
+    <div className="right_arrow_container">
+      <div className="right_empty"></div>
+      <div className="right_box">
         <img
           onClick={onClick}
-          className="rightButton"
+          className="right_button"
           src="https://image.flaticon.com/icons/svg/126/126490.svg"
           alt=""
         ></img>
