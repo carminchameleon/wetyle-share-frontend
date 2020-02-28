@@ -1,7 +1,7 @@
 .trend_card_wrapper {
+  padding-top: 50px;
   .trend_wrapper {
     margin: 0 auto;
-
     max-width: 1190px;
 
     .trend_title {
@@ -15,7 +15,6 @@
 
     .trend_body {
       display: flex;
-      margin-top: 84px;
       flex-wrap: wrap;
 
       .trend_item {
