@@ -72,6 +72,7 @@
         display: flex;
         padding: 16px 20px;
         align-items: center;
+        background-color: white;
 
         .profile_icon {
           background: url(https://usercontents-c.styleshare.io/images/42524472/40x40);
@@ -125,6 +126,7 @@
       border: 1px solid #e8ebed;
       border-radius: 10px;
       margin-right: 20px;
+      background-color: white;
 
       .gradient {
         position: absolute;
@@ -237,6 +239,7 @@
 
         .sub_desc {
           width: 80%;
+
           p {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -265,7 +268,7 @@
 
       .other_item {
         width: 180px;
-        padding: 15px 9px 10px;
+        padding: 15px 9px 8px;
         display: flex;
         align-items: center;
 
