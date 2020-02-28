@@ -28,7 +28,9 @@ class Top extends Component {
               <div className="top_main">STORE</div>
             </div>
           </div>
-          <TopMid searchMode={this.state.search_mode} />
+          <TopMid searchMode={this.state.search_mode}>
+            {this.props.children}
+          </TopMid>
           <TopRight
             searchMode={this.state.search_mode}
             handle_search={this.handle_search}

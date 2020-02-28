@@ -78,35 +78,38 @@
       .card_wrapper {
         margin: 0px;
         display: flex;
-        -webkit-box-align: center;
         align-items: center;
-        -webkit-box-pack: justify;
         justify-content: space-between;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
 
         .card_box_set {
+          display: flex;
+          flex-direction: column;
           width: 25%;
           padding-left: 0.25rem;
           padding-right: 0.25rem;
 
-          .casrd_box_photo_container {
-            .card_box_photo_link {
-              cursor: pointer;
+          .card_box_photo_link {
+            cursor: pointer;
+            overflow: hidden;
 
-              .card_box_photo_set {
-                box-sizing: border-box;
-                background-color: rgb(232, 235, 237);
-                max-width: 312px;
-                max-height: 312px;
+            .card_box_photo_set {
+              box-sizing: border-box;
+              background-color: rgb(232, 235, 237);
+              max-width: 312px;
+              max-height: 312px;
+              position: relative;
+              overflow: hidden;
+              border-width: 1px;
+              border-style: solid;
+              border-color: rgba(232, 235, 237, 0.5);
+              border-image: initial;
+              border-radius: 8px;
+
+              .card_box_photo_picture {
+                display: block;
                 position: relative;
-                overflow: hidden;
-                border-width: 1px;
-                border-style: solid;
-                border-color: rgba(232, 235, 237, 0.5);
-                border-image: initial;
-                border-radius: 8px;
+                padding-top: 100%;
+
                 .card_box_photo_img {
                   position: absolute;
                   top: 0px;
@@ -121,7 +124,151 @@
           }
 
           .card_box_contents {
+            box-sizing: border-box;
+            padding-left: 6px;
+            padding-right: 6px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            .product_brand_link {
+              cursor: pointer;
+              display: block;
+              text-decoration: none;
+
+              .product_brand {
+                font-size: 0.875rem;
+                font-weight: 700;
+                line-height: 1.43;
+                letter-spacing: -0.025rem;
+                color: rgb(38, 40, 43);
+                display: -webkit-box;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                -webkit-line-clamp: 1;
+                height: 1.25125rem;
+                margin: 0px 0px 3px;
+                text-decoration: none;
+                overflow: hidden;
+              }
+            }
+
+            .product_title_link {
+              cursor: pointer;
+              display: block;
+              text-decoration: none;
+
+              .product_title {
+                height: 1.25125rem;
+                box-sizing: border-box;
+                font-size: 0.875rem;
+                font-weight: 400;
+                line-height: 1.43;
+                letter-spacing: -0.025rem;
+                color: rgb(38, 40, 43);
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                margin: 0px 0px 8px;
+                text-decoration: none;
+                overflow: hidden;
+              }
+            }
+            .product_price_info {
+              .price_discount {
+                box-sizing: border-box;
+                font-size: 0.9375rem;
+                font-weight: 700;
+                line-height: 1.4;
+                letter-spacing: -0.025rem;
+                color: rgb(255, 63, 101);
+                margin: 0px;
+              }
+              .price_money {
+                box-sizing: border-box;
+                font-size: 0.9375rem;
+                font-weight: 700;
+                line-height: 1.4;
+                letter-spacing: -0.025rem;
+                color: rgb(38, 40, 43);
+                margin: 0px;
+              }
+              .price_won {
+                box-sizing: border-box;
+                font-size: 0.8125rem;
+                font-weight: 400;
+                line-height: 1.38;
+                letter-spacing: -0.01875rem;
+                color: rgb(38, 40, 43);
+                margin: 0px;
+              }
+            }
+
+            .like_and_comment {
+              white-space: nowrap;
+
+              .like {
+                box-sizing: border-box;
+                font-size: 0.8125rem;
+                font-weight: 400;
+                line-height: 1.38;
+                letter-spacing: -0.01875rem;
+                color: rgb(158, 164, 170);
+                margin: 0px 8px 0px 0px;
+              }
+
+              .comment {
+                box-sizing: border-box;
+                font-size: 0.8125rem;
+                font-weight: 400;
+                line-height: 1.38;
+                letter-spacing: -0.01875rem;
+                color: rgb(158, 164, 170);
+                margin: 0px;
+              }
+            }
           }
+        }
+      }
+    }
+
+    .main_show_more_container {
+      display: flex;
+      justify-content: center;
+
+      .show_more_box {
+        min-width: 16.6667%;
+
+        .show_more {
+          height: 3.5rem;
+          webkit-box-align: center;
+          align-items: center;
+          box-sizing: border-box;
+          cursor: pointer;
+          -webkit-box-pack: center;
+          justify-content: center;
+          user-select: none;
+          height: 2.75rem;
+          font-size: 1rem;
+          font-weight: 700;
+          line-height: 1.31;
+          letter-spacing: -0.025rem;
+          color: rgb(38, 40, 43);
+          background-color: rgb(232, 235, 237);
+          width: 100%;
+          display: inline-flex;
+          text-indent: 11px;
+          border-radius: 9999px;
+          outline: none;
+          text-decoration: none;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(232, 235, 237);
+          border-image: initial;
+          padding: 0px 1.25rem;
+        }
+        .show_more_icon {
+          width: 20px;
+          height: 20px;
         }
       }
     }

@@ -7,7 +7,7 @@ import "./Hot.scss";
 class Hot extends Component {
   render() {
     return (
-      <div>
+      <div className="hot_wrapper">
         <TrendCard />
         <OotdFooter />
       </div>

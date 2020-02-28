@@ -43,22 +43,59 @@ class StorePopularProduct extends Component {
             <div className="card_wrapper">
               {/* 박스 하나 */}
               <div className="card_box_set">
-                <div className="card_box_photo_container">
-                  {/* 상품에 관한 정보가 들어가는 */}
-                  <a className="card_box_photo_link" href="">
+                <>
+                  <a
+                    className="card_box_photo_link"
+                    href="https://www.styleshare.kr/goods/302608"
+                    alt=""
+                  >
                     <div className="card_box_photo_set">
-                      <img
-                        className="card_box_photo_img"
-                        src="https://usercontents-c.styleshare.io/images/a95336c6-82da-4f84-bdf0-85251bf7565c/312x312"
-                      ></img>
+                      <piture className="card_box_photo_picture">
+                        <img
+                          className="card_box_photo_img"
+                          src="https://usercontents-c.styleshare.io/images/a95336c6-82da-4f84-bdf0-85251bf7565c/312x312"
+                          alt=""
+                        ></img>
+                      </piture>
                     </div>
                   </a>
+                </>
+                <div className="card_box_contents">
+                  <a
+                    className="product_brand_link"
+                    href="https://www.styleshare.kr/brands/4747"
+                  >
+                    <span className="product_brand">갑질</span>
+                  </a>
+                  <a className="product_title_link" href="/goods/302608">
+                    <span className="product_title">
+                      [무배/국내생산] SAC017 갑질스타킹5종 (10매묶음) 13만장판매
+                    </span>
+                  </a>
+                  <div className="product_price_info">
+                    <span className="price_discount">26%</span>
+                    <span className="price_money">14,800</span>
+                    <span className="price_won">원</span>
+                  </div>
+                  <div className="like_and_comment">
+                    <span className="like">좋아요 2,773</span>
+                    <span className="comment">후기 141</span>
+                  </div>
                 </div>
-                <div className="card_box_contents"></div>
               </div>
             </div>
           </div>
-          <div className="main_showmore"></div>
+          <div className="main_show_more_container">
+            <div className="show_more_box">
+              <a className="show_more" href="/categories/best?sort=score-desc">
+                전체 더보기
+                <img
+                  className="show_more_icon"
+                  src="https://image.flaticon.com/icons/svg/126/126490.svg"
+                ></img>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     );
