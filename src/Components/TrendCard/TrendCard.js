@@ -3,6 +3,7 @@ import React from "react";
 import Modal from "../Modal";
 
 import "./TrendCard.scss";
+import Top from "../Top/Top";
 
 document.title = "스타일쉐어";
 class TrendCard extends React.Component {
@@ -182,23 +183,20 @@ class TrendCard extends React.Component {
   render() {
     return (
       <div className="trend_card_wrapper">
+        <Top>
+          <div className="mid">인기</div>
+          <div className="mid">데일리룩</div>
+          <div className="mid">뷰티</div>
+          <div className="mid">최신</div>
+          <div className="mid">QnA</div>
+          <div className="mid">팔로잉</div>
+        </Top>
         <Modal
           isOpen={this.state.isModalOpen}
           close={this.closeModal}
           data={this.state.datas}
         />
-        <div style={{ zIndex: "10" }}>
-          <header>
-            <ol>
-              <li>인기</li>
-              <li>데일리룩</li>
-              <li>뷰티</li>
-              <li>최신</li>
-              <li>QnA</li>
-              <li>팔로잉</li>
-            </ol>
-          </header>
-        </div>
+
         <div className="trend_wrapper">
           <div>
             <p className="trend_title">지금의 트렌드</p>

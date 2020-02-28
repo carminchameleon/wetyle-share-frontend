@@ -53,7 +53,7 @@ const collectionSettings = {
 class Ootdcarousel extends Component {
   state = {
     arrowVisibel: false,
-    buttonVisibel: false
+    buttonVisibel: true
   };
   collectionLeft = () => {
     this.collection.slickPrev();
@@ -63,14 +63,12 @@ class Ootdcarousel extends Component {
   };
   arrowVisibel = () => {
     this.setState({
-      arrowVisibel: true,
-      buttonVisibel: true
+      arrowVisibel: true
     });
   };
   arrowHidden = () => {
     this.setState({
-      arrowVisibel: false,
-      buttonVisibel: false
+      arrowVisibel: false
     });
   };
   mapOfMainImg = images => {
@@ -110,32 +108,26 @@ class Ootdcarousel extends Component {
             ? this.mapOfMainImg(images.slice(0, 8))
             : this.mapOfMainImg(images.slice(0, 10))}
         </Slider>
-        <div>
-          <div
-            className={
-              this.state.arrowVisibel
-                ? "slick-prev_arrow"
-                : "slick-prev_arrow hidden"
-            }
-            onClick={() => {
-              this.slider.slickPrev();
-            }}
-            style={{ animation: this.state.buttonVisibel ? "none" : "" }}
-            onMouseOver={this.arrowVisibel}
-          ></div>
-          <div
-            className={
-              this.state.arrowVisibel
-                ? "slick-next_arrow"
-                : "slick-next_arrow hidden"
-            }
-            onClick={() => {
-              this.slider.slickNext();
-            }}
-            style={{ animation: this.state.buttonVisibel ? "none" : "" }}
-            onMouseOver={this.arrowVisibel}
-          ></div>
-        </div>
+        <div
+          className={
+            this.state.arrowVisibel
+              ? "slick-prev_arrow"
+              : "slick-prev_arrow hidden"
+          }
+          onClick={() => {
+            this.slider.slickPrev();
+          }}
+        ></div>
+        <div
+          className={
+            this.state.arrowVisibel
+              ? "slick-next_arrow"
+              : "slick-next_arrow hidden"
+          }
+          onClick={() => {
+            this.slider.slickNext();
+          }}
+        ></div>
         <>
           <div className="collection">
             <div>
