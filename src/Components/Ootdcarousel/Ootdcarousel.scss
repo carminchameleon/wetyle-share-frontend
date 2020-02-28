@@ -91,6 +91,8 @@
     }
 
     .hidden {
+      z-index: 1;
+
       @keyframes hidden {
         from {
           opacity: 1;
@@ -102,6 +104,12 @@
       }
 
       animation: hidden 1s ease;
+
+      &:hover {
+        opacity: 1;
+        visibility: visible;
+        animation: none;
+      }
     }
   }
 
