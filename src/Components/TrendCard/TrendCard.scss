@@ -1,11 +1,10 @@
-.hot_wrapper {
+.trend_card_wrapper {
   header {
     position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
-    z-index: 100;
-
+    z-index: 5;
     transition-property: background, box-shadow;
     transition-duration: 0.25s;
     transition-timing-function: ease-in-out;
@@ -14,7 +13,7 @@
     padding: 0px 80px;
     display: flex;
     justify-content: center;
-    height: 50px;
+    height: 40px;
     align-items: center;
 
     ol {
@@ -35,9 +34,9 @@
 
   .trend_wrapper {
     margin: 0 auto;
-    margin-top: 84px;
-    width: 1180px;
-    max-width: 1180px;
+    margin-top: 45px;
+
+    max-width: 1190px;
 
     .trend_title {
       padding-top: 3px;
@@ -50,10 +49,11 @@
 
     .trend_body {
       display: flex;
+
       flex-wrap: wrap;
-      justify-content: space-between;
 
       .trend_item {
+        cursor: pointer;
         font-size: 12px;
         border-radius: 6px;
         border-color: #e8ebed;
@@ -62,9 +62,60 @@
         width: 220px;
         background-color: white;
         margin-bottom: 25px;
+        margin-right: 15px;
 
-        .trend_item_img {
-          width: 100%;
+        .trend_item_img_wrapper {
+          position: relative;
+
+          .trend_item_img {
+            border-radius: 6px 6px 0 0;
+            width: 100%;
+          }
+
+          .more_img,
+          .like,
+          .comment,
+          .share,
+          .more {
+            background: url("../../Img/OOTD_item_icon.png");
+          }
+
+          .more_img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 36px;
+            height: 36px;
+            background-position: 0 -2744px;
+          }
+
+          .img_hover {
+            display: flex;
+            position: absolute;
+            bottom: 0px;
+
+            div {
+              background-color: transparent;
+              width: 55px;
+              height: 55px;
+            }
+
+            .like {
+              background-position: 0 -2634px;
+            }
+
+            .comment {
+              background-position: 0 -2491px;
+            }
+
+            .share {
+              background-position: 0 -2436px;
+            }
+
+            .more {
+              background-position: 0 -2579px;
+            }
+          }
         }
 
         .user_icon {
