@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import TopMid from "./TopMid/TopMid";
 import TopRight from "./TopRight/TopRight";
-import "./Top.scss";
+import "./StoreTop.scss";
 
 document.title = "최상단 OOTD | 스타일쉐어";
-class Top extends Component {
+class StoreTop extends Component {
   state = {
     search_mode: false
   };
@@ -29,7 +29,17 @@ class Top extends Component {
             </div>
           </div>
           <TopMid searchMode={this.state.search_mode}>
-            {this.props.children}
+            <div className="mid">홈</div>
+            <div className="mid">브랜드</div>
+            <div className="mid">랭킹</div>
+            <div className="mid">유니섹스</div>
+            <div className="mid">여성</div>
+            <div className="mid">뷰티</div>
+            <div className="mid">가방잡화</div>
+            <div className="mid">슈즈</div>
+            <div className="mid">라이프</div>
+            <div className="mid">테크</div>
+            <div className="mid">헬스앤푸드</div>
           </TopMid>
           <TopRight
             searchMode={this.state.search_mode}
@@ -41,4 +51,4 @@ class Top extends Component {
   }
 }
 
-export default Top;
+export default StoreTop;

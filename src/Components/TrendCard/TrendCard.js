@@ -3,7 +3,7 @@ import React from "react";
 import Modal from "../Modal";
 
 import "./TrendCard.scss";
-import Top from "../Top/Top";
+import OotdTop from "../Top/OotdTop";
 
 document.title = "스타일쉐어";
 class TrendCard extends React.Component {
@@ -44,13 +44,11 @@ class TrendCard extends React.Component {
   // 모달 오픈 클로즈
   openModal = () => {
     document.getElementById("root").style.overflow = "hidden";
-    document.getElementsByTagName("header")[0].style.zIndex = "0";
     this.setState({ isModalOpen: true });
   };
 
   closeModal = () => {
     document.getElementById("root").style.overflow = "visible";
-    document.getElementsByTagName("header")[0].style.zIndex = "5";
     this.setState({ isModalOpen: false });
   };
 
@@ -182,37 +180,30 @@ class TrendCard extends React.Component {
 
   render() {
     return (
-      <div className="trend_card_wrapper">
-        <Top>
-          <div className="mid">인기</div>
-          <div className="mid">데일리룩</div>
-          <div className="mid">뷰티</div>
-          <div className="mid">최신</div>
-          <div className="mid">QnA</div>
-          <div className="mid">팔로잉</div>
-        </Top>
+      <div>
         <Modal
           isOpen={this.state.isModalOpen}
           close={this.closeModal}
           data={this.state.datas}
         />
-
-        <div className="trend_wrapper">
-          <div>
+        <div className="trend_card_wrapper">
+          <div className="trend_wrapper">
             <p className="trend_title">지금의 트렌드</p>
+            <div className="trend_body">
+              {this.marOfTrend(this.state.datas)}
+            </div>
           </div>
-          <div className="trend_body">{this.marOfTrend(this.state.datas)}</div>
+          {this.state.scrolling ? (
+            <div className="loading_more">
+              <img
+                alt="loading"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///4CAgODg4KCgoICAgLCwsMDAwMjIyCH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
-        {this.state.scrolling ? (
-          <div className="loading_more">
-            <img
-              alt="loading"
-              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///4CAgODg4KCgoICAgLCwsMDAwMjIyCH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-            />
-          </div>
-        ) : (
-          ""
-        )}
       </div>
     );
   }

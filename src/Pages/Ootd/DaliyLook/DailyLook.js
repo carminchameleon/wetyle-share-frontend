@@ -4,6 +4,7 @@ import OotdFooter from "../../../Components/OotdFooter/OotdFooter";
 
 import "./DailyLook.scss";
 import DaliyLookHeader from "./DaliyLookHeader/DaliyLookHeader";
+import OotdTop from "../../../Components/Top/OotdTop";
 
 class DailyLook extends Component {
   state = {
@@ -21,6 +22,7 @@ class DailyLook extends Component {
   render() {
     return (
       <div className="daily_wrapper">
+        <OotdTop />
         <DaliyLookHeader other={this.state.other} />
         <TrendCard />
         <OotdFooter />
