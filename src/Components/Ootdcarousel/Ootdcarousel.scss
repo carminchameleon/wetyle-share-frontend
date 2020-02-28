@@ -54,10 +54,10 @@
       }
     }
 
-    .main_left_button,
-    .main_right_button {
+    .slick-prev_arrow,
+    .slick-next_arrow {
       @media only screen and (max-height: 800px) {
-        top: 33%;
+        top: 32%;
       }
 
       @keyframes visible {
@@ -70,22 +70,22 @@
         }
       }
 
+      animation: visible 1s ease;
       background: url("../../Img/modal/button_img.png");
       z-index: 5;
       position: absolute;
-      top: 35%;
+      top: 37%;
       width: 60px;
       height: 60px;
-      animation: visible 1s ease;
       cursor: pointer;
     }
 
-    .main_left_button {
+    .slick-prev_arrow {
       left: 15px;
       background-position: 0 0;
     }
 
-    .main_right_button {
+    .slick-next_arrow {
       right: 15px;
       background-position-y: -60px;
     }
@@ -94,7 +94,6 @@
       @keyframes hidden {
         from {
           opacity: 1;
-          visibility: visible;
         }
 
         to {
@@ -102,7 +101,6 @@
         }
       }
 
-      opacity: 0;
       animation: hidden 1s ease;
     }
   }

@@ -52,7 +52,8 @@ const collectionSettings = {
 
 class Ootdcarousel extends Component {
   state = {
-    arrowVisibel: false
+    arrowVisibel: false,
+    buttonVisibel: false
   };
   collectionLeft = () => {
     this.collection.slickPrev();
@@ -62,12 +63,14 @@ class Ootdcarousel extends Component {
   };
   arrowVisibel = () => {
     this.setState({
-      arrowVisibel: true
+      arrowVisibel: true,
+      buttonVisibel: true
     });
   };
   arrowHidden = () => {
     this.setState({
-      arrowVisibel: false
+      arrowVisibel: false,
+      buttonVisibel: false
     });
   };
   mapOfMainImg = images => {
@@ -107,29 +110,32 @@ class Ootdcarousel extends Component {
             ? this.mapOfMainImg(images.slice(0, 8))
             : this.mapOfMainImg(images.slice(0, 10))}
         </Slider>
-
-        <div
-          className={
-            this.state.arrowVisibel
-              ? "main_left_button"
-              : "main_left_button hidden"
-          }
-          onClick={() => {
-            this.slider.slickPrev();
-          }}
-          onMouseOver={this.arrowVisibel}
-        ></div>
-        <div
-          className={
-            this.state.arrowVisibel
-              ? "main_right_button"
-              : "main_right_button hidden"
-          }
-          onClick={() => {
-            this.slider.slickNext();
-          }}
-          onMouseOver={this.arrowVisibel}
-        ></div>
+        <div>
+          <div
+            className={
+              this.state.arrowVisibel
+                ? "slick-prev_arrow"
+                : "slick-prev_arrow hidden"
+            }
+            onClick={() => {
+              this.slider.slickPrev();
+            }}
+            style={{ animation: this.state.buttonVisibel ? "none" : "" }}
+            onMouseOver={this.arrowVisibel}
+          ></div>
+          <div
+            className={
+              this.state.arrowVisibel
+                ? "slick-next_arrow"
+                : "slick-next_arrow hidden"
+            }
+            onClick={() => {
+              this.slider.slickNext();
+            }}
+            style={{ animation: this.state.buttonVisibel ? "none" : "" }}
+            onMouseOver={this.arrowVisibel}
+          ></div>
+        </div>
         <>
           <div className="collection">
             <div>
