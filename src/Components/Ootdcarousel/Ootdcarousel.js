@@ -1,102 +1,105 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
+import MainImgSlider from "./MainImgSlider/MainImgSlider";
+import CollectionImgSlide from "./CollectionImgSlider/CollectionImgSlide";
+
 import "./Ootdcarousel.scss";
 
+// 슬라이드 속성 설정
+const mainSettingsVar = {
+  dots: true,
+  dotsClass: "slick-dots slick-thumb",
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+const collectionSettings = {
+  dots: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+};
+
 class Ootdcarousel extends Component {
-  arrowVisibel = () => {
-    this.left.classList.remove("hidden");
-    this.right.classList.remove("hidden");
-  };
-  arrowHidden = () => {
-    this.left.classList.add("hidden");
-    this.right.classList.add("hidden");
+  state = {
+    arrowVisibel: false
   };
   collectionLeft = () => {
     this.collection.slickPrev();
   };
   collectionRight = () => {
-    document.querySelector(".collection_more").style.width = "30%";
     this.collection.slickNext();
+  };
+  arrowVisibel = () => {
+    this.setState({
+      arrowVisibel: true
+    });
+  };
+  arrowHidden = () => {
+    this.setState({
+      arrowVisibel: false
+    });
   };
   mapOfMainImg = images => {
     return images.map((ele, idx) => (
-      <div
+      <MainImgSlider
+        over={this.arrowVisibel}
+        out={this.arrowHidden}
+        arrow={this.state.arrowVisibel}
+        data={ele}
         key={idx}
-        className="img_wrapper"
-        onMouseOver={this.arrowVisibel}
-        onMouseOut={this.arrowHidden}
-      >
-        <img src={ele.main_url} alt="img" />
-      </div>
+      />
     ));
   };
 
   mapOfCollection = images => {
     return images.map((ele, idx) => (
-      <div
-        key={idx}
-        className="collection_wrapper"
-        onMouseOver={this.arrowVisibel}
-        onMouseOut={this.arrowHidden}
-      >
-        <img src={ele.main_url} alt="img" />
-      </div>
+      <CollectionImgSlide data={ele} key={idx} />
     ));
   };
+
   render() {
     const { images } = this.props;
-
     const mainSettings = {
+      ...mainSettingsVar,
       customPaging: function(i) {
         return (
           <div>
             <img alt="thumbnail" src={images[i].main_url} />
           </div>
         );
-      },
-      dots: true,
-      dotsClass: "slick-dots slick-thumb",
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
+      }
     };
-    const collectionSettings = {
-      dots: false,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: false
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    };
-
     return (
       <>
         <Slider ref={ref => (this.slider = ref)} {...mainSettings}>
@@ -104,21 +107,28 @@ class Ootdcarousel extends Component {
             ? this.mapOfMainImg(images.slice(0, 8))
             : this.mapOfMainImg(images.slice(0, 10))}
         </Slider>
+
         <div
-          className="main_left_button"
+          className={
+            this.state.arrowVisibel
+              ? "main_left_button"
+              : "main_left_button hidden"
+          }
           onClick={() => {
             this.slider.slickPrev();
           }}
           onMouseOver={this.arrowVisibel}
-          ref={ref => (this.left = ref)}
         ></div>
         <div
-          className="main_right_button"
+          className={
+            this.state.arrowVisibel
+              ? "main_right_button"
+              : "main_right_button hidden"
+          }
           onClick={() => {
             this.slider.slickNext();
           }}
           onMouseOver={this.arrowVisibel}
-          ref={ref => (this.right = ref)}
         ></div>
         <>
           <div className="collection">

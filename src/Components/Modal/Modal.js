@@ -34,7 +34,6 @@ class Modal extends React.Component {
 
   render() {
     const { isOpen, close } = this.props;
-    console.log(this.state.imgdata);
     return (
       <div>
         {isOpen ? (
