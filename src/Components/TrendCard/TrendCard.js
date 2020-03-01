@@ -1,57 +1,29 @@
 import React from "react";
 
-import Modal from "../Modal";
+import CardModal from "../Modal/CardModal";
 
 import "./TrendCard.scss";
-import OotdTop from "../Top/OotdTop";
 
 document.title = "스타일쉐어";
 class TrendCard extends React.Component {
   state = {
     isModalOpen: false,
     datas: [],
-    items: 2,
+    items: 5,
     preItems: 0,
     scrolling: true,
-    select: 0
+    select: 0,
+    modal: false
   };
 
   componentDidMount = () => {
     this.getCardItems();
+
     window.addEventListener("scroll", this.infiniteScroll, true);
   };
   componentWillUnmount() {
     window.removeEventListener("scroll", this.infiniteScroll);
   }
-
-  // 무한 스크롤 아이템 받아오기
-  // getItemsExample = () => {
-  //   fetch("https://picsum.photos/list")
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({
-  //         datas: this.state.datas.concat(
-  //           res.slice(this.state.preItems, this.state.items)
-  //         ),
-  //         scrolling: !this.state.scrolling
-  //       });
-  //     });
-  // };
-  // 무한스크롤 데이터 예시
-  // mapofExample = datas => {
-  //   return datas.map((datas, idx) => <div key={idx}>{datas.author}</div>);
-  // };
-  // 모달 오픈 클로즈
-  openModal = () => {
-    document.getElementById("root").style.overflow = "hidden";
-    this.setState({ isModalOpen: true });
-  };
-
-  closeModal = () => {
-    document.getElementById("root").style.overflow = "visible";
-    this.setState({ isModalOpen: false });
-  };
-
   getCardItems = () => {
     fetch("http://localhost:3000/data/trendcard.json")
       .then(res => res.json())
@@ -64,6 +36,7 @@ class TrendCard extends React.Component {
         });
       });
   };
+
   // 무한 스크롤 구현
   infiniteScroll = () => {
     let scroolHeight = Math.max(
@@ -84,10 +57,14 @@ class TrendCard extends React.Component {
       this.getCardItems();
     }
   };
-
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
   marOfTrend = data => {
     return data.map((ele, idx) => (
-      <div key={idx} onClick={this.openModal}>
+      <div key={idx} onClick={this.toggle}>
         <div className="trend_item">
           <div className="trend_item_img_wrapper">
             {ele.main_url ? <div className="more_img"></div> : ""}
@@ -148,28 +125,28 @@ class TrendCard extends React.Component {
                 </div>
               </div>
             </div>
-            <div>
-              <div className="other_user">
-                <img
-                  className="user_icon"
-                  src={ele.user[1].user_icon}
-                  alt="icon"
-                />
-                <div>
-                  <a>{ele.user[2].user_nick}</a>
-                  {ele.user[1].user_comment}
-                </div>
+          </div>
+          <div className="ohter_group">
+            <div className="other_user">
+              <img
+                className="user_icon"
+                src={ele.user[1].user_icon}
+                alt="icon"
+              />
+              <div>
+                <a>{ele.user[2].user_nick}</a>
+                {ele.user[1].user_comment}
               </div>
-              <div className="other_user">
-                <img
-                  className="user_icon"
-                  src={ele.user[2].user_icon}
-                  alt="icon"
-                />
-                <div>
-                  <a>{ele.user[2].user_nick}</a>
-                  {ele.user[2].user_comment}
-                </div>
+            </div>
+            <div className="other_user">
+              <img
+                className="user_icon"
+                src={ele.user[2].user_icon}
+                alt="icon"
+              />
+              <div>
+                <a>{ele.user[2].user_nick}</a>
+                {ele.user[2].user_comment}
               </div>
             </div>
           </div>
@@ -181,11 +158,7 @@ class TrendCard extends React.Component {
   render() {
     return (
       <div>
-        <Modal
-          isOpen={this.state.isModalOpen}
-          close={this.closeModal}
-          data={this.state.datas}
-        />
+        <CardModal modal={this.state.modal} toggle={this.toggle} />
         <div className="trend_card_wrapper">
           <div className="trend_wrapper">
             <p className="trend_title">지금의 트렌드</p>
@@ -193,6 +166,7 @@ class TrendCard extends React.Component {
               {this.marOfTrend(this.state.datas)}
             </div>
           </div>
+
           {this.state.scrolling ? (
             <div className="loading_more">
               <img

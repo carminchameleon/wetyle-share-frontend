@@ -1,0 +1,110 @@
+.modal {
+    .upload_wrapper {
+        width: 320px;
+
+        .upload_modal {
+            margin-left: 20px;
+            margin-top: 100px;
+
+            .modal_top {
+                position: relative;
+
+                p {
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                display: flex;
+                padding: 15px;
+                height: 50px;
+                border-bottom: 2px solid #C9CDD2;
+
+                .close_btn {
+                    width: 14px;
+                    height: 14px;
+                    background-color: transparent;
+                    cursor: pointer;
+                    background: url("../../../Img/OOTD_item_icon.png") no-repeat;
+                    background-position: 0 -3424px;
+                    position: absolute;
+                    right: 15px;
+                }
+            }
+
+            .modal_bottom {
+                display: flex;
+                padding: 10px;
+                margin-top: 10px;
+                justify-content: space-evenly;
+
+                .left_btn,
+                .right_btn {
+                    cursor: pointer;
+
+
+
+                    .style_btn,
+                    .collection_btn {
+
+                        border-radius: 50%;
+                        position: relative;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-bottom: 10px;
+                        border-color: #4adaaf;
+                        border-style: solid;
+                        border-width: 2px;
+                        padding-top: 25px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        padding-bottom: 25px;
+                        width: 45px;
+                        height: 38px;
+                        box-sizing: content-box;
+                        overflow: hidden;
+                        transition: background-color .5s ease;
+
+                        &:hover {
+                            background-color: #4adaaf;
+                        }
+
+                    }
+
+
+                    p {
+                        color: #26282B;
+                        font-size: 14px;
+                        font-weight: bold;
+                        margin: 0;
+                    }
+
+                    span {
+
+                        display: inline-block;
+                        width: 46px;
+                        height: 36px;
+                        background: url("../../../Img/gnb.png") no-repeat;
+                    }
+
+                    .style_icon {
+                        background-position: -572px 0;
+                    }
+
+                    .style_icon_hover {
+                        background-position: -527px 0;
+
+                    }
+
+                    .collection_icon {
+                        background-position: -480px 0;
+                    }
+
+                    .collection_icon_hover {
+                        background-position: -435px 0;
+
+                    }
+                }
+            }
+        }
+    }
+}

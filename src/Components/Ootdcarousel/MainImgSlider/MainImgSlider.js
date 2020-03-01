@@ -9,8 +9,8 @@ class MainImgSlider extends Component {
         <img
           src={data.main_url}
           alt="img"
-          onMouseOverCapture={over}
-          onMouseOutCapture={out}
+          onMouseEnter={over}
+          onMouseLeave={out}
         />
       </div>
     );

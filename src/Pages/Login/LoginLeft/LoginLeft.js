@@ -15,7 +15,6 @@ class LoginLeft extends Component {
   };
 
   render() {
-    const kr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     return (
       <div className="login_main_left">
         <form>

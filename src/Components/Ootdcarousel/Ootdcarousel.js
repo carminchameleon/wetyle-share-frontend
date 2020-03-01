@@ -4,8 +4,6 @@ import Slider from "react-slick";
 import MainImgSlider from "./MainImgSlider/MainImgSlider";
 import CollectionImgSlide from "./CollectionImgSlider/CollectionImgSlide";
 
-import "./Ootdcarousel.scss";
-
 // 슬라이드 속성 설정
 const mainSettingsVar = {
   dots: true,
@@ -106,9 +104,7 @@ class Ootdcarousel extends Component {
     return (
       <>
         <Slider ref={ref => (this.slider = ref)} {...mainSettings}>
-          {window.innerHeight <= 800
-            ? this.mapOfMainImg(images.slice(0, 8))
-            : this.mapOfMainImg(images.slice(0, 10))}
+          {this.mapOfMainImg(images.slice(0, 10))}
         </Slider>
         <div
           className={
@@ -119,10 +115,7 @@ class Ootdcarousel extends Component {
           onClick={() => {
             this.slider.slickPrev();
           }}
-          style={{
-            animation: this.state.arrowVisibel ? "none" : ""
-          }}
-          onMouseOver={this.arrowVisibel}
+          onMouseEnter={this.arrowVisibel}
         ></div>
         <div
           className={
@@ -133,10 +126,7 @@ class Ootdcarousel extends Component {
           onClick={() => {
             this.slider.slickNext();
           }}
-          style={{
-            animation: this.state.arrowVisibel ? "none" : ""
-          }}
-          onMouseOver={this.arrowVisibel}
+          onMouseEnter={this.arrowVisibel}
         ></div>
         <>
           <div className="collection">
