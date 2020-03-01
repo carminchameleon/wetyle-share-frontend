@@ -50,6 +50,11 @@ class StoreMainBanner extends Component {
     };
   }
 
+  movescroll = () => {
+    const location =
+      document.querySelector(".StoreMainPopularProduct").offsetTop - 100;
+    window.scrollTo({ top: location, behavior: "smooth" });
+  };
   componentDidMount = () => {
     fetch("http://localhost:3000/data/storemainbanner.json")
       .then(res => res.json())
@@ -97,7 +102,7 @@ class StoreMainBanner extends Component {
           })}
         </Slider>
 
-        <button className="scroll_container">
+        <button className="scroll_container" onClick={this.movescroll}>
           <span className="scroll_text">Scroll</span>
           <div className="scroll_circle">
             <img

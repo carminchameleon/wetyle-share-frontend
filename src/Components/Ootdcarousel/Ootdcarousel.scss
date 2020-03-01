@@ -70,9 +70,10 @@
         }
       }
 
-      animation: visible 1s ease;
+      opacity: 1;
+      animation: visible 0.8s ease;
       background: url("../../Img/modal/button_img.png");
-      z-index: 5;
+
       position: absolute;
       top: 37%;
       width: 60px;
@@ -91,8 +92,6 @@
     }
 
     .hidden {
-      z-index: 1;
-
       @keyframes hidden {
         from {
           opacity: 1;
@@ -102,14 +101,8 @@
           opacity: 0;
         }
       }
-
-      animation: hidden 1s ease;
-
-      &:hover {
-        opacity: 1;
-        visibility: visible;
-        animation: none;
-      }
+      opacity: 0;
+      animation: hidden 0.4s ease;
     }
   }
 

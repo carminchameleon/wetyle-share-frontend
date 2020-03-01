@@ -52,8 +52,7 @@ const collectionSettings = {
 
 class Ootdcarousel extends Component {
   state = {
-    arrowVisibel: false,
-    buttonVisibel: true
+    arrowVisibel: false
   };
   collectionLeft = () => {
     this.collection.slickPrev();
@@ -66,11 +65,13 @@ class Ootdcarousel extends Component {
       arrowVisibel: true
     });
   };
+
   arrowHidden = () => {
     this.setState({
       arrowVisibel: false
     });
   };
+
   mapOfMainImg = images => {
     return images.map((ele, idx) => (
       <MainImgSlider
@@ -101,6 +102,7 @@ class Ootdcarousel extends Component {
         );
       }
     };
+
     return (
       <>
         <Slider ref={ref => (this.slider = ref)} {...mainSettings}>
@@ -117,6 +119,10 @@ class Ootdcarousel extends Component {
           onClick={() => {
             this.slider.slickPrev();
           }}
+          style={{
+            animation: this.state.arrowVisibel ? "none" : ""
+          }}
+          onMouseOver={this.arrowVisibel}
         ></div>
         <div
           className={
@@ -127,6 +133,10 @@ class Ootdcarousel extends Component {
           onClick={() => {
             this.slider.slickNext();
           }}
+          style={{
+            animation: this.state.arrowVisibel ? "none" : ""
+          }}
+          onMouseOver={this.arrowVisibel}
         ></div>
         <>
           <div className="collection">
