@@ -9,8 +9,8 @@ import {
 // improt 페이지 목록
 
 import Login from "./Pages/Login/Login";
-import Signin from "./Pages/Signin/Signin";
-// import SigninNext from "./Pages/SigninNext/SigninNext";
+import Signup from "./Pages/Signup/Signup";
+import SignupInfo from "./Pages/SignupInfo/SignupInfo";
 import Top from "./Components/Top/Top";
 import TopStore from "./Components/TopStore/TopStore";
 import StoreMain from "./Pages/StoreMain/StoreMain";
@@ -24,8 +24,8 @@ function Routes() {
       <Switch>
         <Route exact path="/" />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/signin" component={Signin} />
-        {/* <Route exact path="/signinnext" component={SigninNext} /> */}
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/signupinfo" component={SignupInfo} />
         <Route exact path="/top" component={Top} />
         <Route exact path="/topstore" component={TopStore} />
         <Route exact path="/storemain" component={StoreMain} />

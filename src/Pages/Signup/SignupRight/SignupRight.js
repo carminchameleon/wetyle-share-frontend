@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
 import kakaoImg from "Img/Kakao.png";
-import "./SigninRight.scss";
+import "./SignupRight.scss";
 
-class SigninRight extends Component {
+class SignupRight extends Component {
   state = {
     id: "",
     pwd: "",
@@ -140,7 +140,7 @@ class SigninRight extends Component {
 
   render() {
     return (
-      <div className="signin_main_right">
+      <div className="signup_main_right">
         <ul>
           <li>
             <button onClick={this.signinWithFacebook}>
@@ -193,4 +193,4 @@ class SigninRight extends Component {
   }
 }
 
-export default SigninRight;
+export default SignupRight;
