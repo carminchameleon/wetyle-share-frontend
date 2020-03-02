@@ -18,7 +18,6 @@ class Upload extends Component {
     this.setState({ imgFile: file });
 
     reader.onloadend = e => {
-      console.log(e.target.result);
       this.setState({
         imgUrl: this.state.imgUrl.concat(e.target.result)
       });

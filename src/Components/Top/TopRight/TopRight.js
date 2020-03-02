@@ -33,15 +33,15 @@ class TopRight extends Component {
   };
 
   // 검색 창 리스트 구현 완료
-  handleCheck = (data, key) => {
-    let result = data.filter(data => data.includes(key));
-    console.log(result);
+  handleCheck = () => {
+    const { arr, keyword } = this.state;
+    const result = arr.filter(data => data.includes(keyword));
     return (
-      <>
+      <div>
         {result.map((ele, idx) => (
           <li key={idx}>{ele}</li>
         ))}
-      </>
+      </div>
     );
   };
 
@@ -90,7 +90,7 @@ class TopRight extends Component {
         </div>
         {this.props.searchMode && this.state.keyword ? (
           <div className="search_correct">
-            <ul>{this.handleCheck(this.state.arr, this.state.keyword)}</ul>
+            <ul>{this.handleCheck()}</ul>
           </div>
         ) : (
           ""
