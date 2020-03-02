@@ -1,0 +1,47 @@
+// .go_center{
+
+// }
+.black_coupon_box {
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 46.25rem;
+  margin-top: 6.25rem;
+  margin-bottom: 2.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.coupon_text {
+  display: flex;
+  //   align-items: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(27, 29, 31);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-right: 0.75rem;
+  padding-left: 1rem;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-color: rgb(232, 235, 237);
+  border-radius: 8px;
+}
+.text_about_coupon {
+  font-size: 1.5rem;
+  line-height: 1.33;
+  display: block;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  margin: 0 0 0 1.25rem;
+}
+.coupon_img {
+  width: 106px;
+  height: 48px;
+}
+.text_price {
+  color: rgb(255, 63, 101);
+  font-weight: 700;
+  letter-spacing: -0.025rem;
+  margin: 0px;
+}
