@@ -1,124 +1,127 @@
-.OOTD_footer {
-  width: 100%;
-  max-width: 1180px;
-  margin: 60px auto 0;
-  padding: 30px 0px 80px;
+.OOTD_footer_wrapper {
+  background-color: #f7f8f9;
 
-  border-top-color: rgba(34, 34, 34, 0.15);
-  border-top-style: solid;
-  border-top-width: 1px;
+  .OOTD_footer {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0px auto 0;
+    padding: 30px 0px 80px;
+    border-top-color: rgba(34, 34, 34, 0.15);
+    border-top-style: solid;
+    border-top-width: 1px;
 
-  .OOTD_main {
-    display: flex;
+    .OOTD_main {
+      display: flex;
 
-    .left_content {
-      width: 460px;
-      margin-right: 20px;
+      .left_content {
+        width: 460px;
+        margin-right: 20px;
 
-      .callcenter_info {
-        color: #454c53;
-        font-size: 13px;
-        font-weight: bold;
-      }
-
-      .callcenter_number {
-        margin-top: 12px;
-        color: #26282b;
-        font-size: 40px;
-        font-weight: bold;
-      }
-
-      .eat_time {
-        margin-top: 12px;
-        font-size: 14px;
-
-        .eat_name {
+        .callcenter_info {
+          color: #454c53;
+          font-size: 13px;
           font-weight: bold;
         }
-      }
-    }
 
-    .center_content {
-      width: 220px;
-      margin-right: 20px;
+        .callcenter_number {
+          margin-top: 12px;
+          color: #26282b;
+          font-size: 40px;
+          font-weight: bold;
+        }
 
-      .center_title {
-        margin-top: 4px;
-
-        color: #454c53;
-        font-size: 13px;
-        font-weight: bold;
-      }
-
-      .center_body {
-        margin-top: 12px;
-        color: #26282b;
-        font-size: 14px;
-
-        a {
-          margin-top: 4px;
-          display: block;
-          color: #454c53;
+        .eat_time {
+          margin-top: 12px;
           font-size: 14px;
-          text-decoration: underline;
+
+          .eat_name {
+            font-weight: bold;
+          }
+        }
+      }
+
+      .center_content {
+        width: 220px;
+        margin-right: 20px;
+
+        .center_title {
+          margin-top: 4px;
+
+          color: #454c53;
+          font-size: 13px;
+          font-weight: bold;
+        }
+
+        .center_body {
+          margin-top: 12px;
+          color: #26282b;
+          font-size: 14px;
+
+          a {
+            margin-top: 4px;
+            display: block;
+            color: #454c53;
+            font-size: 14px;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .right_content {
+        .right_title {
+          margin-top: 4px;
+          color: #454c53;
+          font-size: 13px;
+          font-weight: bold;
+        }
+
+        .right_body {
+          margin-top: 12px;
+
+          .facebook_icon {
+            background: url(../../Img/footer_icon.png) no-repeat;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+          }
+
+          .instagram_icon {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            background: url(../../Img/footer_icon.png) no-repeat;
+            background-position: 0 -40px;
+          }
         }
       }
     }
 
-    .right_content {
-      .right_title {
-        margin-top: 4px;
-        color: #454c53;
-        font-size: 13px;
-        font-weight: bold;
-      }
+    .company_info_box {
+      vertical-align: middle;
+      margin-top: 36px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.05);
 
-      .right_body {
-        margin-top: 12px;
+      color: #26282b;
+      font-size: 14px;
+      text-align: center;
 
-        .facebook_icon {
-          background: url(../../Img/footer_icon.png) no-repeat;
-          display: inline-block;
-          width: 40px;
-          height: 40px;
-          margin-right: 12px;
-        }
-
-        .instagram_icon {
-          width: 40px;
-          height: 40px;
-          display: inline-block;
-          background: url(../../Img/footer_icon.png) no-repeat;
-          background-position: 0 -40px;
-        }
+      .seperate_bar {
+        margin: 0 8px;
+        line-height: 0.8px;
+        border: 0.4px solid #9ea4aa;
       }
     }
-  }
 
-  .company_info_box {
-    vertical-align: middle;
-    margin-top: 36px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.05);
+    .info_protect {
+      height: 85px;
+      width: 85px;
+      background-color: none;
+      outline: none;
 
-    color: #26282b;
-    font-size: 14px;
-    text-align: center;
-
-    .seperate_bar {
-      margin: 0 8px;
-      line-height: 0.8px;
-      border: 0.4px solid #9ea4aa;
+      background: url(../../Img/footer_icon.png) no-repeat;
+      background-position: 0 -80px;
     }
-  }
-
-  .info_protect {
-    height: 85px;
-    width: 85px;
-    background-color: none;
-    outline: none;
-
-    background: url(../../Img/footer_icon.png) no-repeat;
-    background-position: 0 -80px;
   }
 }

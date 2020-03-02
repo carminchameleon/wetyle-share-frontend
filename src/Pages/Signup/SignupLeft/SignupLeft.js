@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./SignupLeft.scss";
 
 class SignupLeft extends Component {
@@ -177,13 +178,15 @@ class SignupLeft extends Component {
             {this.renderFeedbackMessage()}
           </label>
           <div className="signin_btn_div">
-            <button
-              type="submit"
-              className="signin_btn"
-              onClick={this.goToSignup}
-            >
-              가입
-            </button>
+            <Link to="/signupinfo">
+              <button
+                type="submit"
+                className="signin_btn"
+                onClick={this.goToSignup}
+              >
+                가입
+              </button>
+            </Link>
           </div>
         </form>
       </div>
