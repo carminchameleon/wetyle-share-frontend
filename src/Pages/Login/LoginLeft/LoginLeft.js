@@ -25,7 +25,6 @@ class LoginLeft extends Component {
               name="id"
               value={this.state.id}
               placeholder="ID/Email"
-              onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               className="info_input"
             />
@@ -42,7 +41,6 @@ class LoginLeft extends Component {
               type="password"
               value={this.state.pwd}
               placeholder="비밀번호를 입력해주세요"
-              onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               className="info_input"
             ></input>

@@ -4,12 +4,13 @@
   }
 
   ::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
 
   ::-webkit-scrollbar-thumb {
     background-color: #555;
@@ -17,19 +18,28 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+    background-color: gray;
   }
 
   .card_modal_wrapper {
     .card_modal {
-      margin-left: -140px;
-      width: 750px;
-      max-width: 750px;
-      height: 660px;
+      margin-left: -270px;
+      width: 920px;
+      max-width: 920px;
+      height: 880px;
+
+      @media only screen and (max-height: 800px) {
+        margin-left: -120px;
+        width: 750px;
+        max-width: 750px;
+        height: 660px;
+      }
 
       .modal_main {
+
         .left_img {
           border-right: 1px solid #dfdfdf;
+          width: 550px;
 
           @media only screen and (max-height: 800px) {
             width: 400px;
@@ -264,7 +274,10 @@
 
         .right_feed {
           padding: 20px;
-          overflow-y: auto;
+
+          &:hover {
+            overflow-y: hidden;
+          }
 
           .info_wrapper {
             padding: 12px;
@@ -342,8 +355,12 @@
             .desc {
               word-break: keep-all;
               font-size: 12px;
-              overflow-y: auto;
+              overflow-y: hidden;
               height: 100px;
+
+              &:hover {
+                overflow-y: auto;
+              }
 
 
               a {
@@ -432,22 +449,26 @@
               background-position-y: -1298px;
               width: 30px;
               height: 34px;
+              cursor: pointer;
             }
           }
 
           .comment_wrapper {
+            @media only screen and (max-height: 800px) {
+              height: 350px;
+            }
 
+            &:hover {
+              overflow: auto;
+            }
 
-
-
-            overflow: auto;
-            height: 370px;
+            overflow: hidden;
+            height: 450px;
             margin-top: 10px;
             padding-top: 10px;
             border-top-color: #c9cdd2;
             border-top-style: solid;
             border-top-width: 1px;
-
 
             .comment_title {
               color: #72787f;
@@ -459,6 +480,7 @@
             }
 
             .comment_list {
+
               margin-top: 10px;
               border: 1px solid #c9cdd2;
               border-width: 0px 0px 1px 0px;
@@ -472,9 +494,11 @@
                 img {
                   width: 30px;
                   height: 30px;
+                  cursor: pointer;
                 }
 
                 a {
+                  cursor: pointer;
                   color: #26282b;
                   font-weight: bold;
                   font-size: 13px;

@@ -18,7 +18,6 @@ class Upload extends Component {
     this.setState({ imgFile: file });
 
     reader.onloadend = e => {
-      console.log(e.target.result);
       this.setState({
         imgUrl: this.state.imgUrl.concat(e.target.result)
       });
@@ -137,9 +136,8 @@ class Upload extends Component {
                 <p>스타일 이미지</p>
                 <div className="picture_upload">
                   {this.mapOfImg(this.state.imgUrl)}
-                  <label for="ex_file" onChange={this.handleChangeFile}>
+                  <label for="ex_file">
                     <div className="plus_icon" />
-
                     <input
                       type="file"
                       id="ex_file"

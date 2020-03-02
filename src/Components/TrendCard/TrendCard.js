@@ -12,13 +12,12 @@ class TrendCard extends React.Component {
     items: 5,
     preItems: 0,
     scrolling: true,
-    select: 0,
+    select: "",
     modal: false
   };
 
   componentDidMount = () => {
     this.getCardItems();
-
     window.addEventListener("scroll", this.infiniteScroll, true);
   };
   componentWillUnmount() {

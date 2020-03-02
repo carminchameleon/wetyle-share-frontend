@@ -25,7 +25,7 @@ function Routes() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" />
+        <Route exact path="/" component={DailyLook} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signin" component={Signin} />
         {/* <Route exact path="/signinnext" component={SigninNext} /> */}

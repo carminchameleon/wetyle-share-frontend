@@ -6,7 +6,8 @@ import "./UploadModal.scss";
 class UploadModal extends Component {
   state = {
     left: false,
-    right: false
+    right: false,
+    collectionModal: false
   };
   leftToggle = () => {
     this.setState({
@@ -20,6 +21,12 @@ class UploadModal extends Component {
   };
   uploadPage = () => {
     this.props.history.push("/upload");
+  };
+
+  collectionToggle = () => {
+    this.setState({
+      collectionModal: !this.state.collectionModal
+    });
   };
   render() {
     const { toggle, modal } = this.props;
@@ -64,6 +71,7 @@ class UploadModal extends Component {
                   className="collection_btn"
                   onMouseLeave={this.rightToggle}
                   onMouseEnter={this.rightToggle}
+                  onClick={this.collectionToggle}
                 >
                   <span
                     className={
@@ -74,6 +82,15 @@ class UploadModal extends Component {
                   ></span>
                 </div>
                 <p>콜렉션 만들기</p>
+                <Modal
+                  isOpen={this.state.collectionModal}
+                  toggle={this.collectionToggle}
+                  external={externalCloseBtn}
+                  className="collection_wrapper"
+                  contentClassName="collection_modal"
+                >
+                  <div>dd</div>
+                </Modal>
               </div>
             </div>
           </div>
