@@ -25,12 +25,8 @@ class OotdTop extends Component {
               <img src="https://usercontents-c.styleshare.io/images/16130846/40x40" />
             </div>
             <div className="top_left_main">
-              <Link to="/">
-                <div className="top_main">#OOTD</div>
-              </Link>
-              <Link to="/storemain">
-                <div className="top_main">STORE</div>
-              </Link>
+              <div className="top_main">#OOTD</div>
+              <div className="top_main">STORE</div>
             </div>
           </div>
           <TopMid searchMode={this.state.search_mode}>

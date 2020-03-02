@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import TopMid from "./TopMid/TopMid";
 import TopRight from "./TopRight/TopRight";
 import "./StoreTop.scss";
@@ -25,12 +24,8 @@ class StoreTop extends Component {
               <img src="https://usercontents-c.styleshare.io/images/16130846/40x40" />
             </div>
             <div className="top_left_main">
-              <Link to="/">
-                <div className="top_main">#OOTD</div>
-              </Link>
-              <Link to="/storemain">
-                <div className="top_main">STORE</div>
-              </Link>
+              <div className="top_main">#OOTD</div>
+              <div className="top_main">STORE</div>
             </div>
           </div>
           <TopMid searchMode={this.state.search_mode}>
@@ -48,7 +43,7 @@ class StoreTop extends Component {
           </TopMid>
           <TopRight
             searchMode={this.state.search_mode}
-            handleSearch={this.handle_search}
+            handle_search={this.handle_search}
           />
         </div>
       </div>

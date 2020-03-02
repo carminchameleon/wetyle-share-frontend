@@ -27,7 +27,7 @@ class Login extends React.Component {
               </main>
               <footer>
                 <div className="no_id">ID가 없으세요?</div>
-                <Link to="/signup">
+                <Link to="/signin">
                   <a>여기서 가입</a>
                 </Link>
               </footer>

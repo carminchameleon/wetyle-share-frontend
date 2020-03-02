@@ -59,6 +59,10 @@ class LoginLeft extends Component {
   };
 
   render() {
+<<<<<<< HEAD
+    // const kr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+=======
+>>>>>>> 89945ccb0afc763ff0d52e47cdf31f2306241c1c
     return (
       <div className="login_main_left">
         <div>

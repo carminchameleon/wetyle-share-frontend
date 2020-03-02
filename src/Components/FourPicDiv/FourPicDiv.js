@@ -39,7 +39,7 @@ class FourPicDiv extends Component {
               <img
                 src="https://image.flaticon.com/icons/svg/748/748073.svg"
                 alt=""
-                className="left_img_arrow"
+                className="left_img"
               />
             </button>
             <button className="right_button">

@@ -11,9 +11,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+<<<<<<< HEAD
     "axios": "^0.19.2",
+=======
     "autosize": "^4.0.2",
     "bootstrap": "^4.4.1",
+>>>>>>> 89945ccb0afc763ff0d52e47cdf31f2306241c1c
     "cross-env": "^7.0.0",
     "fb": "^2.0.0",
     "mobx": "^5.15.4",
