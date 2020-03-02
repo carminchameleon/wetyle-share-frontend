@@ -15,12 +15,17 @@ import StoreMain from "./Pages/StoreMain/StoreMain";
 import Detail from "./Pages/StoreDetail/Detail.js";
 import Hot from "./Pages/Ootd/Hot/Hot";
 import DailyLook from "./Pages/Ootd/DaliyLook/DailyLook";
+import Beauty from "./Pages/Ootd/Beauty/Beauty";
+import New from "./Pages/Ootd/New/New";
+import Qna from "./Pages/Ootd/Qna/Qna";
+import Myhome from "./Pages/Ootd/Myhome/Myhome";
+import Upload from "./Pages/Ootd/Upload/Upload";
 
 function Routes() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" />
+        <Route exact path="/" component={DailyLook} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signin" component={Signin} />
         {/* <Route exact path="/signinnext" component={SigninNext} /> */}
@@ -28,6 +33,11 @@ function Routes() {
         <Route exact path="/detail" component={Detail} />
         <Route exact path="/feed/hot" component={Hot} />
         <Route exact path="/feed/dailylook" component={DailyLook} />
+        <Route exact path="/feed/beauty" component={Beauty} />
+        <Route exact path="/feed/new" component={New} />
+        <Route exact path="/feed/qna" component={Qna} />
+        <Route exact path="/feed/my-home" component={Myhome} />
+        <Route exact path="/upload" component={Upload} />
         <Redirect to="/error" />
       </Switch>
     </Router>

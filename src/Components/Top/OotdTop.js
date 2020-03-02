@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import TopMid from "./TopMid/TopMid";
 import TopRight from "./TopRight/TopRight";
 import "./OotdTop.scss";
 
-document.title = "최상단 OOTD | 스타일쉐어";
 class OotdTop extends Component {
   state = {
     search_mode: false
@@ -29,16 +30,28 @@ class OotdTop extends Component {
             </div>
           </div>
           <TopMid searchMode={this.state.search_mode}>
-            <div className="mid">인기</div>
-            <div className="mid">데일리룩</div>
-            <div className="mid">뷰티</div>
-            <div className="mid">최신</div>
-            <div className="mid">QnA</div>
-            <div className="mid">팔로잉</div>
+            <Link to="/feed/hot">
+              <div className="mid">인기</div>
+            </Link>
+            <Link to="/feed/dailyLook">
+              <div className="mid">데일리룩</div>
+            </Link>
+            <Link to="/feed/beauty">
+              <div className="mid">뷰티</div>
+            </Link>
+            <Link to="/feed/new">
+              <div className="mid">최신</div>
+            </Link>
+            <Link to="/feed/qna">
+              <div className="mid">QnA</div>
+            </Link>
+            <Link to="/feed/my-home">
+              <div className="mid">팔로잉</div>
+            </Link>
           </TopMid>
           <TopRight
             searchMode={this.state.search_mode}
-            handle_search={this.handle_search}
+            handleSearch={this.handle_search}
           />
         </div>
       </div>

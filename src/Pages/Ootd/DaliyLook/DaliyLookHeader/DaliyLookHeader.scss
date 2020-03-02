@@ -2,14 +2,15 @@
   max-width: 1180px;
   margin: 0px auto;
   padding-top: 84px;
-  height: 380px;
+
 
   .header_inner {
     display: flex;
-    height: 100%;
+    height: 385px;
 
     .left_best {
       margin-right: 20px;
+      height: 100%;
 
       .left_top {
         border: 1px solid #e8ebed;
@@ -19,6 +20,7 @@
         background-image: url(https://usercontents-c.styleshare.io/images/43818668/460x288);
         position: relative;
         background-color: #e8ebed;
+        cursor: pointer;
 
         .gradient {
           position: absolute;
@@ -27,11 +29,9 @@
           right: 0;
           bottom: 0;
           background-color: #26282b;
-          background: -webkit-linear-gradient(
-            transparent,
-            rgba(0, 0, 0, 0.05) 40%,
-            rgba(0, 0, 0, 0.6)
-          );
+          background: -webkit-linear-gradient(transparent,
+              rgba(0, 0, 0, 0.05) 40%,
+              rgba(0, 0, 0, 0.6));
         }
 
         .left_info {
@@ -70,7 +70,7 @@
         border: 1px solid #e8ebed;
         border-radius: 0 0 10px 10px;
         display: flex;
-        padding: 16px 20px;
+        padding: 10px 20px 5px;
         align-items: center;
         background-color: white;
 
@@ -86,12 +86,14 @@
           width: 250px;
 
           .desc1 {
+            margin: 0;
             font-weight: bold;
             color: gray;
             font-size: 8px;
           }
 
           .desc2 {
+            margin: 0;
             font-size: 14px;
             font-weight: bold;
           }
@@ -127,6 +129,7 @@
       border-radius: 10px;
       margin-right: 20px;
       background-color: white;
+      height: 100%;
 
       .gradient {
         position: absolute;
@@ -135,11 +138,9 @@
         right: 0;
         bottom: 0;
         background-color: #26282b;
-        background: -webkit-linear-gradient(
-          transparent,
-          rgba(0, 0, 0, 0.05) 40%,
-          rgba(0, 0, 0, 0.6)
-        );
+        background: -webkit-linear-gradient(transparent,
+            rgba(0, 0, 0, 0.05) 40%,
+            rgba(0, 0, 0, 0.6));
       }
 
       .top_img {
@@ -148,6 +149,7 @@
         width: 100%;
         height: 135px;
         background-image: url(https://usercontents-c.styleshare.io/images/43842226/220x135);
+        cursor: pointer;
 
         p {
           border-color: white;
@@ -189,13 +191,15 @@
       }
 
       .bottom_profile {
+        padding-top: 10px;
+
         .bottom_bottom {
           display: flex;
           align-items: center;
           border-top-color: #e8ebed;
           border-top-style: solid;
           border-top-width: 1px;
-          margin-top: 40px;
+
           padding: 10px;
 
           .bottom_profile_img {
@@ -211,6 +215,7 @@
           display: flex;
           align-items: center;
           padding: 0 15px;
+          margin-bottom: 10px;
           vertical-align: top;
 
           p {
@@ -240,6 +245,7 @@
         .sub_desc {
           width: 80%;
 
+
           p {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -247,12 +253,16 @@
           }
 
           .sub_desc1 {
+            margin: 0;
             font-weight: bold;
             color: gray;
             font-size: 8px;
           }
 
+
+
           .sub_desc2 {
+            margin: 0;
             font-size: 14px;
             font-weight: bold;
           }
@@ -267,10 +277,11 @@
       border-radius: 10px;
 
       .other_item {
-        width: 180px;
+        width: 200px;
         padding: 15px 9px 8px;
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         .other_desc {
           width: 65%;
@@ -285,11 +296,13 @@
             font-size: 11px;
             font-weight: bold;
             color: #26282b;
+            margin: 0;
           }
 
           .other_sub {
             font-size: 11px;
             color: #9ea4aa;
+            margin: 0;
           }
         }
 

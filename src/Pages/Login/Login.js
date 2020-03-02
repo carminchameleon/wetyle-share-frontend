@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import LoginLeft from "./LoginLeft/LoginLeft";
 import LoginRight from "./LoginRight/LoginRight";
 import "./Login.scss";
@@ -27,7 +27,9 @@ class Login extends React.Component {
               </main>
               <footer>
                 <div className="no_id">ID가 없으세요?</div>
-                <a>여기서 가입</a>
+                <Link to="/signin">
+                  <a>여기서 가입</a>
+                </Link>
               </footer>
             </div>
             <div className="etc_info">

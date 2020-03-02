@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import TrendCard from "../../../Components/TrendCard/TrendCard";
 import OotdFooter from "../../../Components/OotdFooter/OotdFooter";
-
-import "./DailyLook.scss";
-import DaliyLookHeader from "./DaliyLookHeader/DaliyLookHeader";
 import OotdTop from "../../../Components/Top/OotdTop";
 import UploadIcon from "../../../Components/UploadIcon/UploadIcon";
 
-class DailyLook extends Component {
+import "./Beauty.scss";
+
+class Beauty extends Component {
   state = {
     other: []
   };
@@ -24,13 +23,14 @@ class DailyLook extends Component {
     return (
       <div className="OOTD_wrapper">
         <OotdTop />
-        <DaliyLookHeader other={this.state.other} />
-        <TrendCard />
-        <OotdFooter />
+        <div className="beauty_wrapper">
+          <TrendCard />
+          <OotdFooter />
+        </div>
         <UploadIcon />
       </div>
     );
   }
 }
 
-export default DailyLook;
+export default Beauty;
