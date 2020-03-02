@@ -34,8 +34,12 @@
     }
   ],
   "imgUrl": [
-    "https: //usercontents-c.styleshare.io/images/i5e570fcd2ee95/375x400",
-    "https://usercontents-c.styleshare.io/images/i5e570fcdd4547/375x4348"
+    "https://usercontents-c.styleshare.io/images/i5e4f497f7d6f5/1600x1872",
+    "https://usercontents-c.styleshare.io/images/i5e4f49801046c/1600x1520",
+    "https://usercontents-c.styleshare.io/images/i5e4f4980ceccc/1600x7472",
+    "https://usercontents-c.styleshare.io/images/i5e4f4981ec9f0/1600x7472",
+    "https://usercontents-c.styleshare.io/images/i5e4f4985dfef5/1600x8368",
+    "https://usercontents-c.styleshare.io/images/i5e4f4986bf6b2/1600x2176"
   ],
   "modelNameList": [
     "01)BV3037",
@@ -48,5 +52,24 @@
   "modelSizeList": ["XS", "S", "M", "L", "XL"],
   "userProductCount": 1,
   "storeHaveCount": 10,
-  "price": 62000
+  "price": 62000,
+  "product": {
+    "name": "나이키 NSW 후드/후드집업 5종 택일",
+    "image_url": "https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1600x1600",
+    "brand": "나이키",
+    "price": 105000,
+    "discounted_price": 59800,
+    "point": "650",
+    "category_id": "4930",
+    "product_color": [
+      "01)BV3037",
+      "02)BG39837",
+      "03)NF37394",
+      "04)DK33748",
+      "05)GHE4658D",
+      "06)SDK8723"
+    ],
+    "product_size": ["XS", "S", "M", "L"],
+    "product_like": "6509"
+  }
 }

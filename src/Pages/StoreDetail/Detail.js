@@ -30,25 +30,26 @@ class Detail extends Component {
       modelSizeList: [],
       userProductCount: 0,
       price: 62000,
-      id: 0
+      id: 0,
+      product: []
     };
   }
 
   componentDidMount = () => {
     // 처음 render될 때 무엇인가 보여주고 싶을 때 쓰는 것이 componentDidMount
     fetch("http://localhost:3000/data/data.json")
+      .then(res => res.json())
       .then(res => {
-        return res.json();
-      })
-      .then(res =>
         this.setState({
+          dd: res,
           imgUrl: res.imgUrl,
           modelNameList: res.modelNameList,
           modelSizeList: res.modelSizeList,
           userProductCount: res.userProductCount,
-          price: res.price
-        })
-      );
+          price: res.price,
+          product: res.product
+        });
+      });
   };
   addProductCount = () => {
     this.setState({ userProductCount: this.state.userProductCount + 1 }, () =>
@@ -195,7 +196,8 @@ class Detail extends Component {
         </div>
       </li>
     ));
-    console.log(this.state.userCartArr);
+    console.log(this.state.dd);
+    if (this.state.product.product_color === undefined) return null;
     return (
       <body>
         <div>
@@ -210,7 +212,7 @@ class Detail extends Component {
                 {/* <div className="biggest_margin_box"> */}
                 <div className="detail_name_parent">
                   <p height="3.99rem" className="detail_name">
-                    나이키 NSW 후드/후드집업 5종 택일
+                    {this.state.product.name}
                   </p>
                 </div>
                 <div className="box_for_detail_main">
@@ -219,7 +221,7 @@ class Detail extends Component {
                     {/* {img 들어올 곳1} */}
 
                     <img
-                      src="https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/720x720"
+                      src={this.state.product.image_url}
                       srcset="https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/200x200 200w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/320x320 320w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/480x480 480w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/750x750 750w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/975x975 975w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1024x1024 1024w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1280x1280 1280w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1320x1320 1320w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1336x1336 1336w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1480x1480 1480w, https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1600x1600 1600w"
                       alt="나이키 NSW 후드/ 후드 집업 5종 택일"
                       class="detail_main_img"
@@ -238,13 +240,15 @@ class Detail extends Component {
                             onClick={this.discountHandleClick}
                           >
                             <span className="discount_per">44%</span>
-                            <span className="price">59,800</span>
+                            <span className="price">
+                              {this.state.product.discounted_price}
+                            </span>
                             <span className="won">원</span>
                           </div>
                         </div>
                         <div className="before_discount_price_parent">
                           <span className="before_discount_price">
-                            105,000원
+                            {this.state.product.price}원
                           </span>
                         </div>
                         <button
@@ -313,7 +317,9 @@ class Detail extends Component {
                         {/* 단추 시작 */}
                         <div className="point_box">
                           <span className="user_own_point">적립 단추</span>
-                          <span className="how_many_point">650개</span>
+                          <span className="how_many_point">
+                            {this.state.product.point}개
+                          </span>
                         </div>
                         <p className="delivery_free_or_not_parent">
                           <span className="delivery_free_or_not">무료배송</span>
@@ -348,16 +354,18 @@ class Detail extends Component {
                                   : "model_list_hide"
                               }
                             >
-                              {this.state.modelNameList.map((x, index) => (
-                                <li
-                                  key={index}
-                                  className="one_of_list"
-                                  onChange={this.selectOption}
-                                  onClick={this.handleSelectOption}
-                                >
-                                  {x}
-                                </li>
-                              ))}
+                              {this.state.product.product_color.map(
+                                (x, index) => (
+                                  <li
+                                    key={index}
+                                    className="one_of_list"
+                                    onChange={this.selectOption}
+                                    onClick={this.handleSelectOption}
+                                  >
+                                    {x}
+                                  </li>
+                                )
+                              )}
                             </ul>
 
                             <button
@@ -379,16 +387,18 @@ class Detail extends Component {
                                   : "model_list_hide"
                               }
                             >
-                              {this.state.modelSizeList.map((x, index) => (
-                                <li
-                                  key={index}
-                                  className="one_of_list"
-                                  // onClick={() => this.handleSizeOption({ x })}
-                                  onClick={this.handleSizeOption}
-                                >
-                                  {x}
-                                </li>
-                              ))}
+                              {this.state.product.product_size.map(
+                                (x, index) => (
+                                  <li
+                                    key={index}
+                                    className="one_of_list"
+                                    // onClick={() => this.handleSizeOption({ x })}
+                                    onClick={this.handleSizeOption}
+                                  >
+                                    {x}
+                                  </li>
+                                )
+                              )}
                             </ul>
 
                             {/* 내가 선택한 색과 사이즈가 나올 장소 */}
