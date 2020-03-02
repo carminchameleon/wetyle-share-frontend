@@ -1,5 +1,6 @@
 .trend_card_wrapper {
   margin-top: 50px;
+  background-color: #f7f8f9;
 
   .trend_wrapper {
     margin: 0 auto;
@@ -30,12 +31,10 @@
         margin-bottom: 25px;
         margin-right: 15px;
 
-
         .trend_item_img_wrapper {
           position: relative;
 
           .trend_item_img {
-
             border-radius: 6px 6px 0 0;
             width: 100%;
           }
@@ -95,7 +94,7 @@
           padding-bottom: 0;
           display: flex;
           flex-wrap: wrap;
-          color: #9EA4AA;
+          color: #9ea4aa;
 
           .user_icon {
             margin-right: 8px;
@@ -104,7 +103,7 @@
           .ohter_group {
             display: flex;
             width: 100%;
-            background-color: #F7F8F9;
+            background-color: #f7f8f9;
 
             .other_user {
               margin-bottom: 10px;
@@ -117,7 +116,6 @@
               }
             }
           }
-
 
           .comment_box {
             width: 80%;
@@ -189,7 +187,7 @@
         .ohter_group {
           padding: 10px;
           width: 100%;
-          background-color: #F7F8F9;
+          background-color: #f7f8f9;
 
           .user_icon {
             margin-right: 8px;
