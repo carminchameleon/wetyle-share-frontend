@@ -1,6 +1,6 @@
 import React from "react";
 
-import CardModal from "../Modal/CardModal";
+import CardModal from "../Modal/CardModal/CardModal";
 
 import "./TrendCard.scss";
 
@@ -14,7 +14,8 @@ class TrendCard extends React.Component {
     scrolling: true,
     select: "",
     modal: false,
-    original: []
+    original: [],
+    showModal: false
   };
 
   componentDidMount = () => {
@@ -70,14 +71,19 @@ class TrendCard extends React.Component {
       this.getCardItems();
     }
   };
-  toggle = () => {
-    this.setState({
-      modal: !this.state.modal
-    });
+
+  handleOpenModal = () => {
+    document.body.style.overflow = "hidden";
+    this.setState({ showModal: true });
+  };
+
+  handleCloseModal = () => {
+    document.body.style.overflow = "visible";
+    this.setState({ showModal: false });
   };
   marOfTrend = data => {
     return data.map((ele, idx) => (
-      <div key={idx} onClick={this.toggle}>
+      <div key={idx} onClick={this.handleOpenModal}>
         <div className="trend_item">
           <div className="trend_item_img_wrapper">
             {ele.main_url ? <div className="more_img"></div> : ""}
@@ -171,7 +177,11 @@ class TrendCard extends React.Component {
   render() {
     return (
       <div>
-        <CardModal modal={this.state.modal} toggle={this.toggle} />
+        <CardModal
+          showModal={this.state.showModal}
+          handleOpenModal={this.handleOpenModal}
+          handleCloseModal={this.handleCloseModal}
+        />
         <div className="trend_card_wrapper">
           <div className="trend_wrapper">
             <p className="trend_title">지금의 트렌드</p>
