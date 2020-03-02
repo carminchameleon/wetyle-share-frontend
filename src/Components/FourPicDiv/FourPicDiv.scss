@@ -14,7 +14,6 @@
   font-size: 2em;
   font-weight: 700;
   letter-spacing: -0.0025rem;
-  //   text-align: center;
 }
 .button_box {
   position: absolute;
@@ -32,7 +31,7 @@
   outline: none;
 }
 .left_img {
-  width: 35px;
+  width: 30px;
   transform: rotate(180deg);
 }
 .right_button {
@@ -43,7 +42,7 @@
   outline: none;
 }
 .right_img {
-  width: 35px;
+  width: 30px;
 }
 // ********사진 카드 4개 fetch 받아오기********
 .one_of_div {
@@ -67,7 +66,7 @@
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out 0s;
 }
 .scale_photo:hover {
   transform: scale(1.2);

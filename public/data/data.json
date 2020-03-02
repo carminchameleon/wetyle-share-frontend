@@ -1,8 +1,8 @@
 {
-  "data": [
+  "review_data": [
     {
       "photo": "http://m.bellee.co.kr/web/product/big/201909/c6758aed99cc58fc3cd8c9823be6a5a8.jpg",
-      "profile": "https://static.boredpanda.com/blog/wp-content/uploads/2020/01/fluffy-new-grumpy-cat-5e2e9498b45b4__700.jpg",
+      "profile": "https://image.fmkorea.com/files/attach/new/20190523/486616/1705739308/1839050814/99b983892094b5c6d2fc3736e15da7d1.jpg",
       "nickName": "냥이",
       "post": "커플 후드 집업으로도 완벽한 이 것!!",
       "like": "412",
@@ -17,10 +17,10 @@
       "comment": "56"
     },
     {
-      "photo": "http://tijuri.com/web/product/big/201809/448ec939dd608e1bbd4b858d33cb8439.jpg",
+      "photo": "https://usercontents-c.styleshare.io/images/22986948/640x-",
       "profile": "http://tijuri.com/web/product/big/201809/448ec939dd608e1bbd4b858d33cb8439.jpg",
-      "nickName": "Nerdy",
-      "post": "Nerdy의 새로운 화보를 소개합니다.",
+      "nickName": "옞이",
+      "post": "나이키 스우시 후드집업 넘예 ㅇㅅㅇ ..",
       "like": "7284",
       "comment": "123"
     },
@@ -32,5 +32,21 @@
       "like": "243",
       "comment": "546"
     }
-  ]
+  ],
+  "imgUrl": [
+    "https: //usercontents-c.styleshare.io/images/i5e570fcd2ee95/375x400",
+    "https://usercontents-c.styleshare.io/images/i5e570fcdd4547/375x4348"
+  ],
+  "modelNameList": [
+    "01)BV3037",
+    "02)BG39837",
+    "03)NF37394",
+    "04)DK33748",
+    "05)GHE4658D",
+    "06)SDK8723"
+  ],
+  "modelSizeList": ["XS", "S", "M", "L", "XL"],
+  "userProductCount": 1,
+  "storeHaveCount": 10,
+  "price": 62000
 }

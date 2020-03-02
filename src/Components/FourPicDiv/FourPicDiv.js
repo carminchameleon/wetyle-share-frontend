@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "./FourPicDiv.scss";
+// import ReviewCard from "../ReviewCard/ReviewCard";
+import ReviewCard from "../ReviewCard/ReviewCard";
 
 class FourPicDiv extends Component {
   constructor(props) {
     super();
 
     this.state = {
-      data: []
+      review_data: []
     };
   }
 
@@ -18,49 +20,16 @@ class FourPicDiv extends Component {
       })
       .then(res =>
         this.setState({
-          data: res.data
+          review_data: res.review_data
         })
       );
   };
 
   render() {
-    const fourDiv = this.state.data.map(person => {
-      return (
-        <div className="cardInfo">
-          {/* 대표 이미지 */}
-          <div className="scale_photo_parent">
-            <div className="scale_photo">
-              <img src={person.photo} className="post_photo" />
-            </div>
-          </div>
-          <div className="flex_row">
-            {/* 프로필사진 */}
-            <div className="circle_photo">
-              <img src={person.profile} className="profile_photo" />
-            </div>
-            {/* 유저 이름이랑 후기내용 */}
-            <span className="flex_column">
-              <div className="under_box_info">
-                <span className="person_post_text">
-                  <span className="person_nickname">{person.nickName}</span>
-                  {person.post}
-                </span>
-              </div>
-              {/* 회색글씨 좋아요랑 댓글 갯수 */}
-              <div className="like_and_comment">
-                <span className="like">좋아요 {person.like}</span>
-                <span className="comment">댓글 {person.comment}</span>
-              </div>
-            </span>
-          </div>
-        </div>
-      );
-    });
-
     return (
       <div className="four_pic_div">
         <div className="whats_this_box">
-          <h1 className="whats_this_box_text">상품 후기 68</h1>
+          <h1 className="whats_this_box_text">{this.props.title}</h1>
           <div className="button_box">
             <button className="left_button">
               {/* <img
@@ -84,7 +53,20 @@ class FourPicDiv extends Component {
         </div>
 
         {/* div 하나 정체 */}
-        <div className="one_of_div">{fourDiv}</div>
+        <div className="one_of_div">
+          {this.state.review_data.map(person => {
+            return (
+              <ReviewCard
+                photo={person.photo}
+                profile={person.profile}
+                nickname={person.nickname}
+                post={person.post}
+                like={person.like}
+                comment={person.comment}
+              />
+            );
+          })}
+        </div>
 
         <div className="see_more_info">
           <a className="see_more_info_text">후기 스타일 모두 보기</a>
