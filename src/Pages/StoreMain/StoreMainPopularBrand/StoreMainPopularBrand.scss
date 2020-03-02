@@ -1,5 +1,6 @@
 .StoreMainPopularBrand {
   position: relative;
+
   .mainContainer {
     margin-left: auto;
     margin-right: auto;
@@ -10,9 +11,11 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+
     .brand_container {
       text-align: center;
     }
+
     .title_container {
       margin-bottom: 20px;
       margin-left: 16%;
@@ -31,6 +34,7 @@
       }
     }
   }
+
   .show_more_container {
     width: 100%;
     box-sizing: border-box;
@@ -75,6 +79,7 @@
           border-image: initial;
           padding: 0px 1.25rem;
           text-decoration: none;
+
           .show_more_icon {
             margin: 0.3rem;
             height: 0.8rem;
@@ -91,7 +96,9 @@
     top: -21%;
     right: 19%;
 
+
     .brand_left_arrow {
+      cursor: pointer;
       width: 35px;
       height: 40px;
     }
@@ -102,6 +109,7 @@
     display: flex;
     top: -21%;
     right: 16%;
+    cursor: pointer;
 
     .brand_right_arrow {
       width: 35px;
