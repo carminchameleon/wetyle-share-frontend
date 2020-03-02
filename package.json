@@ -11,14 +11,21 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+<<<<<<< HEAD
     "axios": "^0.19.2",
+=======
+    "autosize": "^4.0.2",
+    "bootstrap": "^4.4.1",
+>>>>>>> 89945ccb0afc763ff0d52e47cdf31f2306241c1c
     "cross-env": "^7.0.0",
     "fb": "^2.0.0",
     "mobx": "^5.15.4",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-awesome-modal": "^2.0.5",
+    "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.12.0",
+    "react-draggable": "^4.2.0",
     "react-facebook-login": "^4.1.1",
     "react-hyper-modal": "^1.2.1",
     "react-modal": "^3.11.1",
@@ -26,6 +33,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-slick": "^0.25.2",
+    "reactstrap": "^8.4.1",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {

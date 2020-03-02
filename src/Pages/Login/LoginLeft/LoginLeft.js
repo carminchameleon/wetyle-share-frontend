@@ -59,7 +59,10 @@ class LoginLeft extends Component {
   };
 
   render() {
+<<<<<<< HEAD
     // const kr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+=======
+>>>>>>> 89945ccb0afc763ff0d52e47cdf31f2306241c1c
     return (
       <div className="login_main_left">
         <div>
@@ -70,7 +73,6 @@ class LoginLeft extends Component {
               name="id"
               value={this.state.id}
               placeholder="ID/Email"
-              onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               className="info_input"
             />
@@ -120,7 +122,6 @@ class LoginLeft extends Component {
               type="password"
               value={this.state.pwd}
               placeholder="비밀번호를 입력해주세요"
-              onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               className="info_input"
             ></input>

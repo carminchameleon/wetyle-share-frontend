@@ -3,6 +3,7 @@
 
 html,
 body {
+  position: relative;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -11,9 +12,9 @@ body {
   outline: 0;
   font-size: 100%;
   vertical-align: baseline;
-  background-color: #f7f8f9;
   font-weight: normal;
   letter-spacing: 1px;
+
   font-family: "Helvetica", "Arial", "Apple SD Gothic Neo", "Nanum Gothic",
     "Malgun Gothic", "DotumChe", "Dotum", sans-serif;
 }
@@ -21,16 +22,4 @@ body {
 #root {
   width: 100%;
   height: 100%;
-}
-
-#modal {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  justify-content: center;
-  align-content: center;
 }

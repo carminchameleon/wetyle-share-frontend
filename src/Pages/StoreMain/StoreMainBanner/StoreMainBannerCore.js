@@ -3,43 +3,60 @@ import "./StoreMainBannerCore.scss";
 
 class StoreMainBannerCore extends Component {
   render() {
-    console.log(this.props.data);
-    console.log(this.props.webDestination);
-    console.log(this.props.subText);
-    console.log(this.props.text);
-    console.log(this.props.imageId);
+    let position = (this.props.index / this.props.dataLength) * 100;
 
     return (
       <div className="StoreMainBannerCore">
         <div className="ban_pic_wrapper">
-          <a className="ban_pic_a" href="{this.props.web}">
+          <a
+            className="ban_pic_a"
+            href={`https://www.styleshare.kr/catalogs/${this.props.webDestination}`}
+          >
             <img
               src={`https://usercontents-c.styleshare.io/images/${this.props.imageId}/1920x1080`}
+              alt=""
             ></img>
           </a>
         </div>
-        <div className="ban_content_container">
-          <div className="ban_content_text">
-            <div className="ban_left_empty">hello</div>
-            <div className="ban_right_box">
-              <div className="ban_text_box">
-                <div className="ban_text">{this.props.text}</div>
+        <div className="content_container">
+          <div className="content_text">
+            <div className="left_empty"></div>
+            <div className="right_box">
+              <div className="text_box">
+                <div className="text" style={{ color: this.props.colorCode }}>
+                  {this.props.text1}
+                  <br></br>
+                  {this.props.text2}
+                </div>
               </div>
-              <div className="ban_subtext_box">
-                <div className="ban_subtext">{this.props.subText}</div>
-              </div>
-            </div>
-          </div>
-          <div className="ban_content_line">
-            <div className="ban_line_front"></div>
-            <div className="ban_line_middle">
-              <div className="ban_line_middle_inner">
-                <div className="ban_line_middle_indicator">
-                  <div className="ban_line_middle_bold"></div>
+              <div className="subtext_box">
+                <div
+                  className="subtext"
+                  style={{ color: this.props.colorCode }}
+                >
+                  {this.props.subText1}
+                  <br></br>
+                  {this.props.subText2}
                 </div>
               </div>
             </div>
-            <div className="ban_line_back"></div>
+          </div>
+          <div className="content_line">
+            <div className="line_front"></div>
+            <div className="line_middle">
+              <div className="line_middle_inner">
+                <div className="line_middle_indicator">
+                  <div
+                    className="line_middle_bold"
+                    style={{
+                      backgroundColor: this.props.colorCode,
+                      left: `${position}%`
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="line_back"></div>
           </div>
         </div>
       </div>

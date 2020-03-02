@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import SignupLeft from "./SignupLeft/SignupLeft";
 import SignupRight from "./SignupRight/SignupRight";
@@ -27,7 +28,9 @@ class Signup extends React.Component {
               </main>
               <footer>
                 <div className="have_id">이미 계정을 갖고 계시다구요?</div>
-                <a>여기서 로그인</a>
+                <Link to="/login">
+                  <a>여기서 로그인</a>
+                </Link>
               </footer>
             </div>
             <div className="etc_info">

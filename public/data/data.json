@@ -1,0 +1,75 @@
+{
+  "review_data": [
+    {
+      "photo": "http://m.bellee.co.kr/web/product/big/201909/c6758aed99cc58fc3cd8c9823be6a5a8.jpg",
+      "profile": "https://image.fmkorea.com/files/attach/new/20190523/486616/1705739308/1839050814/99b983892094b5c6d2fc3736e15da7d1.jpg",
+      "nickName": "냥이",
+      "post": "커플 후드 집업으로도 완벽한 이 것!!",
+      "like": "412",
+      "comment": "178"
+    },
+    {
+      "photo": "http://ctbrz.co.kr/web/product/big/201812/c0275f5a4f997164b66a5da80a45b258.jpg",
+      "profile": "https://image.msscdn.net/images/goods_img/20180822/835443/835443_2_500.jpg",
+      "nickName": "숨니",
+      "post": "기모가 있어서 따뜻하고 품도 넉넉해서 편하면서 패셔너블한 느낌을 줘서 좋아요~ ",
+      "like": "692",
+      "comment": "56"
+    },
+    {
+      "photo": "https://usercontents-c.styleshare.io/images/22986948/640x-",
+      "profile": "http://tijuri.com/web/product/big/201809/448ec939dd608e1bbd4b858d33cb8439.jpg",
+      "nickName": "옞이",
+      "post": "나이키 스우시 후드집업 넘예 ㅇㅅㅇ ..",
+      "like": "7284",
+      "comment": "123"
+    },
+    {
+      "photo": "http://99streetshop.com/web/product/medium/201903/29b900fbae6c1959c391b93b59dfd88c.jpg",
+      "profile": "http://99streetshop.com/web/product/medium/201903/29b900fbae6c1959c391b93b59dfd88c.jpg",
+      "nickName": "reedy",
+      "post": "색이 너무 잘 나왔네요. 178cm에 기장이 딱 좋습니다.",
+      "like": "243",
+      "comment": "546"
+    }
+  ],
+  "imgUrl": [
+    "https://usercontents-c.styleshare.io/images/i5e4f497f7d6f5/1600x1872",
+    "https://usercontents-c.styleshare.io/images/i5e4f49801046c/1600x1520",
+    "https://usercontents-c.styleshare.io/images/i5e4f4980ceccc/1600x7472",
+    "https://usercontents-c.styleshare.io/images/i5e4f4981ec9f0/1600x7472",
+    "https://usercontents-c.styleshare.io/images/i5e4f4985dfef5/1600x8368",
+    "https://usercontents-c.styleshare.io/images/i5e4f4986bf6b2/1600x2176"
+  ],
+  "modelNameList": [
+    "01)BV3037",
+    "02)BG39837",
+    "03)NF37394",
+    "04)DK33748",
+    "05)GHE4658D",
+    "06)SDK8723"
+  ],
+  "modelSizeList": ["XS", "S", "M", "L", "XL"],
+  "userProductCount": 1,
+  "storeHaveCount": 10,
+  "price": 62000,
+  "product": {
+    "name": "나이키 NSW 후드/후드집업 5종 택일",
+    "image_url": "https://usercontents-c.styleshare.io/images/f61e4bc2-e35a-41f4-bcaf-622beae5cc34/1600x1600",
+    "brand": "나이키",
+    "price": 105000,
+    "discounted_price": 59800,
+    "point": "650",
+    "category_id": "4930",
+    "product_color": [
+      "01)BV3037",
+      "02)BG39837",
+      "03)NF37394",
+      "04)DK33748",
+      "05)GHE4658D",
+      "06)SDK8723"
+    ],
+    "product_size": ["XS", "S", "M", "L"],
+    "product_like": "6509"
+  }
+}
