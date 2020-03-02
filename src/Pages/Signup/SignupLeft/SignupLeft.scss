@@ -1,4 +1,12 @@
-.signin_main_left {
+.invalid-feedback {
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  color: red;
+  font-size: 12px;
+}
+
+.signup_main_left {
   flex-basis: 50%;
   padding-right: 20px;
   border-right: 1px dashed rgb(201, 205, 210);

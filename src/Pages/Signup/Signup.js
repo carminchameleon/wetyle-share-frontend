@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import SigninLeft from "./SigninLeft/SigninLeft";
-import SigninRight from "./SigninRight/SigninRight";
-import "./Signin.scss";
+import SignupLeft from "./SignupLeft/SignupLeft";
+import SignupRight from "./SignupRight/SignupRight";
+import "./Signup.scss";
 
 document.title = "회원가입 | 스타일쉐어";
-class Signin extends React.Component {
+class Signup extends React.Component {
   render() {
     return (
-      <div className="signin_wrapper">
+      <div className="signup_wrapper">
         <div className="signin_bg_img">
           <div className="signin_bg"></div>
         </div>
@@ -22,8 +22,8 @@ class Signin extends React.Component {
               </header>
               <main>
                 <div className="signin_main">
-                  <SigninLeft />
-                  <SigninRight />
+                  <SignupLeft />
+                  <SignupRight />
                 </div>
               </main>
               <footer>
@@ -45,4 +45,4 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+export default Signup;
