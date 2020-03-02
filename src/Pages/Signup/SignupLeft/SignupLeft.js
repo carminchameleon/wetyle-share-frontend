@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./SignupLeft.scss";
-// import axios from "axios";
 
 class SignupLeft extends Component {
   state = {
@@ -27,14 +26,6 @@ class SignupLeft extends Component {
     return pwd === pwdcheck;
   }
 
-  // confirmPasswordClassName() {
-  //   const { pwdcheck } = this.state;
-
-  //   if (pwdcheck) {
-  //     return this.doesPasswordMatch() ? "is_valid" : "is_invalid";
-  //   }
-  // }
-
   renderFeedbackMessage() {
     const { pwdcheck } = this.state;
 
@@ -53,11 +44,17 @@ class SignupLeft extends Component {
     });
   };
 
-  // handleLoginLength = e => {
-  //   if (e.target.value.length < 3) {
-  //     return <div>너무 짧습니다.</div>;
-  //   }
-  // };
+  handleIdLength = () => {
+    if (this.state.id.length > 0 && this.state.id.length < 3) {
+      return <div className="short_id">너무 짧습니다.(3~32자)</div>;
+    }
+  };
+
+  handlePwdLength = () => {
+    if (this.state.pwd.length > 0 && this.state.pwd.length < 6) {
+      return <div className="short_pwd">너무 짧습니다.(6~18자)</div>;
+    }
+  };
 
   goToSignup = () => {
     const data = {
@@ -139,13 +136,15 @@ class SignupLeft extends Component {
               name="id"
               value={this.state.id}
               placeholder="ID"
-              // onKeyDown={this.handleLoginLength}
+              // onInput={this.handleIdLength}
               onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               className={"info_input ${this.emailInputClassName()}"}
+              maxLength="32"
+
               // type="email"
             />
-            {/* {this.renderFeedbackMessage()} */}
+            {this.handleIdLength()}
           </label>
           <label htmlFor="pwd" className="input_wrapper">
             <input
@@ -158,7 +157,10 @@ class SignupLeft extends Component {
               onChange={this.handleLoginCheck}
               onInput={e => this.handleOnPasswordInput(e.target.value)}
               className="info_input1"
+              maxLength="18"
             />
+            {this.handlePwdLength()}
+
             <input
               id="pwdcheck"
               name="pwdcheck"
@@ -169,6 +171,7 @@ class SignupLeft extends Component {
               onChange={this.handleLoginCheck}
               onInput={e => this.handleOnConfirmPasswordInput(e.target.value)}
               className="info_input"
+              maxLength="18"
               confirmPasswordClassName={this.confirmPasswordClassName}
             />
             {this.renderFeedbackMessage()}
