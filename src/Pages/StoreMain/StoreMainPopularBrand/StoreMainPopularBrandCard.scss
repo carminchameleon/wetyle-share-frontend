@@ -1,0 +1,72 @@
+.StoreMainPopularBrandCard {
+  display: block;
+  margin: 0px;
+  max-height: 305px;
+  padding: 0px 0.7%;
+
+  .brand_set {
+    box-sizing: border-box;
+    max-height: 305px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(232, 235, 237, 0.5);
+    border-image: initial;
+    border-radius: 8px;
+
+    .brand_link {
+      width: 100%;
+      height: 100%;
+      .brand_img {
+        width: 638px;
+        position: relative;
+        transition: transform 0.25s ease-in-out 0s;
+        border-radius: 10px;
+      }
+    }
+    .brand_under_grey {
+      height: 25%;
+      width: 480px;
+
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      pointer-events: none;
+      background: linear-gradient(rgba(27, 29, 31, 0), rgba(27, 29, 31, 0.4));
+    }
+    .brand_info_container {
+      z-index: 1000;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      pointer-events: none;
+
+      .brand_info_box {
+        text-align: center;
+        padding: 1.5rem 1.125rem;
+
+        .brand_name {
+          font-size: 1.5rem;
+          line-height: 1.33;
+          font-weight: 700;
+          letter-spacing: -0.025rem;
+          color: rgb(255, 255, 255);
+          margin: 0px;
+        }
+
+        .brand_goods_count {
+          font-size: 1.125rem;
+          line-height: 1.38;
+          font-weight: 700;
+          letter-spacing: -0.025rem;
+          color: rgb(255, 255, 255);
+          margin: 0px;
+        }
+      }
+    }
+  }
+}
