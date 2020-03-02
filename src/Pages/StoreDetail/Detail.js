@@ -28,7 +28,7 @@ class Detail extends Component {
       imgUrl: [],
       modelNameList: [],
       modelSizeList: [],
-      userProductCount: 0,
+      userProductCount: [],
       price: 62000,
       id: 0,
       product: []
@@ -51,34 +51,7 @@ class Detail extends Component {
         });
       });
   };
-  addProductCount = () => {
-    this.setState({ userProductCount: this.state.userProductCount + 1 }, () =>
-      console.log(this.state.userProductCount)
-    );
-    this.setState(
-      { price: Number(this.state.price) + 62000 },
-      console.log(this.state.price)
-    );
 
-    // fetch("http://localhost:3000/data/data.json", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     userProductCount: "userProductCount" + 1
-    //   })
-    // });
-    // .then(res => {
-    //   return res.json();
-    // })
-    // .then(res =>
-    //   this.setState({
-    //     userProductCount: res.userProductCount
-    //   })
-    // );
-  };
   minusProductCount = () => {
     this.setState({ userProductCount: this.state.userProductCount - 1 });
     this.setState({
@@ -138,15 +111,48 @@ class Detail extends Component {
         userProductCount: this.state.userProductCount
       });
 
-      this.setState({ userCartArr: this.state.userCartArr });
-
-      //this.state.id = 1;
+      this.setState(
+        {
+          userCartArr: this.state.userCartArr,
+          modelOprion: "모델명",
+          modelSizeOption: "사이즈"
+        },
+        () => this.addProductCountArray()
+      );
     }
+  };
 
-    this.setState({
-      modelOption: "모델명",
-      modelSizeOption: "사이즈"
-    });
+  addProductCountArray = () => {
+    this.state.userProductCount.unshift(0);
+    this.setState({ userProductCount: this.state.userProductCount });
+  };
+  addProductCount = e => {
+    this.setState({ userProductCount: this.state.userProductCount + 1 }, () =>
+      console.log(this.state.userProductCount)
+    );
+    this.setState(
+      { price: Number(this.state.price) + 62000 },
+      console.log(this.state.price)
+    );
+
+    // fetch("http://localhost:3000/data/data.json", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     userProductCount: "userProductCount" + 1
+    //   })
+    // });
+    // .then(res => {
+    //   return res.json();
+    // })
+    // .then(res =>
+    //   this.setState({
+    //     userProductCount: res.userProductCount
+    //   })
+    // );
   };
 
   render() {
@@ -196,7 +202,8 @@ class Detail extends Component {
         </div>
       </li>
     ));
-    console.log(this.state.dd);
+    // console.log(this.state.dd);
+    console.log(this.state.userProductCount);
     if (this.state.product.product_color === undefined) return null;
     return (
       <body>
@@ -209,7 +216,6 @@ class Detail extends Component {
           <div className="whole_page">
             <div className="biggest_box_parent">
               <div className="biggest_box">
-                {/* <div className="biggest_margin_box"> */}
                 <div className="detail_name_parent">
                   <p height="3.99rem" className="detail_name">
                     {this.state.product.name}
