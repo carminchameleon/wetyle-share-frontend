@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./StoreMainPopularProduct.scss";
 import StoreMainPopularProductCard from "./StoreMainPopularProductCard";
+import "./StoreMainPopularProduct.scss";
 
 class StoreMainPopularProduct extends Component {
   constructor() {
@@ -8,8 +8,23 @@ class StoreMainPopularProduct extends Component {
     this.state = {
       allData: [],
       newData: [],
+      categories: [
+        "유니섹스",
+        "여성",
+        "뷰티",
+        "가방잡화",
+        "슈즈",
+        "라이프",
+        "테크",
+        "헬스앤푸드"
+      ],
       currentCategory: "all",
-      categoryIndex: ""
+      categoryIndex: "8",
+      currentTitle: "전체",
+      linePosition: "344",
+      lineWidth: "32",
+      blackColor: "rgb(38, 40, 43)",
+      greyColor: "rgb(158, 164, 170)"
     };
   }
 
@@ -29,32 +44,18 @@ class StoreMainPopularProduct extends Component {
           newData: res.data
         })
       );
+
+    this.moveline(this.state.categoryIndex);
   };
 
   selectCategory = e => {
     this.setState({
       currentCategory: "category",
-      categoryIndex: e.target.id
+      categoryIndex: e.target.id,
+      currentTitle: this.state.categories[e.target.id]
     });
-
-    // console.log(e.target.id);
-    // console.log(this.state.newData[e.target.id].data);
-
-    // const productList = this.state.newData[e.target.id].data;
-    // productList.map(el => (
-    //   <StoreMainPopularProductCard
-    //     data={el.goods}
-    //     key={el.goods.id}
-    //     discountRate={el.goods.discountRate}
-    //     picture={el.goods.picture.id}
-    //     isDiscounted={el.goods.isDiscounted}
-    //     likeCount={el.goods.likeCount}
-    //     brandName={el.goods.brand.name}
-    //     productName={el.goods.name}
-    //     price={el.goods.price}
-    //     reviewsCount={el.goods.reviewsCount}
-    //   />
-    // ));
+    this.moveline(e.target.id);
+    this.changeColor(e.target.id);
   };
 
   makeNewCate = newData => {
@@ -74,16 +75,6 @@ class StoreMainPopularProduct extends Component {
     ));
   };
 
-  // selectCategory = e => {
-  //   const currentcate = e.target.id;
-  //   fetch("http://localhost:3000/data/storemainpopularproductinfo.json")
-  //     .then(res => res.json())
-  //     .then(res => res.data[currentcate].data)
-  //     .then(res => {
-  //       console.log(res.map(el => console.log(el.goods.id)));
-  //       this.setState({ newData: res });
-  //     });
-  // };
   makeAllCate = allData => {
     return allData.map(el => (
       <StoreMainPopularProductCard
@@ -100,11 +91,37 @@ class StoreMainPopularProduct extends Component {
       />
     ));
   };
-
-  returnAllcate = () => {
+  /// 다시 전체 목록을 보여주는 함수 - 모드를 바꿔준다 //
+  backDefault = () => {
     this.setState({
-      currentCategory: "all"
+      currentCategory: "all",
+      categoryIndex: "8",
+      currentTitle: "전체"
     });
+    this.moveline(8);
+    this.changeColor(8);
+  };
+
+  ///클릭 했을 때, 제목 밑에 있는 라인 움직이게 하는 함수! ///
+  moveline = num => {
+    const position = document.getElementById(num).offsetLeft;
+    const Width = document.getElementById(num).offsetWidth;
+    this.setState({
+      linePosition: position,
+      lineWidth: Width
+    });
+  };
+  //  클릭 했을 때, 클릭된 것만 색을 바꿔주는
+  changeColor = num => {
+    let lastone = [];
+    for (let i = 0; i <= this.state.categories.length; i++) {
+      lastone.push(i);
+    }
+    lastone.splice(num, 1);
+    for (let i = 0; i <= lastone.length; i++) {
+      document.getElementById(i).style.color = "rgb(158, 164, 170)";
+    }
+    document.getElementById(num).style.color = "rgb(38, 40, 43)";
   };
 
   render() {
@@ -117,86 +134,36 @@ class StoreMainPopularProduct extends Component {
           <ol className="main_list_container">
             <li className="title_list">
               <button
-                className="title_list_button"
-                onClick={this.returnAllcate}
-                id="전체"
+                className="title_list_button_default"
+                onClick={this.backDefault}
+                id={this.state.categories.length}
               >
                 전체
               </button>
             </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="0"
-              >
-                유니섹스
-              </button>
-            </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="1"
-              >
-                여성
-              </button>
-            </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="2"
-              >
-                뷰티
-              </button>
-            </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="3"
-              >
-                가방잡화
-              </button>
-            </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="4"
-              >
-                슈즈
-              </button>
-            </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="5"
-              >
-                라이프
-              </button>
-            </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="6"
-              >
-                테크
-              </button>
-            </li>
-            <li className="title_list">
-              <button
-                className="title_list_button"
-                onClick={this.selectCategory}
-                id="7"
-              >
-                헬스앤푸드
-              </button>
-            </li>
-            <div className="title_move_line"></div>
+            {this.state.categories.map((el, index) => {
+              return (
+                <li className="title_list">
+                  <button
+                    key={index}
+                    className="title_list_button"
+                    onClick={this.selectCategory}
+                    id={index}
+                    name={el}
+                  >
+                    {el}
+                  </button>
+                </li>
+              );
+            })}
+
+            <div
+              className="title_move_line"
+              style={{
+                transform: `translate(${this.state.linePosition + 10}px, 0px)`,
+                width: `${this.state.lineWidth - 21}px`
+              }}
+            ></div>
           </ol>
 
           <div className="main_card_container">
@@ -205,15 +172,12 @@ class StoreMainPopularProduct extends Component {
               {this.state.currentCategory === "all"
                 ? this.makeAllCate(this.state.allData)
                 : this.makeNewCate(this.state.newData)}
-              {/* {this.newData > 1
-                ? this.makeNewCate(this.state.newData)
-                : this.makeAllCate(this.state.allData)} */}
             </div>
           </div>
           <div className="main_show_more_container">
             <div className="show_more_box">
               <a className="show_more" href="/categories/best?sort=score-desc">
-                전체 더보기
+                {this.state.currentTitle} 더보기
                 <img
                   className="show_more_icon"
                   src="https://image.flaticon.com/icons/svg/126/126490.svg"
