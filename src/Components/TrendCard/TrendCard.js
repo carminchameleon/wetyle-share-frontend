@@ -19,7 +19,7 @@ class TrendCard extends React.Component {
 
   componentDidMount = () => {
     this.getCardItems();
-    this.getii();
+    // this.getii();
     window.addEventListener("scroll", this.infiniteScroll, true);
   };
   componentWillUnmount = () => {
