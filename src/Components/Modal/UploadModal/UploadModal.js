@@ -88,8 +88,40 @@ class UploadModal extends Component {
                   external={externalCloseBtn}
                   className="collection_wrapper"
                   contentClassName="collection_modal"
+                  modalClassName="collection_backdrop"
                 >
-                  <div>dd</div>
+                  <div className="collection_modal">
+                    <div className="collection_modal_top">
+                      <p>콜렉션 만들기</p>
+                      <div className="collection_close_box"></div>
+                    </div>
+                    <div className="collection_modal_bottom">
+                      <div className="collection_main">
+                        <p>미리보기</p>
+                        <div className="collection_img">
+                          <div className="gradient" />
+                          <label>
+                            <input />
+                          </label>
+                          <p></p>
+                        </div>
+                      </div>
+                      <div className="collection_title">
+                        <p>제목</p>
+                        <textarea
+                          placeholder="콜렉션의 이름을 정해주세요"
+                          cols="2"
+                        ></textarea>
+                      </div>
+                      <div className="collection_title">
+                        <p>설명</p>
+                        <textarea placeholder="이 콜렉션은 어떤 내용인가요?"></textarea>
+                      </div>
+                      <div className="collection_create_wrapper">
+                        <div className="colleciont_create">만들기</div>
+                      </div>
+                    </div>
+                  </div>
                 </Modal>
               </div>
             </div>
