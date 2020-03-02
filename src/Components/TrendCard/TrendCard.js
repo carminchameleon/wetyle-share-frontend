@@ -19,24 +19,24 @@ class TrendCard extends React.Component {
 
   componentDidMount = () => {
     this.getCardItems();
-    // this.getii();
+    this.getii();
     window.addEventListener("scroll", this.infiniteScroll, true);
   };
   componentWillUnmount = () => {
     window.removeEventListener("scroll", this.infiniteScroll);
   };
-  // getii = () => {
-  //   fetch("http://10.58.3.251:8000/card/dailylook/")
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(res);
-  //     })
-  //     .then(res => {
-  //       this.setState({
-  //         original: res.data
-  //       });
-  //     });
-  // };
+  getii = () => {
+    fetch("http://10.58.3.251:8000/card/dailylook")
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+      })
+      .then(res => {
+        this.setState({
+          original: res.data
+        });
+      });
+  };
   getCardItems = () => {
     fetch("http://localhost:3000/data/trendcard.json")
       .then(res => res.json())
