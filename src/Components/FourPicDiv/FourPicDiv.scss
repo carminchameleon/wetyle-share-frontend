@@ -4,27 +4,23 @@
   margin-left: 20px;
   margin-right: 20px;
 }
-
 .whats_this_box {
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
 }
-
 .whats_this_box_text {
   display: block;
   font-size: 2em;
   font-weight: 700;
   letter-spacing: -0.0025rem;
 }
-
 .button_box {
   position: absolute;
   right: 0px;
   top: 50%;
   transform: translateY(-50%);
 }
-
 .left_button {
   cursor: pointer;
   //   font-size: 56px;
@@ -34,12 +30,10 @@
   border: none;
   outline: none;
 }
-
-.left_img_arrow {
+.left_img {
   width: 30px;
-   transform: rotate(180deg);
+  transform: rotate(180deg);
 }
-
 .right_button {
   cursor: pointer;
   color: rgb(27, 29, 31);
@@ -47,11 +41,9 @@
   border: none;
   outline: none;
 }
-
 .right_img {
   width: 30px;
 }
-
 // ********사진 카드 4개 fetch 받아오기********
 .one_of_div {
   max-width: 312px;
@@ -59,18 +51,15 @@
   padding-right: 0.25rem;
   display: flex;
 }
-
 .cardInfo {
   display: flex;
   flex-direction: column;
   padding: 0 4px;
 }
-
 .scale_photo_parent {
   overflow: hidden;
   border-radius: 8px;
 }
-
 .scale_photo {
   transform: scale(1);
   -webkit-transform: scale(1);
@@ -79,7 +68,6 @@
   -o-transform: scale(1);
   transition: all 0.25s ease-in-out 0s;
 }
-
 .scale_photo:hover {
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
@@ -87,21 +75,18 @@
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
 }
-
 .post_photo {
   width: 300px;
   height: 300px;
   //   overflow: hidden;
   border-radius: 8px;
 }
-
 .flex_row {
   display: flex;
   margin-top: 12px;
   margin-left: 0px;
   margin-right: 32px;
 }
-
 .circle_photo {
   width: 36px;
   height: 36px;
@@ -110,7 +95,6 @@
   border-width: 1px;
   border-radius: 100%;
 }
-
 .profile_photo {
   width: 36px;
   height: 36px;
@@ -119,17 +103,14 @@
   border-width: 1px;
   border-radius: 100%;
 }
-
 .flex_column {
   display: flex;
   flex-direction: column;
   margin: 0 0 0 12px;
 }
-
 .under_box_info {
   display: flex;
 }
-
 .person_nickname {
   font-size: 0.875rem;
   font-weight: 800;
@@ -139,7 +120,6 @@
   // display: none;
   margin: 0px;
 }
-
 .person_post_text {
   font-size: 0.875rem;
   font-weight: 400;
@@ -148,12 +128,10 @@
   color: rgb(27, 29, 31);
   margin-left: 1px;
 }
-
 .like_and_comment {
   display: flex;
   margin-top: 2px;
 }
-
 .like {
   font-size: 0.8125rem;
   font-weight: 400;
@@ -162,7 +140,6 @@
   color: rgb(114, 120, 127);
   margin: 0px 8px 0px 0px;
 }
-
 .comment {
   font-size: 0.8125rem;
   font-weight: 400;
@@ -171,7 +148,6 @@
   color: rgb(114, 120, 127);
   margin: 0px 8px 0px 0px;
 }
-
 .see_more_info {
   box-sizing: border-box;
   padding-top: 20px;
@@ -183,7 +159,6 @@
   -webkit-box-pack: center;
   justify-content: center;
 }
-
 .see_more_info_text {
   -webkit-box-align: center;
   align-items: center;
@@ -212,7 +187,6 @@
   border-image: initial;
   padding: 0px 1.25rem;
 }
-
 .see_more_info_text:hover {
   border: 1px solid rgb(232, 235, 237);
   background-color: rgb(247, 248, 249);
