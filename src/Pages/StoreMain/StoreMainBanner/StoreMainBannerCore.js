@@ -3,15 +3,13 @@ import "./StoreMainBannerCore.scss";
 
 class StoreMainBannerCore extends Component {
   render() {
+    console.log(this.props.data);
     let position = (this.props.index / this.props.dataLength) * 100;
 
     return (
       <div className="StoreMainBannerCore">
         <div className="ban_pic_wrapper">
-          <a
-            className="ban_pic_a"
-            href={`https://www.styleshare.kr/catalogs/${this.props.webDestination}`}
-          >
+          <a className="ban_pic_a" href={this.props.webDestination}>
             <img
               src={`https://usercontents-c.styleshare.io/images/${this.props.imageId}/1920x1080`}
               alt=""

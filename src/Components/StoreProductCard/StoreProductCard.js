@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import "./StoreMainPopularProductCard.scss";
+import "./StoreProductCard.scss";
 
-export class StoreMainPopularProductCard extends Component {
-  addComma = price => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export class StoreProductCard extends Component {
+  addComma = x => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
   render() {
-    console.log(this.props.price.toString().split(""));
-
+    console.log(this.props.webLink);
     return (
-      <div className="StoreMainPopularProductCard">
+      <div className="StoreProductCard">
         <div className="card_box_set">
           <>
             <a
@@ -64,4 +62,4 @@ export class StoreMainPopularProductCard extends Component {
   }
 }
 
-export default StoreMainPopularProductCard;
+export default StoreProductCard;
