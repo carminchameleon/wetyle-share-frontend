@@ -130,32 +130,30 @@ class Ootdcarousel extends Component {
         ></div>
         <>
           <div className="collection">
-            <div>
-              <div className="collection_title">
-                <div className="collection_tilte_inner">
-                  <p>
-                    Collected in <span>3 collections</span>
-                  </p>
-                  <div className="collection_button">
-                    <div
-                      className="collection_left"
-                      onClick={this.collectionLeft}
-                    ></div>
-                    <div
-                      className="collection_right"
-                      onClick={this.collectionRight}
-                    ></div>
-                  </div>
+            <div className="collection_title">
+              <div className="collection_tilte_inner">
+                <p>
+                  Collected in <span>3 collections</span>
+                </p>
+                <div className="collection_button">
+                  <div
+                    className="collection_left"
+                    onClick={this.collectionLeft}
+                  ></div>
+                  <div
+                    className="collection_right"
+                    onClick={this.collectionRight}
+                  ></div>
                 </div>
               </div>
-              <Slider
-                {...collectionSettings}
-                ref={ref => (this.collection = ref)}
-              >
-                {this.mapOfCollection(images.slice(10, 15))}
-                <div className="collection_more">더 보기</div>
-              </Slider>
             </div>
+            <Slider
+              {...collectionSettings}
+              ref={ref => (this.collection = ref)}
+            >
+              {this.mapOfCollection(images.slice(10, 15))}
+              <div className="collection_more">더 보기</div>
+            </Slider>
           </div>
         </>
       </>

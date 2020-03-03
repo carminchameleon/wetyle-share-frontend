@@ -9,10 +9,22 @@ import "./DailyLook.scss";
 
 class DailyLook extends Component {
   state = {
-    other: []
+    other: [],
+    cardList: [],
+    scrolling: true,
+    items: 5,
+    preItems: 0
   };
 
   componentDidMount = () => {
+    window.addEventListener("scroll", this.infiniteScroll, true);
+    this.getdd();
+    this.getCardList();
+  };
+  componentWillUnmount = () => {
+    window.removeEventListener("scroll", this.infiniteScroll);
+  };
+  getdd = () => {
     fetch("http://localhost:3000/data/other.json")
       .then(res => res.json())
       .then(res => {
@@ -21,12 +33,45 @@ class DailyLook extends Component {
         });
       });
   };
+  // 무한 스크롤 구현
+  infiniteScroll = () => {
+    let scroolHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+    let clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight + 10 > scroolHeight) {
+      this.setState({
+        scrolling: !this.state.scrolling,
+        preItems: this.state.items,
+        items: this.state.items + 5
+      });
+      this.getCardList();
+    }
+  };
+  getCardList = () => {
+    fetch("http://10.58.3.251:8000/card/dailylook/")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cardList: this.state.cardList.concat(
+            res.card_list.slice(this.state.preItems, this.state.items)
+          ),
+          scrolling: !this.state.scrolling
+        });
+      });
+  };
+
   render() {
     return (
       <div className="daily_wrapper">
         <OotdTop />
         <DaliyLookHeader other={this.state.other} />
-        <TrendCard />
+        <TrendCard data={this.state.cardList} />
         <OotdFooter />
         <UploadIcon />
       </div>

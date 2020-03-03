@@ -6,7 +6,7 @@ import autosize from "autosize";
 import Ootdcarousel from "../../Ootdcarousel/Ootdcarousel";
 import "./CardModal.scss";
 
-Modal.setAppElement("#modal");
+Modal.setAppElement("#root");
 class CardModal extends Component {
   state = {
     subtitle: "",
@@ -62,10 +62,12 @@ class CardModal extends Component {
           onRequestClose={handleCloseModal}
           overlayClassName="Overlay"
         >
-          <div className="modal_main" style={{ display: "flex" }}>
-            <div className="left_img">
-              <div className="main_img">
-                <Ootdcarousel images={this.state.imgdata} />
+          <div className="modal_main">
+            <div>
+              <div className="left_img">
+                <div className="main_img">
+                  <Ootdcarousel images={this.state.imgdata} />
+                </div>
               </div>
             </div>
 
@@ -262,6 +264,6 @@ class CardModal extends Component {
     );
   }
 }
-ReactDOM.render(<CardModal />, document.querySelector("#modal"));
+ReactDOM.render(<CardModal />, document.querySelector("#root"));
 
 export default CardModal;
