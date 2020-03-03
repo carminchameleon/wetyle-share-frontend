@@ -61,20 +61,30 @@ class Upload extends Component {
         })
       );
   };
-  handleStyleUpload = async () => {
-    fetch(`${SERVER_URL}/card/style/upload/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
-      },
-      body: JSON.stringify({
-        description: this.state.content,
-        image_url_list: this.state.resultList
-      })
-    }).then(await swal("", "스타일 업로드 완료", "success"));
-    this.props.history.goBack();
+  handleStyleUpload = () => {
+    console.log(this.state.resultList);
+    if (!this.state.content) {
+      swal("", "설명을 입력해주세요!", "error");
+    } else if (this.state.resultList.length === 0) {
+      swal("", "이미지를 업로드 해주세요!", "error");
+    } else {
+      fetch(`${SERVER_URL}/card/style/upload/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+        },
+        body: JSON.stringify({
+          description: this.state.content,
+          image_url_list: this.state.resultList
+        })
+      }).then(
+        swal("", "스타일 업로드 완료", "success").then(() => {
+          this.props.history.goBack();
+        })
+      );
+    }
   };
 
   handleRemove = () => {

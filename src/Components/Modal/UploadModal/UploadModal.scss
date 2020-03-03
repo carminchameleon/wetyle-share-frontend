@@ -184,11 +184,11 @@
   .collection_modal_bottom {
     padding: 0 15px;
     border-radius: 8px;
+
     .collection_main {
       p {
         font-size: 13px;
-        color: #72787f;
-        margin-bottom: 15px;
+        color: white;
       }
     }
 
@@ -218,11 +218,36 @@
     }
 
     .collection_img {
-      border-radius: 6px;
       position: relative;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid white;
+      background-color: #cccccc91;
       height: 280px;
-      border-radius: 20px;
-      border: 1px solid black;
+
+      .span_wrapper {
+        position: absolute;
+        left: 7.8%;
+        right: 7.8%;
+        bottom: 10.2%;
+
+        .span_inner {
+          color: white;
+          font-size: 30px;
+          font-weight: bold;
+          border: 1px solid white;
+          border-width: 4px 0;
+          border-top-width: 4px;
+          border-bottom-width: 4px;
+          padding-top: 2.5px;
+          padding-bottom: 2.5px;
+          text-align: center;
+          p {
+            font-size: 30px;
+          }
+        }
+      }
+
       .gradient {
         background: linear-gradient(
           transparent 0%,
@@ -233,14 +258,21 @@
 
       label {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 15px;
+        left: 15px;
         width: 42px;
         height: 42px;
+        background: url("../../../Img/OOTD_item_icon.png");
         background-position: 0 -1032px;
-        cursor: pointer;
-
         background-color: transparent;
+        border-radius: 50%;
+        cursor: pointer;
+        overflow: hidden;
+        transition: background-color 0.25s ease-in-out;
+
+        &:hover {
+          background-color: gray;
+        }
 
         input {
           transition: background-color 0.25s ease-in-out;

@@ -13,25 +13,33 @@ class DailyLook extends Component {
     cardList: [],
     scrolling: true,
     items: 5,
-    preItems: 0
+    preItems: 0,
+    topThree: [],
+    otherCard: []
   };
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.infiniteScroll, true);
-    this.getdd();
+    this.getTopItem();
     this.getCardList();
   };
   componentWillUnmount = () => {
     window.removeEventListener("scroll", this.infiniteScroll);
   };
-  getdd = () => {
-    fetch("http://localhost:3000/data/other.json")
+  getTopItem = () => {
+    fetch("http://10.58.3.251:8001/card/dailylook/collection/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(res => res.json())
-      .then(res => {
+      .then(res =>
         this.setState({
-          other: res.data
-        });
-      });
+          topThree: res.collection_list.slice(0, 3),
+          otherCard: res.collection_list.slice(3)
+        })
+      );
   };
   // 무한 스크롤 구현
   infiniteScroll = () => {
@@ -50,11 +58,11 @@ class DailyLook extends Component {
         preItems: this.state.items,
         items: this.state.items + 5
       });
-      this.getCardList();
+      // this.getCardList();
     }
   };
   getCardList = () => {
-    fetch("http://10.58.3.251:8000/card/dailylook/")
+    fetch("http://10.58.3.251:8001/card/dailylook/")
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -70,7 +78,10 @@ class DailyLook extends Component {
     return (
       <div className="daily_wrapper">
         <OotdTop />
-        <DaliyLookHeader other={this.state.other} />
+        <DaliyLookHeader
+          topItem={this.state.topThree}
+          otherCard={this.state.otherCard}
+        />
         <TrendCard data={this.state.cardList} />
         <OotdFooter />
         <UploadIcon />

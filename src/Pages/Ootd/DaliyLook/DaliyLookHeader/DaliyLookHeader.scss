@@ -5,7 +5,6 @@
 
   .header_inner {
     display: flex;
-    height: 100%;
 
     .left_best {
       margin-right: 20px;
@@ -218,7 +217,8 @@
           display: flex;
           align-items: center;
           padding: 0 15px;
-          margin-bottom: 10px;
+          padding-bottom: 5px;
+
           vertical-align: top;
 
           p {
@@ -276,6 +276,7 @@
       border: 1px solid #e8ebed;
       border-radius: 10px;
       height: 100%;
+
       .other_item {
         width: 200px;
         padding: 10.5px 9px;
