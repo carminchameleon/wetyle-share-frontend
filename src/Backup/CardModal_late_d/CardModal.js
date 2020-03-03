@@ -1,15 +1,13 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Modal from "react-modal";
-import autosize from "autosize";
+import React from "react";
+import { Modal } from "reactstrap";
 
-import Ootdcarousel from "../../Ootdcarousel/Ootdcarousel";
+import autosize from "autosize";
+import Ootdcarousel from "../../Components/Ootdcarousel/Ootdcarousel";
+
 import "./CardModal.scss";
 
-Modal.setAppElement("#modal");
-class CardModal extends Component {
+class CardModal extends React.Component {
   state = {
-    subtitle: "",
     collectionMove: 0,
     moadlData: [],
     imgdata: [],
@@ -50,17 +48,16 @@ class CardModal extends Component {
   };
 
   render() {
-    const { handleCloseModal, showModal } = this.props;
+    const { toggle, modal } = this.props;
     autosize(document.querySelector("textarea"));
+
     return (
       <div>
         <Modal
-          isOpen={showModal}
-          shouldCloseOnOverlayClick={true}
-          shouldCloseOnEsc={true}
-          className="card_modal"
-          onRequestClose={handleCloseModal}
-          overlayClassName="Overlay"
+          isOpen={modal}
+          toggle={toggle}
+          className="card_modal_wrapper"
+          contentClassName="card_modal"
         >
           <div className="modal_main" style={{ display: "flex" }}>
             <div className="left_img">
@@ -93,34 +90,31 @@ class CardModal extends Component {
                     }
                   ></div>
                 </div>
-                <div className="desc_wrapper">
-                  <p className="desc">
-                    블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요!
-                    모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶.. <br />
-                    <br />
-                    💟유튜브 : ANAran 아나란💟
-                    <br /> 💟인스타 : raninfanta 💟
-                    <br /> <br />
-                    <div>
-                      <a>#코디</a>
-                    </div>
-                  </p>
-                </div>
+                <p className="desc">
+                  블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요!
+                  모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
+                  조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
+                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
+                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
+                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
+                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶.. <br />
+                  <br />
+                  💟유튜브 : ANAran 아나란💟
+                  <br /> 💟인스타 : raninfanta 💟
+                  <br /> <br />
+                  <div>
+                    <a>#코디</a>
+                  </div>
+                </p>
               </div>
               <div className="like_wrapper">
                 <div className="button_group">
@@ -262,6 +256,5 @@ class CardModal extends Component {
     );
   }
 }
-ReactDOM.render(<CardModal />, document.querySelector("#modal"));
 
 export default CardModal;

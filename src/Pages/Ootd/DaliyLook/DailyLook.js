@@ -11,6 +11,7 @@ class DailyLook extends Component {
   state = {
     other: []
   };
+
   componentDidMount = () => {
     fetch("http://localhost:3000/data/other.json")
       .then(res => res.json())
