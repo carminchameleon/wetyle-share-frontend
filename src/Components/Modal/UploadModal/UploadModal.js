@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
 import { withRouter } from "react-router-dom";
-import { Modal } from "reactstrap";
+
 import "./UploadModal.scss";
 
+Modal.setAppElement("#modal");
 class UploadModal extends Component {
   state = {
     left: false,
@@ -29,26 +32,22 @@ class UploadModal extends Component {
     });
   };
   render() {
-    const { toggle, modal } = this.props;
-    const externalCloseBtn = (
-      <div
-        style={{ position: "absolute", visibility: "hidden" }}
-        onClick={toggle}
-      ></div>
-    );
+    const { showUploadModal, handleCloseModal } = this.props;
+
     return (
       <div>
         <Modal
-          isOpen={modal}
-          toggle={toggle}
-          external={externalCloseBtn}
-          className="upload_wrapper"
-          contentClassName="upload_modal"
+          isOpen={showUploadModal}
+          shouldCloseOnOverlayClick={true}
+          shouldCloseOnEsc={true}
+          className="upload_modal"
+          overlayClassName="Overlay"
+          onRequestClose={handleCloseModal}
         >
           <div className="modal_main">
             <div className="modal_top">
               <p>업로드</p>
-              <div className="close_btn" onClick={toggle}></div>
+              <div className="close_btn" onClick={handleCloseModal}></div>
             </div>
             <div className="modal_bottom">
               <div className="left_btn">
@@ -84,24 +83,32 @@ class UploadModal extends Component {
                 <p>콜렉션 만들기</p>
                 <Modal
                   isOpen={this.state.collectionModal}
-                  toggle={this.collectionToggle}
-                  external={externalCloseBtn}
-                  className="collection_wrapper"
-                  contentClassName="collection_modal"
-                  modalClassName="collection_backdrop"
+                  shouldCloseOnOverlayClick={true}
+                  shouldCloseOnEsc={true}
+                  className="collection_modal"
+                  overlayClassName="Overlay_collection"
+                  onRequestClose={this.collectionToggle}
                 >
                   <div className="collection_modal">
                     <div className="collection_modal_top">
                       <p>콜렉션 만들기</p>
-                      <div className="collection_close_box"></div>
+                      <div
+                        className="collection_close_box"
+                        onClick={this.collectionToggle}
+                      />
                     </div>
                     <div className="collection_modal_bottom">
                       <div className="collection_main">
                         <p>미리보기</p>
                         <div className="collection_img">
                           <div className="gradient" />
-                          <label>
-                            <input />
+                          <label for="file">
+                            <input
+                              type="file"
+                              id="file"
+                              alt="img"
+                              accept=".png, .jpg, .jpeg"
+                            />
                           </label>
                           <p></p>
                         </div>
@@ -132,4 +139,5 @@ class UploadModal extends Component {
   }
 }
 
+ReactDOM.render(<UploadModal />, document.querySelector("#modal"));
 export default withRouter(UploadModal);
