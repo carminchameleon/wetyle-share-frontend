@@ -1,11 +1,3 @@
-.invalid-feedback {
-  position: absolute;
-  bottom: 10px;
-  right: 5px;
-  color: red;
-  font-size: 12px;
-}
-
 .signup_main_left {
   flex-basis: 50%;
   padding-right: 20px;
@@ -14,6 +6,21 @@
   .input_wrapper {
     position: relative;
     display: block;
+    .invalid-feedback,
+    .short_id {
+      color: red;
+      font-size: 12px;
+      position: absolute;
+      bottom: 10px;
+      right: 5px;
+    }
+    .short_pwd {
+      color: red;
+      font-size: 12px;
+      position: absolute;
+      bottom: 50px;
+      right: 5px;
+    }
 
     .info_input1,
     .info_input {
