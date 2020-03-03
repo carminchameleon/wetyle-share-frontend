@@ -2,8 +2,27 @@ import React, { Component } from "react";
 import "./StoreMainBannerCore.scss";
 
 class StoreMainBannerCore extends Component {
+  splitFirst = sentence => {
+    const position = sentence.indexOf("\r\n");
+    const first = sentence.slice(0, position);
+    return first;
+  };
+
+  splitSecond = sentence => {
+    const position = sentence.indexOf("\r\n");
+    const second = sentence.slice(position + 2);
+    return second;
+  };
+
   render() {
-    console.log(this.props.data);
+    let text1 = this.splitFirst(this.props.text);
+    let text2 = this.splitSecond(this.props.text);
+    let subText1 = this.splitFirst(this.props.subText);
+    let subText2 = this.splitSecond(this.props.subText);
+    console.log("시범적", text1);
+    console.log(text2);
+    console.log(subText1);
+    console.log(subText2);
     let position = (this.props.index / this.props.dataLength) * 100;
 
     return (
@@ -22,9 +41,9 @@ class StoreMainBannerCore extends Component {
             <div className="right_box">
               <div className="text_box">
                 <div className="text" style={{ color: this.props.colorCode }}>
-                  {this.props.text1}
+                  {text1}
                   <br></br>
-                  {this.props.text2}
+                  {text2}
                 </div>
               </div>
               <div className="subtext_box">
@@ -32,9 +51,9 @@ class StoreMainBannerCore extends Component {
                   className="subtext"
                   style={{ color: this.props.colorCode }}
                 >
-                  {this.props.subText1}
+                  {subText1}
                   <br></br>
-                  {this.props.subText2}
+                  {subText2}
                 </div>
               </div>
             </div>
