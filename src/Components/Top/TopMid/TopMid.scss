@@ -1,14 +1,14 @@
 .top_mid {
   .search_off {
-
     opacity: 1;
-    transition: opacity .8s ease;
+    transition: opacity 0.8s ease;
   }
 
   .top_mid_wrapper {
     display: flex;
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
+    // margin-top: 19px;
 
     a {
       text-decoration: none;
@@ -23,7 +23,7 @@
       color: black;
 
       &:hover {
-        opacity: 0.3;
+        color: rgb(158, 164, 170);
         cursor: pointer;
         transition-duration: 0.3s;
       }

@@ -12,6 +12,7 @@ import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import SignupInfo from "./Pages/SignupInfo/SignupInfo";
 
+// import SigninNext from "./Pages/SigninNext/SigninNext";
 import StoreMain from "./Pages/StoreMain/StoreMain";
 import Detail from "./Pages/StoreDetail/Detail.js";
 import Hot from "./Pages/Ootd/Hot/Hot";
@@ -30,6 +31,8 @@ function Routes() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signupinfo" component={SignupInfo} />
+
+        {/* <Route exact path="/signinnext" component={SigninNext} /> */}
         <Route exact path="/storemain" component={StoreMain} />
         <Route exact path="/detail" component={Detail} />
         <Route exact path="/feed/hot" component={Hot} />

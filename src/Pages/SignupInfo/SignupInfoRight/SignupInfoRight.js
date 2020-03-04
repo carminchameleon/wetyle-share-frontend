@@ -6,6 +6,7 @@ import TopMid from "Components/Top/TopMid/TopMid";
 
 class SignupInfoRight extends Component {
   state = {
+
     id: "",
     pwd: "",
     pwdfocus: false,
@@ -15,15 +16,47 @@ class SignupInfoRight extends Component {
     year: "",
     month: "",
     day: ""
+
+    year: "",
+    month: "",
+    day: "",
+    regexp: /^[0-9\b]+$/
+
   };
-  // doneSignup = () => {
-  //   console.log(sessionStorage.getItem("login_id"));
-  // };
+
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+
+
+  handleYear = e => {
+    let year = e.target.value;
+
+    if (year === "" || this.state.regexp.test(year)) {
+      this.setState({ [e.target.name]: year });
+    }
+  };
+
+  handleMonth = e => {
+    let month = e.target.value;
+
+    if (month === "" || this.state.regexp.test(month)) {
+      this.setState({ [e.target.name]: month });
+    }
+  };
+
+  handleDay = e => {
+    let day = e.target.value;
+
+    if (day === "" || this.state.regexp.test(day)) {
+      this.setState({ [e.target.name]: day });
+    }
+  };
+
+
   render() {
     console.log(this.props);
     return (
@@ -136,13 +169,15 @@ class SignupInfoRight extends Component {
               <span className="box_title two_words">생일</span>
               <input
                 className="birthdate year"
+                name="year"
+                value={this.state.year}
+                onChange={this.handleYear}
                 type="text"
                 maxLength="4"
                 name="year"
                 value={this.state.year}
                 onChange={this.handleChange}
                 onFocus={this.handleFocusCheck}
-                // onChange={this.handleLoginCheck}
               />
               년
               <div className="bd_month">
@@ -152,7 +187,10 @@ class SignupInfoRight extends Component {
                   maxLength="2"
                   name="month"
                   value={this.state.month}
+
                   onChange={this.handleChange}
+
+
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />
@@ -164,8 +202,13 @@ class SignupInfoRight extends Component {
                   type="text"
                   maxLength="2"
                   name="day"
+
                   onChange={this.handleChange}
                   value={this.state.day}
+
+              
+             
+
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />
