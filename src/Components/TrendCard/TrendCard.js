@@ -1,327 +1,50 @@
 import React from "react";
 
+import CardModal from "../Modal/CardModal/CardModal";
+
 import "./TrendCard.scss";
-import Modal from "../Modal";
 
 document.title = "스타일쉐어";
 class TrendCard extends React.Component {
   state = {
     isModalOpen: false,
     datas: [],
-    items: 50,
+    items: 5,
     preItems: 0,
     scrolling: true,
-
-    data: [
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43771287/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      },
-      {
-        date: "20.02.23",
-        main_url:
-          "https://usercontents-c.styleshare.io/images/43768372/436x436",
-        user: [
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "넘나블리",
-            user_comment:
-              "생각보다 여러분이 너무 좋아해주셔서 보정합니다 여러분들의 희망을 너무 좋아합니다  희망을 너무 좋아합니다  희망을 너무 좋아합니다",
-            likes: "255",
-            balloon: "20",
-            share: "13"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "kanati",
-            user_comment: "담아가요🔥"
-          },
-          {
-            user_icon:
-              "https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png",
-            user_nick: "asdsa2",
-            user_comment: "정보좀요"
-          }
-        ]
-      }
-    ]
+    select: "",
+    modal: false,
+    original: [],
+    showModal: false
   };
 
   componentDidMount = () => {
-    this.getItemsExample();
+    this.getCardItems();
+    this.getii();
     window.addEventListener("scroll", this.infiniteScroll, true);
   };
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     window.removeEventListener("scroll", this.infiniteScroll);
-  }
-
-  // 아이템 받아오기
-  getItemsExample = () => {
-    fetch("https://picsum.photos/list")
+  };
+  getii = () => {
+    fetch("http://10.58.3.251:8000/card/dailylook")
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+      })
+      .then(res => {
+        this.setState({
+          original: res.data
+        });
+      });
+  };
+  getCardItems = () => {
+    fetch("http://localhost:3000/data/trendcard.json")
       .then(res => res.json())
       .then(res => {
         this.setState({
           datas: this.state.datas.concat(
-            res.slice(this.state.preItems, this.state.items)
+            res.data.slice(this.state.preItems, this.state.items)
           ),
           scrolling: !this.state.scrolling
         });
@@ -330,25 +53,67 @@ class TrendCard extends React.Component {
 
   // 무한 스크롤 구현
   infiniteScroll = () => {
-    if (
-      document.documentElement.scrollTop +
-        document.documentElement.clientHeight ===
-      document.documentElement.scrollHeight
-    ) {
+    let scroolHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+    let clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight + 10 > scroolHeight) {
       this.setState({
         scrolling: !this.state.scrolling,
         preItems: this.state.items,
-        items: this.state.items + 50
+        items: this.state.items + 5
       });
-      this.getItemsExample();
+      this.getCardItems();
     }
   };
 
+  handleOpenModal = () => {
+    document.body.style.overflow = "hidden";
+    this.setState({ showModal: true });
+  };
+
+  handleCloseModal = () => {
+    document.body.style.overflow = "visible";
+    this.setState({ showModal: false });
+  };
   marOfTrend = data => {
     return data.map((ele, idx) => (
-      <div key={idx} onClick={this.openModal}>
+      <div key={idx} onClick={this.handleOpenModal}>
         <div className="trend_item">
-          <img className="trend_item_img" src={ele.main_url} alt="main_img" />
+          <div className="trend_item_img_wrapper">
+            {ele.main_url ? <div className="more_img"></div> : ""}
+            <img
+              className="trend_item_img"
+              src={ele.main_url}
+              alt="main_img"
+              onMouseOver={() => {
+                this.setState({
+                  select: `${idx} img_hover`
+                });
+              }}
+              onMouseOut={() => {
+                this.setState({
+                  select: null
+                });
+              }}
+            />
+            {this.state.select === `${idx} img_hover` ? (
+              <div className={`${idx} img_hover`}>
+                <div className="like"></div>
+                <div className="comment"></div>
+                <div className="share"></div>
+                <div className="more"></div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+
           <div className="trend_information">
             <img
               className="user_icon"
@@ -379,28 +144,28 @@ class TrendCard extends React.Component {
                 </div>
               </div>
             </div>
-            <div>
-              <div className="other_user">
-                <img
-                  className="user_icon"
-                  src={ele.user[1].user_icon}
-                  alt="icon"
-                />
-                <div>
-                  <a>{ele.user[2].user_nick}</a>
-                  {ele.user[1].user_comment}
-                </div>
+          </div>
+          <div className="ohter_group">
+            <div className="other_user">
+              <img
+                className="user_icon"
+                src={ele.user[1].user_icon}
+                alt="icon"
+              />
+              <div>
+                <a>{ele.user[2].user_nick}</a>
+                {ele.user[1].user_comment}
               </div>
-              <div className="other_user">
-                <img
-                  className="user_icon"
-                  src={ele.user[2].user_icon}
-                  alt="icon"
-                />
-                <div>
-                  <a>{ele.user[2].user_nick}</a>
-                  {ele.user[2].user_comment}
-                </div>
+            </div>
+            <div className="other_user">
+              <img
+                className="user_icon"
+                src={ele.user[2].user_icon}
+                alt="icon"
+              />
+              <div>
+                <a>{ele.user[2].user_nick}</a>
+                {ele.user[2].user_comment}
               </div>
             </div>
           </div>
@@ -408,47 +173,34 @@ class TrendCard extends React.Component {
       </div>
     ));
   };
-  openModal = () => {
-    this.setState({ isModalOpen: true });
-  };
 
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
-  };
-  // mapofExample = datas => {
-  //   return datas.map((datas, idx) => <div key={idx}>{datas.author}</div>);
-  // };
   render() {
     return (
-      <div className="hot_wrapper">
-        <Modal isOpen={this.state.isModalOpen} close={this.closeModal} />
-        <header style={{ zIndex: "-1" }}>
-          <ol>
-            <li>인기</li>
-            <li>데일리룩</li>
-            <li>뷰티</li>
-            <li>최신</li>
-            <li>QnA</li>
-            <li>팔로잉</li>
-          </ol>
-        </header>
-
-        <div className="trend_wrapper">
-          <div>
+      <div>
+        <CardModal
+          showModal={this.state.showModal}
+          handleOpenModal={this.handleOpenModal}
+          handleCloseModal={this.handleCloseModal}
+        />
+        <div className="trend_card_wrapper">
+          <div className="trend_wrapper">
             <p className="trend_title">지금의 트렌드</p>
+            <div className="trend_body">
+              {this.marOfTrend(this.state.datas)}
+            </div>
           </div>
-          <div className="trend_body">{this.marOfTrend(this.state.data)}</div>
+
+          {this.state.scrolling ? (
+            <div className="loading_more">
+              <img
+                alt="loading"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///4CAgODg4KCgoICAgLCwsMDAwMjIyCH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
-        {this.state.scrolling ? (
-          <div className="loading_more">
-            <img
-              alt="loading"
-              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///4CAgODg4KCgoICAgLCwsMDAwMjIyCH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-            />
-          </div>
-        ) : (
-          ""
-        )}
       </div>
     );
   }

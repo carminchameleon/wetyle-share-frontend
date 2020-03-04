@@ -1,36 +1,3 @@
-.detail_mold {
-  width: 740px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.detail_inside_mold {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 780px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.btn_of_detail_product {
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-left: 0px;
-  padding-right: 0px;
-  width: 740px;
-
-  padding-top: 16px;
-  padding-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgb(232, 235, 237);
-}
-.text_of_detail_btn {
-  font-size: 1.5rem;
-  line-height: 1.33;
-  display: inline;
-  font-weight: 700;
-}
 .see_more_detail_arrow {
   width: 23px;
   height: 23px;
@@ -107,18 +74,18 @@
   border-top: 1px solid rgba(232, 235, 237, 0.5);
 }
 // 교환 및 환불*******************
-.change_refund_arrow_down {
-  transform: rotate(0deg);
-  transition: transform 0.25s ease-in-out 0s;
-  width: 23px;
-  height: 23px;
-}
-.change_refund_arrow_up {
-  transform: rotate(180deg);
-  transition: transform 0.25s ease-in-out 0s;
-  width: 23px;
-  height: 23px;
-}
+// .change_refund_arrow_down {
+//   transform: rotate(0deg);
+//   transition: transform 0.25s ease-in-out 0s;
+//   width: 23px;
+//   height: 23px;
+// }
+// .change_refund_arrow_up {
+//   transform: rotate(180deg);
+//   transition: transform 0.25s ease-in-out 0s;
+//   width: 23px;
+//   height: 23px;
+// }
 // ****************************************
 .detail_column {
   max-height: 100vh;
@@ -130,10 +97,8 @@
   transition: max-height 500ms ease-in-out 0s;
   overflow: hidden;
 }
-// .not_see_more_detail_column {
-//   max-height: 1000px;
-// }
-.see_more_detail_column {
+
+.not_see_more_detail_column {
   max-height: 100vh;
   transition: max-height 500ms ease-in-out 0s;
   overflow: hidden;

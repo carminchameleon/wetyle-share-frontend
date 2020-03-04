@@ -1,0 +1,37 @@
+.top_mid {
+  .search_off {
+
+    opacity: 1;
+    transition: opacity .8s ease;
+  }
+
+  .top_mid_wrapper {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+    }
+
+    .mid {
+      padding: 10px 12px;
+      font-weight: bolder;
+      font-size: 18px;
+      letter-spacing: initial;
+      opacity: 1;
+      color: black;
+
+      &:hover {
+        opacity: 0.3;
+        cursor: pointer;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  .search_on {
+    display: block;
+    opacity: 0;
+  }
+}

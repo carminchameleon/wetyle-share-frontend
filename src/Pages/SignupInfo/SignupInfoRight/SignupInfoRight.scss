@@ -1,0 +1,170 @@
+.signup_info_right {
+  flex-basis: 65%;
+  padding-left: 20px;
+
+  ul {
+    margin: 0;
+    list-style: none;
+
+    li {
+      margin-bottom: 15px;
+
+      button {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        width: 100%;
+        // box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 4px 0px;
+        cursor: pointer;
+        font-size: 15px;
+        line-height: 1;
+        color: white;
+        background-color: rgb(69, 100, 163);
+        border-radius: 6px;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        outline: none;
+
+        svg {
+          height: 20px;
+          margin: 12px;
+        }
+
+        div {
+          border-left: 1px solid rgb(41, 67, 125);
+          width: 100%;
+          padding: 14px 0px;
+        }
+      }
+    }
+  }
+  .info_box_wrapper {
+    .info_box {
+      border: 1px solid #c7c8c9;
+      border-radius: 6px;
+      width: 370px;
+      height: 173px;
+      background-color: white;
+      // &:focus {
+      //   outline: none;
+      //   border-color: rgb(74, 218, 175);
+      // }
+      .box {
+        border-bottom: 1px solid #c7c8c9;
+        padding: 16px;
+        height: 10px;
+        display: flex;
+        align-items: center;
+        .box_title {
+          padding-right: 15px;
+          text-align: left;
+          color: #26282b;
+        }
+        .two_words {
+          padding-right: 30px;
+        }
+        .birthdate {
+          border-radius: 6px;
+          // padding: 16px 0
+        }
+        .year {
+          width: 60px;
+          text-align: center;
+        }
+        .bd_month,
+        .bd_day {
+          padding-left: 20px;
+        }
+        .month,
+        .day {
+          width: 30px;
+          padding-left: 10px;
+          text-align: center;
+        }
+        .gender_woman {
+          padding-left: 30px;
+        }
+        .person {
+          width: 80%;
+          font-size: 16px;
+          border: 0;
+          &:focus {
+            outline: none;
+            border-color: rgb(74, 218, 175);
+          }
+        }
+      }
+      .last_box {
+        // border-bottom: 1px solid #c7c8c9;
+        padding: 16px;
+        height: 10px;
+        display: flex;
+        align-items: center;
+        outline: none;
+        .box_title {
+          padding-right: 15px;
+          text-align: left;
+          color: #26282b;
+        }
+        .two_words {
+          padding-right: 30px;
+        }
+        .birthdate {
+          border-radius: 6px;
+          // padding: 16px 0
+        }
+        .year {
+          width: 60px;
+          text-align: center;
+        }
+        .bd_month,
+        .bd_day {
+          padding-left: 20px;
+        }
+        .month,
+        .day {
+          width: 30px;
+          padding-left: 10px;
+          text-align: center;
+        }
+        .gender_woman {
+          padding-left: 30px;
+        }
+        .person {
+          width: 80%;
+          font-size: 16px;
+          border: 0;
+        }
+      }
+      // .last_box {
+      //   padding: 16px;
+      //   height: 10px;
+      //   display: flex;
+      //   align-items: center;
+      // }
+    }
+  }
+  .policy {
+    font-size: 7px;
+    text-align: left;
+    padding-top: 10px;
+    u {
+      cursor: pointer;
+      color: #4190f2;
+    }
+  }
+  .done {
+    width: 150px;
+    height: 45px;
+    margin: 30px 0 0;
+    cursor: pointer;
+    background-color: #4adaaf;
+    border-color: #4adaaf;
+    color: white;
+    font-weight: bolder;
+    border-radius: 6px;
+    float: right;
+  }
+}

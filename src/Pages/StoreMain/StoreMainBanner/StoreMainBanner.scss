@@ -1,0 +1,126 @@
+.StoreMainBanner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .scroll_container {
+    cursor: pointer;
+    position: absolute;
+    left: calc(50% - 32px);
+    bottom: 78px;
+    background-color: transparent;
+    user-select: none;
+    border-width: 0px;
+
+    padding: 0px;
+    margin: 0px;
+
+    .scroll_text {
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: color 0.25s ease-in-out 0s;
+      box-sizing: border-box;
+      color: #1b1d1f;
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 1.43;
+      letter-spacing: -0.025rem;
+      margin: 0px;
+    }
+
+    .scroll_circle {
+      box-sizing: border-box;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      border-width: 1px;
+      border-style: solid;
+      border-image: initial;
+      border-color: #1b1d1f;
+      border-radius: 100%;
+    }
+
+    .scroll_button {
+      height: 60%;
+      width: 60%;
+    }
+  }
+
+  .left_arrow_container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    top: 40%;
+    width: 50%;
+    height: 80px;
+
+    .left_empty {
+      width: 100%;
+      height: 100%;
+      max-width: 640px;
+    }
+    .left_box {
+      margin-right: 24px;
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      opacity: 0.3;
+      pointer-events: auto;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+
+      .left_button {
+        width: 60%;
+        height: 69%;
+      }
+    }
+  }
+
+  .right_arrow_container {
+    z-index: 10000;
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    top: 40%;
+    left: 50%;
+    width: 50%;
+    height: 80px;
+    .right_empty {
+      width: 100%;
+      height: 100%;
+      max-width: 640px;
+    }
+    .right_box {
+      margin-left: 24px;
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      opacity: 0.3;
+      pointer-events: auto;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+
+      .right_button {
+        width: 60%;
+        height: 69%;
+      }
+    }
+  }
+}
