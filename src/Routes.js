@@ -22,6 +22,7 @@ import New from "./Pages/Ootd/New/New";
 import Qna from "./Pages/Ootd/Qna/Qna";
 import Myhome from "./Pages/Ootd/Myhome/Myhome";
 import Upload from "./Pages/Ootd/Upload/Upload";
+import StoreMainTrend from "./Pages/StoreMain/Trend/StoreMainTrend";
 
 function Routes() {
   return (
@@ -42,6 +43,7 @@ function Routes() {
         <Route exact path="/feed/qna" component={Qna} />
         <Route exact path="/feed/my-home" component={Myhome} />
         <Route exact path="/upload" component={Upload} />
+        <Route exact path="/storemaintrend" component={StoreMainTrend} />
         <Redirect to="/error" />
       </Switch>
     </Router>

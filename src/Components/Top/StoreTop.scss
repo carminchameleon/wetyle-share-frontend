@@ -6,6 +6,9 @@
   height: 64px;
   box-shadow: 2px 0 10px #e6e6e6;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .top_wrapper {
     display: flex;
     justify-content: space-between;
@@ -44,8 +47,6 @@
   }
   .mid_wrapper {
     display: flex;
-
-    margin-top: 19px;
   }
 }
 

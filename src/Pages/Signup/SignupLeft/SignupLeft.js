@@ -66,7 +66,7 @@ class SignupLeft extends Component {
       // sessionStorage.setItem("login_id", this.state.id)
       // sessionStorage.setItem("password", this.state.pwd)
     };
-    fetch("http://10.58.4.29:8000/user/sign-up/checkid", {
+    fetch("http://10.58.2.91:8000/user/sign-up/checkid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -76,8 +76,14 @@ class SignupLeft extends Component {
       .then(res => res.json())
       // .then(console.log("dddd"))
       .then(res => {
-        if (res.token) {
-          localStorage.setItem("token", res.token);
+        if (res.message === "existing email") {
+          alert("이미 존재하는 id/email입니다.");
+        } else if (res.message === "invalid email") {
+          alert("이메일 형식을 확인해주세요.");
+        } else if (this.state.pwd !== this.state.pwdcheck) {
+          alert("비밀번호를 확인해주세요");
+        } else {
+          this.props.history.push("/signupinfo");
         }
       });
     sessionStorage.setItem("login_id", this.state.id);

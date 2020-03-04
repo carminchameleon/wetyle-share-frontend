@@ -42,7 +42,7 @@ class LoginLeft extends Component {
       email: this.state.id
     };
 
-    fetch("http://10.58.4.29:8000/user/sign-in/checkid", {
+    fetch("http://10.58.2.91:8000/user/sign-in/checkid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -54,7 +54,11 @@ class LoginLeft extends Component {
       .then(res => {
         if (res.token) {
           localStorage.setItem("token", res.token);
+          this.props.history.push("/");
+        } else {
+          alert("아이디 혹은 비밀번호를 확인해주세요.");
         }
+        return res;
       });
   };
 
