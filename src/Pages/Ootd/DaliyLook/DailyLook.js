@@ -9,24 +9,81 @@ import "./DailyLook.scss";
 
 class DailyLook extends Component {
   state = {
-    other: []
+    other: [],
+    cardList: [],
+    scrolling: true,
+    items: 5,
+    preItems: 0,
+    topThree: [],
+    otherCard: []
   };
 
   componentDidMount = () => {
-    fetch("http://localhost:3000/data/other.json")
+    window.addEventListener("scroll", this.infiniteScroll, true);
+    this.getTopItem();
+    this.getCardList();
+  };
+  componentWillUnmount = () => {
+    window.removeEventListener("scroll", this.infiniteScroll);
+  };
+  getTopItem = () => {
+    fetch("http://10.58.2.111:8000/card/dailylook/collection", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(res =>
+        this.setState({
+          topThree: res.collection_list.slice(0, 3),
+          otherCard: res.collection_list.slice(3)
+        })
+      );
+  };
+  // 무한 스크롤 구현
+  infiniteScroll = () => {
+    let scroolHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+    let clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight + 10 > scroolHeight) {
+      this.setState({
+        scrolling: !this.state.scrolling,
+        preItems: this.state.items,
+        items: this.state.items + 5
+      });
+      // this.getCardList();
+    }
+  };
+  getCardList = () => {
+    fetch("http://10.58.2.111:8000/card/dailylook")
       .then(res => res.json())
       .then(res => {
         this.setState({
-          other: res.data
+          cardList: this.state.cardList.concat(
+            res.card_list.slice(this.state.preItems, this.state.items)
+          ),
+          scrolling: !this.state.scrolling
         });
       });
   };
+
   render() {
     return (
       <div className="daily_wrapper">
         <OotdTop />
-        <DaliyLookHeader other={this.state.other} />
-        <TrendCard />
+        <DaliyLookHeader
+          topItem={this.state.topThree}
+          otherCard={this.state.otherCard}
+          getTopItem={this.getTopItem}
+        />
+        <TrendCard data={this.state.cardList} />
         <OotdFooter />
         <UploadIcon />
       </div>
