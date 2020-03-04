@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
-import { SERVER_URL } from "../../../config";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -16,7 +15,8 @@ class UploadModal extends Component {
     collection_title: "",
     collectoin_desc: "",
     collection_url: null,
-    collection_file: null
+    collection_file: null,
+    resultList: []
   };
   leftToggle = () => {
     this.setState({
@@ -63,7 +63,6 @@ class UploadModal extends Component {
         this.handlePost();
       }
     );
-
     reader.onloadend = e => {
       this.setState({
         collection_url: e.target.result
@@ -74,20 +73,31 @@ class UploadModal extends Component {
     const formData = new FormData();
     formData.append("filename", this.state.collection_file);
 
-    fetch(`${SERVER_URL}/card/style/upload/image/`, {
+    fetch(`http://10.58.2.111:8000/card/upload/image`, {
       method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+      },
       body: formData
     })
       .then(res => res.json())
+      .then(res =>
+        this.setState({
+          resultList: this.state.resultList.concat(res.image_url_list)
+        })
+      )
       .then(res => console.log(res));
   };
-  handleStyleUpload = () => {
-    if (!this.state.collectoin_desc) {
-      swal("", "콜렉션 설명을 입력해주세요!", "error");
-    } else if (this.state.collection_url) {
+  handleCollectionUpload = () => {
+    if (!this.state.collection_title) {
+      swal("", "콜렉션 이름을 입력해주세요!", "error");
+    } else if (!this.state.collectoin_desc) {
+      swal("", "콜렉션 설명d을 입력해주세요!", "error");
+    } else if (!this.state.collection_url) {
       swal("", "이미지를 업로드 해주세요!", "error");
     } else {
-      fetch(`${SERVER_URL}/card/style/upload/`, {
+      fetch(`http://10.58.2.111:8000/card/collection/upload`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,12 +105,13 @@ class UploadModal extends Component {
             "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
         },
         body: JSON.stringify({
+          name: this.state.collection_title,
           description: this.state.collectoin_desc,
-          image_url_list: this.state.collection_url
+          image_url: this.state.resultList
         })
       }).then(
-        swal("", "스타일 업로드 완료", "success").then(() => {
-          this.props.history.goBack();
+        swal("", "컬렉션 업로드 완료", "success").then(() => {
+          this.props.handleCloseModal();
         })
       );
     }
@@ -174,8 +185,8 @@ class UploadModal extends Component {
                     <div className="collection_modal_bottom">
                       <div className="collection_main">
                         <p>미리보기</p>
+
                         <div className="collection_img">
-                          <div className="gradient" />
                           <label for="file" onChange={this.handleChangeFile}>
                             <input
                               type="file"
@@ -184,6 +195,7 @@ class UploadModal extends Component {
                               accept=".png, .jpg, .jpeg"
                             />
                           </label>
+
                           <div className="span_wrapper">
                             <div className="span_inner">
                               <p>
@@ -193,6 +205,11 @@ class UploadModal extends Component {
                               </p>
                             </div>
                           </div>
+                          {this.state.collection_url ? (
+                            <img src={this.state.collection_url} alt="img" />
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                       <div className="collection_title">
@@ -215,8 +232,13 @@ class UploadModal extends Component {
                       </div>
                       <div className="collection_create_wrapper">
                         <div
-                          className="colleciont_create"
-                          onClick={this.handleStyleUpload}
+                          className={
+                            this.state.collection_title &&
+                            this.state.collectoin_desc
+                              ? "collection_icon_active"
+                              : "colleciont_create"
+                          }
+                          onClick={this.handleCollectionUpload}
                         >
                           만들기
                         </div>

@@ -27,7 +27,7 @@ class DailyLook extends Component {
     window.removeEventListener("scroll", this.infiniteScroll);
   };
   getTopItem = () => {
-    fetch("http://10.58.3.251:8001/card/dailylook/collection/", {
+    fetch("http://10.58.2.111:8000/card/dailylook/collection", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -62,7 +62,7 @@ class DailyLook extends Component {
     }
   };
   getCardList = () => {
-    fetch("http://10.58.3.251:8001/card/dailylook/")
+    fetch("http://10.58.2.111:8000/card/dailylook")
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -81,6 +81,7 @@ class DailyLook extends Component {
         <DaliyLookHeader
           topItem={this.state.topThree}
           otherCard={this.state.otherCard}
+          getTopItem={this.getTopItem}
         />
         <TrendCard data={this.state.cardList} />
         <OotdFooter />

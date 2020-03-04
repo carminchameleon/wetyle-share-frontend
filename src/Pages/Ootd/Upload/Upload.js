@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { SERVER_URL } from "../../../config";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -50,25 +49,29 @@ class Upload extends Component {
     const formData = new FormData();
     formData.append("filename", this.state.url);
 
-    fetch(`${SERVER_URL}/card/style/upload/image/`, {
+    fetch("http://10.58.2.111:8000/card/upload/image", {
       method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+      },
       body: formData
     })
       .then(res => res.json())
       .then(res =>
         this.setState({
-          resultList: this.state.resultList.concat(res.message)
+          resultList: this.state.resultList.concat(res.image_url_list)
         })
-      );
+      )
+      .then(res => console.log(this.state.resultList));
   };
   handleStyleUpload = () => {
-    console.log(this.state.resultList);
     if (!this.state.content) {
       swal("", "설명을 입력해주세요!", "error");
     } else if (this.state.resultList.length === 0) {
       swal("", "이미지를 업로드 해주세요!", "error");
     } else {
-      fetch(`${SERVER_URL}/card/style/upload/`, {
+      fetch("http://10.58.2.111:8000/card/style/upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +80,7 @@ class Upload extends Component {
         },
         body: JSON.stringify({
           description: this.state.content,
-          image_url_list: this.state.resultList
+          image_url_list: this.state.resultList.filter(data => data !== null)
         })
       }).then(
         swal("", "스타일 업로드 완료", "success").then(() => {
@@ -85,12 +88,6 @@ class Upload extends Component {
         })
       );
     }
-  };
-
-  handleRemove = () => {
-    this.setState({
-      visiList: []
-    });
   };
 
   handleChange = e => {
@@ -104,6 +101,7 @@ class Upload extends Component {
       select: null
     });
   };
+
   mapOfImg = data => {
     return data.map((ele, idx) => (
       <div className="img_wrapper" key={idx}>
@@ -127,7 +125,10 @@ class Upload extends Component {
               });
             }}
             onMouseOut={this.handleCloseHide}
-            onClick={this.handleRemove}
+            onClick={() => {
+              delete this.state.visiList[idx];
+              delete this.state.resultList[idx];
+            }}
           >
             X
           </div>
@@ -147,12 +148,13 @@ class Upload extends Component {
               <div className="picture">
                 <p>스타일 이미지</p>
                 <div className="picture_upload">
-                  {this.mapOfImg(this.state.visiList)}
-                  <label for="ex_file" onChange={this.handleChangeFile}>
+                  {this.state.visiList.length > 0 &&
+                    this.mapOfImg(this.state.visiList)}
+                  <label for="upload_file" onChange={this.handleChangeFile}>
                     <div className="plus_icon" />
                     <input
                       type="file"
-                      id="ex_file"
+                      id="upload_file"
                       name="myFile"
                       accept=".png, .jpg, .jpeg"
                     />

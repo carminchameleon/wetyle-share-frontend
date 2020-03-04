@@ -3,6 +3,11 @@ import React, { Component } from "react";
 import "./DaliyLookHeader.scss";
 
 class DaliyLookHeader extends Component {
+  state = {
+    follower: false,
+    follower1: false,
+    followUp: 0
+  };
   mapOfOtherItem = other => {
     return other.map((ele, idx) => (
       <div className="other_item" key={idx}>
@@ -14,9 +19,22 @@ class DaliyLookHeader extends Component {
       </div>
     ));
   };
+  handleFollowerAdd = () => {
+    fetch(
+      `http://10.58.2.111:8000/card/collection/follow/${this.state.followUp}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+        }
+      }
+    ).then(this.props.getTopItem);
+  };
   render() {
     const { topItem, otherCard } = this.props;
-    console.log(otherCard, topItem);
+    // if (topItem[0]) return null;
     return (
       <div className="header_wrapper">
         <div className="header_inner">
@@ -25,7 +43,7 @@ class DaliyLookHeader extends Component {
               <div className="gradient"></div>
               <div className="left_info">
                 <div className="left_info_title">
-                  <p>{topItem[0] ? topItem[0].description : ""}</p>
+                  <p>{topItem[0] ? topItem[0].collection_name : ""}</p>
                 </div>
                 <div className="left_info_sub">
                   <p>{topItem[0] ? topItem[0].description : ""}</p>
@@ -36,9 +54,7 @@ class DaliyLookHeader extends Component {
               <div className="profile_icon"></div>
               <div className="profile_nick">
                 <p className="desc1">by</p>
-                <p className="desc2">
-                  {topItem[0] ? topItem[0].collection_name : ""}
-                </p>
+                <p className="desc2">{topItem[0] ? topItem[0].nickname : ""}</p>
               </div>
               <div className="count_box">
                 <div className="style_count">
@@ -64,12 +80,18 @@ class DaliyLookHeader extends Component {
           <div className="second_item">
             <div className="top_img">
               <div className="gradient"></div>
-              <p>{topItem[1] ? topItem[1].description : ""}</p>
+              <p>{topItem[1] ? topItem[1].collection_name : ""}</p>
             </div>
             <div className="item_desc">
               <p>
                 {topItem[1] ? topItem[1].description : ""}
-                <a className="desc_more">더 보기</a>
+                <a className="desc_more">
+                  {topItem[1]
+                    ? topItem[1].description.length > 20
+                      ? "더 보기"
+                      : ""
+                    : ""}
+                </a>
               </p>
             </div>
             <div className="bottom_profile">
@@ -90,13 +112,30 @@ class DaliyLookHeader extends Component {
                     </a>
                   </p>
                 </div>
+                <div
+                  onClick={() => {
+                    this.setState(
+                      {
+                        follower: !this.state.follower,
+                        // followUp: topItem[1] ? topItem[1].collection_id : ""
+                        followUp: topItem[1].collection_id
+                      },
+                      () => {
+                        this.handleFollowerAdd();
+                      }
+                    );
+                  }}
+                  className={
+                    this.state.follower ? "follower_btn_check" : "follower_btn"
+                  }
+                ></div>
               </div>
               <div className="bottom_bottom">
                 <div className="bottom_profile_img"></div>
                 <div className="sub_desc">
                   <p className="sub_desc1">by</p>
                   <p className="sub_desc2">
-                    {topItem[1] ? topItem[1].collection_name : ""}
+                    {topItem[1] ? topItem[1].nickname : ""}
                   </p>
                 </div>
               </div>
@@ -105,12 +144,18 @@ class DaliyLookHeader extends Component {
           <div className="second_item">
             <div className="top_img">
               <div className="gradient"></div>
-              <p>{topItem[2] ? topItem[2].description : ""}</p>
+              <p>{topItem[2] ? topItem[2].collection_name : ""}</p>
             </div>
             <div className="item_desc">
               <p>
                 {topItem[2] ? topItem[2].description : ""}
-                <a className="desc_more">더 보기</a>
+                <a className="desc_more">
+                  {topItem[1]
+                    ? topItem[1].description.length > 20
+                      ? "더 보기"
+                      : ""
+                    : ""}
+                </a>
               </p>
             </div>
             <div className="bottom_profile">
@@ -131,13 +176,30 @@ class DaliyLookHeader extends Component {
                     </a>
                   </p>
                 </div>
+                <div
+                  onClick={() => {
+                    this.setState(
+                      {
+                        follower1: !this.state.follower1,
+                        // followUp: topItem[2] ? topItem[2].collection_id : ""
+                        followUp: topItem[2].collection_id
+                      },
+                      () => {
+                        this.handleFollowerAdd();
+                      }
+                    );
+                  }}
+                  className={
+                    this.state.follower1 ? "follower_btn_check" : "follower_btn"
+                  }
+                ></div>
               </div>
               <div className="bottom_bottom">
                 <div className="bottom_profile_img"></div>
                 <div className="sub_desc">
                   <p className="sub_desc1">by</p>
                   <p className="sub_desc2">
-                    {topItem[2] ? topItem[2].collection_name : ""}
+                    {topItem[2] ? topItem[2].nickname : ""}
                   </p>
                 </div>
               </div>

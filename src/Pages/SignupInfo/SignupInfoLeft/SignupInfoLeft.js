@@ -11,6 +11,7 @@ class SignupInfoLeft extends React.Component {
   };
 
   render() {
+    console.log(man);
     return (
       <div className="signup_info_left">
         <div className="info_left_wrapper">
@@ -20,6 +21,7 @@ class SignupInfoLeft extends React.Component {
             ) : (
               <img src={woman} />
             )}
+
             {/* <img
               className={
                 this.props.genderSelector ? (src = { man }) : (src = { woman })
