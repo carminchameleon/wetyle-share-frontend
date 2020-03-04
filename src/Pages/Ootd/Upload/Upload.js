@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import swal from "sweetalert";
 
 import OotdTop from "../../../Components/Top/OotdTop";
 
@@ -6,81 +8,88 @@ import "./Upload.scss";
 
 class Upload extends Component {
   state = {
-    imgUrl: [], // 파일 url
-    imgFile: [], // 이미지파일
+    imgUrl: "", // 파일 url
+    imgFile: null, // 이미지파일
     content: "",
-    select: 0
+    select: 0,
+    url: null,
+    visiList: [],
+    sendUrl: "",
+    resultList: []
   };
-  handleChangeFile = event => {
-    const file = event.target.files[0];
+
+  handleChangeFile = e => {
+    const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    this.setState({ imgFile: file });
+
+    this.setState(
+      {
+        url: e.target.files[0]
+      },
+      () => {
+        this.handlePost();
+      }
+    );
 
     reader.onloadend = e => {
-      this.setState({
-        imgUrl: this.state.imgUrl.concat(e.target.result)
-      });
+      this.setState(
+        {
+          imgUrl: e.target.result
+        },
+        () => {
+          this.setState({
+            visiList: this.state.visiList.concat(this.state.imgUrl)
+          });
+        }
+      );
     };
   };
-  //   handlePcFileUpload = () => {
-  //     this.fileUpload(this.state.pcFile, "pcImage");
-  //   };
+  handlePost = () => {
+    const formData = new FormData();
+    formData.append("filename", this.state.url);
 
-  //   fileUpload = (file, fileType) => {
-  //     if (file !== null) {
-  //       console.log(file);
-
-  //       console.log(fileType);
-
-  //       const formData = new FormData();
-
-  //       formData.append("upload", file);
-  //       formData.append("is_secret", "False");
-  //       formData.append("group_id", 20);
-
-  //       fetch(`${constants.URL_BACK}/files`, {
-  //         method: "POST",
-  //         headers: {
-  //           Authorization: token
-  //         },
-  //         body: formData
-  //       })
-  //         .then(response => response.json())
-  //         .then(response => {
-  //           console.log("----file 부분----");
-  //           console.log(response);
-
-  //           console.log(response.message);
-  //           console.log(response.guid);
-
-  //           if (response.message === "SAVE_SUCCESS") {
-  //             swal("", "파일 저장이 완료되었습니다.", "success");
-
-  //             console.log(response.guid);
-
-  //             this.setState({
-  //               [fileType]: response.guid
-  //             });
-  //           } else {
-  //             swal("", "파일 저장에 실패했습니다.", "error");
-  //           }
-  //         })
-  //         .catch(err => {
-  //           console.log(err);
-  //         });
-  //     } else {
-  //       console.log(file);
-
-  //       swal("", "파일을 등록해 주십시오", "error");
-  //     }
-  //   };
-  handleRemove = () => {
-    this.setState({
-      imgUrl: [],
-      imgFile: []
-    });
+    fetch("http://10.58.2.111:8000/card/upload/image", {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+      },
+      body: formData
+    })
+      .then(res => res.json())
+      .then(res =>
+        this.setState({
+          resultList: this.state.resultList.concat(res.image_url_list)
+        })
+      )
+      .then(res => console.log(this.state.resultList));
   };
+  handleStyleUpload = () => {
+    if (!this.state.content) {
+      swal("", "설명을 입력해주세요!", "error");
+    } else if (this.state.resultList.length === 0) {
+      swal("", "이미지를 업로드 해주세요!", "error");
+    } else {
+      fetch("http://10.58.2.111:8000/card/style/upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+        },
+        body: JSON.stringify({
+          description: this.state.content,
+          image_url_list: this.state.resultList.filter(data => data !== null)
+        })
+      }).then(
+        swal("", "스타일 업로드 완료", "success").then(() => {
+          this.props.history.goBack();
+        })
+      );
+    }
+  };
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -92,9 +101,10 @@ class Upload extends Component {
       select: null
     });
   };
+
   mapOfImg = data => {
     return data.map((ele, idx) => (
-      <div className="img_wrapper">
+      <div className="img_wrapper" key={idx}>
         <img
           className={`${idx}_img`}
           src={ele}
@@ -115,7 +125,10 @@ class Upload extends Component {
               });
             }}
             onMouseOut={this.handleCloseHide}
-            onClick={this.handleRemove}
+            onClick={() => {
+              delete this.state.visiList[idx];
+              delete this.state.resultList[idx];
+            }}
           >
             X
           </div>
@@ -135,14 +148,15 @@ class Upload extends Component {
               <div className="picture">
                 <p>스타일 이미지</p>
                 <div className="picture_upload">
-                  {this.mapOfImg(this.state.imgUrl)}
-                  <label for="ex_file">
+                  {this.state.visiList.length > 0 &&
+                    this.mapOfImg(this.state.visiList)}
+                  <label for="upload_file" onChange={this.handleChangeFile}>
                     <div className="plus_icon" />
                     <input
                       type="file"
-                      id="ex_file"
+                      id="upload_file"
+                      name="myFile"
                       accept=".png, .jpg, .jpeg"
-                      onChange={this.handleChangeFile}
                     />
                   </label>
                 </div>
@@ -158,7 +172,9 @@ class Upload extends Component {
               </div>
             </div>
             <div className="upload_submit_wrapper">
-              <div className="upload_submit">올리기</div>
+              <div className="upload_submit" onClick={this.handleStyleUpload}>
+                올리기
+              </div>
             </div>
           </div>
         </div>
@@ -167,4 +183,4 @@ class Upload extends Component {
   }
 }
 
-export default Upload;
+export default withRouter(Upload);

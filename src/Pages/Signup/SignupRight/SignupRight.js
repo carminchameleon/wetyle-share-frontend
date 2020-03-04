@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 // font-awesome 아이콘 구현
+import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
@@ -130,7 +131,27 @@ class SignupRight extends Component {
   signinWithKakao = () => {
     window.Kakao.Auth.login({
       success: authObj => {
-        console.log(authObj);
+        this.setState(
+          {
+            kakaoToken: authObj.access_token
+          },
+          () => {
+            fetch("http://10.58.2.111:8000/user/kakao/sign-in", {
+              method: "GET",
+              headers: {
+                Authorization: this.state.kakaoToken
+              }
+            })
+              .then(res => res.json())
+              .then(res => {
+                if (res.user_info) {
+                  localStorage.setItem("kakao_id", res.user_info.kakao_id);
+                  localStorage.setItem("kakao_email", res.user_info.email);
+                  this.props.history.push("/signupinfo");
+                }
+              });
+          }
+        );
       },
       fail: function(err) {
         console.log("에러", err);
@@ -193,4 +214,4 @@ class SignupRight extends Component {
   }
 }
 
-export default SignupRight;
+export default withRouter(SignupRight);

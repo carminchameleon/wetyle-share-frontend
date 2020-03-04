@@ -40,13 +40,57 @@
       }
     }
   }
+
   .info_box_wrapper {
+    width: 100%;
+
+    .login_wrapper {
+      margin: 15px 0;
+      background-color: transparent;
+
+      .info_input_wrapper {
+        display: flex;
+        position: relative;
+
+        span {
+          position: absolute;
+          top: 10px;
+          right: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+
+      input {
+        width: 94%;
+        display: block;
+        border-color: #c9cdd2;
+        border-style: solid;
+        border-width: 1px;
+        background-color: white;
+        border-collapse: collapse;
+        padding: 10px;
+        margin: 0;
+        outline: none;
+      }
+
+      .id_input {
+        border-top-width: 1px;
+        border-radius: 6px 6px 0 0;
+      }
+
+      .pwd_input {
+        border-radius: 0 0 6px 6px;
+      }
+    }
+
     .info_box {
       border: 1px solid #c7c8c9;
       border-radius: 6px;
       width: 370px;
       height: 175px;
       background-color: white;
+
       // &:focus {
       //   outline: none;
       //   border-color: rgb(74, 218, 175);
@@ -57,45 +101,55 @@
         height: 10px;
         display: flex;
         align-items: center;
+
         .box_title {
           padding-right: 15px;
           text-align: left;
           color: #26282b;
         }
+
         .two_words {
           padding-right: 30px;
         }
+
         .birthdate {
           border-radius: 6px;
           // padding: 16px 0
         }
+
         .year {
           width: 60px;
           text-align: center;
         }
+
         .bd_month,
         .bd_day {
           padding-left: 20px;
         }
+
         .month,
         .day {
           width: 50px;
           padding: 0px;
           text-align: center;
         }
+
         .gender_woman {
           padding-left: 30px;
         }
+
         .person {
           width: 80%;
           font-size: 16px;
           border: 0;
+
           &:focus {
             outline: none;
             border-color: rgb(74, 218, 175);
           }
         }
       }
+
       .last_box {
         // border-bottom: 1px solid #c7c8c9;
         padding: 16px;
@@ -103,41 +157,50 @@
         display: flex;
         align-items: center;
         outline: none;
+
         .box_title {
           padding-right: 15px;
           text-align: left;
           color: #26282b;
         }
+
         .two_words {
           padding-right: 30px;
         }
+
         .birthdate {
           border-radius: 6px;
           // padding: 16px 0
         }
+
         .year {
           width: 60px;
           text-align: center;
         }
+
         .bd_month,
         .bd_day {
           padding-left: 20px;
         }
+
         .month,
         .day {
           width: 30px;
           padding-left: 10px;
           text-align: center;
         }
+
         .gender_woman {
           padding-left: 30px;
         }
+
         .person {
           width: 80%;
           font-size: 16px;
           border: 0;
         }
       }
+
       // .last_box {
       //   padding: 16px;
       //   height: 10px;
@@ -146,15 +209,18 @@
       // }
     }
   }
+
   .policy {
     font-size: 7px;
     text-align: left;
     padding-top: 10px;
+
     u {
       cursor: pointer;
       color: #4190f2;
     }
   }
+
   .done {
     width: 150px;
     height: 45px;

@@ -1,18 +1,36 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import kakaoImg from "Img/Kakao.png";
 import "./SignupInfoRight.scss";
+import TopRight from "Components/Top/TopRight/TopRight";
+import TopMid from "Components/Top/TopMid/TopMid";
 
 class SignupInfoRight extends Component {
   state = {
+
+    id: "",
+    pwd: "",
+    pwdfocus: false,
+    idfocus: false,
+    sex: 0,
+    nick: "",
+    year: "",
+    month: "",
+    day: ""
+
     year: "",
     month: "",
     day: "",
     regexp: /^[0-9\b]+$/
+
   };
-  // doneSignup = () => {
-  //   console.log(sessionStorage.getItem("login_id"));
-  // };
+
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
 
   handleYear = e => {
     let year = e.target.value;
@@ -38,25 +56,59 @@ class SignupInfoRight extends Component {
     }
   };
 
+
   render() {
     console.log(this.props);
     return (
       <div className="signup_info_right">
         <ul>
           <li>
-            <button>
-              <FontAwesomeIcon
-                icon={faFacebookF}
-                size="2x"
-                style={{ margin: "0 10px" }}
-              />
+            <button style={{ backgroundColor: "#FAE100", color: "black" }}>
+              <img className="kakao_img" src={kakaoImg} alt="kakao" />
               <div>
-                <span>페이스북 정보 불러오기</span>
+                <span>카카오 정보로 가입하기</span>
               </div>
             </button>
           </li>
         </ul>
         <div className="info_box_wrapper">
+          {localStorage.getItem("kakao_id") ? (
+            <div className="login_wrapper">
+              <div className="info_input_wrapper">
+                <input
+                  placeholder="ID"
+                  className="id_input"
+                  name="id"
+                  value={this.state.id}
+                  onChange={this.handleChange}
+                ></input>
+              </div>
+              <div className="info_input_wrapper">
+                <input
+                  placeholder="비밀번호 (최소 6자)"
+                  className="pwd_input"
+                  name="pwd"
+                  value={this.state.pwd}
+                  onChange={this.handleChange}
+                  style={{
+                    borderColor:
+                      this.state.pwdfocus && this.state.pwd.length < 6
+                        ? "red"
+                        : "#c9cdd2"
+                  }}
+                  onFocus={() => {
+                    this.setState({ pwdfocus: true });
+                  }}
+                  onBlur={() => {
+                    this.setState({ pwdfocus: false });
+                  }}
+                ></input>
+                {this.state.pwd.length < 6 && this.state.pwdfocus ? (
+                  <span>비밀번호가 너무 짧습니다</span>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
           <div className="info_box">
             <div className="box 1">
               <span className="box_title">닉네임</span>
@@ -71,32 +123,44 @@ class SignupInfoRight extends Component {
             </div>
             <div className="box 2">
               <span className="box_title">이메일</span>
-              <input
-                className="person email"
-                name="email"
-                type="text"
-                placeholder="이메일을 입력하세요."
-                // onChange={this.handleLoginCheck}
-              />
+              {localStorage.getItem("kakao_email") ? (
+                <div>{localStorage.getItem("kakao_email")}</div>
+              ) : (
+                <input
+                  className="person email"
+                  name="email"
+                  type="text"
+                  placeholder="이메일을 입력하세요."
+                  // onChange={this.handleLoginCheck}
+                />
+              )}
             </div>
             <div className="box 3">
               <span className="box_title two_words">성별</span>
               <div className="gender_man">
                 <input
                   type="radio"
-                  name="gender"
-                  value="man"
-                  onClick={this.props.handleGender}
+                  name="sex"
+                  value={this.state.sex}
+                  onClick={() => {
+                    this.setState({ sex: 0 }, () => {
+                      this.props.handleGender();
+                    });
+                  }}
                 />
                 남
               </div>
               <div className="gender_woman">
                 <input
                   type="radio"
-                  name="gender"
-                  value="woman"
+                  name="sex"
                   defaultChecked="false"
-                  onClick={this.props.handleGender}
+                  value={this.state.sex}
+                  onClick={() => {
+                    this.setState({ sex: 1 }, () => {
+                      this.props.handleGender();
+                    });
+                  }}
                 />
                 여
               </div>
@@ -110,6 +174,9 @@ class SignupInfoRight extends Component {
                 onChange={this.handleYear}
                 type="text"
                 maxLength="4"
+                name="year"
+                value={this.state.year}
+                onChange={this.handleChange}
                 onFocus={this.handleFocusCheck}
               />
               년
@@ -120,7 +187,10 @@ class SignupInfoRight extends Component {
                   maxLength="2"
                   name="month"
                   value={this.state.month}
-                  onChange={this.handleMonth}
+
+                  onChange={this.handleChange}
+
+
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />
@@ -132,8 +202,13 @@ class SignupInfoRight extends Component {
                   type="text"
                   maxLength="2"
                   name="day"
+
+                  onChange={this.handleChange}
                   value={this.state.day}
-                  onChange={this.handleDay}
+
+              
+             
+
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />
@@ -146,7 +221,7 @@ class SignupInfoRight extends Component {
             <u>
               <a href="https://www.styleshare.kr/privacy/">개인정보보호정책</a>
             </u>
-            과{" "}
+            과
             <u>
               <a href="https://www.styleshare.kr/terms-of-use/">
                 서비스이용약관
