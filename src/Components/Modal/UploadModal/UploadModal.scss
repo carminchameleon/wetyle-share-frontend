@@ -1,230 +1,319 @@
-.modal {
-    .upload_wrapper {
-        width: 320px;
-
-        .upload_modal {
-            margin-left: 20px;
-            margin-top: 100%;
-
-
-            @media only screen and (max-height: 800px) {
-                margin-top: 70%;
-            }
-
-            .modal_top {
-                position: relative;
-
-                p {
-                    font-size: 14px;
-                    font-weight: bold;
-                }
-
-                display: flex;
-                padding: 15px;
-                height: 50px;
-                border-bottom: 2px solid #C9CDD2;
-
-                .close_btn {
-                    width: 14px;
-                    height: 14px;
-                    background-color: transparent;
-                    cursor: pointer;
-                    background: url("../../../Img/OOTD_item_icon.png") no-repeat;
-                    background-position: 0 -3424px;
-                    position: absolute;
-                    right: 15px;
-                }
-            }
-
-            .modal_bottom {
-                display: flex;
-                padding: 10px;
-                margin-top: 10px;
-                justify-content: space-evenly;
-
-                .left_btn,
-                .right_btn {
-                    cursor: pointer;
-
-
-
-                    .style_btn,
-                    .collection_btn {
-
-                        border-radius: 50%;
-                        position: relative;
-                        margin-left: auto;
-                        margin-right: auto;
-                        margin-bottom: 10px;
-                        border-color: #4adaaf;
-                        border-style: solid;
-                        border-width: 2px;
-                        padding-top: 25px;
-                        padding-left: 20px;
-                        padding-right: 20px;
-                        padding-bottom: 25px;
-                        width: 45px;
-                        height: 38px;
-                        box-sizing: content-box;
-                        overflow: hidden;
-                        transition: background-color .5s ease;
-
-                        &:hover {
-                            background-color: #4adaaf;
-                        }
-
-                    }
-
-
-                    p {
-                        color: #26282B;
-                        font-size: 14px;
-                        font-weight: bold;
-                        margin: 0;
-                    }
-
-                    span {
-
-                        display: inline-block;
-                        width: 46px;
-                        height: 36px;
-                        background: url("../../../Img/gnb.png") no-repeat;
-                    }
-
-                    .style_icon {
-                        background-position: -572px 0;
-                    }
-
-                    .style_icon_hover {
-                        background-position: -527px 0;
-
-                    }
-
-                    .collection_icon {
-                        background-position: -480px 0;
-                    }
-
-                    .collection_icon_hover {
-                        background-position: -435px 0;
-
-                    }
-                }
-            }
-        }
-    }
-
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #686868bd;
+  z-index: 2;
 }
 
-.collection_backdrop {
-    background-color: rgba(255, 255, 255, 0.774);
+.Overlay_collection {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffffce;
+  z-index: 3;
+}
 
+.upload_modal {
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
 
-    .collection_wrapper {
-        width: 480px;
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: gray;
+  }
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  background: #fff;
+  width: 320px;
+  height: 200px;
+  margin: auto auto;
+  z-index: 5;
+
+  .modal_top {
+    position: relative;
+
+    p {
+      font-size: 14px;
+      font-weight: bold;
     }
 
-    .collection_modal {
-        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
-        border: 1px solid #E8EBED;
+    display: flex;
+    padding: 15px;
+    border-bottom: 2px solid #c9cdd2;
 
-
-        .collection_modal_top {
-            padding: 10px;
-            position: relative;
-
-            p {
-                font-size: 14px;
-                font-weight: bold;
-            }
-
-            .collection_close_box {
-                background-color: black;
-                position: absolute;
-                right: 10px;
-                top: 10px;
-                width: 16px;
-                height: 16px;
-                background: url("../../../Img/OOTD_item_icon.png") no-repeat;
-                background-position: 0 -3424px;
-            }
-        }
-
-        .collection_modal_bottom {
-            padding: 0 10px;
-
-            .collection_main {
-                p {
-                    font-size: 13px;
-                    color: #72787F;
-                    margin-bottom: 15px;
-                }
-            }
-
-            .collection_title {
-                margin-top: 10px;
-
-                p {
-                    font-size: 12px;
-                    color: #72787F;
-                    margin-bottom: 5px;
-                }
-
-                textarea {
-                    padding: 10px;
-                    width: 100%;
-                    outline: none;
-                    resize: none;
-                    background-color: white;
-                    border-radius: 6px;
-                    border-color: #C9CDD2;
-                    font-size: 12px;
-                }
-            }
-
-
-            .collection_img {
-                border-radius: 6px;
-                position: relative;
-                height: 200px;
-
-                .gradient {
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.7));
-                }
-
-                label {
-                    width: 42px;
-                    height: 42px;
-                    background-position: 0 -1032px;
-
-
-                    input {
-                        position: absolute;
-                        top: 14px;
-                        left: 14px;
-                        cursor: pointer;
-                        overflow: hidden;
-                        width: 100%;
-                    }
-                }
-
-
-            }
-        }
-
-        .collection_create_wrapper {
-            .colleciont_create {
-                margin-bottom: 5px;
-                float: right;
-                color: white;
-                padding: 5px 0;
-                width: 150px;
-                text-align: center;
-                opacity: 0.5;
-                background-color: #1ab380;
-                border-radius: 6px;
-            }
-        }
+    .close_btn {
+      width: 14px;
+      height: 14px;
+      background-color: transparent;
+      cursor: pointer;
+      background: url("../../../Img/OOTD_item_icon.png") no-repeat;
+      background-position: 0 -3424px;
+      position: absolute;
+      right: 15px;
     }
+  }
+
+  .modal_bottom {
+    display: flex;
+    padding: 10px;
+    margin-top: 10px;
+    justify-content: space-evenly;
+
+    .left_btn,
+    .right_btn {
+      cursor: pointer;
+
+      .style_btn,
+      .collection_btn {
+        border-radius: 50%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        border-color: #4adaaf;
+        border-style: solid;
+        border-width: 2px;
+        padding-top: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 25px;
+        width: 45px;
+        height: 38px;
+        box-sizing: content-box;
+        overflow: hidden;
+        transition: background-color 0.5s ease;
+
+        &:hover {
+          background-color: #4adaaf;
+        }
+      }
+
+      p {
+        color: #26282b;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      span {
+        display: inline-block;
+        width: 46px;
+        height: 36px;
+        background: url("../../../Img/gnb.png") no-repeat;
+      }
+
+      .style_icon {
+        background-position: -572px 0;
+      }
+
+      .style_icon_hover {
+        background-position: -527px 0;
+      }
+
+      .collection_icon {
+        background-position: -480px 0;
+      }
+
+      .collection_icon_hover {
+        background-position: -435px 0;
+      }
+    }
+  }
+}
+
+.collection_modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  background: #fff;
+  background-color: white;
+  width: 480px;
+  height: 580px;
+  margin: auto auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+
+  .collection_modal_top {
+    padding: 15px;
+    position: relative;
+
+    p {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .collection_close_box {
+      background-color: black;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      width: 16px;
+      height: 16px;
+      background: url("../../../Img/OOTD_item_icon.png") no-repeat;
+      background-position: 0 -3424px;
+      cursor: pointer;
+    }
+  }
+
+  .collection_modal_bottom {
+    padding: 0 15px;
+    border-radius: 8px;
+
+    .collection_main {
+      p {
+        font-size: 13px;
+        color: white;
+      }
+    }
+
+    .collection_title {
+      margin-top: 10px;
+
+      p {
+        font-size: 12px;
+        color: #72787f;
+        margin-bottom: 5px;
+      }
+
+      textarea {
+        padding: 10px;
+        width: 95%;
+        outline: none;
+        resize: none;
+        background-color: white;
+        border-radius: 6px;
+        border-color: #c9cdd2;
+        font-size: 13px;
+
+        &::placeholder {
+          color: gray;
+        }
+      }
+    }
+
+    .collection_img {
+      position: relative;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid white;
+      background-color: #cccccc91;
+      height: 280px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-color: transparent;
+      }
+
+      .span_wrapper {
+        position: absolute;
+        width: 80%;
+        bottom: 15px;
+
+        .span_inner {
+          color: white;
+          font-size: 30px;
+          font-weight: bold;
+          border: 1px solid white;
+          border-width: 4px 0;
+          border-top-width: 4px;
+          border-bottom-width: 4px;
+          padding-top: 2.5px;
+          padding-bottom: 2.5px;
+          overflow-wrap: break-word;
+
+          p {
+            text-align: center;
+            font-size: 30px;
+          }
+        }
+      }
+
+      label {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+
+        background: url("../../../Img/OOTD_item_icon.png");
+        background-position: 0 -1032px;
+        background-color: transparent;
+        border-radius: 50%;
+        cursor: pointer;
+        overflow: hidden;
+        transition: background-color 0.25s ease-in-out;
+
+        &:hover {
+          background-color: gray;
+        }
+
+        input {
+          transition: background-color 0.25s ease-in-out;
+          position: absolute;
+          top: 14px;
+          left: 14px;
+          cursor: pointer;
+          overflow: hidden;
+          margin: 0;
+          opacity: 0;
+          visibility: hidden;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .collection_create_wrapper {
+    .colleciont_create,
+    .collection_icon_active {
+      margin-top: 10px;
+      float: right;
+      color: white;
+      padding: 8px 0;
+      width: 150px;
+      text-align: center;
+      background-color: #1ab380;
+      opacity: 0.5;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .collection_icon_active {
+      background-color: #4adaaf;
+      opacity: 1;
+    }
+  }
 }

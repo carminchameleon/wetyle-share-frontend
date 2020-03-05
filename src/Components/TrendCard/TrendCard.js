@@ -1,6 +1,6 @@
 import React from "react";
 
-import CardModal from "../Modal/CardModal";
+import CardModal from "../Modal/CardModal/CardModal";
 
 import "./TrendCard.scss";
 
@@ -9,81 +9,33 @@ class TrendCard extends React.Component {
   state = {
     isModalOpen: false,
     datas: [],
-    items: 5,
-    preItems: 0,
-    scrolling: true,
     select: "",
     modal: false,
-    original: []
+    showModal: false
   };
 
-  componentDidMount = () => {
-    this.getCardItems();
-    // this.getii();
-    window.addEventListener("scroll", this.infiniteScroll, true);
-  };
-  componentWillUnmount = () => {
-    window.removeEventListener("scroll", this.infiniteScroll);
-  };
-  // getii = () => {
-  //   fetch("http://10.58.3.251:8000/card/dailylook/")
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(res);
-  //     })
-  //     .then(res => {
-  //       this.setState({
-  //         original: res.data
-  //       });
-  //     });
-  // };
-  getCardItems = () => {
-    fetch("http://localhost:3000/data/trendcard.json")
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          datas: this.state.datas.concat(
-            res.data.slice(this.state.preItems, this.state.items)
-          ),
-          scrolling: !this.state.scrolling
-        });
-      });
+  handleOpenModal = () => {
+    document.body.style.overflow = "hidden";
+    this.setState({ showModal: true });
   };
 
-  // 무한 스크롤 구현
-  infiniteScroll = () => {
-    let scroolHeight = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    );
-    let scrollTop = Math.max(
-      document.documentElement.scrollTop,
-      document.body.scrollTop
-    );
-    let clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight + 10 > scroolHeight) {
-      this.setState({
-        scrolling: !this.state.scrolling,
-        preItems: this.state.items,
-        items: this.state.items + 5
-      });
-      this.getCardItems();
-    }
+  handleCloseModal = () => {
+    document.body.style.overflow = "visible";
+    this.setState({ showModal: false });
   };
-  toggle = () => {
-    this.setState({
-      modal: !this.state.modal
-    });
-  };
-  marOfTrend = data => {
+  marOfCard = data => {
     return data.map((ele, idx) => (
-      <div key={idx} onClick={this.toggle}>
+      <div key={idx} id={ele.style_id} onClick={this.handleOpenModal}>
         <div className="trend_item">
           <div className="trend_item_img_wrapper">
-            {ele.main_url ? <div className="more_img"></div> : ""}
+            {ele.style_image_url.length >= 2 ? (
+              <div className="more_img"></div>
+            ) : (
+              ""
+            )}
             <img
               className="trend_item_img"
-              src={ele.main_url}
+              src={ele.style_image_url[0].image_url}
               alt="main_img"
               onMouseOver={() => {
                 this.setState({
@@ -107,60 +59,69 @@ class TrendCard extends React.Component {
               ""
             )}
           </div>
-
-          <div className="trend_information">
-            <img
-              className="user_icon"
-              src={ele.user[0].user_icon}
-              alt="user_icon"
-            />
-            <div className="comment_box">
-              <div className="comment_top">
-                <div className="comment_nick">{ele.user[0].user_nick}</div>
-                <div className="comment_date">{ele.date}</div>
-              </div>
-              <div className="comment_main">
-                {ele.user[0].user_comment.slice(0, 20)}
-                <a style={{ cursor: "pointer" }}>...더보기</a>
-              </div>
-              <div className="icon_box">
-                <div>
-                  <span className="like_icon"></span>
-                  <span>{ele.user[0].likes}</span>
+          <div style={{ width: "100%" }}>
+            <div className="trend_information">
+              <img
+                className="user_icon"
+                src={ele.profile_image_url}
+                alt="user_icon"
+              />
+              <div className="comment_box">
+                <div className="comment_top">
+                  <div className="comment_nick">{ele.nickname}</div>
+                  <div className="comment_date">{ele.date}</div>
                 </div>
-                <div>
-                  <span className="ballon_icon"></span>
-                  <span>{ele.user[0].balloon}</span>
+                <div className="comment_main">
+                  {ele.profile_description}
+                  <a style={{ cursor: "pointer" }}>...더보기</a>
                 </div>
-                <div>
-                  <span className="share_icon"></span>
-                  <span>{ele.user[0].share}</span>
+                <div className="icon_box">
+                  <div>
+                    <span className="like_icon"></span>
+                    <span>{ele.like_count}</span>
+                  </div>
+                  <div>
+                    <span className="ballon_icon"></span>
+                    <span>{ele.comment_count}</span>
+                  </div>
+                  <div>
+                    <span className="share_icon"></span>
+                    <span>15</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="ohter_group">
-            <div className="other_user">
-              <img
-                className="user_icon"
-                src={ele.user[1].user_icon}
-                alt="icon"
-              />
-              <div>
-                <a>{ele.user[2].user_nick}</a>
-                {ele.user[1].user_comment}
-              </div>
-            </div>
-            <div className="other_user">
-              <img
-                className="user_icon"
-                src={ele.user[2].user_icon}
-                alt="icon"
-              />
-              <div>
-                <a>{ele.user[2].user_nick}</a>
-                {ele.user[2].user_comment}
-              </div>
+            <div className="ohter_group">
+              {ele.comment[0] ? (
+                <div className="other_user">
+                  <img
+                    className="user_icon"
+                    src={ele.comment[0].profile_image}
+                    alt="icon"
+                  />
+                  <div>
+                    <a>{ele.comment[0].nickname}</a>
+                    {ele.comment[0].description}
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+              {ele.comment[1] ? (
+                <div className="other_user">
+                  <img
+                    className="user_icon"
+                    src={ele.comment[1].profile_image}
+                    alt="icon"
+                  />
+                  <div>
+                    <a>{ele.comment[1].nickname}</a>
+                    {ele.comment[1].description}
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
@@ -171,12 +132,17 @@ class TrendCard extends React.Component {
   render() {
     return (
       <div>
-        <CardModal modal={this.state.modal} toggle={this.toggle} />
+        <CardModal
+          showModal={this.state.showModal}
+          handleOpenModal={this.handleOpenModal}
+          handleCloseModal={this.handleCloseModal}
+        />
         <div className="trend_card_wrapper">
           <div className="trend_wrapper">
             <p className="trend_title">지금의 트렌드</p>
             <div className="trend_body">
-              {this.marOfTrend(this.state.datas)}
+              {/* {this.marOfTrend(this.state.datas)} */}
+              {this.marOfCard(this.props.data)}
             </div>
           </div>
 

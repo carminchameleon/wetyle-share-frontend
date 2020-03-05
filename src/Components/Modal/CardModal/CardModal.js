@@ -1,13 +1,15 @@
-import React from "react";
-import { Modal } from "reactstrap";
-
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
 import autosize from "autosize";
-import Ootdcarousel from "../../Ootdcarousel/Ootdcarousel";
 
+import Ootdcarousel from "../../Ootdcarousel/Ootdcarousel";
 import "./CardModal.scss";
 
-class CardModal extends React.Component {
+Modal.setAppElement("#root");
+class CardModal extends Component {
   state = {
+    subtitle: "",
     collectionMove: 0,
     moadlData: [],
     imgdata: [],
@@ -48,21 +50,24 @@ class CardModal extends React.Component {
   };
 
   render() {
-    const { toggle, modal } = this.props;
+    const { handleCloseModal, showModal } = this.props;
     autosize(document.querySelector("textarea"));
-
     return (
       <div>
         <Modal
-          isOpen={modal}
-          toggle={toggle}
-          className="card_modal_wrapper"
-          contentClassName="card_modal"
+          isOpen={showModal}
+          shouldCloseOnOverlayClick={true}
+          shouldCloseOnEsc={true}
+          className="card_modal"
+          onRequestClose={handleCloseModal}
+          overlayClassName="Overlay"
         >
-          <div className="modal_main" style={{ display: "flex" }}>
-            <div className="left_img">
-              <div className="main_img">
-                <Ootdcarousel images={this.state.imgdata} />
+          <div className="modal_main">
+            <div>
+              <div className="left_img">
+                <div className="main_img">
+                  <Ootdcarousel images={this.state.imgdata} />
+                </div>
               </div>
             </div>
 
@@ -90,31 +95,34 @@ class CardModal extends React.Component {
                     }
                   ></div>
                 </div>
-                <p className="desc">
-                  블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요!
-                  모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                  조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                  조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                  코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                  🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶.. <br />
-                  <br />
-                  💟유튜브 : ANAran 아나란💟
-                  <br /> 💟인스타 : raninfanta 💟
-                  <br /> <br />
-                  <div>
-                    <a>#코디</a>
-                  </div>
-                </p>
+                <div className="desc_wrapper">
+                  <p className="desc">
+                    블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요!
+                    모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
+                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
+                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
+                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
+                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
+                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
+                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
+                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
+                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
+                    조아요! 모두 코로나 조심하세요 🥶🥶.. <br />
+                    <br />
+                    💟유튜브 : ANAran 아나란💟
+                    <br /> 💟인스타 : raninfanta 💟
+                    <br /> <br />
+                    <div>
+                      <a>#코디</a>
+                    </div>
+                  </p>
+                </div>
               </div>
               <div className="like_wrapper">
                 <div className="button_group">
@@ -256,5 +264,6 @@ class CardModal extends React.Component {
     );
   }
 }
+ReactDOM.render(<CardModal />, document.querySelector("#root"));
 
 export default CardModal;
