@@ -3,174 +3,72 @@
   margin-bottom: 100px;
   margin-left: 20px;
   margin-right: 20px;
-}
-
-.whats_this_box {
-  margin-bottom: 20px;
   position: relative;
-  overflow: hidden;
-}
 
-.whats_this_box_text {
-  display: block;
-  font-size: 2em;
-  font-weight: 700;
-  letter-spacing: -0.0025rem;
-}
+  .whats_this_box {
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
 
-.button_box {
-  position: absolute;
-  right: 0px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+    .whats_this_box_text {
+      display: block;
+      font-size: 2em;
+      font-weight: 700;
+      letter-spacing: -0.0025rem;
+    }
+    .button_box {
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
 
-.left_button {
-  cursor: pointer;
-  //   font-size: 56px;
-  color: rgb(27, 29, 31);
-  margin-left: 16px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
+      .left_button {
+        cursor: pointer;
+        // font-size: 56px;
+        color: rgb(27, 29, 31);
+        margin-left: 16px;
+        background-color: transparent;
+        border: none;
+        outline: none;
 
-.left_img_arrow {
-  width: 30px;
-   transform: rotate(180deg);
-}
-
-.right_button {
-  cursor: pointer;
-  color: rgb(27, 29, 31);
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
-.right_img {
-  width: 30px;
+        .left_img {
+          width: 30px;
+          transform: rotate(180deg);
+        }
+      }
+      .right_button {
+        cursor: pointer;
+        color: rgb(27, 29, 31);
+        background-color: transparent;
+        border: none;
+        outline: none;
+        .right_img {
+          width: 30px;
+        }
+      }
+    }
+  }
 }
 
 // ********사진 카드 4개 fetch 받아오기********
-.one_of_div {
-  max-width: 312px;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+.review_container {
+  height: 400px;
+  width: 100%;
+}
+.container {
   display: flex;
+  flex-direction: row;
+  width: 1000px;
 }
-
-.cardInfo {
-  display: flex;
-  flex-direction: column;
-  padding: 0 4px;
-}
-
-.scale_photo_parent {
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.scale_photo {
-  transform: scale(1);
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transition: all 0.25s ease-in-out 0s;
-}
-
-.scale_photo:hover {
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
-}
-
-.post_photo {
-  width: 300px;
-  height: 300px;
-  //   overflow: hidden;
-  border-radius: 8px;
-}
-
-.flex_row {
-  display: flex;
-  margin-top: 12px;
-  margin-left: 0px;
-  margin-right: 32px;
-}
-
-.circle_photo {
-  width: 36px;
-  height: 36px;
-  border-color: rgba(232, 235, 237, 0.5);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 100%;
-}
-
-.profile_photo {
-  width: 36px;
-  height: 36px;
-  border-color: rgba(232, 235, 237, 0.5);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 100%;
-}
-
-.flex_column {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 0 12px;
-}
-
-.under_box_info {
-  display: flex;
-}
-
-.person_nickname {
-  font-size: 0.875rem;
-  font-weight: 800;
-  line-height: 1.43;
-  letter-spacing: -0.025rem;
-  color: rgb(38, 40, 43);
-  // display: none;
-  margin: 0px;
-}
-
-.person_post_text {
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.43;
-  letter-spacing: -0.0025rem;
-  color: rgb(27, 29, 31);
-  margin-left: 1px;
-}
-
-.like_and_comment {
-  display: flex;
-  margin-top: 2px;
-}
-
-.like {
-  font-size: 0.8125rem;
-  font-weight: 400;
-  line-height: 1.38;
-  letter-spacing: -0.01875rem;
-  color: rgb(114, 120, 127);
-  margin: 0px 8px 0px 0px;
-}
-
-.comment {
-  font-size: 0.8125rem;
-  font-weight: 400;
-  line-height: 1.38;
-  letter-spacing: -0.01875rem;
-  color: rgb(114, 120, 127);
-  margin: 0px 8px 0px 0px;
-}
+// .one_of_div {
+//   border: 1px solid black;
+//   height: 400px;
+//   max-width: 312px;
+//   padding-left: 0.25rem;
+//   padding-right: 0.25rem;
+//   display: flex;
+//   flex-direction: row;
+// }
 
 .see_more_info {
   box-sizing: border-box;
@@ -185,7 +83,6 @@
 }
 
 .see_more_info_text {
-  -webkit-box-align: center;
   align-items: center;
   -webkit-appearance: none;
   box-sizing: border-box;
@@ -216,4 +113,12 @@
 .see_more_info_text:hover {
   border: 1px solid rgb(232, 235, 237);
   background-color: rgb(247, 248, 249);
+}
+
+.right_arrow_slick_review {
+  transform: rotate(180deg);
+}
+
+.left_arrow_slick_review {
+  transform: rotate(0deg);
 }

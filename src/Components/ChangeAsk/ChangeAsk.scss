@@ -1,0 +1,98 @@
+.detail_mold {
+  width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.detail_inside_mold {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn_of_detail_product {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 740px;
+
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(232, 235, 237);
+}
+.text_of_detail_btn {
+  font-size: 1.5rem;
+  line-height: 1.33;
+  display: inline;
+  font-weight: 700;
+}
+.change_refund_arrow_down {
+  transform: rotate(0deg);
+  transition: transform 0.25s ease-in-out 0s;
+  width: 23px;
+  height: 23px;
+}
+.change_refund_arrow_up {
+  transform: rotate(180deg);
+  transition: transform 0.25s ease-in-out 0s;
+  width: 23px;
+  height: 23px;
+}
+.fold_delivery_change_info {
+  height: 600px;
+  transition: height 250ms ease-in-out 0s;
+  overflow: hidden;
+}
+.delivery_change_info {
+  height: 0;
+  transition: height 250ms ease-in-out 0s;
+  overflow: hidden;
+}
+.give_padding_for_change {
+  padding: 0 20px;
+}
+.margin_delivery_info,
+.change_refund_as_info {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.delivery_title,
+.chan_refun_as_title {
+  color: rgb(38, 40, 43);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.31;
+  letter-spacing: -0.025rem;
+  margin: 0px 0px 16px;
+}
+.basic_delivery_info_parent {
+  padding-inline-start: 12px;
+  margin: 0px;
+}
+.basic_delivery_text {
+  padding-inline-start: 12px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(69, 76, 83);
+  margin: 8px 0px;
+  position: relative;
+  list-style: none;
+}
+.basic_delivery_text::before {
+  content: "•";
+  color: rgb(158, 164, 170);
+  font-size: 1em;
+  position: absolute;
+  left: -12px;
+  top: -0.15em;
+  padding-inline-start: 12px;
+}
+// .question_btn {
+// }

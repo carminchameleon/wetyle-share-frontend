@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { withRouter } from "react-router-dom";
 // font-awesome 아이콘 구현
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
@@ -15,7 +15,8 @@ class LoginRight extends Component {
     userID: "",
     name: "",
     email: "",
-    picture: ""
+    picture: "",
+    kakaoToken: ""
   };
   componentDidMount = () => {
     !window.Kakao.Auth && window.Kakao.init("f6b88303f2a59f0e0bd1fc1dad652f65");
@@ -49,11 +50,13 @@ class LoginRight extends Component {
         if (response.status === "connected") {
           let uid = response.authResponse.userID;
           let accessToken = response.authResponse.accessToken;
+          console.log(uid, accessToken);
+          console.log(response.authResponse);
           console.log(response);
         } else if (response.status === "not_authorized") {
-          console.log(response);
+          console.log(response.authResponse);
         } else {
-          console.log(response);
+          console.log(response.authResponse);
         }
       });
     };
@@ -130,7 +133,21 @@ class LoginRight extends Component {
   loginWithKakao = () => {
     window.Kakao.Auth.login({
       success: authObj => {
-        console.log(authObj);
+        this.setState(
+          {
+            kakaoToken: authObj.access_token
+          },
+          () => {
+            fetch("http://10.58.2.111:8000/user/kakao/sign-in", {
+              method: "GET",
+              headers: {
+                Authorization: this.state.kakaoToken
+              }
+            })
+              .then(res => console.log(res))
+              .then(this.props.history.push("/"));
+          }
+        );
       },
       fail: function(err) {
         console.log("에러", err);
@@ -193,4 +210,4 @@ class LoginRight extends Component {
   }
 }
 
-export default LoginRight;
+export default withRouter(LoginRight);

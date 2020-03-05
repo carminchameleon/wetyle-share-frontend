@@ -1,0 +1,74 @@
+.a_parent {
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+.brand_box_parent {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  height: 120px;
+  width: 718px;
+  border: 1px solid rgb(232, 235, 237);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  width: 58.3333%;
+  margin-left: 0px;
+  margin-right: 0px;
+  max-width: 45.625rem;
+}
+.brand_photo_link_size {
+  cursor: pointer;
+  outline: none;
+}
+
+.brand_photo_link_size:link,
+.brand_photo_link_size:visited,
+.brand_photo_link_size:hover {
+  color: black;
+  text-decoration: none;
+}
+.brand_img_btn_parent {
+  position: relative;
+  display: flex;
+  width: 720px;
+}
+.brand_img_box {
+  background-color: rgb(255, 255, 255);
+  width: 214px;
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-color: rgb(232, 235, 237);
+  border-radius: 8px 0 0 8px;
+}
+.brand_photo {
+  background-color: rgb(232, 235, 237);
+  position: relative;
+  display: flex;
+  border-radius: 8px 0 0 8px;
+}
+.count_and_arrow_btn {
+  padding-left: 20px;
+  padding-right: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+.how_many_product {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.025rem;
+  color: rgb(114, 120, 127);
+  margin: 4px 0px 0px;
+}
+.arrow_right_size {
+  position: absolute;
+  right: 21px;
+  width: 21px;
+}

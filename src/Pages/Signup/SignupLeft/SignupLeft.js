@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+=======
+
+>>>>>>> babf60b03681f18206815099bc9ea33bf01ed245
 import "./SignupLeft.scss";
 
 class SignupLeft extends Component {
@@ -142,15 +146,13 @@ class SignupLeft extends Component {
             {this.renderFeedbackMessage()}
           </label>
           <div className="signin_btn_div">
-            <Link to="/signupinfo">
-              <button
-                type="submit"
-                className="signin_btn"
-                onClick={this.goToSignup}
-              >
-                가입
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="signin_btn"
+              onClick={this.goToSignup}
+            >
+              가입
+            </button>
           </div>
         </form>
       </div>

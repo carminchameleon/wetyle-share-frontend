@@ -43,7 +43,11 @@ function Routes() {
         <Route exact path="/feed/qna" component={Qna} />
         <Route exact path="/feed/my-home" component={Myhome} />
         <Route exact path="/upload" component={Upload} />
+<<<<<<< HEAD
         <Route exact path="/storemaintrend" component={StoreMainTrend} />
+=======
+
+>>>>>>> babf60b03681f18206815099bc9ea33bf01ed245
         <Redirect to="/error" />
       </Switch>
     </Router>
