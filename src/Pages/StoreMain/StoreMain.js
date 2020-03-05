@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import StoreMainBanner from "./StoreMainBanner/StoreMainBanner";
+import Banner from "./Banner/Banner";
 import "./StoreMain.scss";
-import StoreMainPopularProduct from "./StoreMainPopularProduct/StoreMainPopularProduct";
-import StoreMainPopularBrand from "./StoreMainPopularBrand/StoreMainPopulrBrand";
-import StoreMainKeyWordRanking from "./StoreMainKeyWordRanking/StoreMainKeyWordRanking";
+import PopularProduct from "./PopularProduct/PopularProduct";
+import PopularBrand from "./PopularBrand/PopulrBrand";
+import KeyWordRanking from "./KeyWordRanking/KeyWordRanking";
 import StoreTop from "../../Components/Top/StoreTop";
 
 class StoreMain extends Component {
@@ -11,10 +11,10 @@ class StoreMain extends Component {
     return (
       <div className="StoreMain">
         <StoreTop />
-        <StoreMainBanner />
-        <StoreMainPopularProduct />
-        <StoreMainPopularBrand />
-        <StoreMainKeyWordRanking />
+        <Banner />
+        <PopularProduct />
+        <PopularBrand />
+        <KeyWordRanking />
       </div>
     );
   }

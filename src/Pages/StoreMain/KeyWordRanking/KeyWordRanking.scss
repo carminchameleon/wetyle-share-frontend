@@ -1,4 +1,4 @@
-.StoreMainKeyWordRanking {
+.KeyWordRanking {
   .main_container {
     margin-left: auto;
     margin-right: auto;
@@ -76,6 +76,17 @@
         .title_list_button:hover {
           color: rgb(38, 40, 43);
         }
+      }
+      .title_move_line {
+        width: 32px;
+        transform: translateX(344px) translateZ(0px);
+        position: absolute;
+        height: 0.125rem;
+        background-color: rgb(38, 40, 43);
+        border-radius: 1px;
+        transition: width 0.5s ease 0s, transform 0.5s ease 0s;
+
+        bottom: 0.25rem;
       }
     }
     .main_card_container {
