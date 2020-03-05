@@ -1,5 +1,5 @@
 import React from "react";
-import SignupInfoLeft from "./SignupInfoLeft/SignupInfoLeft";
+// import SignupInfoLeft from "./SignupInfoLeft/SignupInfoLeft";
 import SignupInfoRight from "./SignupInfoRight/SignupInfoRight";
 import "./SignupInfo.scss";
 
@@ -30,7 +30,7 @@ class SignupInfo extends React.Component {
             <div className="signin_info_box">
               <main>
                 <div className="signin_info_main">
-                  <SignupInfoLeft genderCheck={this.state.genderCheck} />
+                  {/* <SignupInfoLeft genderCheck={this.state.genderCheck} /> */}
                   <SignupInfoRight handleGender={this.handleGender} />
                 </div>
               </main>
