@@ -85,6 +85,8 @@
 // buying**********************
 .user_can_see_price {
   position: relative;
+  width: 100%;
+  margin: 0;
 }
 .cheaper_price_name {
   box-sizing: border-box;
@@ -102,13 +104,14 @@
   display: inline;
 }
 .discount_per {
-  font-size: 2rem;
+  font-size: 1.7rem;
   line-height: 1.34;
   font-weight: 700;
   color: red;
+  margin-right: 6px;
 }
 .price {
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.34;
   font-weight: 700;
   color: black;
@@ -243,6 +246,16 @@
 }
 .like_and_review {
   margin: 20px 0 24px 0;
+}
+.user_can_press_like {
+  background-image: url("https://image.flaticon.com/icons/svg/1077/1077035.svg");
+  width: 14px;
+  margin-right: 5px;
+}
+.already_pressed_heart {
+  background-image: url("https://image.flaticon.com/icons/svg/1076/1076984.svg");
+  width: 14px;
+  margin-right: 5px;
 }
 .like,
 .review {
@@ -385,6 +398,7 @@
   // border-radius: 4px;
   padding: 0.75rem 1.75rem 0.75rem 1.25rem;
   outline: none;
+  z-index: 10;
 }
 .one_of_model_list:hover {
   background-color: gray;

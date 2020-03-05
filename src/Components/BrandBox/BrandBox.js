@@ -22,14 +22,15 @@ class BrandBox extends Component {
             <div className="brand_img_btn_parent">
               <div className="brand_img_box">
                 <img
-                  class="brand_photo"
+                  className="brand_photo"
                   data-sizes="auto"
-                  data-src="https://usercontents-c.styleshare.io/images/21126903/214x120"
-                  data-srcset="https://usercontents-c.styleshare.io/images/21126903/200x112 200w, https://usercontents-c.styleshare.io/images/21126903/320x179 320w, https://usercontents-c.styleshare.io/images/21126903/480x269 480w, https://usercontents-c.styleshare.io/images/21126903/750x420 750w, https://usercontents-c.styleshare.io/images/21126903/975x546 975w, https://usercontents-c.styleshare.io/images/21126903/1024x573 1024w, https://usercontents-c.styleshare.io/images/21126903/1280x717 1280w, https://usercontents-c.styleshare.io/images/21126903/1320x739 1320w, https://usercontents-c.styleshare.io/images/21126903/1336x748 1336w, https://usercontents-c.styleshare.io/images/21126903/1480x829 1480w, https://usercontents-c.styleshare.io/images/21126903/1600x896 1600w"
-                  alt="나이키"
+                  data-src={this.props.url}
+                  // data-srcset="https://usercontents-c.styleshare.io/images/21126903/200x112 200w, https://usercontents-c.styleshare.io/images/21126903/320x179 320w, https://usercontents-c.styleshare.io/images/21126903/480x269 480w, https://usercontents-c.styleshare.io/images/21126903/750x420 750w, https://usercontents-c.styleshare.io/images/21126903/975x546 975w, https://usercontents-c.styleshare.io/images/21126903/1024x573 1024w, https://usercontents-c.styleshare.io/images/21126903/1280x717 1280w, https://usercontents-c.styleshare.io/images/21126903/1320x739 1320w, https://usercontents-c.styleshare.io/images/21126903/1336x748 1336w, https://usercontents-c.styleshare.io/images/21126903/1480x829 1480w, https://usercontents-c.styleshare.io/images/21126903/1600x896 1600w"
+                  alt=""
                   sizes="214px"
-                  srcset="https://usercontents-c.styleshare.io/images/21126903/200x112 200w, https://usercontents-c.styleshare.io/images/21126903/320x179 320w, https://usercontents-c.styleshare.io/images/21126903/480x269 480w, https://usercontents-c.styleshare.io/images/21126903/750x420 750w, https://usercontents-c.styleshare.io/images/21126903/975x546 975w, https://usercontents-c.styleshare.io/images/21126903/1024x573 1024w, https://usercontents-c.styleshare.io/images/21126903/1280x717 1280w, https://usercontents-c.styleshare.io/images/21126903/1320x739 1320w, https://usercontents-c.styleshare.io/images/21126903/1336x748 1336w, https://usercontents-c.styleshare.io/images/21126903/1480x829 1480w, https://usercontents-c.styleshare.io/images/21126903/1600x896 1600w"
-                  src="https://usercontents-c.styleshare.io/images/21126903/214x120"
+                  // srcset="https://usercontents-c.styleshare.io/images/21126903/200x112 200w, https://usercontents-c.styleshare.io/images/21126903/320x179 320w, https://usercontents-c.styleshare.io/images/21126903/480x269 480w, https://usercontents-c.styleshare.io/images/21126903/750x420 750w, https://usercontents-c.styleshare.io/images/21126903/975x546 975w, https://usercontents-c.styleshare.io/images/21126903/1024x573 1024w, https://usercontents-c.styleshare.io/images/21126903/1280x717 1280w, https://usercontents-c.styleshare.io/images/21126903/1320x739 1320w, https://usercontents-c.styleshare.io/images/21126903/1336x748 1336w, https://usercontents-c.styleshare.io/images/21126903/1480x829 1480w, https://usercontents-c.styleshare.io/images/21126903/1600x896 1600w"
+                  src={this.props.url}
+                  // className="brand_photo_size"
                 />
               </div>
               <div className="count_and_arrow_btn">
