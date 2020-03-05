@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./SignupLeft.scss";
 
 class SignupLeft extends Component {
   state = {
-    // typedEmail: "",
-    // isDuplicateUser: false,
     id: "",
-    // email: "",
     pwd: "",
     pwdcheck: "",
     idFocus: false,
@@ -60,8 +58,8 @@ class SignupLeft extends Component {
   goToSignup = () => {
     const data = {
       login_id: this.state.id,
-      password: this.state.pwd,
-      email: this.state.id
+      password: this.state.pwd
+      // email: this.state.id
 
       // sessionStorage.setItem("login_id", this.state.id)
       // sessionStorage.setItem("password", this.state.pwd)
@@ -81,7 +79,7 @@ class SignupLeft extends Component {
         } else if (res.message === "invalid email") {
           alert("이메일 형식을 확인해주세요.");
         } else if (this.state.pwd !== this.state.pwdcheck) {
-          alert("비밀번호를 확인해주세요");
+          alert("비밀번호가 일치하지 않습니다.");
         } else {
           this.props.history.push("/signupinfo");
         }
@@ -89,46 +87,6 @@ class SignupLeft extends Component {
     sessionStorage.setItem("login_id", this.state.id);
     sessionStorage.setItem("password", this.state.pwd);
   };
-
-  // handleOnChange(typedEmail) {
-
-  //   this.setState({
-  //     [typedEmail.target.name]: typedEmail.target.value
-  //   });
-  //   axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-  //     const users = response.data;
-  //     const isUserFound = users.filter(
-  //       user => user.email.toLowerCase() === typedEmail.toLowerCase()
-  //     ).length;
-
-  //     isUserFound
-  //       ? this.setState({
-  //           typedEmail,
-  //           isDuplicateUser: true
-  //         })
-  //       : this.setState({
-  //           typedEmail,
-  //           isDuplicateUser: false
-  //         });
-  //   });
-  // }
-
-  // emailInputClassName() {
-  //   if (this.state.typedEmail) {
-  //     return this.state.isDuplicateUser ? "is-invalid" : "is-valid";
-  //   }
-  //   return "";
-  // }
-
-  // renderFeedbackMessage() {
-  //   if (this.state.typedEmail) {
-  //     return this.state.isDuplicateUser ? (
-  //       <div className="invalid-feedback">이미 등록되어 있는 이메일입니다</div>
-  //     ) : (
-  //       <div className="valid-feedback">사용할 수 있는 이메일입니다</div>
-  //     );
-  //   }
-  // }
 
   render() {
     const kr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
@@ -200,4 +158,4 @@ class SignupLeft extends Component {
   }
 }
 
-export default SignupLeft;
+export default withRouter(SignupLeft);

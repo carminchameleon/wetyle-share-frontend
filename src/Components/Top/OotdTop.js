@@ -7,12 +7,19 @@ import "./OotdTop.scss";
 
 class OotdTop extends Component {
   state = {
-    search_mode: false
+    search_mode: false,
+    linePosition: -40
   };
 
   handle_search = () => {
     this.setState({
       search_mode: !this.state.search_mode
+    });
+  };
+
+  handleUnderline = () => {
+    this.setState({
+      linePosition: 40
     });
   };
 
@@ -22,15 +29,28 @@ class OotdTop extends Component {
         <div className="top_wrapper">
           <div className="top_left">
             <div className="top_logo_img">
-              <img src="https://usercontents-c.styleshare.io/images/16130846/40x40" />
+              <img
+                src="https://usercontents-c.styleshare.io/images/16130846/40x40"
+                alt=""
+              />
             </div>
             <div className="top_left_main">
-              <Link to="/">
-                <div className="top_main">#OOTD</div>
-              </Link>
-              <Link to="/storemain">
-                <div className="top_main">STORE</div>
-              </Link>
+              <div className="menu_box">
+                <Link to="/">
+                  <div className="top_main">#OOTD</div>
+                </Link>
+                <Link to="/storemain">
+                  <div className="top_main" onClick={this.handleUnderline}>
+                    STORE
+                  </div>
+                </Link>
+              </div>
+              <div
+                className="underline"
+                style={{
+                  transform: `translate(${this.state.linePosition}px, 0px)`
+                }}
+              ></div>
             </div>
           </div>
           <TopMid searchMode={this.state.search_mode}>

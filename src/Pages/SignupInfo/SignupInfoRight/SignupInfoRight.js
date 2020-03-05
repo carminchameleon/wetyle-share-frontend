@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { withRouter } from "react-router-dom";
 import "./SignupInfoRight.scss";
 
 class SignupInfoRight extends Component {
@@ -8,11 +9,41 @@ class SignupInfoRight extends Component {
     year: "",
     month: "",
     day: "",
+    nickname: "",
+    email: "",
+    returnedId: "",
+    returnedPwd: "",
     regexp: /^[0-9\b]+$/
   };
-  // doneSignup = () => {
-  //   console.log(sessionStorage.getItem("login_id"));
-  // };
+
+  doneSignup = () => {
+    // console.log(sessionStorage.getItem("login_id"));
+    const data = {
+      nickname: this.state.nickname,
+      email: this.state.email,
+      // gender: this.state.???,
+      birthYear: this.state.year,
+      birthMonth: this.state.month,
+      birthDay: this.state.day,
+      // birthdate: ${(this.state.year}"-"${this.state.month}"-"${this.state.day}
+      returnedId: sessionStorage.getItem("login_id"),
+      returnedPwd: sessionStorage.getItem("password")
+    };
+    fetch("", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      // .then(console.log("dddd"))
+      .then(res => {
+        if (res.status === 200) {
+          this.props.history.push("/login");
+        }
+      });
+  };
 
   handleYear = e => {
     let year = e.target.value;
@@ -165,4 +196,4 @@ class SignupInfoRight extends Component {
   }
 }
 
-export default SignupInfoRight;
+export default withRouter(SignupInfoRight);

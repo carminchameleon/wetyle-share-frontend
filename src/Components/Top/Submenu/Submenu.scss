@@ -19,6 +19,7 @@
   .nav_submenu_item {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     span {
       padding: 10px 12px;
       font-weight: 500;

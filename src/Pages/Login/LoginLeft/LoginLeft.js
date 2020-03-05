@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./LoginLeft.scss";
 
 class LoginLeft extends Component {
@@ -10,24 +11,6 @@ class LoginLeft extends Component {
     idFocus: false,
     pwdFocus: false
   };
-
-  // emailFormChecker = e => {
-  //   if (e.target.value.length > 0) {
-  //     this.setState({
-  //       emailFormCheck: true
-  //     });
-  //   }
-  //   if (!e.target.value.includes("@", ".")) {
-  //     this.setState({
-  //       emailFormCheck: true
-  //     });
-  //   }
-  //   if (!e.target.value.includes("@")) {
-  //     this.setState({
-  //       emailFormCheck: false
-  //     });
-  //   }
-  // };
 
   handleLoginCheck = e => {
     this.setState({
@@ -50,7 +33,6 @@ class LoginLeft extends Component {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      // .then(console.log("dddd"))
       .then(res => {
         if (res.token) {
           localStorage.setItem("token", res.token);
@@ -58,7 +40,6 @@ class LoginLeft extends Component {
         } else {
           alert("아이디 혹은 비밀번호를 확인해주세요.");
         }
-        return res;
       });
   };
 
@@ -76,39 +57,6 @@ class LoginLeft extends Component {
               onChange={this.handleLoginCheck}
               className="info_input"
             />
-            {/* {this.state.emailFormCheck === false ? (
-              <div>
-                <div>
-                  <input
-                    className="info_input"
-                    ref={ref => (this.input = ref)}
-                    id="id"
-                    name="id"
-                    value={this.state.id}
-                    placeholder="이메일 주소가 올바르지 않습니다."
-                    onFocus={this.handleFocusCheck}
-                    onChange={this.handleLoginCheck}
-                    onKeyDown={this.emailFormChecker}
-                  />
-                </div>
-              </div>
-            ) : (
-              <div>
-                <div>
-                  <input
-                    className="info_input1"
-                    ref={ref => (this.input = ref)}
-                    id="id"
-                    name="id"
-                    value={this.state.id}
-                    placeholder="ID/Email"
-                    onFocus={this.handleFocusCheck}
-                    onChange={this.handleLoginCheck}
-                    onKeyDown={this.emailFormChecker}
-                  />
-                </div>
-              </div>
-            )} */}
           </label>
           <div className="forgot_info_div">
             <a className="forgot_info" href="/">
@@ -142,4 +90,4 @@ class LoginLeft extends Component {
   }
 }
 
-export default LoginLeft;
+export default withRouter(LoginLeft);

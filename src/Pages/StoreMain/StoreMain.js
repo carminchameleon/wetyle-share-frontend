@@ -4,6 +4,7 @@ import "./StoreMain.scss";
 import StoreMainPopularProduct from "./StoreMainPopularProduct/StoreMainPopularProduct";
 import StoreMainPopularBrand from "./StoreMainPopularBrand/StoreMainPopulrBrand";
 import StoreTop from "../../Components/Top/StoreTop";
+import StoreMainTrend from "./Trend/StoreMainTrend";
 
 class StoreMain extends Component {
   render() {
@@ -13,6 +14,7 @@ class StoreMain extends Component {
         <StoreMainBanner />
         <StoreMainPopularProduct />
         <StoreMainPopularBrand />
+        <StoreMainTrend />
       </div>
     );
   }

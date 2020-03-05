@@ -21,17 +21,6 @@ class SignupRight extends Component {
     !window.Kakao.Auth && window.Kakao.init("f6b88303f2a59f0e0bd1fc1dad652f65");
     this.googleSDK();
     this.facebookSDK();
-
-    // 카카오 기본 버튼
-    // window.Kakao.Auth.createLoginButton({
-    //   container: "#kakao-login-btn",
-    //   success: function(authObj) {
-    //     console.log(authObj);
-    //   },
-    //   fail: function(err) {
-    //     console.log(err);
-    //   }
-    // });
   };
 
   facebookSDK = () => {
