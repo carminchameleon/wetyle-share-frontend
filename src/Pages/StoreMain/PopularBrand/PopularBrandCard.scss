@@ -1,4 +1,4 @@
-.StoreMainPopularBrandCard {
+.PopularBrandCard {
   display: block;
   margin: 0px;
   max-height: 305px;
@@ -25,6 +25,10 @@
         transition: transform 0.25s ease-in-out 0s;
         border-radius: 10px;
       }
+      .brand_img:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s;
+      }
     }
     .brand_under_grey {
       height: 25%;
@@ -47,7 +51,7 @@
 
       .brand_info_box {
         text-align: center;
-        padding: 1.5rem 1.125rem;
+        padding: 0.5rem 1.125rem;
 
         .brand_name {
           font-size: 1.5rem;

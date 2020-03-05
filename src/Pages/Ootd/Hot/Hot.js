@@ -19,7 +19,7 @@ class Hot extends Component {
     window.removeEventListener("scroll", this.infiniteScroll);
   };
   getCardList = () => {
-    fetch("http://10.58.3.251:8000/card/popular/")
+    fetch("http://52.78.11.154:8000/card/popular")
       .then(res => res.json())
       .then(res => {
         this.setState({

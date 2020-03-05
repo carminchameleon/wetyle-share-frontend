@@ -1,10 +1,9 @@
 import React, { Component } from "react";
+import BannerCore from "./BannerCore";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import StoreMainBannerCore from "./StoreMainBannerCore";
-import "./StoreMainBanner.scss";
+import "./Banner.scss";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -40,19 +39,17 @@ function SamplePrevArrow(props) {
   );
 }
 
-class StoreMainBanner extends Component {
+class Banner extends Component {
   constructor() {
     super();
     this.state = {
       data: [],
-      dataLength: 0,
       currentIndex: 0
     };
   }
 
   movescroll = () => {
-    const location =
-      document.querySelector(".StoreMainPopularProduct").offsetTop - 100;
+    const location = document.querySelector(".PopularProduct").offsetTop - 100;
     window.scrollTo({ top: location, behavior: "smooth" });
   };
   componentDidMount = () => {
@@ -60,42 +57,41 @@ class StoreMainBanner extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          data: res.data,
-          dataLength: res.data.length
+          data: res.data
         });
       });
   };
 
   render() {
+    const { data } = this.state;
     const settings = {
       dots: false,
       infinite: true,
+      fade: true,
+      // lazyLoad: true,
       slideToShow: 1,
       autoplay: true,
       slidesToScroll: 1,
-      speed: 1000,
-      lazyLoad: true,
-      autoPlaySpeed: 1000,
+      speed: 1200,
+      autoPlaySpeed: 1200,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
 
     return (
-      <div className="StoreMainBanner">
+      <div className="Banner">
         <Slider {...settings}>
-          {this.state.data.map((el, i) => {
+          {data.map((el, i) => {
             return (
-              <StoreMainBannerCore
+              <BannerCore
                 index={i}
                 key={el.id}
                 data={el}
                 webDestination={el.webDestination}
-                subText1={el.subText1}
-                subText2={el.subText2}
-                text1={el.text1}
-                text2={el.text2}
+                text={el.text}
+                subText={el.subText}
                 imageId={el.imageId}
-                dataLength={this.state.dataLength}
+                dataLength={data.length}
                 colorCode={el.colorCode}
               />
             );
@@ -117,4 +113,4 @@ class StoreMainBanner extends Component {
   }
 }
 
-export default StoreMainBanner;
+export default Banner;
