@@ -1,3 +1,62 @@
+.signup_info_left {
+  position: relative;
+  width: 100%;
+
+  .info_left_wrapper {
+    height: 50%;
+
+    label {
+      width: 110px;
+      position: absolute;
+      top: 150px;
+      left: 50px;
+      padding: 8px 0;
+      overflow: hidden;
+      color: #72787f;
+      background-color: white;
+      border-color: #c9cdd2;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+
+      input {
+        position: absolute;
+        cursor: pointer;
+        overflow: hidden;
+        margin: 0;
+        opacity: 0;
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .info_left_pic {
+      img {
+        width: 140px;
+        height: 140px;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+    }
+
+    button {
+      border: 1px solid #c7c8c9;
+      border-radius: 5px;
+      width: 110px;
+      font-size: 15px;
+      font-weight: 600;
+      color: grey;
+      padding: 8px 0;
+      margin: 15px 51px 0;
+      cursor: pointer;
+    }
+  }
+}
+
 .signup_info_right {
   flex-basis: 65%;
   padding-left: 20px;
@@ -170,7 +229,11 @@
 
         .birthdate {
           border-radius: 6px;
-          // padding: 16px 0
+
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            // padding: 16px 0
+          }
         }
 
         .year {
@@ -180,13 +243,13 @@
 
         .bd_month,
         .bd_day {
-          padding-left: 20px;
+          margin-left: 10px;
         }
 
         .month,
         .day {
-          width: 30px;
-          padding-left: 10px;
+          width: 50px;
+
           text-align: center;
         }
 

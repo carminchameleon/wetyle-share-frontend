@@ -35,7 +35,7 @@ class TrendCard extends React.Component {
             )}
             <img
               className="trend_item_img"
-              src={ele.style_image_url[0].image_url}
+              src={ele.style_image_url[0] && ele.style_image_url[0].image_url}
               alt="main_img"
               onMouseOver={() => {
                 this.setState({

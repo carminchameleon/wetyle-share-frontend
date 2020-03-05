@@ -136,7 +136,7 @@ class SignupRight extends Component {
             kakaoToken: authObj.access_token
           },
           () => {
-            fetch("http://10.58.2.111:8000/user/kakao/sign-in", {
+            fetch("http://52.78.11.154:8000/user/kakao/sign-in", {
               method: "GET",
               headers: {
                 Authorization: this.state.kakaoToken
