@@ -8,33 +8,47 @@ class DetailPopularBrandCard extends Component {
     super(props);
 
     this.state = {
-      categories_popular_list: []
+      categories_popular_list: [],
+      brandResult: []
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/data/data.json")
+    this.getBrandPopular();
+    //  this.mockDataCategory();
+  }
+  getBrandPopular = () => {
+    fetch("http://10.58.5.123:8000/product/popular/1")
       .then(res => res.json())
       .then(res => {
         this.setState({
-          categories_popular_list: res.categories_popular_list
+          brandResult: res.result
         });
       });
-  }
+  };
+  // mockDataCategory=() => {
+  //    fetch("http://localhost:3000/data/data.json")
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         categories_popular_list: res.categories_popular_list
+  //       });
+  //     });
+  // }
   render() {
     if (this.state.categories_popular_list === undefined) return null;
     return (
       <div className="category_popular_parent_detail">
         <div className="category_popular_text">{this.props.title}</div>
         <div className="detail_popular_card_row">
-          {this.state.categories_popular_list.map((el, index) => (
+          {this.state.brandResult.map((el, index) => (
             <StoreMainPopularProductCard
-              brandName={el.brandName}
-              imgUrl={el.imgUrl}
-              productName={el.productName}
-              productPrice={el.productPrice}
-              like={el.like}
-              review={el.review}
+              brandName={el.brand}
+              imgUrl={el.image_url}
+              productName={el.name}
+              productPrice={el.discounted_price}
+              like={el.product_like}
+              // review={el.review}
             />
           ))}
         </div>

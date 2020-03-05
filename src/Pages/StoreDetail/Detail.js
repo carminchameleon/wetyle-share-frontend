@@ -9,14 +9,13 @@ import ChangeAsk from "../../Components/ChangeAsk/ChangeAsk.js";
 import BrandBox from "../../Components/BrandBox/BrandBox.js";
 import DetailPopularProduct from "../../Components/DetailPopularProduct/DetailPopularProduct";
 // import StoreMainPopularBrandCard from "../../Pages/StoreMain/StoreMainPopularBrand/StoreMainPopularBrandCard";
+import swal from "sweetalert";
 import StoreTop from "../../Components/Top/StoreTop.js";
 const discount = document.getElementsByClassName("discount_hide_box");
 
 // document.title = "스타일쉐어";
-const fetchAddress = `${this.props.match.params.id}`;
-const addComma = x => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
+// const fetchAddress = `${this.props.match.params.id}`;
+
 class Detail extends Component {
   constructor(props) {
     super(props);
@@ -48,49 +47,23 @@ class Detail extends Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   fetch("http://10.58.5.123:8000/product/899")
-  //     // fetch("http://10.58.5.123:8000/product/color/1")
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState(
-  //         {
-  //           result: res.result
-  //         },
-  //         () => {
-  //           console.log(this.state.result);
-  //         }
-  //       );
-  //     });
-
-  // };
-  // fetch("http://localhost:3000/data/data.json")
-  //     .then(res => res.json())
-  //     .then(res => {
-  //   this.setState(
-  //     {
-  //       dd: res,
-  //       price: res.price,
-  //       product: res.product,
-  //       reviewData: res.review_data,
-  //       result: res.result
-  //     },
-  //     () => {
-  //       console.log(this.state.result);
-  //     }
-  //   );
-  // });
   // ******************mock data*****************************************
   componentDidMount = () => {
     // 처음 render될 때 무엇인가 보여주고 싶을 때 쓰는 것이 componentDidMount
+
     this.getItem();
     this.getColor();
     this.getSize();
   };
   getItem = () => {
-    fetch(`http://10.58.5.123:8000/product/${fetchAddress}`)
-      // fetch("http://10.58.5.123:8000/product/color/1")
-      // fetch("http://localhost:3000/data/data.json")
+    // fetch(`http://10.58.5.123:8000/product/${fetchAddress}`)
+    // fetch("http://10.58.5.123:8000/product/300")
+    fetch("http://10.58.5.184:8000/product/5", {
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+      }
+    })
       .then(res => res.json())
       .then(res => {
         this.setState(
@@ -133,6 +106,7 @@ class Detail extends Component {
         );
       });
   };
+
   // **********************mock data 끝****************************************
 
   minusProductCount = i => {
@@ -172,19 +146,83 @@ class Detail extends Component {
       ? this.plusLikeCount()
       : this.minusLikeCount();
   };
+  // fetch(`http://10.58.2.111:8000/card/upload/image`, {
+  //   method: "POST",
+  //   headers: {
+  //     Authorization:
+  //       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+  //   },
+  //   body: formData
+  // })
+  //     .then(res => res.json())
+  // .then(res =>
+  //   this.setState({
+  //     resultList: this.state.resultList.concat(res.image_url_list)
+  //   })
+  // )
+  // .then(res => console.log(res));
+  // };
+  // *********************************************************
+  // fetch("http://localhost:3000/data/data.json", {
+  //   method: "POST",
+  //   headers: {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify({
+  //     userProductCount: "userProductCount" + 1
+  //   })
+  // });
+  // .then(res => {
+  //   return res.json();
+  // })
+  // .then(res =>
+  //   this.setState({
+  //     userProductCount: res.userProductCount
+  //   })
+  // );
+  // *********************************************************
   plusLikeCount = () => {
-    const likeObj = { ...this.state.result };
-    likeObj.product_like = this.state.result.product_like + 1;
+    swal("success", "좋아요를 눌렀습니다.", "success");
+    // const likeObj = { ...this.state.result };
+    // likeObj.product_like = this.state.result.product_like + 1;
+    // this.setState({
+    //   result: likeObj
+    // });
     this.setState({
-      result: likeObj
+      pressHeart: !this.state.pressHeart,
+      is_like: !this.state.result.is_like
     });
+
+    fetch("http://10.58.5.184:8000/product/like/5", {
+      method: "GET",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+      }
+    }).then(this.getItem());
   };
+
   minusLikeCount = () => {
-    const deleteLike = { ...this.state.result };
-    deleteLike.product_like = this.state.result.product_like - 1;
+    swal("취소되었습니다");
     this.setState({
-      result: deleteLike
+      pressHeart: !this.state.pressHeart,
+      is_like: !this.state.result.is_like
     });
+
+    fetch("http://10.58.5.184:8000/product/like/5", {
+      method: "GET",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+      }
+    }).then(this.getItem());
+
+    // const deleteLike = { ...this.state.result };
+    // deleteLike.product_like = this.state.result.product_like - 1;
+    // this.setState({
+    //   result: deleteLike
+    // });
   };
   handleSelectOption = e => {
     this.setState({
@@ -322,9 +360,9 @@ class Detail extends Component {
       this.state.getSize === undefined
     )
       return null;
-    // console.log(this.state.getColor);
-    // console.log(this.state.getSize);
-    console.log(this.state.result.product_like);
+    // console.log(this.state.);
+    console.log(this.state.result);
+    // console.log(this.state.result.product_like);
 
     return (
       <div>
@@ -376,14 +414,15 @@ class Detail extends Component {
                             %
                           </span>
                           <span className="price">
-                            {addComma(this.state.result.discounted_price)}원
+                            {this.state.result.discounted_price.toLocaleString()}
+                            원
                           </span>
                           <span className="won">원</span>
                         </div>
                       </div>
                       <div className="before_discount_price_parent">
                         <span className="before_discount_price">
-                          {addComma(this.state.result.price)}원
+                          {this.state.result.price.toLocaleString()}원
                         </span>
                       </div>
                       <button
@@ -422,17 +461,18 @@ class Detail extends Component {
                           <span className="before_discount_price_text">
                             적용 전 가격
                           </span>
-                          <span className="percentage_of_price">39%</span>
+                          <span className="percentage_of_price">5%</span>
                           <span className="smaller_discount_price">
-                            65,000원
+                            {(this.state.result.price * 0.95).toLocaleString()}
+                            원
                           </span>
                         </div>
                         <div className="hide_second_line">
                           <span className="applied_coupon">적용 된 쿠폰</span>
                           <div>
-                            <span className="percentage_coupon">8%</span>
+                            <span className="percentage_coupon">5% </span>
                             <span className="which_coupon">
-                              해외브랜드 8%쿠폰
+                              코로나 위로 5% 추가 쿠폰
                             </span>
                           </div>
                         </div>
@@ -444,7 +484,7 @@ class Detail extends Component {
                       <div class="like_and_review">
                         <span
                           className={
-                            this.state.pressHeart
+                            this.state.is_like
                               ? "already_pressed_heart"
                               : "user_can_press_like"
                           }
@@ -472,7 +512,7 @@ class Detail extends Component {
                       <div className="point_box">
                         <span className="user_own_point">적립 단추</span>
                         <span className="how_many_point">
-                          {this.state.result.point}개
+                          {this.state.result.point.toLocaleString()}개
                         </span>
                       </div>
                       <p className="delivery_free_or_not_parent">
@@ -515,7 +555,7 @@ class Detail extends Component {
                                 onChange={this.selectOption}
                                 onClick={this.handleSelectOption}
                               >
-                                {x.color_id + "_" + x.product_color}
+                                {x.color_id + "_" + x.color_name}
                               </li>
                             ))}
                           </ul>
