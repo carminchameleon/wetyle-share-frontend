@@ -18,14 +18,16 @@ class LoginLeft extends Component {
     });
   };
 
-  goToSignin = () => {
+  goToSignin = e => {
+    e.preventDefault();
+
     const data = {
       login_id: this.state.id,
       password: this.state.pwd,
       email: this.state.id
     };
 
-    fetch("http://10.58.2.91:8000/user/sign-in/checkid", {
+    fetch("http://10.58.5.123:8000/user/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

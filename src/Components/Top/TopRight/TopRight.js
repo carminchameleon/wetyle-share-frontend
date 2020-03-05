@@ -89,7 +89,7 @@ class TopRight extends Component {
           </div>
         </div>
         {this.props.searchMode && this.state.keyword ? (
-          <div className="search_correct" ref={ref => (this.div = ref)}>
+          <div className="search_correct">
             <ul>{this.handleCheck()}</ul>
           </div>
         ) : (

@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-=======
-
->>>>>>> babf60b03681f18206815099bc9ea33bf01ed245
 import "./SignupLeft.scss";
 
 class SignupLeft extends Component {
@@ -55,41 +50,46 @@ class SignupLeft extends Component {
 
   handlePwdLength = () => {
     if (this.state.pwd.length > 0 && this.state.pwd.length < 6) {
-      return <div className="short_pwd">너무 짧습니다.(6~18자)</div>;
+      return <div className="short_pwd">너무 짧습니다.(7~18자)</div>;
     }
   };
 
-  goToSignup = () => {
-    const data = {
-      login_id: this.state.id,
-      password: this.state.pwd
-      // email: this.state.id
+  goToSignup = e => {
+    e.preventDefault();
 
-      // sessionStorage.setItem("login_id", this.state.id)
-      // sessionStorage.setItem("password", this.state.pwd)
+    const data = {
+      login_id: this.state.id
     };
-    fetch("http://10.58.2.91:8000/user/sign-up/checkid", {
+
+    fetch("http://10.58.5.123:8000/user/sign-up/checkid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
     })
-      .then(res => res.json())
-      // .then(console.log("dddd"))
       .then(res => {
-        if (res.message === "existing email") {
-          alert("이미 존재하는 id/email입니다.");
-        } else if (res.message === "invalid email") {
-          alert("이메일 형식을 확인해주세요.");
-        } else if (this.state.pwd !== this.state.pwdcheck) {
-          alert("비밀번호가 일치하지 않습니다.");
-        } else {
+        if (res.status === 200) {
+          sessionStorage.setItem("login_id", this.state.id);
+          sessionStorage.setItem("password", this.state.pwd);
           this.props.history.push("/signupinfo");
+        } else if (this.state.pwd !== this.state.pwdcheck) {
+          alert("비밀번호를 확인해주세요.");
+        } else {
+          alert("이미 존재하는 id/email입니다.");
         }
-      });
-    sessionStorage.setItem("login_id", this.state.id);
-    sessionStorage.setItem("password", this.state.pwd);
+      })
+      // .then(res => {
+      //   console.log("res: ", res);
+      //   if (!res.message) {
+      //     localStorage.setItem("login_id", this.state.id);
+      //     localStorage.setItem("password", this.state.pwd);
+      //     this.props.history.push("/signupinfo");
+      //   } else {
+      //     alert("이미 존재하는 id/email입니다.");
+      //   }
+      // })
+      .catch(error => console.error(error));
   };
 
   render() {
@@ -121,7 +121,7 @@ class SignupLeft extends Component {
               name="pwd"
               type="password"
               value={this.state.pwd}
-              placeholder="비밀번호 (최소 6자)"
+              placeholder="비밀번호 (최소 7자)"
               onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               onInput={e => this.handleOnPasswordInput(e.target.value)}

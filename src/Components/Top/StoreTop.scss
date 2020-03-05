@@ -16,9 +16,11 @@
     align-items: center;
     // width: 100%;
     height: 64px;
+
     .top_left {
       display: flex;
       align-items: center;
+
       .top_logo_img img {
         height: 50px;
         width: 50px;
@@ -63,3 +65,11 @@
     flex-wrap: wrap;
   }
 }
+
+// .hello {
+//   height: 0px;
+// }
+// .hello:hover {
+//   height: 400px;
+//   transition: height 1s ease-in-out 0s;
+// }

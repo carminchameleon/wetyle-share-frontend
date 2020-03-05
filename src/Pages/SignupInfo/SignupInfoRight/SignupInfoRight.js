@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import kakaoImg from "Img/Kakao.png";
 import "./SignupInfoRight.scss";
-import TopRight from "Components/Top/TopRight/TopRight";
-import TopMid from "Components/Top/TopMid/TopMid";
 
 class SignupInfoRight extends Component {
   state = {
-
     id: "",
     pwd: "",
     pwdfocus: false,
@@ -22,9 +19,7 @@ class SignupInfoRight extends Component {
     returnedId: "",
     returnedPwd: "",
     regexp: /^[0-9\b]+$/
-
   };
-
 
   handleChange = e => {
     this.setState({
@@ -32,21 +27,24 @@ class SignupInfoRight extends Component {
     });
   };
 
-<<<<<<< HEAD
-  doneSignup = () => {
+  // handleText = e => {
+  //   this.setState({
+  //     name:
+  //   });
+  // };
+
+  doneSignup = e => {
+    e.preventDefault();
     // console.log(sessionStorage.getItem("login_id"));
     const data = {
       nickname: this.state.nickname,
       email: this.state.email,
-      // gender: this.state.???,
-      birthYear: this.state.year,
-      birthMonth: this.state.month,
-      birthDay: this.state.day,
-      // birthdate: ${(this.state.year}"-"${this.state.month}"-"${this.state.day}
-      returnedId: sessionStorage.getItem("login_id"),
-      returnedPwd: sessionStorage.getItem("password")
+      gender: "s",
+      // birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
+      login_id: sessionStorage.getItem("login_id"),
+      password: sessionStorage.getItem("password")
     };
-    fetch("", {
+    fetch("http://10.58.5.123:8000/user/sign-up", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -56,13 +54,17 @@ class SignupInfoRight extends Component {
       .then(res => res.json())
       // .then(console.log("dddd"))
       .then(res => {
-        if (res.status === 200) {
+        if (res.message === "existing email") {
+          alert("존재하는 이메일입니다.");
+        } else if (res.message === "SUCCESS") {
           this.props.history.push("/login");
+        } else {
+          alert("패스워드 혹은 아이디를 확인해주세요.");
         }
-      });
+        console.log(res);
+      })
+      .catch(error => console.log(error));
   };
-=======
->>>>>>> babf60b03681f18206815099bc9ea33bf01ed245
 
   handleYear = e => {
     let year = e.target.value;
@@ -87,7 +89,6 @@ class SignupInfoRight extends Component {
       this.setState({ [e.target.name]: day });
     }
   };
-
 
   render() {
     console.log(this.props);
@@ -147,10 +148,12 @@ class SignupInfoRight extends Component {
               <input
                 className="person nickname"
                 type="text"
+                name="nickname"
+                // value={this.state.nickname}
                 placeholder="닉네임을 입력하세요."
                 maxLength="20"
                 // onFocus={this.handleFocusCheck}
-                // onChange={this.handleLoginCheck}
+                // onChange={this.handleChange}
               />
             </div>
             <div className="box 2">
@@ -163,7 +166,7 @@ class SignupInfoRight extends Component {
                   name="email"
                   type="text"
                   placeholder="이메일을 입력하세요."
-                  // onChange={this.handleLoginCheck}
+                  onChange={this.handleChange}
                 />
               )}
             </div>
@@ -203,11 +206,7 @@ class SignupInfoRight extends Component {
                 className="birthdate year"
                 name="year"
                 value={this.state.year}
-                onChange={this.handleYear}
-                type="text"
-                maxLength="4"
-                name="year"
-                value={this.state.year}
+                type="number"
                 onChange={this.handleChange}
                 onFocus={this.handleFocusCheck}
               />
@@ -215,14 +214,11 @@ class SignupInfoRight extends Component {
               <div className="bd_month">
                 <input
                   className="birthdate month"
-                  type="text"
+                  type="number"
                   maxLength="2"
                   name="month"
                   value={this.state.month}
-
                   onChange={this.handleChange}
-
-
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />
@@ -231,16 +227,11 @@ class SignupInfoRight extends Component {
               <div className="bd_day">
                 <input
                   className="birthdate day"
-                  type="text"
+                  type="number"
                   maxLength="2"
                   name="day"
-
                   onChange={this.handleChange}
                   value={this.state.day}
-
-              
-             
-
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />
