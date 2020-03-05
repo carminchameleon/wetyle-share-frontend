@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import StoreMainPopularProductCard from "./StoreMainPopularProductCard";
+// import StoreMainPopularProductCard from "./StoreMainPopularProductCard";
 import "./StoreMainPopularProduct.scss";
+import StoreProductCard from "../../../Components/StoreProductCard/StoreProductCard";
 
 class StoreMainPopularProduct extends Component {
   constructor() {
@@ -60,7 +61,7 @@ class StoreMainPopularProduct extends Component {
 
   makeNewCate = newData => {
     return this.state.newData[this.state.categoryIndex].data.map(el => (
-      <StoreMainPopularProductCard
+      <StoreProductCard
         data={el.goods}
         key={el.goods.id}
         discountRate={el.goods.discountRate}
@@ -77,9 +78,9 @@ class StoreMainPopularProduct extends Component {
 
   makeAllCate = allData => {
     return allData.map(el => (
-      <StoreMainPopularProductCard
+      <StoreProductCard
         data={el}
-        key={el.id}
+        webLink={el.id}
         discountRate={el.discountRate}
         picture={el.picture.id}
         isDiscounted={el.isDiscounted}
@@ -149,7 +150,6 @@ class StoreMainPopularProduct extends Component {
                     className="title_list_button"
                     onClick={this.selectCategory}
                     id={index}
-                    name={el}
                   >
                     {el}
                   </button>

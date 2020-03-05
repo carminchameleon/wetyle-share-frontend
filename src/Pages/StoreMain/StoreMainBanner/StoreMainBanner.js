@@ -73,9 +73,9 @@ class StoreMainBanner extends Component {
       slideToShow: 1,
       autoplay: true,
       slidesToScroll: 1,
-      speed: 1000,
-      lazyLoad: true,
-      autoPlaySpeed: 1000,
+      speed: 500,
+      // lazyLoad: true,
+      autoPlaySpeed: 500,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
@@ -90,10 +90,12 @@ class StoreMainBanner extends Component {
                 key={el.id}
                 data={el}
                 webDestination={el.webDestination}
-                subText1={el.subText1}
-                subText2={el.subText2}
-                text1={el.text1}
-                text2={el.text2}
+                // subText1={el.subText1}
+                // subText2={el.subText2}
+                // text1={el.text1}
+                // text2={el.text2}
+                text={el.text}
+                subText={el.subText}
                 imageId={el.imageId}
                 dataLength={this.state.dataLength}
                 colorCode={el.colorCode}
