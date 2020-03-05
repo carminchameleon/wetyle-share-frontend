@@ -1,32 +1,30 @@
 import React, { Component } from "react";
 import "./StoreProductCard.scss";
 
+const addComma = x => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 export class StoreProductCard extends Component {
-  addComma = x => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
   render() {
-    console.log(this.props.webLink);
     return (
       <div className="StoreProductCard">
         <div className="card_box_set">
-          <>
-            <a
-              className="card_box_photo_link"
-              href={`https://www.styleshare.kr/goods/${this.props.webLink}`}
-              alt=""
-            >
-              <div className="card_box_photo_set">
-                <picture className="card_box_photo_picture">
-                  <img
-                    className="card_box_photo_img"
-                    src={`https://usercontents-c.styleshare.io/images/${this.props.picture}/312x312`}
-                    alt=""
-                  ></img>
-                </picture>
-              </div>
-            </a>
-          </>
+          <a
+            className="card_box_photo_link"
+            href={`https://www.styleshare.kr/goods/${this.props.webLink}`}
+            alt=""
+          >
+            <div className="card_box_photo_set">
+              <picture className="card_box_photo_picture">
+                <img
+                  className="card_box_photo_img"
+                  src={this.props.picture}
+                  alt=""
+                ></img>
+              </picture>
+            </div>
+          </a>
           <div className="card_box_contents">
             <a
               className="product_brand_link"
@@ -38,22 +36,20 @@ export class StoreProductCard extends Component {
               <span className="product_name">{this.props.productName}</span>
             </a>
             <div className="product_price_info">
-              {this.props.isDiscounted === true ? (
+              {this.props.discountRate && (
                 <span className="price_discount">{`${this.props.discountRate}%`}</span>
-              ) : (
-                ""
               )}
 
-              <span className="price_money">
-                {this.addComma(this.props.price)}
-              </span>
+              <span className="price_money">{addComma(this.props.price)}</span>
               <span className="price_won">원</span>
             </div>
             <div className="like_and_comment">
-              <span className="like">{`좋아요 ${this.addComma(
+              <span className="like">{`좋아요 ${addComma(
                 this.props.likeCount
               )}`}</span>
-              <span className="comment">{`후기 ${this.props.reviewsCount}`}</span>
+              <span className="comment">{`후기 ${addComma(
+                this.props.reviewsCount
+              )}`}</span>
             </div>
           </div>
         </div>

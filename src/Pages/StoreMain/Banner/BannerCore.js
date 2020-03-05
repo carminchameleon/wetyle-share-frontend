@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./StoreMainBannerCore.scss";
+import "./BannerCore.scss";
 
-class StoreMainBannerCore extends Component {
+class BannerCore extends Component {
   splitFirst = sentence => {
     const position = sentence.indexOf("\r\n");
     const first = sentence.slice(0, position);
@@ -15,22 +15,28 @@ class StoreMainBannerCore extends Component {
   };
 
   render() {
-    let text1 = this.splitFirst(this.props.text);
-    let text2 = this.splitSecond(this.props.text);
-    let subText1 = this.splitFirst(this.props.subText);
-    let subText2 = this.splitSecond(this.props.subText);
-    console.log("시범적", text1);
-    console.log(text2);
-    console.log(subText1);
-    console.log(subText2);
-    let position = (this.props.index / this.props.dataLength) * 100;
+    const {
+      text,
+      subText,
+      index,
+      dataLength,
+      webDestination,
+      imageId,
+      colorCode
+    } = this.props;
+    let text1 = this.splitFirst(text);
+    let text2 = this.splitSecond(text);
+    let subText1 = this.splitFirst(subText);
+    let subText2 = this.splitSecond(subText);
+
+    let position = (index / dataLength) * 100;
 
     return (
-      <div className="StoreMainBannerCore">
+      <div className="BannerCore">
         <div className="ban_pic_wrapper">
-          <a className="ban_pic_a" href={this.props.webDestination}>
+          <a className="ban_pic_a" href={webDestination}>
             <img
-              src={`https://usercontents-c.styleshare.io/images/${this.props.imageId}/1920x1080`}
+              src={`https://usercontents-c.styleshare.io/images/${imageId}/1920x1080`}
               alt=""
             ></img>
           </a>
@@ -47,10 +53,7 @@ class StoreMainBannerCore extends Component {
                 </div>
               </div>
               <div className="subtext_box">
-                <div
-                  className="subtext"
-                  style={{ color: this.props.colorCode }}
-                >
+                <div className="subtext" style={{ color: colorCode }}>
                   {subText1}
                   <br></br>
                   {subText2}
@@ -66,7 +69,7 @@ class StoreMainBannerCore extends Component {
                   <div
                     className="line_middle_bold"
                     style={{
-                      backgroundColor: this.props.colorCode,
+                      backgroundColor: colorCode,
                       left: `${position}%`
                     }}
                   ></div>
@@ -81,4 +84,4 @@ class StoreMainBannerCore extends Component {
   }
 }
 
-export default StoreMainBannerCore;
+export default BannerCore;
