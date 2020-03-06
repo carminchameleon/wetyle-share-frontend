@@ -1,14 +1,64 @@
+.signup_info_left {
+  position: relative;
+  width: 100%;
+  .info_left_wrapper {
+    height: 50%;
+    label {
+      width: 110px;
+      position: absolute;
+      top: 150px;
+      left: 50px;
+      padding: 8px 0;
+      overflow: hidden;
+      color: #72787f;
+      background-color: white;
+      border-color: #c9cdd2;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      input {
+        position: absolute;
+        cursor: pointer;
+        overflow: hidden;
+        margin: 0;
+        opacity: 0;
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .info_left_pic {
+      img {
+        width: 140px;
+        height: 140px;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+    }
+    button {
+      border: 1px solid #c7c8c9;
+      border-radius: 5px;
+      width: 110px;
+      font-size: 15px;
+      font-weight: 600;
+      color: grey;
+      padding: 8px 0;
+      margin: 15px 51px 0;
+      cursor: pointer;
+    }
+  }
+}
 .signup_info_right {
   flex-basis: 65%;
   padding-left: 20px;
-
   ul {
     margin: 0;
     list-style: none;
-
     li {
       margin-bottom: 15px;
-
       button {
         display: flex;
         -webkit-box-align: center;
@@ -26,12 +76,10 @@
         border-color: initial;
         border-image: initial;
         outline: none;
-
         svg {
           height: 20px;
           margin: 12px;
         }
-
         div {
           border-left: 1px solid rgb(41, 67, 125);
           width: 100%;
@@ -40,18 +88,14 @@
       }
     }
   }
-
   .info_box_wrapper {
     width: 100%;
-
     .login_wrapper {
       margin: 15px 0;
       background-color: transparent;
-
       .info_input_wrapper {
         display: flex;
         position: relative;
-
         span {
           position: absolute;
           top: 10px;
@@ -60,7 +104,6 @@
           color: red;
         }
       }
-
       input {
         width: 94%;
         display: block;
@@ -73,24 +116,19 @@
         margin: 0;
         outline: none;
       }
-
       .id_input {
         border-top-width: 1px;
         border-radius: 6px 6px 0 0;
       }
-
       .pwd_input {
         border-radius: 0 0 6px 6px;
       }
     }
-
     .info_box {
       border: 1px solid #c7c8c9;
       border-radius: 6px;
       width: 370px;
-      height: 175px;
       background-color: white;
-
       // &:focus {
       //   outline: none;
       //   border-color: rgb(74, 218, 175);
@@ -101,55 +139,45 @@
         height: 10px;
         display: flex;
         align-items: center;
-
         .box_title {
           padding-right: 15px;
           text-align: left;
           color: #26282b;
         }
-
         .two_words {
           padding-right: 30px;
         }
-
         .birthdate {
           border-radius: 6px;
           // padding: 16px 0
         }
-
         .year {
           width: 60px;
           text-align: center;
         }
-
         .bd_month,
         .bd_day {
           padding-left: 20px;
         }
-
         .month,
         .day {
           width: 50px;
           padding: 0px;
           text-align: center;
         }
-
         .gender_woman {
           padding-left: 30px;
         }
-
         .person {
           width: 80%;
           font-size: 16px;
           border: 0;
-
           &:focus {
             outline: none;
             border-color: rgb(74, 218, 175);
           }
         }
       }
-
       .last_box {
         // border-bottom: 1px solid #c7c8c9;
         padding: 16px;
@@ -157,50 +185,43 @@
         display: flex;
         align-items: center;
         outline: none;
-
         .box_title {
           padding-right: 15px;
           text-align: left;
           color: #26282b;
         }
-
         .two_words {
           padding-right: 30px;
         }
-
         .birthdate {
           border-radius: 6px;
-          // padding: 16px 0
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            // padding: 16px 0
+          }
         }
-
         .year {
           width: 60px;
           text-align: center;
         }
-
         .bd_month,
         .bd_day {
-          padding-left: 20px;
+          margin-left: 10px;
         }
-
         .month,
         .day {
-          width: 30px;
-          padding-left: 10px;
+          width: 50px;
           text-align: center;
         }
-
         .gender_woman {
           padding-left: 30px;
         }
-
         .person {
           width: 80%;
           font-size: 16px;
           border: 0;
         }
       }
-
       // .last_box {
       //   padding: 16px;
       //   height: 10px;
@@ -209,18 +230,15 @@
       // }
     }
   }
-
   .policy {
     font-size: 7px;
     text-align: left;
     padding-top: 10px;
-
     u {
       cursor: pointer;
       color: #4190f2;
     }
   }
-
   .done {
     width: 150px;
     height: 45px;

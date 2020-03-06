@@ -61,7 +61,7 @@ class SignupLeft extends Component {
       login_id: this.state.id
     };
 
-    fetch("http://10.58.1.61:8000/user/sign-up/checkid", {
+    fetch("http://52.78.11.154:8000/user/sign-up/checkid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

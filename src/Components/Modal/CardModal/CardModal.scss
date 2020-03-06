@@ -43,12 +43,12 @@
 
   margin: auto auto;
   max-width: 880px;
-  height: 820px;
+  height: 770px;
 
   @media only screen and (max-height: 800px) {
     width: 750px;
     max-width: 750px;
-    height: 660px;
+    height: 590px;
   }
 
   .modal_main {
@@ -56,15 +56,83 @@
 
     .right_feed {
       padding: 20px;
+      width: 100%;
 
       &:hover {
         overflow-y: hidden;
+      }
+
+      .related_item_wrapper {
+        width: 100%;
+        height: 130px;
+        overflow-y: auto;
+        border: 1px solid #e8ebed;
+        border-radius: 10px;
+        margin-bottom: 10px;
+
+        span {
+          display: inline-block;
+          background-image: url("../../../Img/OOTD_item_icon.png");
+          background-repeat: no-repeat;
+          vertical-align: middle;
+          width: 56px;
+          height: 56px;
+          border-radius: 5px;
+          margin-right: 10px;
+          background-color: #f7f8f9;
+        }
+
+        .item_ele {
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+          margin-bottom: 10px;
+
+          .item_desc {
+            display: block;
+          }
+        }
+
+        .top_icon {
+          background-position: 0 -2178px;
+        }
+
+        .bottom_icon {
+          background-position: 0 -2010px;
+        }
+
+        .outer_icon {
+          background-position: 0 -1954px;
+        }
+
+        .shoes_icon {
+          background-position: 0 -2066px;
+        }
+
+        .bag_icon {
+          background-position: 0 -1786px;
+        }
+
+        .accessory_icon {
+          background-position: 0 -1730px;
+        }
+
+        .desc_title {
+          color: #26282b;
+          font-size: 12px;
+        }
+
+        .desc_content {
+          margin-top: 2px;
+          font-weight: bold;
+        }
       }
 
       .info_wrapper {
         padding: 12px;
         border: 1px solid #e8ebed;
         border-radius: 6px;
+        width: 93%;
 
         .info_top {
           display: flex;
@@ -82,6 +150,7 @@
 
           .user_information {
             margin-left: 10px;
+            width: 100%;
 
             .user_nick {
               font-size: 13px;
@@ -89,6 +158,8 @@
             }
 
             .user_add_info {
+              word-break: break-all;
+              width: 80%;
               color: #9ea4aa;
               font-size: 11px;
             }
@@ -168,6 +239,7 @@
         .button_group {
           display: flex;
           border-collapse: collapse;
+          align-items: center;
           color: transparent;
           cursor: pointer;
 
@@ -244,7 +316,7 @@
 
       .comment_wrapper {
         @media only screen and (max-height: 800px) {
-          height: 350px;
+          height: 300px;
         }
 
         &:hover {
@@ -252,7 +324,7 @@
         }
 
         overflow: hidden;
-        height: 450px;
+        height: 300px;
         margin-top: 10px;
         padding-top: 10px;
         border-top-color: #c9cdd2;
@@ -283,6 +355,7 @@
               width: 30px;
               height: 30px;
               cursor: pointer;
+              border-radius: 20px;
             }
 
             a {

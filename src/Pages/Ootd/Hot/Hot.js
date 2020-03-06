@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SERVER_URL } from "config";
 
 import OotdFooter from "../../../Components/OotdFooter/OotdFooter";
 import TrendCard from "../../../Components/TrendCard/TrendCard";
@@ -9,21 +10,27 @@ import "./Hot.scss";
 
 class Hot extends Component {
   state = {
-    hotCard: []
+    hotCard: [],
+    scrolling: true,
+    items: 5,
+    preItems: 0
   };
   componentDidMount = () => {
     window.addEventListener("scroll", this.infiniteScroll, true);
-    this.getCardList();
+    this.getHotCard();
   };
   componentWillUnmount = () => {
     window.removeEventListener("scroll", this.infiniteScroll);
   };
-  getCardList = () => {
-    fetch("http://10.58.3.251:8000/card/popular/")
+
+  getHotCard = () => {
+    fetch(`${SERVER_URL}/card/popular`)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          hotCard: res.card_list,
+          hotCard: this.state.hotCard.concat(
+            res.card_list.slice(this.state.preItems, this.state.items)
+          ),
           scrolling: !this.state.scrolling
         });
       });
@@ -39,13 +46,13 @@ class Hot extends Component {
       document.body.scrollTop
     );
     let clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight + 10 > scroolHeight) {
+    if (scrollTop + clientHeight + 1 > scroolHeight) {
       this.setState({
         scrolling: !this.state.scrolling,
         preItems: this.state.items,
         items: this.state.items + 5
       });
-      // this.getCardList();
+      this.getHotCard();
     }
   };
 

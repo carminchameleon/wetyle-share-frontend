@@ -6,12 +6,7 @@ class MainImgSlider extends Component {
     const { data, key, over, out } = this.props;
     return (
       <div key={key} className="img_wrapper">
-        <img
-          src={data.main_url}
-          alt="img"
-          onMouseEnter={over}
-          onMouseLeave={out}
-        />
+        <img src={data} alt="img" onMouseEnter={over} onMouseLeave={out} />
       </div>
     );
   }

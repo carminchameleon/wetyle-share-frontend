@@ -111,6 +111,7 @@ class LoginRight extends Component {
         console.log("Name: " + profile.getName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
+        console.log("total", googleUser.getAuthResponse());
       },
       error => {
         alert(JSON.stringify(error, undefined, 2));
