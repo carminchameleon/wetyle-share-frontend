@@ -31,18 +31,12 @@ class StoreProductCard extends Component {
                 </span>
               )}
 
-              <span className="price_money">
-                {this.props.price.toLocaleString()}
-              </span>
+              <span className="price_money">{this.props.price}</span>
               <span className="price_won">원</span>
             </div>
             <div className="like_and_comment">
-              <span className="like">
-                좋아요 {this.props.likeCount.toLocaleString()}
-              </span>
-              <span className="comment">
-                후기 {this.props.reviewsCount.toLocaleString()}
-              </span>
+              <span className="like">좋아요 {this.props.likeCount}</span>
+              <span className="comment">후기 {this.props.reviewsCount}</span>
             </div>
           </div>
         </div>
