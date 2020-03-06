@@ -61,7 +61,7 @@ class SignupLeft extends Component {
       login_id: this.state.id
     };
 
-    fetch("http://10.58.5.123:8000/user/sign-up/checkid", {
+    fetch("http://10.58.1.61:8000/user/sign-up/checkid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -69,26 +69,20 @@ class SignupLeft extends Component {
       body: JSON.stringify(data)
     })
       .then(res => {
-        if (res.status === 200) {
+        if (this.state.pwd !== this.state.pwdcheck) {
+          alert("두 비밀번호가 일치하지 않습니다.");
+        } else if (this.state.id.length < 3) {
+          alert("아이디가 짧습니다.");
+        } else if (this.state.pwd.length < 7) {
+          alert("비밀번호가 짧습니다.");
+        } else if (res.status === 200) {
           sessionStorage.setItem("login_id", this.state.id);
           sessionStorage.setItem("password", this.state.pwd);
           this.props.history.push("/signupinfo");
-        } else if (this.state.pwd !== this.state.pwdcheck) {
-          alert("비밀번호를 확인해주세요.");
         } else {
           alert("이미 존재하는 id/email입니다.");
         }
       })
-      // .then(res => {
-      //   console.log("res: ", res);
-      //   if (!res.message) {
-      //     localStorage.setItem("login_id", this.state.id);
-      //     localStorage.setItem("password", this.state.pwd);
-      //     this.props.history.push("/signupinfo");
-      //   } else {
-      //     alert("이미 존재하는 id/email입니다.");
-      //   }
-      // })
       .catch(error => console.error(error));
   };
 

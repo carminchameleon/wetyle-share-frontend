@@ -44,7 +44,7 @@ class SignupInfoRight extends Component {
       login_id: sessionStorage.getItem("login_id"),
       password: sessionStorage.getItem("password")
     };
-    fetch("http://10.58.5.123:8000/user/sign-up", {
+    fetch("http://10.58.1.61:8000/user/sign-up", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -56,10 +56,16 @@ class SignupInfoRight extends Component {
       .then(res => {
         if (res.message === "existing email") {
           alert("존재하는 이메일입니다.");
-        } else if (res.message === "SUCCESS") {
-          this.props.history.push("/login");
+        } else if (res.message === "existing login_id") {
+          alert("존재하는 ID입니다.");
+        } else if (res.message === "too short password") {
+          alert("비밀번호가 너무 짧습니다.");
+        } else if (res.message === "INVALID_EMAIL") {
+          alert("이메일 형식을 확인해주세요.");
+        } else if (res.message === "INVALID_KEYS") {
+          console.log("key값을 수정하세요.");
         } else {
-          alert("패스워드 혹은 아이디를 확인해주세요.");
+          this.props.history.push("/login");
         }
         console.log(res);
       })
