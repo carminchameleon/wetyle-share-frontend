@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import "./StoreProductCard.scss";
 
-const addComma = x => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
-
 export class StoreProductCard extends Component {
   render() {
     return (
@@ -40,16 +36,18 @@ export class StoreProductCard extends Component {
                 <span className="price_discount">{`${this.props.discountRate}%`}</span>
               )}
 
-              <span className="price_money">{addComma(this.props.price)}</span>
+              <span className="price_money">
+                {this.props.price.toLocaleString()}
+              </span>
               <span className="price_won">원</span>
             </div>
             <div className="like_and_comment">
-              <span className="like">{`좋아요 ${addComma(
-                this.props.likeCount
-              )}`}</span>
-              <span className="comment">{`후기 ${addComma(
-                this.props.reviewsCount
-              )}`}</span>
+              <span className="like">
+                좋아요 {this.props.likeCount.toLocaleString()}
+              </span>
+              <span className="comment">
+                후기 {this.props.reviewsCount.toLocaleString()}
+              </span>
             </div>
           </div>
         </div>
