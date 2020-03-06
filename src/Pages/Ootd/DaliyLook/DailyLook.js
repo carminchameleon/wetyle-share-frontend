@@ -4,6 +4,7 @@ import OotdFooter from "../../../Components/OotdFooter/OotdFooter";
 import DaliyLookHeader from "./DaliyLookHeader/DaliyLookHeader";
 import OotdTop from "../../../Components/Top/OotdTop";
 import UploadIcon from "../../../Components/UploadIcon/UploadIcon";
+import { SERVER_URL } from "config";
 
 import "./DailyLook.scss";
 
@@ -12,10 +13,11 @@ class DailyLook extends Component {
     other: [],
     cardList: [],
     scrolling: true,
-    items: 5,
+    items: 25,
     preItems: 0,
     topThree: [],
-    otherCard: []
+    otherCard: [],
+    like_check: null
   };
 
   componentDidMount = () => {
@@ -27,7 +29,7 @@ class DailyLook extends Component {
     window.removeEventListener("scroll", this.infiniteScroll);
   };
   getTopItem = () => {
-    fetch("http://10.58.2.111:8000/card/dailylook/collection", {
+    fetch(`${SERVER_URL}/card/dailylook/collection`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -37,9 +39,23 @@ class DailyLook extends Component {
       .then(res =>
         this.setState({
           topThree: res.collection_list.slice(0, 3),
-          otherCard: res.collection_list.slice(3)
+          otherCard: res.collection_list.slice(3),
+          like_check: res.collection_list[1].is_following,
+          like_check1: res.collection_list[2].is_following
         })
       );
+  };
+  getCardList = () => {
+    fetch(`${SERVER_URL}/card/dailylook`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cardList: this.state.cardList.concat(
+            res.card_list.slice(this.state.preItems, this.state.items)
+          ),
+          scrolling: !this.state.scrolling
+        });
+      });
   };
   // 무한 스크롤 구현
   infiniteScroll = () => {
@@ -52,26 +68,14 @@ class DailyLook extends Component {
       document.body.scrollTop
     );
     let clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight + 10 > scroolHeight) {
+    if (scrollTop + clientHeight + 1 > scroolHeight) {
       this.setState({
         scrolling: !this.state.scrolling,
         preItems: this.state.items,
-        items: this.state.items + 5
+        items: this.state.items + 25
       });
-      // this.getCardList();
+      this.getCardList();
     }
-  };
-  getCardList = () => {
-    fetch("http://10.58.2.111:8000/card/dailylook")
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          cardList: this.state.cardList.concat(
-            res.card_list.slice(this.state.preItems, this.state.items)
-          ),
-          scrolling: !this.state.scrolling
-        });
-      });
   };
 
   render() {
@@ -82,6 +86,8 @@ class DailyLook extends Component {
           topItem={this.state.topThree}
           otherCard={this.state.otherCard}
           getTopItem={this.getTopItem}
+          like_check={this.state.like_check}
+          like_check1={this.state.like_check1}
         />
         <TrendCard data={this.state.cardList} />
         <OotdFooter />

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { withRouter } from "react-router-dom";
+import { SERVER_URL } from "config";
 import Modal from "react-modal";
 import autosize from "autosize";
 
@@ -10,48 +12,96 @@ Modal.setAppElement("#root");
 class CardModal extends Component {
   state = {
     subtitle: "",
+    comment: "",
     collectionMove: 0,
     moadlData: [],
     imgdata: [],
     follower: false,
-    like: false
+    like: this.props.like === (false || null) ? false : true,
+    commentList: this.props.commentList
   };
-  componentDidMount = () => {
-    this.getModalData();
-    this.getimg();
-  };
-  getModalData = () => {
-    fetch("http://localhost:3000/data/modal.json")
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          moadlData: res.data
-        });
-      });
-  };
-  getimg = () => {
-    fetch("http://localhost:3000/data/trendcard.json")
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          imgdata: res.data
-        });
-      });
-  };
-  handleFollower = () => {
+
+  handleFollower = id => {
+    this.handleFollowerBtn(id);
     this.setState({
       follower: !this.state.follower
     });
   };
   handleLike = () => {
+    this.handleLikeBtn();
+  };
+  handleOnchange = e => {
     this.setState({
-      like: !this.state.like
+      [e.target.name]: e.target.value
     });
   };
-
+  handleFollowerBtn = () => {
+    const cardId = this.props.location.search.split("=")[1];
+    fetch(`${SERVER_URL}/user/follow/${cardId}`, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+      }
+    }).then(this.props.getLikeReset);
+  };
+  handleLikeBtn = () => {
+    const cardId = this.props.location.search.split("=")[1];
+    fetch(`${SERVER_URL}/card/style/like/${cardId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+      }
+    }).then(this.props.getLikeReset);
+  };
+  handleAddComment = () => {
+    const cardId = this.props.location.search.split("=")[1];
+    fetch(`${SERVER_URL}/card/style/comment/${cardId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+      },
+      body: JSON.stringify({
+        description: this.state.comment
+      })
+    }).then(this.props.getCommentList);
+  };
+  mapOfCommentList = data => {
+    console.log(data);
+    if (data) {
+      return data.map((ele, idx) => (
+        <div className="comment_list" key={idx}>
+          <div className="comment_item">
+            <img alt="img" src={ele.profile_image} />
+            <div className="right_box">
+              <p>
+                <a>{ele.nickname}</a>
+                {ele.description}
+              </p>
+              <p>{ele.date}</p>
+            </div>
+          </div>
+        </div>
+      ));
+    }
+  };
   render() {
-    const { handleCloseModal, showModal } = this.props;
+    console.log(this.props.like);
+    const {
+      handleCloseModal,
+      showModal,
+      cardInfo,
+      colletionData,
+      commentList,
+      relateditem
+    } = this.props;
     autosize(document.querySelector("textarea"));
+
+    if (!cardInfo) return null;
     return (
       <div>
         <Modal
@@ -66,12 +116,82 @@ class CardModal extends Component {
             <div>
               <div className="left_img">
                 <div className="main_img">
-                  <Ootdcarousel images={this.state.imgdata} />
+                  <Ootdcarousel
+                    images={cardInfo && cardInfo.style_image_url}
+                    colletionData={colletionData}
+                  />
                 </div>
               </div>
             </div>
 
             <div className="right_feed">
+              {relateditem[0] && (
+                <div className="related_item_wrapper">
+                  {relateditem[0].etc && (
+                    <div className="item_ele">
+                      <span className="top_icon" />
+                      <div className="item_desc">
+                        <div className="desc_title">Top</div>
+                        <div className="desc_content">{relateditem[0].etc}</div>
+                      </div>
+                    </div>
+                  )}
+                  {relateditem[0].skirt && (
+                    <div className="item_ele">
+                      <span className="outer_icon" />
+                      <div className="item_desc">
+                        <div className="desc_title">Outer</div>
+                        <div className="desc_content">
+                          {relateditem[0].skirt}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {relateditem[0].pants && (
+                    <div className="item_ele">
+                      <span className="bottom_icon" />
+                      <div className="item_desc">
+                        <div className="desc_title">Pants</div>
+                        <div className="desc_content">
+                          {relateditem[0].pants}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {relateditem[0].shoes && (
+                    <div className="item_ele">
+                      <span className="shoes_icon" />
+                      <div className="item_desc">
+                        <div className="desc_title">Shoes</div>
+                        <div className="desc_content">
+                          {relateditem[0].shoes}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {relateditem[0].bag && (
+                    <div className="item_ele">
+                      <span className="bag_icon" />
+                      <div className="item_desc">
+                        <div className="desc_title">bag</div>
+                        <div className="desc_content">{relateditem[0].bag}</div>
+                      </div>
+                    </div>
+                  )}
+                  {relateditem[0].accessory && (
+                    <div className="item_ele">
+                      <span className="accessory_icon" />
+                      <div className="item_desc">
+                        <div className="desc_title">Accessory</div>
+                        <div className="desc_content">
+                          {relateditem[0].accessory}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div className="info_wrapper">
                 <div className="info_top">
                   <div className="profile_picture">
@@ -81,13 +201,15 @@ class CardModal extends Component {
                     />
                   </div>
                   <div className="user_information">
-                    <div className="user_nick">아랑</div>
+                    <div className="user_nick">{cardInfo.nickname}</div>
                     <div className="user_add_info">
-                      insta @raninfanta 문의 DM
+                      {cardInfo.profile_description}
                     </div>
                   </div>
                   <div
-                    onClick={this.handleFollower}
+                    onClick={() => {
+                      this.handleFollower();
+                    }}
                     className={
                       this.state.follower
                         ? "follower_btn_check"
@@ -96,164 +218,60 @@ class CardModal extends Component {
                   ></div>
                 </div>
                 <div className="desc_wrapper">
-                  <p className="desc">
-                    블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요!
-                    모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶..블랙이 조아요! 모두
-                    코로나 조심하세요 🥶🥶..블랙이 조아요! 모두 코로나
-                    조심하세요 🥶🥶..블랙이 조아요! 모두 코로나 조심하세요
-                    🥶🥶..블랙이 조아요! 모두 코로나 조심하세요 🥶🥶..블랙이
-                    조아요! 모두 코로나 조심하세요 🥶🥶.. <br />
-                    <br />
-                    💟유튜브 : ANAran 아나란💟
-                    <br /> 💟인스타 : raninfanta 💟
-                    <br /> <br />
-                    <div>
-                      <a>#코디</a>
-                    </div>
-                  </p>
+                  <p className="desc">{cardInfo.description}</p>
                 </div>
               </div>
               <div className="like_wrapper">
                 <div className="button_group">
                   <div
-                    className={this.state.like ? "like_check" : "like"}
-                    onClick={this.handleLike}
+                    className={
+                      this.state.like === false ? "like" : "like_check"
+                    }
+                    onClick={() => {
+                      console.log(this.state.like);
+                      this.setState({
+                        like: !this.state.like
+                      });
+                      this.handleLike();
+                    }}
                   ></div>
                   <div
                     className={
-                      this.state.like ? "like_count_check" : "like_count"
+                      this.state.like === false
+                        ? "like_count "
+                        : "like_count like_count_check"
                     }
                   >
-                    107
+                    {cardInfo.like_count}
                   </div>
                 </div>
                 <div className="like_more"></div>
               </div>
               <div className="comment_wrapper">
                 <div className="comment_title">
-                  <p className="title_left">댓글(1)</p>
+                  <p className="title_left">
+                    댓글(
+                    {commentList[0] && commentList[0].comment_count})
+                  </p>
                 </div>
+                {this.mapOfCommentList(
+                  commentList[0] && commentList[0].comment
+                )}
 
-                <div className="comment_list">
-                  <div className="comment_item">
-                    <img
-                      alt="img"
-                      src="https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png"
-                    />
-                    <div className="right_box">
-                      <p>
-                        <a>지우</a>게시물 좋아요 팔로우 부탁드려용 💏
-                      </p>
-                      <p>20.02.24</p>
-                    </div>
-                  </div>
-                  {/* 댓글 리스트 메소드 Map 구현 */}
-                </div>
-                <div className="comment_list">
-                  <div className="comment_item">
-                    <img
-                      alt="img"
-                      src="https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png"
-                    />
-                    <div className="right_box">
-                      <p>
-                        <a>지우</a>게시물 좋아요 팔로우 부탁드려용 💏
-                      </p>
-                      <p>20.02.24</p>
-                    </div>
-                  </div>
-                  {/* 댓글 리스트 메소드 Map 구현 */}
-                </div>
-                <div className="comment_list">
-                  <div className="comment_item">
-                    <img
-                      alt="img"
-                      src="https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png"
-                    />
-                    <div className="right_box">
-                      <p>
-                        <a>지우</a>게시물 좋아요 팔로우 부탁드려용 💏
-                      </p>
-                      <p>20.02.24</p>
-                    </div>
-                  </div>
-                  {/* 댓글 리스트 메소드 Map 구현 */}
-                </div>
-                <div className="comment_list">
-                  <div className="comment_item">
-                    <img
-                      alt="img"
-                      src="https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png"
-                    />
-                    <div className="right_box">
-                      <p>
-                        <a>지우</a>게시물 좋아요 팔로우 부탁드려용 💏
-                      </p>
-                      <p>20.02.24</p>
-                    </div>
-                  </div>
-                  {/* 댓글 리스트 메소드 Map 구현 */}
-                </div>
-                <div className="comment_list">
-                  <div className="comment_item">
-                    <img
-                      alt="img"
-                      src="https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png"
-                    />
-                    <div className="right_box">
-                      <p>
-                        <a>지우</a>게시물 좋아요 팔로우 부탁드려용 💏
-                      </p>
-                      <p>20.02.24</p>
-                    </div>
-                  </div>
-                  {/* 댓글 리스트 메소드 Map 구현 */}
-                </div>
-                <div className="comment_list">
-                  <div className="comment_item">
-                    <img
-                      alt="img"
-                      src="https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png"
-                    />
-                    <div className="right_box">
-                      <p>
-                        <a>지우</a>게시물 좋아요 팔로우 부탁드려용 💏
-                      </p>
-                      <p>20.02.24</p>
-                    </div>
-                  </div>
-                  {/* 댓글 리스트 메소드 Map 구현 */}
-                </div>
-                <div className="comment_list">
-                  <div className="comment_item">
-                    <img
-                      alt="img"
-                      src="https://staticassets-a.styleshare.io/2239a240f7/img/profilepics/profile_140x140.png"
-                    />
-                    <div className="right_box">
-                      <p>
-                        <a>지우</a>게시물 좋아요 팔로우 부탁드려용 💏
-                      </p>
-                      <p>20.02.24</p>
-                    </div>
-                  </div>
-                  {/* 댓글 리스트 메소드 Map 구현 */}
-                </div>
                 <div className="comment_input">
                   <textarea
                     className="add_input"
                     placeholder="댓글을 남기세요..."
+                    name="comment"
+                    onChange={this.handleOnchange}
+                    value={this.state.comment}
+                    onKeyPress={e => {
+                      if (e.charCode === 13) {
+                        e.preventDefault();
+                        this.handleAddComment();
+                        this.setState({ comment: "" });
+                      }
+                    }}
                   ></textarea>
                 </div>
               </div>
@@ -266,4 +284,4 @@ class CardModal extends Component {
 }
 ReactDOM.render(<CardModal />, document.querySelector("#root"));
 
-export default CardModal;
+export default withRouter(CardModal);
