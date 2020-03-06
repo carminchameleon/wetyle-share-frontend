@@ -34,7 +34,7 @@ class BrandBox extends Component {
                 />
               </div>
               <div className="count_and_arrow_btn">
-                <span className="how_many_product">4720</span>
+                <span className="how_many_product">{this.props.brandName}</span>
                 <img
                   src="https://image.flaticon.com/icons/svg/748/748073.svg"
                   alt=""
