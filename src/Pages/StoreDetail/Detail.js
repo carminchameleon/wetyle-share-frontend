@@ -7,10 +7,11 @@ import ProductDetailUrl from "../../Components/ProductDetailUrl/ProductDetailUrl
 import StoreFooter from "../../Components/StoreFooter/StoreFooter.js";
 import ChangeAsk from "../../Components/ChangeAsk/ChangeAsk.js";
 import BrandBox from "../../Components/BrandBox/BrandBox.js";
-import DetailPopularProduct from "../../Components/DetailPopularProduct/DetailPopularProduct";
+import StoreProductCard from "../../Components/StoreProductCard/StoreProductCard";
 // import StoreMainPopularBrandCard from "../../Pages/StoreMain/StoreMainPopularBrand/StoreMainPopularBrandCard";
 import swal from "sweetalert";
 import StoreTop from "../../Components/Top/StoreTop.js";
+// import StoreProductCard from "Components/StoreProductCard/StoreProductCard.js";
 const discount = document.getElementsByClassName("discount_hide_box");
 
 // document.title = "스타일쉐어";
@@ -43,7 +44,8 @@ class Detail extends Component {
 
       product: [],
       reviewData: [],
-      result: {}
+      result: {},
+      popularResult: []
     };
   }
 
@@ -54,17 +56,18 @@ class Detail extends Component {
     this.getItem();
     this.getColor();
     this.getSize();
-    this.mockData();
+    this.popularProduct();
+    // this.mockData();
   };
   getItem = () => {
     // fetch(`http://10.58.5.123:8000/product/${fetchAddress}`)
-    // fetch("http://10.58.5.123:8000/product/300")
-    fetch("http://10.58.5.184:8000/product/5", {
-      headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
-      }
-    })
+    fetch("http://10.58.1.61:8000/product/995")
+      // fetch("http://10.58.5.184:8000/product/5", {
+      //   headers: {
+      //     Authorization:
+      //       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+      //   }
+      // })
       .then(res => res.json())
       .then(res => {
         this.setState(
@@ -78,7 +81,7 @@ class Detail extends Component {
       });
   };
   getColor = () => {
-    fetch("http://10.58.5.123:8000/product/color/1")
+    fetch("http://10.58.1.61:8000/product/color/1")
       // fetch("http://localhost:3000/data/data.json")
       .then(res => res.json())
       .then(res => {
@@ -93,7 +96,7 @@ class Detail extends Component {
       });
   };
   getSize = () => {
-    fetch("http://10.58.5.123:8000/product/size/1")
+    fetch("http://10.58.1.61:8000/product/size/1")
       // fetch("http://localhost:3000/data/data.json")
       .then(res => res.json())
       .then(res => {
@@ -105,6 +108,15 @@ class Detail extends Component {
             console.log(this.state.getSize);
           }
         );
+      });
+  };
+  popularProduct = () => {
+    fetch("http://10.58.1.61:8000/product/popular/1")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          popularResult: res.result
+        });
       });
   };
   mockData = () => {
@@ -746,10 +758,10 @@ class Detail extends Component {
               </div>
             </div>
             {/* <FourPicDiv title="카테고리 인기 상품" /> */}
-            <DetailPopularProduct title="카테고리 인기 상품" />
+            {/* <StoreProductCard /> */}
             {/* <StoreMainPopularBrandCard brandName="나이키" goodsCount="426" /> */}
             {/* <FourPicDiv title="브랜드 인기 상품" /> */}
-            <DetailPopularProduct title="브랜드 인기 상품" />
+            {/* <StoreProductCard /> */}
           </div>
         </div>
         <footer>
