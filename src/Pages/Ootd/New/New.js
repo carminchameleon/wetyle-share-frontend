@@ -7,14 +7,17 @@ import UploadIcon from "../../../Components/UploadIcon/UploadIcon";
 import "./New.scss";
 class New extends Component {
   state = {
-    other: []
+    newList: []
   };
   componentDidMount = () => {
-    fetch("http://localhost:3000/data/other.json")
+    this.getNewItem();
+  };
+  getNewItem = () => {
+    fetch("http://52.78.11.154:8000/card/new")
       .then(res => res.json())
       .then(res => {
         this.setState({
-          other: res.data
+          newList: res.card_list
         });
       });
   };
@@ -23,7 +26,7 @@ class New extends Component {
       <div className="OOTD_wrapper">
         <OotdTop />
         <div className="new_wrapper">
-          <TrendCard />
+          <TrendCard data={this.state.newList} />
           <OotdFooter />
         </div>
         <UploadIcon />
