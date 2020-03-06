@@ -37,7 +37,6 @@ class SignupInfoRight extends Component {
       },
       body: JSON.stringify({})
     });
-
   };
   handlePost = () => {
     const formData = new FormData();
@@ -282,7 +281,6 @@ class SignupInfoRight extends Component {
       </>
     );
   }
-}
 }
 
 export default SignupInfoRight;
