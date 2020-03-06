@@ -29,7 +29,6 @@ class SignupInfoRight extends Component {
     });
   };
 
-
   handleSignUp = () => {
     fetch("http://52.78.11.154:8000/user/kakao/sign-in", {
       method: "POST",
@@ -38,7 +37,6 @@ class SignupInfoRight extends Component {
       },
       body: JSON.stringify({})
     });
-
   };
   handlePost = () => {
     const formData = new FormData();

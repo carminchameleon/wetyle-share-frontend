@@ -42,11 +42,10 @@
 
             transform: scale(1);
             transition: transform 0.5s;
-          }
-
-          .card_box_photo_img:hover {
-            transform: scale(1.1);
-            transition: transform 0.5s;
+            &:hover {
+              transform: scale(1.1);
+              transition: transform 0.5s;
+            }
           }
         }
       }
@@ -64,6 +63,7 @@
         text-decoration: none;
 
         .product_brand {
+          text-decoration: none;
           font-size: 0.875rem;
           font-weight: 700;
           line-height: 1.43;
@@ -99,7 +99,6 @@
           word-break: break-all;
           margin: 0px;
           text-decoration: none;
-
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;

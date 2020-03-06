@@ -68,7 +68,6 @@ class Banner extends Component {
       dots: false,
       infinite: true,
       fade: true,
-      // lazyLoad: true,
       slideToShow: 1,
       autoplay: true,
       slidesToScroll: 1,

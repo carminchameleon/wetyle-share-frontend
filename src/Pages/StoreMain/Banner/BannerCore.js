@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import "./BannerCore.scss";
 
+const splitFirst = sentence => {
+  const position = sentence.indexOf("\r\n");
+  const first = sentence.slice(0, position);
+  return first;
+};
+
+const splitSecond = sentence => {
+  const position = sentence.indexOf("\r\n");
+  const second = sentence.slice(position + 2);
+  return second;
+};
 class BannerCore extends Component {
-  splitFirst = sentence => {
-    const position = sentence.indexOf("\r\n");
-    const first = sentence.slice(0, position);
-    return first;
-  };
-
-  splitSecond = sentence => {
-    const position = sentence.indexOf("\r\n");
-    const second = sentence.slice(position + 2);
-    return second;
-  };
-
   render() {
     const {
       text,
@@ -24,10 +23,10 @@ class BannerCore extends Component {
       imageId,
       colorCode
     } = this.props;
-    let text1 = this.splitFirst(text);
-    let text2 = this.splitSecond(text);
-    let subText1 = this.splitFirst(subText);
-    let subText2 = this.splitSecond(subText);
+    let text1 = splitFirst(text);
+    let text2 = splitSecond(text);
+    let subText1 = splitFirst(subText);
+    let subText2 = splitSecond(subText);
 
     let position = (index / dataLength) * 100;
 

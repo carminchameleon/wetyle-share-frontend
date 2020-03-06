@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PopularBrandCard from "./PopularBrandCard";
-
+import { SERVER_URL } from "config";
 import Slider from "react-slick";
 
 import "./PopularBrand.scss";
@@ -42,10 +42,9 @@ export class PopulrBrand extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://52.78.11.154:8000/product/brand/popular")
+    fetch(`${SERVER_URL}/product/brand/popular`)
       .then(res => res.json())
       .then(res => {
-        console.log("product", res);
         this.setState({
           data: res.brand_list
         });
