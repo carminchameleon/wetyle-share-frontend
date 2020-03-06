@@ -54,6 +54,7 @@ class Detail extends Component {
     this.getItem();
     this.getColor();
     this.getSize();
+    this.mockData();
   };
   getItem = () => {
     // fetch(`http://10.58.5.123:8000/product/${fetchAddress}`)
@@ -106,6 +107,15 @@ class Detail extends Component {
         );
       });
   };
+  mockData = () => {
+    fetch("http://localhost:3000/data/data.json")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          result: res.result
+        });
+      });
+  };
 
   // **********************mock data 끝****************************************
 
@@ -140,9 +150,12 @@ class Detail extends Component {
     this.setState(state => ({ modelName: !state.modelName }));
   };
   pressHeart = () => {
-    this.setState({ pressHeart: !this.state.pressHeart });
+    const Obj = { ...this.state.result };
+    Obj.is_like = !this.state.result.is_like;
 
-    this.state.pressHeart === false
+    this.setState({ result: Obj });
+
+    this.state.result.is_like === false
       ? this.plusLikeCount()
       : this.minusLikeCount();
   };
@@ -184,14 +197,12 @@ class Detail extends Component {
   // *********************************************************
   plusLikeCount = () => {
     swal("success", "좋아요를 눌렀습니다.", "success");
-    // const likeObj = { ...this.state.result };
-    // likeObj.product_like = this.state.result.product_like + 1;
-    // this.setState({
-    //   result: likeObj
-    // });
+    const likeObj = { ...this.state.result };
+    likeObj.product_like = this.state.result.product_like + 1;
+    // likeObj.is_like = this.state.result.is_like + 1;
     this.setState({
-      pressHeart: !this.state.pressHeart,
-      is_like: !this.state.result.is_like
+      result: likeObj,
+      pressHeart: !this.state.pressHeart
     });
 
     fetch("http://10.58.5.184:8000/product/like/5", {
@@ -202,12 +213,15 @@ class Detail extends Component {
       }
     }).then(this.getItem());
   };
-
+  // ******************좋아요 취소***************************************
   minusLikeCount = () => {
     swal("취소되었습니다");
+    const deleteLike = { ...this.state.result };
+    deleteLike.product_like = this.state.result.product_like - 1;
+    // deleteLike.is_like = this.state.result.is_like - 1;
     this.setState({
-      pressHeart: !this.state.pressHeart,
-      is_like: !this.state.result.is_like
+      result: deleteLike,
+      pressHeart: !this.state.pressHeart
     });
 
     fetch("http://10.58.5.184:8000/product/like/5", {
@@ -217,13 +231,8 @@ class Detail extends Component {
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
       }
     }).then(this.getItem());
-
-    // const deleteLike = { ...this.state.result };
-    // deleteLike.product_like = this.state.result.product_like - 1;
-    // this.setState({
-    //   result: deleteLike
-    // });
   };
+  // ****************옵션 선택*******************************8
   handleSelectOption = e => {
     this.setState({
       modelOption: e.target.innerText
@@ -470,7 +479,7 @@ class Detail extends Component {
                         <div className="hide_second_line">
                           <span className="applied_coupon">적용 된 쿠폰</span>
                           <div>
-                            <span className="percentage_coupon">5% </span>
+                            <span className="percentage_coupon">5%</span>
                             <span className="which_coupon">
                               코로나 위로 5% 추가 쿠폰
                             </span>
@@ -484,10 +493,11 @@ class Detail extends Component {
                       <div class="like_and_review">
                         <span
                           className={
-                            this.state.is_like
+                            this.state.result.is_like
                               ? "already_pressed_heart"
                               : "user_can_press_like"
                           }
+                          disabled={this.state.result.is_like === null}
                           onClick={this.pressHeart}
                         >
                           <img

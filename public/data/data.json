@@ -97,6 +97,8 @@
   },
 
   "result": {
+    "is_like": false,
+    "product_id": 1,
     "image_url": "https://usercontents-c.styleshare.io/images/4469bab6-7c07-4959-af67-4bf9fb67cb0b/720x720",
     "name": "[제멋] 리메르 크롭 자켓 카키 YHJK2270",
     "discounted_price": 49500,
