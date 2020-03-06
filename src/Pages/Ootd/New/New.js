@@ -8,6 +8,7 @@ import UploadIcon from "../../../Components/UploadIcon/UploadIcon";
 import "./New.scss";
 class New extends Component {
   state = {
+
     newCard: [],
     items: 5,
     preItems: 0,
@@ -29,6 +30,7 @@ class New extends Component {
             res.card_list.slice(this.state.preItems, this.state.items)
           ),
           scrolling: !this.state.scrolling
+
         });
       });
   };
@@ -57,7 +59,9 @@ class New extends Component {
       <div className="OOTD_wrapper">
         <OotdTop />
         <div className="new_wrapper">
+
           <TrendCard data={this.state.newCard} />
+
           <OotdFooter />
         </div>
         <UploadIcon />

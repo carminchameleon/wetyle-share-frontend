@@ -42,6 +42,7 @@ function Routes() {
         <Route exact path="/feed/qna" component={Qna} />
         <Route exact path="/feed/my-home" component={Myhome} />
         <Route exact path="/upload" component={Upload} />
+
         <Redirect to="/error" />
       </Switch>
     </Router>

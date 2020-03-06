@@ -1,4 +1,4 @@
-.StoreMainPopularProductCard {
+.PopularProductCard {
   .card_box_set {
     display: flex;
     flex-direction: column;
@@ -86,6 +86,7 @@
         text-decoration: none;
 
         .product_name {
+          width: 300px;
           height: 1.25125rem;
           box-sizing: border-box;
           font-size: 0.875rem;
@@ -94,12 +95,14 @@
           letter-spacing: -0.025rem;
           color: rgb(38, 40, 43);
           -webkit-box-orient: vertical;
-          display: -webkit-box;
-          text-overflow: ellipsis;
+          display: inline-block;
           word-break: break-all;
-          margin: 0px 0px 8px;
+          margin: 0px;
           text-decoration: none;
+
           overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
       .product_price_info {

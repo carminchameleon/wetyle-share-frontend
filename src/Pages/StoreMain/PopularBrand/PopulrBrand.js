@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import StoreMainPopularBrandCard from "./StoreMainPopularBrandCard";
+import PopularBrandCard from "./PopularBrandCard";
 
 import Slider from "react-slick";
 
-import "./StoreMainPopularBrand.scss";
+import "./PopularBrand.scss";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -33,7 +33,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-export class StoreMainPopulrBrand extends Component {
+export class PopulrBrand extends Component {
   constructor() {
     super();
     this.state = {
@@ -41,14 +41,13 @@ export class StoreMainPopulrBrand extends Component {
     };
   }
 
-  //   https://usercontents-c.styleshare.io/images/28456313/540x305
   componentDidMount = () => {
-    fetch("http://localhost:3000/data/storemainpopularbrand.json")
+    fetch("http://52.78.11.154:8000/product/brand/popular")
       .then(res => res.json())
       .then(res => {
-        console.log(res.data);
+        console.log("product", res);
         this.setState({
-          data: res.data
+          data: res.brand_list
         });
       });
   };
@@ -65,7 +64,7 @@ export class StoreMainPopulrBrand extends Component {
       prevArrow: <SamplePrevArrow />
     };
     return (
-      <div className="StoreMainPopularBrand">
+      <div className="PopularBrand">
         <div className="mainContainer">
           <div className="title_container">
             <h2 className="title">인기 브랜드</h2>
@@ -74,11 +73,12 @@ export class StoreMainPopulrBrand extends Component {
             <Slider {...settings}>
               {this.state.data.map(el => {
                 return (
-                  <StoreMainPopularBrandCard
-                    link={el.id}
+                  <PopularBrandCard
+                    thedata={el}
+                    link={el.brand_id}
                     brandName={el.name}
-                    goodsCount={el.goodsCount}
-                    picture={el.coverImage.id}
+                    goodsCount={el.product_count}
+                    picture={el.large_image_url}
                   />
                 );
               })}
@@ -107,4 +107,4 @@ export class StoreMainPopulrBrand extends Component {
   }
 }
 
-export default StoreMainPopulrBrand;
+export default PopulrBrand;

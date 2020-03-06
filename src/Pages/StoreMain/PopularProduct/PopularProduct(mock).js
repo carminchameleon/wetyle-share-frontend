@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import StoreMainPopularProductCard from "./StoreMainPopularProductCard";
-import "./StoreMainPopularProduct.scss";
+import "./PopularProduct.scss";
+import StoreProductCard from "../../../Components/StoreProductCard/StoreProductCard";
 
-class StoreMainPopularProduct extends Component {
+class PopularProduct extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,9 +22,7 @@ class StoreMainPopularProduct extends Component {
       categoryIndex: "8",
       currentTitle: "전체",
       linePosition: "344",
-      lineWidth: "32",
-      blackColor: "rgb(38, 40, 43)",
-      greyColor: "rgb(158, 164, 170)"
+      lineWidth: "32"
     };
   }
 
@@ -60,7 +58,7 @@ class StoreMainPopularProduct extends Component {
 
   makeNewCate = newData => {
     return this.state.newData[this.state.categoryIndex].data.map(el => (
-      <StoreMainPopularProductCard
+      <StoreProductCard
         data={el.goods}
         key={el.goods.id}
         discountRate={el.goods.discountRate}
@@ -77,9 +75,9 @@ class StoreMainPopularProduct extends Component {
 
   makeAllCate = allData => {
     return allData.map(el => (
-      <StoreMainPopularProductCard
+      <StoreProductCard
         data={el}
-        key={el.id}
+        webLink={el.id}
         discountRate={el.discountRate}
         picture={el.picture.id}
         isDiscounted={el.isDiscounted}
@@ -125,8 +123,19 @@ class StoreMainPopularProduct extends Component {
   };
 
   render() {
+    console.log("데이터를 보자", this.state.allData);
+
+    const {
+      categories,
+      linePosition,
+      lineWidth,
+      allData,
+      newData,
+      currentTitle,
+      currentCategory
+    } = this.state;
     return (
-      <div className="StoreMainPopularProduct" ref={this.props.ref}>
+      <div className="PopularProduct" ref={this.props.ref}>
         <div className="main_container">
           <div className="main_title_box">
             <h2 className="main_title">인기 상품</h2>
@@ -136,12 +145,12 @@ class StoreMainPopularProduct extends Component {
               <button
                 className="title_list_button_default"
                 onClick={this.backDefault}
-                id={this.state.categories.length}
+                id={categories.length}
               >
                 전체
               </button>
             </li>
-            {this.state.categories.map((el, index) => {
+            {categories.map((el, index) => {
               return (
                 <li className="title_list">
                   <button
@@ -149,7 +158,6 @@ class StoreMainPopularProduct extends Component {
                     className="title_list_button"
                     onClick={this.selectCategory}
                     id={index}
-                    name={el}
                   >
                     {el}
                   </button>
@@ -160,8 +168,8 @@ class StoreMainPopularProduct extends Component {
             <div
               className="title_move_line"
               style={{
-                transform: `translate(${this.state.linePosition + 10}px, 0px)`,
-                width: `${this.state.lineWidth - 21}px`
+                transform: `translate(${linePosition + 10}px, 0px)`,
+                width: `${lineWidth - 21}px`
               }}
             ></div>
           </ol>
@@ -169,15 +177,15 @@ class StoreMainPopularProduct extends Component {
           <div className="main_card_container">
             <div className="card_wrapper">
               {/* {this.makeAllCate(this.state.allData)} */}
-              {this.state.currentCategory === "all"
-                ? this.makeAllCate(this.state.allData)
-                : this.makeNewCate(this.state.newData)}
+              {currentCategory === "all"
+                ? this.makeAllCate(allData)
+                : this.makeNewCate(newData)}
             </div>
           </div>
           <div className="main_show_more_container">
             <div className="show_more_box">
               <a className="show_more" href="/categories/best?sort=score-desc">
-                {this.state.currentTitle} 더보기
+                {currentTitle} 더보기
                 <img
                   className="show_more_icon"
                   src="https://image.flaticon.com/icons/svg/126/126490.svg"
@@ -192,4 +200,4 @@ class StoreMainPopularProduct extends Component {
   }
 }
 
-export default StoreMainPopularProduct;
+export default PopularProduct;

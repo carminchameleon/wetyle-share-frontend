@@ -48,6 +48,7 @@ class Upload extends Component {
   };
   handlePost = () => {
     const formData = new FormData();
+
     formData.append("filename", this.state.url);
 
     fetch(`http://10.58.1.114:8000/card/upload/image`, {

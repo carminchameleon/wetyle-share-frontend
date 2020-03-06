@@ -22,8 +22,10 @@ class Hot extends Component {
   componentWillUnmount = () => {
     window.removeEventListener("scroll", this.infiniteScroll);
   };
+
   getHotCard = () => {
     fetch(`${SERVER_URL}/card/popular`)
+
       .then(res => res.json())
       .then(res => {
         this.setState({

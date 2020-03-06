@@ -84,9 +84,9 @@ class TrendCard extends React.Component {
     this.setState({ showModal: false });
     this.props.history.goBack();
   };
-  mapdd = () => {};
   marOfCard = data => {
     return data.map((ele, idx) => (
+
       <div
         className="trend_item"
         key={idx}
@@ -137,6 +137,7 @@ class TrendCard extends React.Component {
                   <div className="desc_title">Top</div>
                   <div className="desc_content">{ele.related_item[0].etc}</div>
                 </div>
+
               </div>
             )}
             {ele.related_item[0].skirt && (

@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import "./StoreMainPopularProductCard.scss";
+import "./PopularProductCard.scss";
 
-export class StoreMainPopularProductCard extends Component {
+export class PopularProductCard extends Component {
+  //
   render() {
+    // console.log(this.props.price.toString().split(""));
+
     return (
       <div className="StoreMainPopularProductCard">
         <div className="card_box_set">
           <>
             <a
               className="card_box_photo_link"
-              href={`https://www.styleshare.kr/goods/${this.props.picture}`}
+              href={`https://www.styleshare.kr/goods/${this.props.webLink}`}
               alt=""
             >
               <div className="card_box_photo_set">
@@ -35,17 +38,19 @@ export class StoreMainPopularProductCard extends Component {
             </a>
             <div className="product_price_info">
               {this.props.isDiscounted === true ? (
-                <span className="price_discount">26%</span>
+                <span className="price_discount">{`${this.props.discountRate}%`}</span>
               ) : (
                 ""
               )}
-              {/* <span className="price_discount">26%</span> */}
-              <span className="price_money">14,800</span>
+
+              <span className="price_money">{this.props.productPrice}</span>
               <span className="price_won">원</span>
             </div>
             <div className="like_and_comment">
-              <span className="like">좋아요 2,773</span>
-              <span className="comment">후기 141</span>
+              <span className="like">
+                {`좋아요 ${this.props.likeCount}`.toLocaleString()}
+              </span>
+              <span className="comment">{`후기 ${this.props.reviewsCount}`}</span>
             </div>
           </div>
         </div>
@@ -54,4 +59,4 @@ export class StoreMainPopularProductCard extends Component {
   }
 }
 
-export default StoreMainPopularProductCard;
+export default PopularProductCard;
