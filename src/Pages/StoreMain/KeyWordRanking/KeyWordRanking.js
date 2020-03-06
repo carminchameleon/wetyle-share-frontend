@@ -18,7 +18,7 @@ export class KeyWordRanking extends Component {
       data: [],
       categories: [
         "후드",
-        "레더",
+        "맨투맨",
         "자켓",
         "트렌치 코트",
         "에잇세컨즈",
