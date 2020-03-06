@@ -21,7 +21,7 @@ class TrendCard extends React.Component {
   };
   getCommentList = () => {
     const cardId = this.props.location.search.split("=")[1];
-    fetch(`http://10.58.1.114:8000/card/style/comment/${cardId}`, {
+    fetch(`${SERVER_URL}/card/style/comment/${cardId}`, {
       method: "GET"
     })
       .then(res => res.json())
@@ -33,7 +33,7 @@ class TrendCard extends React.Component {
   };
   getLikeReset = () => {
     const cardId = this.props.location.search.split("=")[1];
-    fetch(`http://10.58.1.114:8000/card/style/${cardId}`)
+    fetch(`${SERVER_URL}/card/style/${cardId}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -44,7 +44,7 @@ class TrendCard extends React.Component {
   getCardInfo = async id => {
     await this.props.history.push(`?card=${id}`);
     const cardId = this.props.location.search.split("=")[1];
-    fetch(`http://10.58.1.114:8000/card/style/comment/${cardId}`, {
+    fetch(`${SERVER_URL}/card/style/comment/${cardId}`, {
       method: "GET"
     })
       .then(res => res.json())
@@ -53,7 +53,7 @@ class TrendCard extends React.Component {
           commentList: res.comment
         })
       );
-    fetch(`http://10.58.1.114:8000/card/style/${cardId}`, {
+    fetch(`${SERVER_URL}/card/style/${cardId}`, {
       method: "GET",
       headers: {
         Authorization:
@@ -86,7 +86,6 @@ class TrendCard extends React.Component {
   };
   marOfCard = data => {
     return data.map((ele, idx) => (
-
       <div
         className="trend_item"
         key={idx}
@@ -137,7 +136,6 @@ class TrendCard extends React.Component {
                   <div className="desc_title">Top</div>
                   <div className="desc_content">{ele.related_item[0].etc}</div>
                 </div>
-
               </div>
             )}
             {ele.related_item[0].skirt && (
@@ -266,7 +264,7 @@ class TrendCard extends React.Component {
   };
   getCommentList = () => {
     const cardId = this.props.location.search.split("=")[1];
-    fetch(`http://10.58.1.114:8000/card/style/comment/${cardId}`, {
+    fetch(`${SERVER_URL}/card/style/comment/${cardId}`, {
       method: "GET"
     })
       .then(res => res.json())

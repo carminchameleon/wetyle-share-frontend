@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-
+import { withRouter } from "react-router-dom";
 import "./SignupLeft.scss";
 
 class SignupLeft extends Component {
   state = {
-    // typedEmail: "",
-    // isDuplicateUser: false,
     id: "",
-    // email: "",
     pwd: "",
     pwdcheck: "",
     idFocus: false,
@@ -53,76 +50,41 @@ class SignupLeft extends Component {
 
   handlePwdLength = () => {
     if (this.state.pwd.length > 0 && this.state.pwd.length < 6) {
-      return <div className="short_pwd">너무 짧습니다.(6~18자)</div>;
+      return <div className="short_pwd">너무 짧습니다.(7~18자)</div>;
     }
   };
 
-  goToSignup = () => {
-    const data = {
-      login_id: this.state.id,
-      password: this.state.pwd,
-      email: this.state.id
+  goToSignup = e => {
+    e.preventDefault();
 
-      // sessionStorage.setItem("login_id", this.state.id)
-      // sessionStorage.setItem("password", this.state.pwd)
+    const data = {
+      login_id: this.state.id
     };
-    fetch("http://10.58.4.29:8000/user/sign-up/checkid", {
+
+    fetch("http://52.78.11.154:8000/user/sign-up/checkid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
     })
-      .then(res => res.json())
-      // .then(console.log("dddd"))
       .then(res => {
-        if (res.token) {
-          localStorage.setItem("token", res.token);
+        if (this.state.pwd !== this.state.pwdcheck) {
+          alert("두 비밀번호가 일치하지 않습니다.");
+        } else if (this.state.id.length < 3) {
+          alert("아이디가 짧습니다.");
+        } else if (this.state.pwd.length < 7) {
+          alert("비밀번호가 짧습니다.");
+        } else if (res.status === 200) {
+          sessionStorage.setItem("login_id", this.state.id);
+          sessionStorage.setItem("password", this.state.pwd);
+          this.props.history.push("/signupinfo");
+        } else {
+          alert("이미 존재하는 id/email입니다.");
         }
-      });
-    sessionStorage.setItem("login_id", this.state.id);
-    sessionStorage.setItem("password", this.state.pwd);
+      })
+      .catch(error => console.error(error));
   };
-
-  // handleOnChange(typedEmail) {
-
-  //   this.setState({
-  //     [typedEmail.target.name]: typedEmail.target.value
-  //   });
-  //   axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-  //     const users = response.data;
-  //     const isUserFound = users.filter(
-  //       user => user.email.toLowerCase() === typedEmail.toLowerCase()
-  //     ).length;
-
-  //     isUserFound
-  //       ? this.setState({
-  //           typedEmail,
-  //           isDuplicateUser: true
-  //         })
-  //       : this.setState({
-  //           typedEmail,
-  //           isDuplicateUser: false
-  //         });
-  //   });
-  // }
-
-  // emailInputClassName() {
-  //   if (this.state.typedEmail) {
-  //     return this.state.isDuplicateUser ? "is-invalid" : "is-valid";
-  //   }
-  //   return "";
-  // }
-
-  // renderFeedbackMessage() {
-  //   if (this.state.typedEmail) {
-  //     return this.state.isDuplicateUser ? (
-  //       <div className="invalid-feedback">이미 등록되어 있는 이메일입니다</div>
-  //     ) : (
-  //       <div className="valid-feedback">사용할 수 있는 이메일입니다</div>
-  //     );
-  //   }
-  // }
 
   render() {
     const kr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
@@ -153,7 +115,7 @@ class SignupLeft extends Component {
               name="pwd"
               type="password"
               value={this.state.pwd}
-              placeholder="비밀번호 (최소 6자)"
+              placeholder="비밀번호 (최소 7자)"
               onFocus={this.handleFocusCheck}
               onChange={this.handleLoginCheck}
               onInput={e => this.handleOnPasswordInput(e.target.value)}
@@ -192,4 +154,4 @@ class SignupLeft extends Component {
   }
 }
 
-export default SignupLeft;
+export default withRouter(SignupLeft);

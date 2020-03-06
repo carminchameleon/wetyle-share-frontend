@@ -4,9 +4,7 @@
   .top_right_wrapper {
     display: flex;
     align-items: center;
-    padding: 0;
     height: 64px;
-
 
     .right_search {
       position: relative;
@@ -29,6 +27,7 @@
         padding: 10px 12px 10px 36px;
         font-size: 16px;
         transition: width 0.25s linear;
+        outline: none;
 
         &:focus {
           width: 400px;

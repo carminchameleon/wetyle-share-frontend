@@ -195,10 +195,7 @@ class CardModal extends Component {
               <div className="info_wrapper">
                 <div className="info_top">
                   <div className="profile_picture">
-                    <img
-                      src="https://usercontents-c.styleshare.io/images/37223214/40x40"
-                      alt="img"
-                    />
+                    <img src={cardInfo.profile_image_url} alt="img" />
                   </div>
                   <div className="user_information">
                     <div className="user_nick">{cardInfo.nickname}</div>

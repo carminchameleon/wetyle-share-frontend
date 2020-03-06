@@ -22,17 +22,6 @@ class SignupRight extends Component {
     !window.Kakao.Auth && window.Kakao.init("f6b88303f2a59f0e0bd1fc1dad652f65");
     this.googleSDK();
     this.facebookSDK();
-
-    // 카카오 기본 버튼
-    // window.Kakao.Auth.createLoginButton({
-    //   container: "#kakao-login-btn",
-    //   success: function(authObj) {
-    //     console.log(authObj);
-    //   },
-    //   fail: function(err) {
-    //     console.log(err);
-    //   }
-    // });
   };
 
   facebookSDK = () => {
@@ -136,7 +125,7 @@ class SignupRight extends Component {
             kakaoToken: authObj.access_token
           },
           () => {
-            fetch("http://52.78.11.154:8000/user/kakao/sign-in", {
+            fetch("http://10.58.2.111:8000/user/kakao/sign-in", {
               method: "GET",
               headers: {
                 Authorization: this.state.kakaoToken

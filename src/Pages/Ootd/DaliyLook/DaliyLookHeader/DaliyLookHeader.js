@@ -4,8 +4,8 @@ import "./DaliyLookHeader.scss";
 
 class DaliyLookHeader extends Component {
   state = {
-    follower: this.props.like_check,
-    follower1: this.props.like_check1,
+    follower: this.props.like_check === false ? false : true,
+    follower1: this.props.like_check1 === false ? false : true,
     followUp: 0
   };
   mapOfOtherItem = other => {
@@ -136,7 +136,9 @@ class DaliyLookHeader extends Component {
                     );
                   }}
                   className={
-                    this.state.follower ? "follower_btn" : "follower_btn_check"
+                    this.state.follower === false
+                      ? "follower_btn"
+                      : "follower_btn_check"
                   }
                 ></div>
               </div>
@@ -210,7 +212,9 @@ class DaliyLookHeader extends Component {
                     );
                   }}
                   className={
-                    this.state.follower1 ? "follower_btn" : "follower_btn_check"
+                    this.state.follower1 === false
+                      ? "follower_btn"
+                      : "follower_btn_check"
                   }
                 ></div>
               </div>

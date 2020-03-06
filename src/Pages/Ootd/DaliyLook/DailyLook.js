@@ -80,18 +80,20 @@ class DailyLook extends Component {
 
   render() {
     return (
-      <div className="daily_wrapper">
-        <OotdTop />
-        <DaliyLookHeader
-          topItem={this.state.topThree}
-          otherCard={this.state.otherCard}
-          getTopItem={this.getTopItem}
-          like_check={this.state.like_check}
-          like_check1={this.state.like_check1}
-        />
-        <TrendCard data={this.state.cardList} />
-        <OotdFooter />
-        <UploadIcon />
+      <div className="OOTD_wrapper">
+        <div className="daily_wrapper">
+          <OotdTop />
+          <DaliyLookHeader
+            topItem={this.state.topThree}
+            otherCard={this.state.otherCard}
+            getTopItem={this.getTopItem}
+            like_check={this.state.like_check}
+            like_check1={this.state.like_check1}
+          />
+          <TrendCard data={this.state.cardList} />
+          <OotdFooter />
+          <UploadIcon />
+        </div>
       </div>
     );
   }

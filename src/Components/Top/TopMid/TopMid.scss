@@ -1,21 +1,24 @@
 .top_mid {
+  justify-content: center;
+  align-items: center;
+
   .search_off {
     opacity: 1;
     transition: opacity 0.8s ease;
   }
 
   .top_mid_wrapper {
-    display: flex;
-    flex-wrap: wrap;
+    // display: flex;
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
-    // margin-top: 19px;
 
     a {
       text-decoration: none;
     }
 
     .mid {
+      display: inline-block;
+      vertical-align: middle;
       padding: 10px 12px;
       font-weight: bolder;
       font-size: 18px;
