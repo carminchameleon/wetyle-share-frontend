@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import StoreProductCard from "Components/StoreProductCard/StoreProductCard";
 import { withRouter } from "react-router-dom";
-import { STORE_URL } from "config";
+import { SERVER_URL } from "config";
 import "./PopularProduct.scss";
 
 const getRandom = (min, max) => {
@@ -40,7 +40,7 @@ export class PopularProduct extends Component {
   };
 
   componentDidMount = () => {
-    fetch(`${STORE_URL}/product/popular/1`)
+    fetch(`${SERVER_URL}/product/popular/1`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -55,7 +55,7 @@ export class PopularProduct extends Component {
       currentIndex: e.target.id,
       currentTitle: this.state.categories[e.target.id]
     });
-    fetch(`${STORE_URL}/product/popular`)
+    fetch(`${SERVER_URL}/product/popular`)
       .then(res => res.json())
       .then(res => {
         this.setState({
