@@ -55,7 +55,7 @@ export class PopularProduct extends Component {
       currentIndex: e.target.id,
       currentTitle: this.state.categories[e.target.id]
     });
-    fetch(`${STORE_URL}/product/popular/1`)
+    fetch(`${STORE_URL}/product/popular`)
       .then(res => res.json())
       .then(res => {
         this.setState({

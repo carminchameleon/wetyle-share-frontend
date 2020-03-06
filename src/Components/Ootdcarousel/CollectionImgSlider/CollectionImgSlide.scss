@@ -54,6 +54,9 @@
   }
 
   .slick-initialized {
+    .slick-list {
+    }
+
     .collection_more {
       border-radius: 6px;
       border: 0;
@@ -80,8 +83,8 @@
         width: 90%;
         cursor: pointer;
         height: 125px;
+
         @media only screen and (max-height: 800px) {
-          width: 80%;
           height: 70px;
 
           margin-right: 30px;

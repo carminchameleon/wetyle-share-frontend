@@ -15,9 +15,11 @@ class SignupInfoRight extends Component {
     year: "",
     month: "",
     day: "",
+
     userIconUrl: "",
     userIconFile: null,
     resultUrl: "",
+
     regexp: /^[0-9\b]+$/
   };
 
@@ -27,12 +29,6 @@ class SignupInfoRight extends Component {
     });
   };
 
-  handleYear = e => {
-    let year = e.target.value;
-
-    if (year === "" || this.state.regexp.test(year)) {
-      this.setState({ [e.target.name]: year });
-    }
   handleSignUp = () => {
     fetch("http://52.78.11.154:8000/user/kakao/sign-in", {
       method: "POST",
@@ -41,6 +37,7 @@ class SignupInfoRight extends Component {
       },
       body: JSON.stringify({})
     });
+
   };
   handlePost = () => {
     const formData = new FormData();
