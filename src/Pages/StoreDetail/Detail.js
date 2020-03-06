@@ -61,7 +61,7 @@ class Detail extends Component {
     // this.mockData();
   };
   getItem = () => {
-    fetch(`http://52.78.11.154:8000/product/${this.props.match.param.id}`)
+    fetch(`http://52.78.11.154:8000/product/${this.props.match.params.id}`)
       // fetch("http://52.78.11.154:8000/product/45")
       // 좋아요 백이랑 연동시킬 fetch
       // fetch("http://10.58.5.184:8000/product/5", {
