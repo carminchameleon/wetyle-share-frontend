@@ -45,7 +45,8 @@ class Detail extends Component {
       product: [],
       reviewData: [],
       result: {},
-      popularResult: []
+      popularResult: [],
+      brandResult: []
     };
   }
 
@@ -60,8 +61,9 @@ class Detail extends Component {
     // this.mockData();
   };
   getItem = () => {
-    // fetch(`http://10.58.5.123:8000/product/${fetchAddress}`)
-    fetch("http://10.58.1.61:8000/product/995")
+    fetch(`http://52.78.11.154:8000/product/${this.props.match.param.id}`)
+      // fetch("http://52.78.11.154:8000/product/45")
+      // 좋아요 백이랑 연동시킬 fetch
       // fetch("http://10.58.5.184:8000/product/5", {
       //   headers: {
       //     Authorization:
@@ -81,7 +83,7 @@ class Detail extends Component {
       });
   };
   getColor = () => {
-    fetch("http://10.58.1.61:8000/product/color/1")
+    fetch("http://52.78.11.154:8000/product/color/1")
       // fetch("http://localhost:3000/data/data.json")
       .then(res => res.json())
       .then(res => {
@@ -96,7 +98,7 @@ class Detail extends Component {
       });
   };
   getSize = () => {
-    fetch("http://10.58.1.61:8000/product/size/1")
+    fetch("http://52.78.11.154:8000/product/size/1")
       // fetch("http://localhost:3000/data/data.json")
       .then(res => res.json())
       .then(res => {
@@ -111,11 +113,12 @@ class Detail extends Component {
       });
   };
   popularProduct = () => {
-    fetch("http://10.58.1.61:8000/product/popular/1")
+    fetch("http://52.78.11.154:8000/product/popular")
       .then(res => res.json())
       .then(res => {
         this.setState({
-          popularResult: res.result
+          popularResult: res.result.slice(0, 4),
+          brandResult: res.result.slice(4, 8)
         });
       });
   };
@@ -162,12 +165,11 @@ class Detail extends Component {
     this.setState(state => ({ modelName: !state.modelName }));
   };
   pressHeart = () => {
-    const Obj = { ...this.state.result };
-    Obj.is_like = !this.state.result.is_like;
+    this.setState({
+      pressHeart: !this.state.pressHeart
+    });
 
-    this.setState({ result: Obj });
-
-    this.state.result.is_like === false
+    this.state.pressHeart === false
       ? this.plusLikeCount()
       : this.minusLikeCount();
   };
@@ -213,17 +215,17 @@ class Detail extends Component {
     likeObj.product_like = this.state.result.product_like + 1;
     // likeObj.is_like = this.state.result.is_like + 1;
     this.setState({
-      result: likeObj,
-      pressHeart: !this.state.pressHeart
+      result: likeObj
+      // pressHeart: this.state.pressHeart
     });
 
-    fetch("http://10.58.5.184:8000/product/like/5", {
-      method: "GET",
-      headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
-      }
-    }).then(this.getItem());
+    // fetch("http://10.58.5.184:8000/product/like/5", {
+    //   method: "GET",
+    //   headers: {
+    //     Authorization:
+    //       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+    //   }
+    // }).then(this.getItem());
   };
   // ******************좋아요 취소***************************************
   minusLikeCount = () => {
@@ -232,17 +234,17 @@ class Detail extends Component {
     deleteLike.product_like = this.state.result.product_like - 1;
     // deleteLike.is_like = this.state.result.is_like - 1;
     this.setState({
-      result: deleteLike,
-      pressHeart: !this.state.pressHeart
+      result: deleteLike
+      // pressHeart: this.state.pressHeart
     });
 
-    fetch("http://10.58.5.184:8000/product/like/5", {
-      method: "GET",
-      headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
-      }
-    }).then(this.getItem());
+    // fetch("http://10.58.5.184:8000/product/like/5", {
+    //   method: "GET",
+    //   headers: {
+    //     Authorization:
+    //       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
+    //   }
+    // }).then(this.getItem());
   };
   // ****************옵션 선택*******************************8
   handleSelectOption = e => {
@@ -378,11 +380,12 @@ class Detail extends Component {
     if (
       this.state.result.detail_image_url === undefined ||
       this.state.getColor === undefined ||
-      this.state.getSize === undefined
+      this.state.getSize === undefined ||
+      this.state.popularResult.length === 0
     )
       return null;
     // console.log(this.state.);
-    console.log(this.state.result);
+    console.log(this.state.popularResult[0].price);
     // console.log(this.state.result.product_like);
 
     return (
@@ -502,14 +505,14 @@ class Detail extends Component {
 
                     {/* </div> */}
                     <div>
-                      <div class="like_and_review">
+                      <div className="like_and_review">
                         <span
                           className={
-                            this.state.result.is_like
+                            this.state.pressHeart
                               ? "already_pressed_heart"
                               : "user_can_press_like"
                           }
-                          disabled={this.state.result.is_like === null}
+                          // disabled={this.state.result.is_like === null}
                           onClick={this.pressHeart}
                         >
                           <img
@@ -651,12 +654,9 @@ class Detail extends Component {
                     src="https://image.flaticon.com/icons/svg/625/625946.svg"
                     alt=""
                     className="see_more_detail_arrow"
-                    // className={
-                    //     this.state.discountInfo
-                    //         ? "rotate_price_info"
-                    //         : "see_price_info"
                   />
                 </div>
+
                 {/* ***********제품 상세 버튼 끝********* */}
 
                 <div
@@ -758,10 +758,49 @@ class Detail extends Component {
               </div>
             </div>
             {/* <FourPicDiv title="카테고리 인기 상품" /> */}
-            {/* <StoreProductCard /> */}
-            {/* <StoreMainPopularBrandCard brandName="나이키" goodsCount="426" /> */}
-            {/* <FourPicDiv title="브랜드 인기 상품" /> */}
-            {/* <StoreProductCard /> */}
+            <div className="category_popular_product">
+              <div className="category_popular_product_text">
+                카테고리 인기 상품
+              </div>
+              <div className="taesol_dasol_madecasol">
+                {this.state.popularResult.map((x, index) => {
+                  return (
+                    <StoreProductCard
+                      picture={x.image_url}
+                      brandName={x.brand}
+                      productName={x.name}
+                      discountRate={
+                        Math.ceil(x.discounted_price / x.price) * 10
+                      }
+                      price={x.discounted_price.toLocaleString()}
+                      likeCount={x.product_like.toLocaleString()}
+                      reviewsCount="37"
+                    />
+                  );
+                })}
+              </div>
+            </div>
+            {/* ***************************************************** */}
+            <div className="brand_popular_product">
+              <div className="brand_popular_product_text">브랜드 인기 상품</div>
+              <div className="taesol_dasol_madecasol">
+                {this.state.brandResult.map((x, index) => {
+                  return (
+                    <StoreProductCard
+                      picture={x.image_url}
+                      brandName={x.brand}
+                      productName={x.name}
+                      discountRate={
+                        Math.ceil(x.discounted_price / x.price) * 10
+                      }
+                      price={x.discounted_price.toLocaleString()}
+                      likeCount={x.product_like.toLocaleString()}
+                      reviewsCount="52"
+                    />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
         <footer>
