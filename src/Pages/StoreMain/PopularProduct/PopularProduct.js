@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import StoreProductCard from "Components/StoreProductCard/StoreProductCard";
 import { withRouter } from "react-router-dom";
-import { STORE_URL } from "config";
 import "./PopularProduct.scss";
+import { SERVER_URL } from "config";
 
 const getRandom = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -40,7 +40,7 @@ export class PopularProduct extends Component {
   };
 
   componentDidMount = () => {
-    fetch(`${STORE_URL}/product/popular/1`)
+    fetch(`${SERVER_URL}/product/popular`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -55,9 +55,10 @@ export class PopularProduct extends Component {
       currentIndex: e.target.id,
       currentTitle: this.state.categories[e.target.id]
     });
-    fetch(`${STORE_URL}/product/popular`)
+    fetch(`${SERVER_URL}/product/popular`)
       .then(res => res.json())
       .then(res => {
+        console.log("데이터 테스트", res);
         this.setState({
           data: res.result.slice(
             this.state.currentIndex * 4,
