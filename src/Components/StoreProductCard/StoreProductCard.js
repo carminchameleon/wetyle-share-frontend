@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import "./StoreProductCard.scss";
 
-<<<<<<< HEAD
 class StoreProductCard extends Component {
-=======
-export class StoreProductCard extends Component {
->>>>>>> master
   render() {
     return (
       <div onClick={this.props.onClick} className="StoreProductCard">
