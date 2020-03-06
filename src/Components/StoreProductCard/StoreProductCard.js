@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import "./StoreProductCard.scss";
 
-const addComma = x => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
-
-export class StoreProductCard extends Component {
+class StoreProductCard extends Component {
   render() {
     return (
-      <div className="StoreProductCard">
-        <div className="card_box_set">
-          <a
-            className="card_box_photo_link"
-            href={`https://www.styleshare.kr/goods/${this.props.webLink}`}
-            alt=""
-          >
+      <div onClick={this.props.onClick} className="StoreProductCard">
+        <div className="card_box_set" onClick={this.props.onClick}>
+          <div className="card_box_photo_link">
             <div className="card_box_photo_set">
               <picture className="card_box_photo_picture">
                 <img
@@ -24,32 +16,33 @@ export class StoreProductCard extends Component {
                 ></img>
               </picture>
             </div>
-          </a>
+          </div>
           <div className="card_box_contents">
-            <a
-              className="product_brand_link"
-              href="https://www.styleshare.kr/brands/4747"
-            >
+            <div className="product_brand_link">
               <span className="product_brand">{this.props.brandName}</span>
-            </a>
-            <a className="product_name_link" href="/goods/302608">
+            </div>
+            <div className="product_name_link">
               <span className="product_name">{this.props.productName}</span>
-            </a>
+            </div>
             <div className="product_price_info">
               {this.props.discountRate && (
-                <span className="price_discount">{`${this.props.discountRate}%`}</span>
+                <span className="price_discount">
+                  {this.props.discountRate}%
+                </span>
               )}
 
-              <span className="price_money">{addComma(this.props.price)}</span>
+              <span className="price_money">
+                {this.props.price.toLocaleString()}
+              </span>
               <span className="price_won">원</span>
             </div>
             <div className="like_and_comment">
-              <span className="like">{`좋아요 ${addComma(
-                this.props.likeCount
-              )}`}</span>
-              <span className="comment">{`후기 ${addComma(
-                this.props.reviewsCount
-              )}`}</span>
+              <span className="like">
+                좋아요 {this.props.likeCount.toLocaleString()}
+              </span>
+              <span className="comment">
+                후기 {this.props.reviewsCount.toLocaleString()}
+              </span>
             </div>
           </div>
         </div>

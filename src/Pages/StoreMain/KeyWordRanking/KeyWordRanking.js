@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StoreProductCard from "../../../Components/StoreProductCard/StoreProductCard";
+import { SERVER_URL } from "config";
 import "./KeyWordRanking.scss";
 
 const getRandom = (min, max) => {
@@ -29,9 +30,11 @@ export class KeyWordRanking extends Component {
   }
 
   componentDidMount = () => {
-    fetch(
-      `http://52.78.11.154:8000/product/search?query=${this.state.currentTitle}`
-    )
+    this.fetchData();
+  };
+
+  fetchData = () => {
+    fetch(`${SERVER_URL}/product/search?query=${this.state.currentTitle}`)
       .then(res => res.json())
       .then(res => {
         let productBox = [];
@@ -47,28 +50,15 @@ export class KeyWordRanking extends Component {
   };
 
   selectCategory = e => {
-    this.setState({
-      currentIndex: e.target.id,
-      currentTitle: this.state.categories[e.target.id]
-    });
-
-    fetch(
-      `http://52.78.11.154:8000/product/search?query=${
-        this.state.categories[e.target.id]
-      }`
-    )
-      .then(res => res.json())
-      .then(res => {
-        let productNewBox = [];
-        while (productNewBox.length < 5) {
-          productNewBox.push(
-            res.product_list[getRandom(0, res.product_list.length)]
-          );
-        }
-        this.setState({
-          data: productNewBox
-        });
-      });
+    this.setState(
+      {
+        currentIndex: e.target.id,
+        currentTitle: this.state.categories[e.target.id]
+      },
+      () => {
+        this.fetchData();
+      }
+    );
   };
 
   render() {
@@ -76,19 +66,17 @@ export class KeyWordRanking extends Component {
     return (
       <div className="KeyWordRanking">
         <div className="main_container">
-          <div className="main_title_box">
-            <h2 className="main_title">실시간 인기 키워드</h2>
+          <div className="title_box">
+            <h2 className="title">실시간 인기 키워드</h2>
           </div>
-          <ol className="main_list_container">
+          <ol className="list_container">
             {categories.map((el, index) => {
               return (
                 <li className="title_list">
                   <button
                     key={index}
                     className={
-                      index == currentIndex
-                        ? "title_list_button_default"
-                        : "title_list_button"
+                      index == currentIndex ? "button_default" : "button"
                     }
                     onClick={this.selectCategory}
                     id={index}
@@ -126,7 +114,7 @@ export class KeyWordRanking extends Component {
               })}
             </div>
           </div>
-          <div className="main_show_more_container">
+          <div className="show_more_container">
             <div className="show_more_box">
               <a className="show_more" href="/categories/best?sort=score-desc">
                 {currentTitle} 더보기

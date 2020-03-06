@@ -24,16 +24,15 @@
         position: relative;
         transition: transform 0.25s ease-in-out 0s;
         border-radius: 10px;
-      }
-      .brand_img:hover {
-        transform: scale(1.1);
-        transition: transform 0.5s;
+        &:hover {
+          transform: scale(1.1);
+          transition: transform 0.5s;
+        }
       }
     }
-    .brand_under_grey {
+    .under_grey {
       height: 25%;
       width: 480px;
-
       position: absolute;
       bottom: 0px;
       left: 0px;
@@ -41,7 +40,7 @@
       pointer-events: none;
       background: linear-gradient(rgba(27, 29, 31, 0), rgba(27, 29, 31, 0.4));
     }
-    .brand_info_container {
+    .info_container {
       z-index: 1000;
       position: absolute;
       bottom: 0px;
@@ -49,7 +48,7 @@
       right: 0px;
       pointer-events: none;
 
-      .brand_info_box {
+      .info_box {
         text-align: center;
         padding: 0.5rem 1.125rem;
 

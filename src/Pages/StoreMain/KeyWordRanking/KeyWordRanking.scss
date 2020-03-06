@@ -7,10 +7,10 @@
     max-width: 80rem;
     overflow: hidden;
 
-    .main_title_box {
+    .title_box {
       padding-bottom: 0px;
 
-      .main_title {
+      .title {
         font-size: 2.25rem;
         line-height: 1.33;
         letter-spacing: -0.025rem;
@@ -21,7 +21,7 @@
         margin: 0px;
       }
     }
-    .main_list_container {
+    .list_container {
       margin: 10px auto;
       text-align: center;
       position: relative;
@@ -35,7 +35,7 @@
         vertical-align: middle;
         height: 30px;
 
-        .title_list_button_default {
+        .button_default {
           font-size: 1.125rem;
           line-height: 1.38;
           letter-spacing: -0.025rem;
@@ -54,7 +54,7 @@
           border-bottom: 2px solid black;
           transition: border-bottom 0.3s ease-in-out 0s;
         }
-        .title_list_button {
+        .button {
           border-width: 0px;
           border-style: initial;
           border-color: initial;
@@ -69,24 +69,12 @@
           cursor: pointer;
           background: transparent;
           padding: 0;
-          // padding: 0.625rem 0.75rem;
           outline: none;
           transition: color 0.2s ease-in-out 0s;
         }
-        .title_list_button:hover {
+        .button:hover {
           color: rgb(38, 40, 43);
         }
-      }
-      .title_move_line {
-        width: 32px;
-        transform: translateX(344px) translateZ(0px);
-        position: absolute;
-        height: 0.125rem;
-        background-color: rgb(38, 40, 43);
-        border-radius: 1px;
-        transition: width 0.5s ease 0s, transform 0.5s ease 0s;
-
-        bottom: 0.25rem;
       }
     }
     .main_card_container {
@@ -102,7 +90,7 @@
         justify-content: space-between;
       }
     }
-    .main_show_more_container {
+    .show_more_container {
       display: flex;
       justify-content: center;
       width: 100%;

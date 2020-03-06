@@ -34,7 +34,8 @@ function Routes() {
 
         {/* <Route exact path="/signinnext" component={SigninNext} /> */}
         <Route exact path="/storemain" component={StoreMain} />
-        <Route exact path="/detail" component={Detail} />
+        <Route exact path="/detail/:id" component={Detail} />
+
         <Route exact path="/feed/hot" component={Hot} />
         <Route exact path="/feed/dailylook" component={DailyLook} />
         <Route exact path="/feed/beauty" component={Beauty} />

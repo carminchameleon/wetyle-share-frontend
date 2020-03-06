@@ -13,11 +13,11 @@ export class PopularBrandCard extends Component {
           >
             <img className="brand_img" src={picture} alt="brand_img"></img>
           </a>
-          <div className="brand_under_grey"></div>
-          <div className="brand_info_container">
-            <p className="brand_info_box">
+          <div className="under_grey"></div>
+          <div className="info_container">
+            <p className="info_box">
               <span className="brand_name">{brandName}</span>
-              <span className="brand_goods_count">{`(${goodsCount})`}</span>
+              <span className="brand_goods_count">{goodsCount}</span>
             </p>
           </div>
         </div>

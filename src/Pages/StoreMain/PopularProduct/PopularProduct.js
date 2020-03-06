@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import StoreProductCard from "../../../Components/StoreProductCard/StoreProductCard";
+import StoreProductCard from "Components/StoreProductCard/StoreProductCard";
+import { withRouter } from "react-router-dom";
+import { STORE_URL } from "config";
 import "./PopularProduct.scss";
 
 const getRandom = (min, max) => {
@@ -33,11 +35,14 @@ export class PopularProduct extends Component {
     };
   }
 
+  goToDetail = num => {
+    this.props.history.push(`/detail/${num}`);
+  };
+
   componentDidMount = () => {
-    fetch("http://10.58.5.123:8000/product/popular/1")
+    fetch(`${STORE_URL}/product/popular/1`)
       .then(res => res.json())
       .then(res => {
-        console.log("데이터 확인하자", res.result.slice(0, 4));
         this.setState({
           data: res.result.slice(0, 4)
         });
@@ -50,13 +55,9 @@ export class PopularProduct extends Component {
       currentIndex: e.target.id,
       currentTitle: this.state.categories[e.target.id]
     });
-    fetch("http://localhost:3000/data/ProductReal.json")
+    fetch(`${STORE_URL}/product/popular/1`)
       .then(res => res.json())
       .then(res => {
-        console.log(
-          this.state.currentIndex * 4,
-          this.state.currentIndex * 4 + 4
-        );
         this.setState({
           data: res.result.slice(
             this.state.currentIndex * 4,
@@ -76,22 +77,6 @@ export class PopularProduct extends Component {
     });
   };
 
-  makeCategory = () => {
-    return this.state.data.map(el => (
-      <StoreProductCard
-        data={el}
-        key={el.id}
-        discountRate={getDiscountRate(el.discounted_price, el.price)}
-        picture={el.image_url}
-        isDiscounted={el.price === el.disCounted_price}
-        likeCount={getRandom(100, 30000)}
-        brandName={el.brand}
-        productName={el.name}
-        price={el.discounted_price}
-        reviewsCount={getRandom(200, 20000)}
-      />
-    ));
-  };
   render() {
     const {
       categories,
@@ -140,6 +125,7 @@ export class PopularProduct extends Component {
                 if (!el) return null;
                 return (
                   <StoreProductCard
+                    onClick={() => this.goToDetail(el.product_id)}
                     data={el}
                     key={el.id}
                     discountRate={getDiscountRate(
@@ -153,6 +139,7 @@ export class PopularProduct extends Component {
                     productName={el.name}
                     price={el.discounted_price}
                     reviewsCount={getRandom(200, 20000)}
+                    productId={el.product_id}
                   />
                 );
               })}
@@ -176,4 +163,4 @@ export class PopularProduct extends Component {
   }
 }
 
-export default PopularProduct;
+export default withRouter(PopularProduct);
