@@ -5,6 +5,7 @@ import "./CollectionImgSlide.scss";
 class CollectionImgSlide extends Component {
   render() {
     const { data, key } = this.props;
+    console.log(data, "data");
     return (
       <div
         key={key}
@@ -12,7 +13,7 @@ class CollectionImgSlide extends Component {
         onMouseOver={this.arrowVisibel}
         onMouseOut={this.arrowHidden}
       >
-        <img src={data.main_url} alt="img" />
+        {data.image_url ? <img src={data.image_url} alt="img" /> : ""}
       </div>
     );
   }

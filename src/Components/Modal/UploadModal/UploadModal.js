@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { withRouter } from "react-router-dom";
+import { SERVER_URL } from "config";
 import swal from "sweetalert";
 
 import "./UploadModal.scss";
@@ -73,7 +74,7 @@ class UploadModal extends Component {
     const formData = new FormData();
     formData.append("filename", this.state.collection_file);
 
-    fetch(`http://10.58.2.111:8000/card/upload/image`, {
+    fetch(`${SERVER_URL}/card/upload/image`, {
       method: "POST",
       headers: {
         Authorization:
@@ -97,7 +98,7 @@ class UploadModal extends Component {
     } else if (!this.state.collection_url) {
       swal("", "이미지를 업로드 해주세요!", "error");
     } else {
-      fetch(`http://10.58.2.111:8000/card/collection/upload`, {
+      fetch(`${SERVER_URL}/card/collection/upload`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

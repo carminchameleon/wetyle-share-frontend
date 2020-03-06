@@ -6,7 +6,6 @@ import TopMid from "Components/Top/TopMid/TopMid";
 
 class SignupInfoRight extends Component {
   state = {
-
     id: "",
     pwd: "",
     pwdfocus: false,
@@ -15,22 +14,16 @@ class SignupInfoRight extends Component {
     nick: "",
     year: "",
     month: "",
-    day: ""
-
-    year: "",
-    month: "",
     day: "",
+
     regexp: /^[0-9\b]+$/
-
   };
-
 
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-
 
   handleYear = e => {
     let year = e.target.value;
@@ -55,7 +48,6 @@ class SignupInfoRight extends Component {
       this.setState({ [e.target.name]: day });
     }
   };
-
 
   render() {
     console.log(this.props);
@@ -187,10 +179,7 @@ class SignupInfoRight extends Component {
                   maxLength="2"
                   name="month"
                   value={this.state.month}
-
                   onChange={this.handleChange}
-
-
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />
@@ -202,13 +191,8 @@ class SignupInfoRight extends Component {
                   type="text"
                   maxLength="2"
                   name="day"
-
                   onChange={this.handleChange}
                   value={this.state.day}
-
-              
-             
-
                   onFocus={this.handleFocusCheck}
                   // onChange={this.handleLoginCheck}
                 />

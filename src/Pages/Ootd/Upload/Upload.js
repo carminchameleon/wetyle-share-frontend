@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { SERVER_URL } from "config";
 import swal from "sweetalert";
 
 import OotdTop from "../../../Components/Top/OotdTop";
@@ -49,11 +50,11 @@ class Upload extends Component {
     const formData = new FormData();
     formData.append("filename", this.state.url);
 
-    fetch("http://10.58.2.111:8000/card/upload/image", {
+    fetch(`http://10.58.1.114:8000/card/upload/image`, {
       method: "POST",
       headers: {
         Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
       },
       body: formData
     })
@@ -71,12 +72,12 @@ class Upload extends Component {
     } else if (this.state.resultList.length === 0) {
       swal("", "이미지를 업로드 해주세요!", "error");
     } else {
-      fetch("http://10.58.2.111:8000/card/style/upload", {
+      fetch("http://10.58.1.114:8000/card/style/upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization:
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Impvbmd0a2ZrZCJ9.TburqDu3-81bWqGKbRutBcqHADIB955vipm-oJbRbu4"
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbl9pZCI6Ilx1Yzc3NFx1Yzg4NVx1YmJmY19pZCJ9.RMSp0p5meKl6Pn81hwkAMb2cucMJ1fPLmB-DtqdI5Kk"
         },
         body: JSON.stringify({
           description: this.state.content,

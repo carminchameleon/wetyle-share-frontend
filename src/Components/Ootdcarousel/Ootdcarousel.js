@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-
+import man from "Img/bag.png";
 import MainImgSlider from "./MainImgSlider/MainImgSlider";
 import CollectionImgSlide from "./CollectionImgSlider/CollectionImgSlide";
 
@@ -71,40 +71,45 @@ class Ootdcarousel extends Component {
   };
 
   mapOfMainImg = images => {
-    return images.map((ele, idx) => (
-      <MainImgSlider
-        over={this.arrowVisibel}
-        out={this.arrowHidden}
-        arrow={this.state.arrowVisibel}
-        data={ele}
-        key={idx}
-      />
-    ));
+    if (images) {
+      return images.map((ele, idx) => (
+        <MainImgSlider
+          over={this.arrowVisibel}
+          out={this.arrowHidden}
+          arrow={this.state.arrowVisibel}
+          data={ele}
+          key={idx}
+        />
+      ));
+    }
   };
 
   mapOfCollection = images => {
-    return images.map((ele, idx) => (
-      <CollectionImgSlide data={ele} key={idx} />
-    ));
+    console.log(images);
+    if (images) {
+      return images.collection.map((ele, idx) => (
+        <CollectionImgSlide data={ele} key={idx} />
+      ));
+    }
   };
 
   render() {
-    const { images } = this.props;
+    const { images, colletionData } = this.props;
     const mainSettings = {
       ...mainSettingsVar,
       customPaging: function(i) {
         return (
           <div>
-            <img alt="thumbnail" src={images[i].main_url} />
+            <img alt="thumbnail" src={images[i]} />
           </div>
         );
       }
     };
-
+    console.log(images);
     return (
       <>
         <Slider ref={ref => (this.slider = ref)} {...mainSettings}>
-          {this.mapOfMainImg(images.slice(0, 11))}
+          {this.mapOfMainImg(images)}
         </Slider>
         <div
           className={
@@ -151,8 +156,12 @@ class Ootdcarousel extends Component {
               {...collectionSettings}
               ref={ref => (this.collection = ref)}
             >
-              {this.mapOfCollection(images.slice(10, 15))}
-              <div className="collection_more">더 보기</div>
+              {this.mapOfCollection(colletionData.result)}
+              {colletionData.result.collection.images ? (
+                <div className="collection_more">더 보기</div>
+              ) : (
+                ""
+              )}
             </Slider>
           </div>
         </>
