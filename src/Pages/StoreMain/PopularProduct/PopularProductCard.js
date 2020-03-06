@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import "./StoreMainPopularProductCard.scss";
+import "./PopularProductCard.scss";
 
-export class StoreMainPopularProductCard extends Component {
-  addComma = price => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
+export class PopularProductCard extends Component {
+  //
   render() {
-    console.log(this.props.price.toString().split(""));
+    // console.log(this.props.price.toString().split(""));
 
     return (
       <div className="StoreMainPopularProductCard">
@@ -46,15 +43,13 @@ export class StoreMainPopularProductCard extends Component {
                 ""
               )}
 
-              <span className="price_money">
-                {this.addComma(this.props.price)}
-              </span>
+              <span className="price_money">{this.props.productPrice}</span>
               <span className="price_won">원</span>
             </div>
             <div className="like_and_comment">
-              <span className="like">{`좋아요 ${this.addComma(
-                this.props.likeCount
-              )}`}</span>
+              <span className="like">
+                {`좋아요 ${this.props.likeCount}`.toLocaleString()}
+              </span>
               <span className="comment">{`후기 ${this.props.reviewsCount}`}</span>
             </div>
           </div>
@@ -64,4 +59,4 @@ export class StoreMainPopularProductCard extends Component {
   }
 }
 
-export default StoreMainPopularProductCard;
+export default PopularProductCard;

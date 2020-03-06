@@ -26,6 +26,7 @@ class SignupInfoRight extends Component {
       [e.target.name]: e.target.value
     });
   };
+
   handleSignUp = () => {
     fetch("http://52.78.11.154:8000/user/kakao/sign-in", {
       method: "POST",
@@ -179,51 +180,46 @@ class SignupInfoRight extends Component {
                   />
                 )}
               </div>
-              <div className="box 3">
-                <span className="box_title two_words">성별</span>
-                <div className="gender_man">
-                  <input
-                    type="radio"
-                    name="sex"
-                    value={this.state.sex}
-                    p
-                    onClick={() => {
-                      this.setState({ sex: 0 }, () => {
-                        this.props.handleGender();
-                      });
-                    }}
-                  />
-                  남
-                </div>
-                <div className="gender_woman">
-                  <input
-                    type="radio"
-                    name="sex"
-                    defaultChecked="false"
-                    value={this.state.sex}
-                    onChange={this.handleChange}
-                    onClick={() => {
-                      this.setState({ sex: 1 }, () => {
-                        this.props.handleGender();
-                      });
-                    }}
-                  />
-                  여
-                </div>
+            </div>
+            <div className="last_box">
+              <span className="box_title two_words">생일</span>
+              <input
+                className="birthdate year"
+                name="year"
+                value={this.state.year}
+                onChange={this.handleYear}
+                type="text"
+                maxLength="4"
+                name="year"
+                value={this.state.year}
+                onChange={this.handleChange}
+                onFocus={this.handleFocusCheck}
+              />
+              년
+              <div className="bd_month">
+                <input
+                  className="birthdate month"
+                  type="text"
+                  maxLength="2"
+                  name="month"
+                  value={this.state.month}
+                  onChange={this.handleChange}
+                  onFocus={this.handleFocusCheck}
+                  // onChange={this.handleLoginCheck}
+                />
+                월
               </div>
               <div className="last_box">
                 <span className="box_title two_words">생일</span>
                 <input
-                  className="birthdate year"
-                  type="number"
-                  maxLength="3"
-                  name="year"
-                  value={this.state.year}
-                  onChange={e => {
-                    if (e.target.value.length < 5) {
-                      this.setState({ year: e.target.value });
-                    }
-                  }}
+                  className="birthdate day"
+                  type="text"
+                  maxLength="2"
+                  name="day"
+                  onChange={this.handleChange}
+                  value={this.state.day}
+                  onFocus={this.handleFocusCheck}
+                  // onChange={this.handleLoginCheck}
                 />
                 년
                 <div className="bd_month">
