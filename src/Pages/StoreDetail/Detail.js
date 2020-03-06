@@ -61,7 +61,7 @@ class Detail extends Component {
     // this.mockData();
   };
   getItem = () => {
-    fetch(`http://52.78.11.154:8000/product/${this.props.match.param.id}`)
+    fetch(`http://52.78.11.154:8000/product/${this.props.match.params.id}`)
       // fetch("http://52.78.11.154:8000/product/45")
       // 좋아요 백이랑 연동시킬 fetch
       // fetch("http://10.58.5.184:8000/product/5", {
@@ -117,8 +117,8 @@ class Detail extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          popularResult: res.result.slice(0, 4),
-          brandResult: res.result.slice(4, 8)
+          popularResult: res.result.slice(7, 11),
+          brandResult: res.result.slice(19, 23)
         });
       });
   };
@@ -361,7 +361,9 @@ class Detail extends Component {
               height="8px"
             />
           </button>
-          <span className="order_product_price">{x.price}</span>
+          <span className="order_product_price">
+            {x.price.toLocaleString()} 원
+          </span>
           <button className="order_delete_btn">
             <img
               src="https://image.flaticon.com/icons/svg/565/565313.svg"
@@ -636,7 +638,10 @@ class Detail extends Component {
                   </div>
                 </div>
               </div>
-              <BrandBox url={this.state.result.brand_large_image_url} />
+              <BrandBox
+                url={this.state.result.brand_large_image_url}
+                brandName={this.state.result.brand_name}
+              />
             </div>
             <FourPicDiv title="상품 후기 68" />
             <CouponForEveryone />
@@ -773,8 +778,8 @@ class Detail extends Component {
                         Math.ceil(x.discounted_price / x.price) * 10
                       }
                       price={x.discounted_price.toLocaleString()}
-                      likeCount={x.product_like.toLocaleString()}
-                      reviewsCount="37"
+                      likeCount={Math.floor(Math.random() * (100 - 30) + 30)}
+                      reviewsCount={Math.floor(Math.random() * (100 - 1) + 1)}
                     />
                   );
                 })}
@@ -794,8 +799,8 @@ class Detail extends Component {
                         Math.ceil(x.discounted_price / x.price) * 10
                       }
                       price={x.discounted_price.toLocaleString()}
-                      likeCount={x.product_like.toLocaleString()}
-                      reviewsCount="52"
+                      likeCount={Math.floor(Math.random() * (100 - 30) + 30)}
+                      reviewsCount={Math.floor(Math.random() * (100 - 30) + 30)}
                     />
                   );
                 })}

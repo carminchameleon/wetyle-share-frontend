@@ -40,7 +40,7 @@ export class PopularProduct extends Component {
   };
 
   componentDidMount = () => {
-    fetch(`${SERVER_URL}/product/popular/1`)
+    fetch(`${SERVER_URL}/product/popular`)
       .then(res => res.json())
       .then(res => {
         this.setState({
