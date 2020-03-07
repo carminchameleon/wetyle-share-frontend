@@ -1,0 +1,19 @@
+.StoreMainTrend {
+  margin: 30px 0 0 0;
+  .StoreMainTrend_wrapper {
+    // width: 100%;
+    .trend_title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 800;
+      margin: 0 0 20px 0;
+    }
+    .trend_main_wrapper {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 80px;
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+}

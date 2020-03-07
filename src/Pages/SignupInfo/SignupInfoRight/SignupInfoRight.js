@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { SERVER_URL } from "config";
 import kakaoImg from "Img/Kakao.png";
 import man from "../../../Img/man.png";
 import woman from "../../../Img/woman.png";
@@ -15,7 +17,10 @@ class SignupInfoRight extends Component {
     year: "",
     month: "",
     day: "",
-
+    nickname: "",
+    email: "",
+    returnedId: "",
+    returnedPwd: "",
     userIconUrl: "",
     userIconFile: null,
     resultUrl: "",
@@ -30,19 +35,30 @@ class SignupInfoRight extends Component {
   };
 
   handleSignUp = () => {
-    fetch("http://52.78.11.154:8000/user/kakao/sign-in", {
+    fetch(`${SERVER_URL}/user/sign-up`, {
       method: "POST",
       headers: {
-        Authorization: this.state.kakaoToken
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("kakao_token")
       },
-      body: JSON.stringify({})
-    });
+      body: JSON.stringify({
+        login_id: this.state.id,
+        email: this.state.email,
+        password: this.state.pwd,
+        gender: this.state.sex,
+        nickname: this.state.nick
+      })
+    })
+      .then(res => {
+        localStorage.setItem("token", res.token);
+      })
+      .then(this.props.history.push("/"));
   };
   handlePost = () => {
     const formData = new FormData();
     formData.append("filename", this.state.userIconFile);
 
-    fetch(`http://10.58.2.111:8000/card/upload/image`, {
+    fetch(`${SERVER_URL}/card/upload/image`, {
       method: "POST",
       headers: {
         Authorization:
@@ -77,7 +93,44 @@ class SignupInfoRight extends Component {
       });
     };
   };
-
+  doneSignup = e => {
+    e.preventDefault();
+    // console.log(sessionStorage.getItem("login_id"));
+    const data = {
+      nickname: this.state.nickname,
+      email: this.state.email,
+      gender: "s",
+      // birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
+      login_id: sessionStorage.getItem("login_id"),
+      password: sessionStorage.getItem("password")
+    };
+    fetch("http://52.78.11.154:8000/user/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      // .then(console.log("dddd"))
+      .then(res => {
+        if (res.message === "existing email") {
+          alert("존재하는 이메일입니다.");
+        } else if (res.message === "existing login_id") {
+          alert("존재하는 ID입니다.");
+        } else if (res.message === "too short password") {
+          alert("비밀번호가 너무 짧습니다.");
+        } else if (res.message === "INVALID_EMAIL") {
+          alert("이메일 형식을 확인해주세요.");
+        } else if (res.message === "INVALID_KEYS") {
+          console.log("key값을 수정하세요.");
+        } else {
+          this.props.history.push("/login");
+        }
+        console.log(res);
+      })
+      .catch(error => console.log(error));
+  };
   render() {
     console.log(this.props);
     return (
@@ -178,104 +231,30 @@ class SignupInfoRight extends Component {
                     name="email"
                     type="text"
                     placeholder="이메일을 입력하세요."
-                    // onChange={this.handleLoginCheck}
+                    onChange={this.handleChange}
                   />
                 )}
               </div>
             </div>
-            <div className="last_box">
-              <span className="box_title two_words">생일</span>
-              <input
-                className="birthdate year"
-                name="year"
-                value={this.state.year}
-                onChange={this.handleYear}
-                type="text"
-                maxLength="4"
-                name="year"
-                value={this.state.year}
-                onChange={this.handleChange}
-                onFocus={this.handleFocusCheck}
-              />
-              년
-              <div className="bd_month">
-                <input
-                  className="birthdate month"
-                  type="text"
-                  maxLength="2"
-                  name="month"
-                  value={this.state.month}
-                  onChange={this.handleChange}
-                  onFocus={this.handleFocusCheck}
-                  // onChange={this.handleLoginCheck}
-                />
-                월
-              </div>
-              <div className="last_box">
-                <span className="box_title two_words">생일</span>
-                <input
-                  className="birthdate day"
-                  type="text"
-                  maxLength="2"
-                  name="day"
-                  onChange={this.handleChange}
-                  value={this.state.day}
-                  onFocus={this.handleFocusCheck}
-                  // onChange={this.handleLoginCheck}
-                />
-                년
-                <div className="bd_month">
-                  <input
-                    className="birthdate month"
-                    type="number"
-                    maxLength="2"
-                    name="month"
-                    value={this.state.month}
-                    onChange={e => {
-                      if (e.target.value.length < 3) {
-                        this.setState({ month: e.target.value });
-                      }
-                    }}
-                  />
-                  월
-                </div>
-                <div className="bd_day">
-                  <input
-                    className="birthdate day"
-                    type="number"
-                    maxLength="2"
-                    name="day"
-                    onChange={e => {
-                      if (e.target.value.length < 3) {
-                        this.setState({ day: e.target.value });
-                      }
-                    }}
-                    value={this.state.day}
-                  />
-                  일
-                </div>
-              </div>
-            </div>
-            <div className="policy">
-              완료 버튼을 누르면
-              <u>
-                <a href="https://www.styleshare.kr/privacy/">
-                  개인정보보호정책
-                </a>
-              </u>
-              과
-              <u>
-                <a href="https://www.styleshare.kr/terms-of-use/">
-                  서비스이용약관
-                </a>
-              </u>
-              에 동의한 것으로 간주합니다.
-            </div>
-            <div className="done_wrapper">
-              <button className="done" onClick={this.doneSignup}>
-                다 했어요
-              </button>
-            </div>
+          </div>
+
+          <div className="policy">
+            완료 버튼을 누르면
+            <u>
+              <a href="https://www.styleshare.kr/privacy/">개인정보보호정책</a>
+            </u>
+            과
+            <u>
+              <a href="https://www.styleshare.kr/terms-of-use/">
+                서비스이용약관
+              </a>
+            </u>
+            에 동의한 것으로 간주합니다.
+          </div>
+          <div className="done_wrapper">
+            <button className="done" onClick={this.doneSignup}>
+              다 했어요
+            </button>
           </div>
         </div>
       </>
@@ -283,4 +262,4 @@ class SignupInfoRight extends Component {
   }
 }
 
-export default SignupInfoRight;
+export default withRouter(SignupInfoRight);

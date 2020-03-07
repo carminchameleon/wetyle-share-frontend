@@ -48,10 +48,9 @@ class Upload extends Component {
   };
   handlePost = () => {
     const formData = new FormData();
-
     formData.append("filename", this.state.url);
 
-    fetch(`http://10.58.1.114:8000/card/upload/image`, {
+    fetch(`${SERVER_URL}/card/upload/image`, {
       method: "POST",
       headers: {
         Authorization:
@@ -73,7 +72,7 @@ class Upload extends Component {
     } else if (this.state.resultList.length === 0) {
       swal("", "이미지를 업로드 해주세요!", "error");
     } else {
-      fetch("http://10.58.1.114:8000/card/style/upload", {
+      fetch(`${SERVER_URL}/card/style/upload`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,11 +83,13 @@ class Upload extends Component {
           description: this.state.content,
           image_url_list: this.state.resultList.filter(data => data !== null)
         })
-      }).then(
-        swal("", "스타일 업로드 완료", "success").then(() => {
-          this.props.history.goBack();
-        })
-      );
+      })
+        .then(
+          swal("", "스타일 업로드 완료", "success").then(() => {
+            this.props.history.goBack();
+          })
+        )
+        .then((document.body.style.overflow = "visible"));
     }
   };
 

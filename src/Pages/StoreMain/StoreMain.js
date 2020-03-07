@@ -5,7 +5,9 @@ import PopularBrand from "./PopularBrand/PopulrBrand";
 import KeyWordRanking from "./KeyWordRanking/KeyWordRanking";
 import StoreTop from "Components/Top/StoreTop";
 import StoreFooter from "Components/StoreFooter/StoreFooter";
+
 import "./StoreMain.scss";
+import StoreMainTrend from "./Trend/StoreMainTrend";
 
 class StoreMain extends Component {
   render() {
@@ -16,6 +18,7 @@ class StoreMain extends Component {
         <PopularProduct />
         <PopularBrand />
         <KeyWordRanking />
+        <StoreMainTrend />
         <StoreFooter />
       </div>
     );

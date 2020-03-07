@@ -10,12 +10,19 @@ class StoreTop extends Component {
   state = {
     search_mode: false,
     nav: "close",
-    mode: ""
+    mode: "",
+    linePosition: 43
   };
 
   handle_search = () => {
     this.setState({
       search_mode: !this.state.search_mode
+    });
+  };
+
+  handleUnderline = () => {
+    this.setState({
+      linePosition: 40
     });
   };
 
@@ -46,12 +53,22 @@ class StoreTop extends Component {
               />
             </div>
             <div className="top_left_main">
-              <Link to="/">
-                <div className="top_main">#OOTD</div>
-              </Link>
-              <Link to="/storemain">
-                <div className="top_main">STORE</div>
-              </Link>
+              <div className="menu_box">
+                <Link to="/">
+                  <div className="top_main" onClick={this.handleUnderline}>
+                    #OOTD
+                  </div>
+                </Link>
+                <Link to="/storemain">
+                  <div className="top_main">STORE</div>
+                </Link>
+              </div>
+              <div
+                className="underline"
+                style={{
+                  transform: `translate(${this.state.linePosition}px, 0px)`
+                }}
+              ></div>
             </div>
           </div>
           <TopMid searchMode={this.state.search_mode}>

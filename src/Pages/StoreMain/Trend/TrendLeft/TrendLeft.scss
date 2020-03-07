@@ -1,0 +1,35 @@
+.TrendLeft {
+  // flex-basis: 50%;
+  // width: 840px;
+  .StoreMainTrendLeft_wrapper {
+    margin-bottom: 80px;
+    padding-right: 40px;
+    width: 100%;
+    .img_wrapper {
+      overflow: hidden;
+      img {
+        width: 100%;
+        cursor: pointer;
+        transform: scale(1);
+        transition: transform 0.5s;
+        &:hover {
+          transform: scale(1.1);
+          transition: transform 0.5s;
+        }
+      }
+      .StoreMainTrendLeft_title {
+        font-size: 32px;
+        font-weight: 700;
+        padding: 20px 0 0 0;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.StoreMainTrendLeft_title {
+  font-size: 32px;
+  font-weight: 700;
+  padding: 20px 0 0 0;
+  cursor: pointer;
+}
