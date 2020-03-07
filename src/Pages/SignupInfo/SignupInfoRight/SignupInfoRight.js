@@ -43,10 +43,10 @@ class SignupInfoRight extends Component {
       },
       body: JSON.stringify({
         login_id: this.state.id,
-        email: this.state.email,
+        email: localStorage.getItem("kakao_email"),
         password: this.state.pwd,
         gender: this.state.sex,
-        nickname: this.state.nick
+        nickname: this.state.nickname
       })
     })
       .then(res => {
@@ -104,7 +104,7 @@ class SignupInfoRight extends Component {
       login_id: sessionStorage.getItem("login_id"),
       password: sessionStorage.getItem("password")
     };
-    fetch("http://52.78.11.154:8000/user/sign-up", {
+    fetch(`${SERVER_URL}/user/sign-up`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -187,6 +187,7 @@ class SignupInfoRight extends Component {
                   <input
                     placeholder="비밀번호 (최소 6자)"
                     className="pwd_input"
+                    type="password"
                     name="pwd"
                     value={this.state.pwd}
                     onChange={this.handleChange}
@@ -252,7 +253,7 @@ class SignupInfoRight extends Component {
             에 동의한 것으로 간주합니다.
           </div>
           <div className="done_wrapper">
-            <button className="done" onClick={this.doneSignup}>
+            <button className="done" onClick={localStorage.getItem("kakao_id")? this.handleSignUp:this.doneSignup}>
               다 했어요
             </button>
           </div>
