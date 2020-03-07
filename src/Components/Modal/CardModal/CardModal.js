@@ -20,7 +20,11 @@ class CardModal extends Component {
     like: this.props.like === (false || null) ? false : true,
     commentList: this.props.commentList
   };
-
+componentDidMount=()=>{
+  if(this.props.getLikeReset){
+  this.props.getLikeReset();
+  }
+}
   handleFollower = id => {
     this.handleFollowerBtn(id);
     this.setState({
