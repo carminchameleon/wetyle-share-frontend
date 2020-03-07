@@ -1,1 +1,1 @@
-<iframe width="931" height="582" src="https://www.youtube.com/embed/Wd_x8jr5elM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![위타일 미리보기](http://img.youtube.com/vi/Wd_x8jr5elM/0.jpg)](https://youtu.be/Wd_x8jr5elM)
