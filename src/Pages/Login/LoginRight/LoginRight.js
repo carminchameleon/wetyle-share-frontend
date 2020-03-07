@@ -147,6 +147,9 @@ class LoginRight extends Component {
               }
             }).then(res => res.json())
               .then(res => console.log(res))
+              .then(res => {
+                localStorage.setItem("kakao_token", this.state.kakaoToken);
+              })
               .then(this.props.history.push("/"));
           }
         );

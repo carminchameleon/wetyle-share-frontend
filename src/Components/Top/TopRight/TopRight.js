@@ -64,7 +64,7 @@ class TopRight extends Component {
             ></input>
           </div>
           <div className="right_main">
-            {!window.sessionStorage.login_id ? (
+            {!localStorage.getItem("kakao_token") ? (
               <div className="right_main">
                 <div className="main_mid_img">
                   <img src={bag} alt="img"></img>
