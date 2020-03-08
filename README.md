@@ -1,18 +1,12 @@
-- [![위타일 미리보기](http://img.youtube.com/vi/Wd_x8jr5elM/0.jpg)](https://youtu.be/Wd_x8jr5elM)
+## Wetyle Share 프로젝트 Front-End 소개
 
-* [![위타일 추가자료](http://img.youtube.com/vi/2-BrM4u5q3s/0.jpg)](https://youtu.be/2-BrM4u5q3s)
-
-## Wetyle Share 프로젝트 소개\_Back-End
-
-10~20대 여성을 주요 고객으로 가진 SNS & 커머스 서비스인 [스타일쉐어](https://www.styleshare.kr/) 클론 프로젝트
-
-- [github 확인하기](https://github.com/wecode-bootcamp-korea/wetyle-share-backend)
+- 10~20대 여성 및 10대 학생들을 주요 고객으로 가진 SNS & 커머스 서비스 [스타일쉐어](https://www.styleshare.kr/) 클론 프로젝트
 
 ### 개발 인원 및 기간
 
 - 개발기간 : 2020/2/23 ~ 2020/3/6
 - 개발 인원 : 프론트엔트 4명, 백엔드 2명
-- [프론트엔드 github](https://github.com/wecode-bootcamp-korea/wetyle-share-frontend)
+- [백엔드 github](https://github.com/wecode-bootcamp-korea/wetyle-share-backend)
 
 ### 목적
 
@@ -20,22 +14,20 @@
 
 ### 데모 영상(이미지 클릭)
 
-[![위스타일 데모 영상](https://images.velog.io/images/devmin/post/48a64649-611c-4ee9-9b81-880eaa7914d8/%E1%84%89%E1%85%B3%E1%84%89%E1%85%A3%E1%86%BA%2015.png)](https://www.youtube.com/watch?v=Wd_x8jr5elM)
+[![위타일 미리보기](http://img.youtube.com/vi/Wd_x8jr5elM/0.jpg)](https://youtu.be/Wd_x8jr5elM)
 
-<br>
+[![위타일 추가자료](http://img.youtube.com/vi/2-BrM4u5q3s/0.jpg)](https://youtu.be/2-BrM4u5q3s)
+
+<br/>
 
 ## 적용 기술 및 구현 기능
 
 ### 적용 기술
 
-- Python, Django web framework
-- Beautifulsoup, Selenium
-- Bcrypt
-- JWT
-- KAKAO social login
-- MySQL
-- AWS EC2, RDS, S3
-- CORS headers
+- React.js
+- RESTFul API
+- CRA
+- 다양한 라이브러리(Slick, Modal 등)
 
 </br>
 
@@ -43,46 +35,31 @@
 
 #### 공통
 
-- Beautifulsoup, Selenium을 이용한 웹 크롤링
-- Bcrypt를 활용한 비밀번호 암호화
-- JWT를 활용한 로그인 토큰 발행
 - 일반 회원가입 / 로그인
 - 카카오 소셜 로그인
-- 이메일 유효성 검사
 - AWS EC2에 서버 배포
-- AWS RDS에 DB 세팅 및 EC2 서버 연결
-- AWS S3에 업로드 이미지 저장, UUID를 이용한 URL 난수값 생성
+- 정규식을 이용한 이메일 검사
 
 </br>
 
 #### OOTD(SNS 섹션)
 
-- 카드 리스트 반환 - 최신 : 작성 순 - 인기 : 팔로워 수/ 좋아요 수 순 - 팔로잉 : 팔로잉한 사람들이 올린 게시물 최신 순
-- 스타일 카드 내부 페이지 반환
-- 유저간 팔로우 / 언팔로우
-- 게시물 좋아요 / 안좋아요
-- 컬렉션에 스타일 담기(게시물 간 관계 설정)
-- 게시물, 댓글 업로드
-- 업로드 이미지 AWS s3 저장 및 url 발급
+- 카드 리스트 뿌리기(카테고리별 다른 기준을 가짐) - 인기, 최신, 팔로잉
+- 스타일 카드 내부 요소 구현 - 모달로 구현
+- 스타일 카드 안 좋아요, 팔로우, 댓글 추가 기능 구현
+- 스타일 및 컬렉션 업로드 기능 구현(컬렉션은 페이지를 구현하지 못해 API 적용 실패)
+- 무한스크롤 기능으로 아이템 계속 가져오기
 
 </br>
 
 #### STORE(커머스 섹션)
 
-- 상품 좋아요 / 안좋아요
-- 상품 리스트 반환 - 인기 상품 : 상품 좋아요 순 - 인기 키워드 : 해당 키워드 검색 결과 - 인기 브랜드 : 브랜드 별 상품 보유 순
-- 상품 상세페이지 데이터 반환
+- 상품 상세페이지 좋아요버튼
+- STORE 메인에 브랜드 및 상품정보 등 불러오기
+- 카테고리 클릭 시 하단바 애니메이션 및 이미지 슬라이드 애니메이션 구현
+- 상품 선택시 수량체크 및 가격 결정, 할인률 포함
+- 상품 좋아요 버튼 구현
 
 </br>
 
-### API 문서(with POSTMAN)
-
-- [백엔드 API 확인하기](https://documenter.getpostman.com/view/10398706/SzRw2B3K?version=latest)
-
-</br>
-
-### 데이터 모델링 ERD(with AQueryTool)
-
-![데이터 모델링](https://images.velog.io/images/devmin/post/3f3c0567-24ef-44cd-8f79-8ba9368998c1/wetyle-share-ERD.png)
-
-- 상품후기, Q&A, 장바구니, 기획전 부분은 모델링만하고 시간상 구현 제외
+#### 정리
