@@ -24,10 +24,9 @@ SNS 와 커머스 2가지 기능을 담은 사이트이기에 상품 구매 및 
 
 ### 적용 기술
 
-- React.js
-- RESTFul API
-- CRA
-- 다양한 라이브러리(Slick, Modal 등)
+> - Front-End : React.js, sass, slick, react-modal
+> - Back-End : Python, Django web framework, Beautifulsoup, Selenium, Bcrypt, My SQL
+> - Common : KAKAO social login, AWS(EC2,RDS), RESTful API
 
 </br>
 

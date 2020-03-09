@@ -253,7 +253,14 @@ class SignupInfoRight extends Component {
             에 동의한 것으로 간주합니다.
           </div>
           <div className="done_wrapper">
-            <button className="done" onClick={localStorage.getItem("kakao_id")? this.handleSignUp:this.doneSignup}>
+            <button
+              className="done"
+              onClick={
+                localStorage.getItem("kakao_id")
+                  ? this.handleSignUp
+                  : this.doneSignup
+              }
+            >
               다 했어요
             </button>
           </div>
