@@ -38,6 +38,7 @@ class TrendCard extends React.Component {
       .then(res => {
         this.setState({
           cardData: res.result
+        
         });
       });
   };

@@ -767,7 +767,7 @@ class Detail extends Component {
               <div className="category_popular_product_text">
                 카테고리 인기 상품
               </div>
-              <div className="taesol_dasol_madecasol">
+              <div className="store_product_card_map">
                 {this.state.popularResult.map((x, index) => {
                   return (
                     <StoreProductCard
@@ -788,7 +788,7 @@ class Detail extends Component {
             {/* ***************************************************** */}
             <div className="brand_popular_product">
               <div className="brand_popular_product_text">브랜드 인기 상품</div>
-              <div className="taesol_dasol_madecasol">
+              <div className="store_product_card_map">
                 {this.state.brandResult.map((x, index) => {
                   return (
                     <StoreProductCard
