@@ -33,22 +33,24 @@ class LoginLeft extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    }).then(res => {
-      if (res.status === 400) {
-        alert("id 혹은 pwd를 확인하세요.");
-      } else if (res.status === 200) {
-        this.props.history.push("/");
-      } else {
-        alert("id 혹은 pwd를 확인하세요.");
-      }
+    })
+      .then(res => res.json)
+      .then(res => {
+        if (res.status === 400) {
+          alert("id 혹은 pwd를 확인하세요.");
+        } else if (res.status === 200) {
+          this.props.history.push("/");
+        } else {
+          alert("id 혹은 pwd를 확인하세요.");
+        }
 
-      // (res.token) {
-      //   localStorage.setItem("token", res.token);
-      //   this.props.history.push("/");
-      // } else {
-      //   alert("아이디 혹은 비밀번호를 확인해주세요.");
-      // }
-    });
+        // (res.token) {
+        //   localStorage.setItem("token", res.token);
+        //   this.props.history.push("/");
+        // } else {
+        //   alert("아이디 혹은 비밀번호를 확인해주세요.");
+        // }
+      });
   };
 
   render() {

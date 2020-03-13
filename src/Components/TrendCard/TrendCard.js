@@ -17,6 +17,7 @@ class TrendCard extends React.Component {
     scrolling: true,
     commentList: [],
     like: null,
+    follower:null,
     related_item: []
   };
   getCommentList = () => {
@@ -67,6 +68,7 @@ class TrendCard extends React.Component {
           cardData: res.result,
           colletionData: res,
           like: res.result.is_like,
+          follower: res.result.is_following,
           related_item: res.result.related_item
         });
       })
@@ -289,6 +291,7 @@ class TrendCard extends React.Component {
           getCommentList={this.getCommentList}
           getLikeReset={this.getLikeReset}
           like={this.state.like}
+          follower={this.state.follower}
           relateditem={this.state.related_item}
         />
         <div className="trend_card_wrapper">

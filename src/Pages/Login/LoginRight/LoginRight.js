@@ -6,6 +6,7 @@ import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
 import kakaoImg from "Img/Kakao.png";
 import "./LoginRight.scss";
+import { SERVER_URL } from "config";
 
 class LoginRight extends Component {
   state = {
@@ -139,13 +140,16 @@ class LoginRight extends Component {
             kakaoToken: authObj.access_token
           },
           () => {
-            fetch("http://10.58.2.111:8000/user/kakao/sign-in", {
+            fetch(`${SERVER_URL}/user/kakao/sign-in`, {
               method: "GET",
               headers: {
                 Authorization: this.state.kakaoToken
               }
-            })
+            }).then(res => res.json())
               .then(res => console.log(res))
+              .then(res => {
+                localStorage.setItem("kakao_token", this.state.kakaoToken);
+              })
               .then(this.props.history.push("/"));
           }
         );

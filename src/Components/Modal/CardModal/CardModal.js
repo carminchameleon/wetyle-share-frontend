@@ -17,6 +17,7 @@ class CardModal extends Component {
     moadlData: [],
     imgdata: [],
     follower: false,
+    following: this.props.follower === (false || null) ? false : true,
     like: this.props.like === (false || null) ? false : true,
     commentList: this.props.commentList
   };
@@ -28,7 +29,7 @@ componentDidMount=()=>{
   handleFollower = id => {
     this.handleFollowerBtn(id);
     this.setState({
-      follower: !this.state.follower
+      following: !this.state.following
     });
   };
   handleLike = () => {
@@ -212,9 +213,9 @@ componentDidMount=()=>{
                       this.handleFollower();
                     }}
                     className={
-                      this.state.follower
-                        ? "follower_btn_check"
-                        : "follower_btn"
+                      this.state.following === false 
+                        ?  "follower_btn"
+                        :  "follower_btn_check"
                     }
                   ></div>
                 </div>

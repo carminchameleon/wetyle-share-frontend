@@ -77,7 +77,6 @@ class SignupLeft extends Component {
           alert("비밀번호가 짧습니다.");
         } else if (res.status === 200) {
           sessionStorage.setItem("login_id", this.state.id);
-          sessionStorage.setItem("password", this.state.pwd);
           this.props.history.push("/signupinfo");
         } else {
           alert("이미 존재하는 id/email입니다.");

@@ -7,6 +7,7 @@ import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
 import kakaoImg from "Img/Kakao.png";
 import "./SignupRight.scss";
+import { SERVER_URL } from "config";
 
 class SignupRight extends Component {
   state = {
@@ -125,7 +126,7 @@ class SignupRight extends Component {
             kakaoToken: authObj.access_token
           },
           () => {
-            fetch("http://10.58.2.111:8000/user/kakao/sign-in", {
+            fetch(`${SERVER_URL}/user/kakao/sign-in`, {
               method: "GET",
               headers: {
                 Authorization: this.state.kakaoToken
