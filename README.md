@@ -4,7 +4,7 @@
 
 ### 개발 인원 및 기간
 
-- 개발기간 : 2020/2/23 ~ 2020/3/6
+- 개발기간 : 2020/3/23 ~ 2020/3/6
 - 개발 인원 : 프론트엔트 4명, 백엔드 2명
 - [백엔드 github](https://github.com/wecode-bootcamp-korea/wetyle-share-backend)
 
